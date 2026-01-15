@@ -16,30 +16,28 @@ export function Navbar() {
         >
           <img
             src="/logos/main-logo.png"
-            alt="T.O.O.LS Inc Logo"
+            alt="A MackProjekt Logo"
             className="h-10 w-auto object-contain"
           />
           <span className="font-extrabold tracking-tight text-text">
-            T.O.O.LS Inc
+            MackEnterprises
           </span>
         </motion.a>
 
         <nav className="hidden items-center gap-6 md:flex">
-          <a className="text-sm font-medium text-muted hover:text-text" href="/#platform">Programs</a>
-          <a className="text-sm font-medium text-muted hover:text-text" href="/reentry">Reentry</a>
-          <a className="text-sm font-medium text-muted hover:text-text" href="/#dashboard">Impact</a>
-          <a className="text-sm font-medium text-muted hover:text-text" href="/partnerships">Partnerships</a>
-          <a className="text-sm font-medium text-muted hover:text-text" href="/api-test">API</a>
-          <a className="text-sm font-medium text-muted hover:text-text" href="/referral">Referral</a>
+          <a className="text-sm font-medium text-muted hover:text-text" href="/#platform">Services</a>
+          <a className="text-sm font-medium text-muted hover:text-text" href="/messaging">MackChat</a>
+          <a className="text-sm font-medium text-muted hover:text-text" href="/#dashboard">Platform</a>
+          <a className="text-sm font-medium text-muted hover:text-text" href="/portal">Portal</a>
           <a className="text-sm font-medium text-muted hover:text-text" href="/#contact">Contact</a>
         </nav>
 
         <div className="flex items-center gap-3">
           <Button variant="ghost" className="hidden sm:inline-flex">
-            <a href="/referral">Submit Referral</a>
+            <a href="/portal/auth">Sign In</a>
           </Button>
           <Button variant="primary">
-            <a href="/#contact">Get Support</a>
+            <a href="/#contact">Get Started</a>
           </Button>
         </div>
       </div>

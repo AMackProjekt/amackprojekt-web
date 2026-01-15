@@ -18,16 +18,16 @@ export default function Page() {
       {/* HERO */}
       <section className="mx-auto max-w-container px-7 pt-24 pb-16 text-center">
         <h1 className="h1">
-          Empowering Individuals.
+          Welcome to
           <br />
           <span className="bg-gradient-to-r from-brand to-brand2 bg-clip-text text-transparent">
-            Unlocking Potential.
+            A MackProjekt
           </span>
         </h1>
 
         <p className="mx-auto mt-6 max-w-[760px] p-lead">
-          At T.O.O.L.S Inc, we provide support and opportunities for individuals looking to start over. 
-          Through comprehensive programs and lived experience, we help people unlock their full potential.
+          The visionary startup behind MackEnterprises. We build innovative digital solutions 
+          that transform businesses and empower communities through technology and creativity.
         </p>
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
@@ -38,10 +38,10 @@ export default function Page() {
         {/* KPI band */}
         <div className="mt-14 grid grid-cols-1 gap-4 md:grid-cols-4">
           {[
-            ["Support", "Comprehensive Programs"],
-            ["Growth", "Job Readiness Training"],
-            ["Empathy", "Lived Experience Team"],
-            ["Access", "Continued Education"]
+            ["Innovation", "Cutting-Edge Solutions"],
+            ["Design", "Beautiful User Experiences"],
+            ["Technology", "Modern Tech Stack"],
+            ["Growth", "Scalable Architecture"]
           ].map(([v, t]) => (
             <GlowCard key={t} className="p-5 text-left">
               <div className="text-2xl font-extrabold tracking-tight">{v}</div>
@@ -54,17 +54,17 @@ export default function Page() {
       {/* FEATURES */}
       <section id="platform" className="mx-auto max-w-container px-7 pt-8 pb-20">
         <SectionHeading
-          eyebrow="How We Help"
-          title="Comprehensive Support Programs"
-          subtitle="We recognize and address the diverse challenges individuals face, providing the tools and support necessary to unlock their full potential."
+          eyebrow="What We Do"
+          title="Digital Solutions That Matter"
+          subtitle="We create innovative web applications, platforms, and digital experiences that drive business growth and community engagement."
         />
 
         <div className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
           {[
-            ["Job Readiness", "Professional development programs including resume building, mock interviews, and career planning to prepare for success."],
-            ["Continued Education", "Access to educational resources and training programs that open doors to new opportunities and skill development."],
-            ["Lived Experience", "Our team shares lived experiences with the challenges our clients face, creating genuine understanding and effective support."],
-            ["Personal Growth", "Holistic programs addressing both immediate needs and long-term goals for sustainable personal and professional growth."]
+            ["Web Development", "Custom websites and web applications built with modern technologies like Next.js, React, and TypeScript."],
+            ["Platform Engineering", "Scalable platforms and APIs designed to grow with your business needs and user base."],
+            ["User Experience", "Beautiful, intuitive interfaces that users love, backed by research and best practices in UX design."],
+            ["Digital Strategy", "Comprehensive planning and execution to help your business thrive in the digital landscape."]
           ].map(([h, p]) => (
             <GlowCard key={h}>
               <div className="text-lg font-extrabold tracking-tight">{h}</div>
@@ -74,23 +74,23 @@ export default function Page() {
         </div>
       </section>
 
-      {/* REENTRY SERVICE PROVIDER HIGHLIGHT */}
+      {/* MESSAGING APP HIGHLIGHT */}
       <section className="mx-auto max-w-container px-7 py-20">
         <GlowCard className="p-10 text-center overflow-hidden relative">
           <div className="absolute inset-0 bg-gradient-to-br from-brand/10 via-transparent to-brand2/10" />
           <div className="relative">
             <div className="text-xs font-semibold tracking-[0.18em] text-brand2 uppercase">
-              Justice-Involved Support
+              Coming Soon
             </div>
             <h2 className="h2 mt-4 mb-4">
-              Reentry Service Provider
+              MackChat - Next-Gen Messaging
             </h2>
             <p className="text-muted max-w-2xl mx-auto mb-8 leading-relaxed">
-              Supporting individuals returning to society after incarceration with comprehensive reentry 
-              services, employment assistance, housing support, and a pathway to successful reintegration.
+              A revolutionary web-based messaging platform bringing teams and communities together. 
+              Real-time communication with modern features, beautiful design, and seamless integration.
             </p>
-            <Button variant="primary" href="/reentry">
-              Learn More About Reentry Services
+            <Button variant="primary" href="/messaging">
+              Learn More
             </Button>
           </div>
         </GlowCard>
@@ -107,23 +107,23 @@ export default function Page() {
               About Us
             </div>
             <h2 className="h2 mt-4">
-              Together Overcoming Obstacles and Limitations
+              MackEnterprises - Building the Future
             </h2>
             <div className="mt-2 text-lg font-semibold text-muted">
-              Leadership: Donyale &quot;DThree&quot; Mack
+              Founder: Donyale &quot;DThree&quot; Mack
             </div>
             
             <div className="mt-6 space-y-4 text-text/90 leading-relaxed">
               <p>
-                A compassionate advocate and the driving force behind T.O.O.L.S Inc, Donyale Mack is dedicated to 
-                providing support and opportunities to those seeking a second chance in life.
+                A MackProjekt is the innovation lab behind MackEnterprises, dedicated to creating 
+                cutting-edge digital solutions that make a difference in people&apos;s lives.
               </p>
               <p>
-                Born out of lived experience and personal challenges, Donyale&apos;s journey is marked by resilience, 
-                overcoming adversity, and an unwavering passion to help others facing similar struggles.
+                Founded by visionary entrepreneur Donyale Mack, we combine technical excellence with 
+                creative thinking to build platforms that connect, empower, and inspire.
               </p>
               <p className="text-brand font-semibold">
-                &quot;Every individual deserves the opportunity to unlock their full potential.&quot;
+                &quot;Innovation happens when technology meets purpose.&quot;
               </p>
             </div>
           </div>
@@ -133,22 +133,22 @@ export default function Page() {
               <div>
                 <div className="text-sm font-semibold text-brand2 uppercase tracking-wider">Mission</div>
                 <p className="mt-2 text-text/90">
-                  Creating pathways for individuals to transform their lives through empathy, 
-                  understanding, and comprehensive support programs.
+                  To deliver innovative digital solutions that drive business growth and create 
+                  meaningful connections in the digital age.
                 </p>
               </div>
               <div>
                 <div className="text-sm font-semibold text-brand2 uppercase tracking-wider">Vision</div>
                 <p className="mt-2 text-text/90">
-                  Building a community where lived experience becomes the foundation for 
-                  genuine connection and lasting change.
+                  Building a future where technology seamlessly integrates into every aspect of 
+                  business and life, making things simpler and more connected.
                 </p>
               </div>
               <div>
                 <div className="text-sm font-semibold text-brand2 uppercase tracking-wider">Approach</div>
                 <p className="mt-2 text-text/90">
-                  Combining personal understanding with professional expertise to provide 
-                  support that goes beyond sympathy to true empowerment.
+                  Combining modern technology stacks with user-centered design to create 
+                  solutions that are both powerful and delightful to use.
                 </p>
               </div>
             </div>
@@ -159,38 +159,31 @@ export default function Page() {
       {/* DASHBOARD */}
       <DashboardSection />
 
-      {/* BOOK / SUPPORT SECTION */}
+      {/* PORTFOLIO / PROJECTS SECTION */}
       <section className="mx-auto max-w-container px-7 py-20">
         <GlowCard className="p-10 text-center">
           <div className="text-xs font-semibold tracking-[0.18em] text-brand2 uppercase">
-            Support Our Mission
+            Our Work
           </div>
           <h2 className="h2 mt-4">
-            Go Check It Out
+            Projects & Innovations
           </h2>
           <div className="mt-2 text-lg font-semibold text-brand">
-            Available Now On Amazon Platform
+            Transforming Ideas Into Reality
           </div>
           
           <div className="mx-auto mt-6 max-w-[680px] space-y-4 text-text/90 leading-relaxed">
             <p>
-              A portion of the proceeds go to helping program participants with immediate needs such as 
-              but not limited to: bus/transit passes, gas cards, work boots and clothing for work.
+              From web platforms to messaging applications, we build solutions that combine 
+              technical excellence with user-centered design.
             </p>
             <p className="text-base font-semibold text-brand2">
-              We appreciate Your Support
+              Let&apos;s Build Something Amazing Together
             </p>
           </div>
 
           <div className="mt-8">
-            <a href="https://www.amazon.com/Navigating-Spiritual-Warfare-UNDERSTANDING-OVERCOMING/dp/B0CX5JB7BL" target="_blank" rel="noopener noreferrer">
-              <Button variant="primary">View on Amazon</Button>
-            </a>
-          </div>
-
-          <div className="mt-6 text-sm text-muted">
-            <strong className="text-text">Donyale Mack</strong>
-            <div className="mt-1">CEO/Author</div>
+            <Button variant="primary" href="/portal">Explore Our Platform</Button>
           </div>
         </GlowCard>
       </section>
@@ -199,13 +192,13 @@ export default function Page() {
       <section id="contact" className="mx-auto max-w-container px-7 py-20">
         <div className="text-center mb-10">
           <div className="text-xs font-semibold tracking-[0.18em] text-brand2 uppercase">
-            Get Started
+            Get In Touch
           </div>
           <h2 className="h2 mt-4">
-            Ready to Start Your Journey?
+            Let&apos;s Work Together
           </h2>
           <p className="mx-auto mt-4 max-w-[680px] text-muted">
-            Let us know how we can support you. Fill out the form below and we&apos;ll respond within 48 hours.
+            Have a project in mind? Want to learn more about our services? Reach out and let&apos;s start a conversation.
           </p>
         </div>
 
@@ -217,7 +210,7 @@ export default function Page() {
             frameBorder="0"
             marginHeight={0}
             marginWidth={0}
-            title="T.O.O.L.S Inc Interest Form"
+            title="A MackProjekt Contact Form"
             className="rounded-lg"
           >
             Loading…
@@ -229,20 +222,20 @@ export default function Page() {
           <GlowCard className="p-6 text-center">
             <div className="text-2xl mb-3">📧</div>
             <div className="text-sm font-semibold text-brand2 uppercase tracking-wider mb-2">
-              For More Information
+              General Inquiries
             </div>
-            <a href="mailto:info@sdtoolsinc.org" className="text-text hover:text-brand transition-colors">
-              info@sdtoolsinc.org
+            <a href="mailto:info@amackprojekt.com" className="text-text hover:text-brand transition-colors">
+              info@amackprojekt.com
             </a>
           </GlowCard>
 
           <GlowCard className="p-6 text-center">
-            <div className="text-2xl mb-3">📰</div>
+            <div className="text-2xl mb-3">💼</div>
             <div className="text-sm font-semibold text-brand2 uppercase tracking-wider mb-2">
-              Subscribe to Newsletter
+              Business Development
             </div>
-            <a href="mailto:news@sdtoolsinc.org" className="text-text hover:text-brand transition-colors">
-              news@sdtoolsinc.org
+            <a href="mailto:business@amackprojekt.com" className="text-text hover:text-brand transition-colors">
+              business@amackprojekt.com
             </a>
           </GlowCard>
 
@@ -251,8 +244,8 @@ export default function Page() {
             <div className="text-sm font-semibold text-brand2 uppercase tracking-wider mb-2">
               Partnership
             </div>
-            <a href="mailto:partner@sdtoolsinc.org" className="text-text hover:text-brand transition-colors">
-              partner@sdtoolsinc.org
+            <a href="mailto:partner@amackprojekt.com" className="text-text hover:text-brand transition-colors">
+              partner@amackprojekt.com
             </a>
           </GlowCard>
         </div>
@@ -265,7 +258,7 @@ export default function Page() {
         </a>
 
         <div className="mt-10 text-xs text-muted">
-          © {new Date().getFullYear()} T.O.O.L.S Inc · Empowering individuals To Step Inito Their Purpose
+          © {new Date().getFullYear()} A MackProjekt · MackEnterprises · Building the Future
         </div>
       </section>
 
