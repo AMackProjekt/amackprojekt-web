@@ -69,7 +69,6 @@ export default function Page() {
                 width={512}
                 height={512}
                 className="w-full h-full object-cover rounded-full"
-                unoptimized
               />
             </div>
           </div>
