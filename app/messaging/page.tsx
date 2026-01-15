@@ -223,7 +223,7 @@ export default function MessagingPage() {
           </div>
 
           <div className="mt-8 text-sm text-muted">
-            Expected Launch: Q2 2026
+            Expected Launch: Coming Soon
           </div>
         </GlowCard>
       </section>
