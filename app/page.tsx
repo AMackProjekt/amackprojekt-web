@@ -1,279 +1,112 @@
-import { Navbar } from "@/components/ui/Navbar";
-import { GlowCard } from "@/components/ui/GlowCard";
-import { Button } from "@/components/ui/Button";
-import { DashboardSection } from "@/components/ui/DashboardSection";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { InteractiveTiles } from "@/components/ui/InteractiveTiles";
-import { ChatBot } from "@/components/ui/ChatBot";
-import { CookieConsent } from "@/components/ui/CookieConsent";
+"use client";
+
+import { motion } from "framer-motion";
 
 export default function Page() {
   return (
-    <main className="min-h-screen bg-bg">
+    <main className="relative min-h-screen bg-bg overflow-hidden flex items-center justify-center">
       {/* Background glow */}
       <div className="pointer-events-none fixed inset-0 -z-10 bg-dash-glow" />
 
-      <Navbar />
+      {/* Animated grid background */}
+      <div className="pointer-events-none fixed inset-0 -z-10 opacity-20">
+        <div className="h-full w-full bg-[linear-gradient(rgba(56,189,248,0.3)_1px,transparent_1px),linear-gradient(90deg,rgba(56,189,248,0.3)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)]" />
+      </div>
 
-      {/* HERO */}
-      <section className="mx-auto max-w-container px-7 pt-24 pb-16 text-center">
-        <h1 className="h1">
-          Empowering Individuals.
-          <br />
-          <span className="bg-gradient-to-r from-brand to-brand2 bg-clip-text text-transparent">
-            Unlocking Potential.
-          </span>
-        </h1>
+      {/* Neon corner decorations */}
+      <div className="pointer-events-none fixed top-0 left-0 w-32 h-32 border-t-2 border-l-2 border-brand animate-flicker" />
+      <div className="pointer-events-none fixed top-0 right-0 w-32 h-32 border-t-2 border-r-2 border-brand2 animate-flicker animation-delay-300" />
+      <div className="pointer-events-none fixed bottom-0 left-0 w-32 h-32 border-b-2 border-l-2 border-brand2 animate-flicker animation-delay-500" />
+      <div className="pointer-events-none fixed bottom-0 right-0 w-32 h-32 border-b-2 border-r-2 border-brand animate-flicker animation-delay-600" />
 
-        <p className="mx-auto mt-6 max-w-[760px] p-lead">
-          At T.O.O.L.S Inc, we provide support and opportunities for individuals looking to start over. 
-          Through comprehensive programs and lived experience, we help people unlock their full potential.
-        </p>
+      {/* Main content */}
+      <div className="relative z-10 w-full max-w-4xl mx-auto px-7 py-20 text-center">
+        {/* Coming Soon Text */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="mb-16"
+        >
+          <h1 className="text-5xl sm:text-6xl lg:text-8xl font-extrabold tracking-tight2 mb-4">
+            <span className="inline-block bg-gradient-to-r from-brand via-brand2 to-brand bg-clip-text text-transparent animate-flicker">
+              Coming
+            </span>
+            <span className="text-muted/40 mx-2">............</span>
+            <span className="inline-block bg-gradient-to-r from-brand2 via-brand to-brand2 bg-clip-text text-transparent animate-flicker animation-delay-300">
+              Soon
+            </span>
+            <span className="text-muted/40 ml-2">.........</span>
+          </h1>
+          
+          {/* Neon glow underline */}
+          <motion.div
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}
+            className="mx-auto mt-8 h-1 w-64 bg-gradient-to-r from-transparent via-brand to-transparent animate-flicker animation-delay-500"
+          />
+        </motion.div>
 
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-          <Button variant="primary">Get Started</Button>
-          <Button variant="ghost">View Platform</Button>
-        </div>
-
-        {/* KPI band */}
-        <div className="mt-14 grid grid-cols-1 gap-4 md:grid-cols-4">
-          {[
-            ["Support", "Comprehensive Programs"],
-            ["Growth", "Job Readiness Training"],
-            ["Empathy", "Lived Experience Team"],
-            ["Access", "Continued Education"]
-          ].map(([v, t]) => (
-            <GlowCard key={t} className="p-5 text-left">
-              <div className="text-2xl font-extrabold tracking-tight">{v}</div>
-              <div className="mt-2 text-sm text-muted">{t}</div>
-            </GlowCard>
-          ))}
-        </div>
-      </section>
-
-      {/* FEATURES */}
-      <section id="platform" className="mx-auto max-w-container px-7 pt-8 pb-20">
-        <SectionHeading
-          eyebrow="How We Help"
-          title="Comprehensive Support Programs"
-          subtitle="We recognize and address the diverse challenges individuals face, providing the tools and support necessary to unlock their full potential."
-        />
-
-        <div className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {[
-            ["Job Readiness", "Professional development programs including resume building, mock interviews, and career planning to prepare for success."],
-            ["Continued Education", "Access to educational resources and training programs that open doors to new opportunities and skill development."],
-            ["Lived Experience", "Our team shares lived experiences with the challenges our clients face, creating genuine understanding and effective support."],
-            ["Personal Growth", "Holistic programs addressing both immediate needs and long-term goals for sustainable personal and professional growth."]
-          ].map(([h, p]) => (
-            <GlowCard key={h}>
-              <div className="text-lg font-extrabold tracking-tight">{h}</div>
-              <div className="mt-2 text-sm text-muted leading-relaxed">{p}</div>
-            </GlowCard>
-          ))}
-        </div>
-      </section>
-
-      {/* REENTRY SERVICE PROVIDER HIGHLIGHT */}
-      <section className="mx-auto max-w-container px-7 py-20">
-        <GlowCard className="p-10 text-center overflow-hidden relative">
-          <div className="absolute inset-0 bg-gradient-to-br from-brand/10 via-transparent to-brand2/10" />
+        {/* Placeholder Image with Heartbeat */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
+          className="relative mb-16 flex items-center justify-center"
+        >
           <div className="relative">
-            <div className="text-xs font-semibold tracking-[0.18em] text-brand2 uppercase">
-              Justice-Involved Support
-            </div>
-            <h2 className="h2 mt-4 mb-4">
-              Reentry Service Provider
-            </h2>
-            <p className="text-muted max-w-2xl mx-auto mb-8 leading-relaxed">
-              Supporting individuals returning to society after incarceration with comprehensive reentry 
-              services, employment assistance, housing support, and a pathway to successful reintegration.
-            </p>
-            <Button variant="primary" href="/reentry">
-              Learn More About Reentry Services
-            </Button>
-          </div>
-        </GlowCard>
-      </section>
-
-      {/* INTERACTIVE TILES */}
-      <InteractiveTiles />
-
-      {/* FOUNDER STORY */}
-      <section className="mx-auto max-w-container px-7 py-20">
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 items-center">
-          <div>
-            <div className="text-xs font-semibold tracking-[0.18em] text-brand2 uppercase">
-              About Us
-            </div>
-            <h2 className="h2 mt-4">
-              Together Overcoming Obstacles and Limitations
-            </h2>
-            <div className="mt-2 text-lg font-semibold text-muted">
-              Leadership: Donyale &quot;DThree&quot; Mack
-            </div>
+            {/* Neon glow effect around image */}
+            <div className="absolute inset-0 -m-8 rounded-full bg-gradient-to-r from-brand/30 to-brand2/30 blur-3xl animate-flicker" />
             
-            <div className="mt-6 space-y-4 text-text/90 leading-relaxed">
-              <p>
-                A compassionate advocate and the driving force behind T.O.O.L.S Inc, Donyale Mack is dedicated to 
-                providing support and opportunities to those seeking a second chance in life.
-              </p>
-              <p>
-                Born out of lived experience and personal challenges, Donyale&apos;s journey is marked by resilience, 
-                overcoming adversity, and an unwavering passion to help others facing similar struggles.
-              </p>
-              <p className="text-brand font-semibold">
-                &quot;Every individual deserves the opportunity to unlock their full potential.&quot;
-              </p>
+            {/* Placeholder image container */}
+            <div className="relative w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80 rounded-full bg-gradient-to-br from-panel to-bg border-2 border-brand/50 flex items-center justify-center animate-heartbeat shadow-glow overflow-hidden">
+              {/* Cyberpunk icon/symbol */}
+              <div className="text-6xl sm:text-7xl lg:text-8xl">
+                <span className="inline-block bg-gradient-to-br from-brand to-brand2 bg-clip-text text-transparent font-extrabold">
+                  A
+                </span>
+                <span className="inline-block bg-gradient-to-br from-brand2 to-accent bg-clip-text text-transparent font-extrabold">
+                  M
+                </span>
+              </div>
             </div>
+          </div>
+        </motion.div>
+
+        {/* Bottom text */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 1 }}
+          className="space-y-4"
+        >
+          <div className="text-2xl sm:text-3xl font-bold tracking-wide">
+            <span className="bg-gradient-to-r from-brand to-brand2 bg-clip-text text-transparent">
+              AMackProjekt
+            </span>
           </div>
           
-          <GlowCard className="p-8 lg:p-10">
-            <div className="space-y-6">
-              <div>
-                <div className="text-sm font-semibold text-brand2 uppercase tracking-wider">Mission</div>
-                <p className="mt-2 text-text/90">
-                  Creating pathways for individuals to transform their lives through empathy, 
-                  understanding, and comprehensive support programs.
-                </p>
-              </div>
-              <div>
-                <div className="text-sm font-semibold text-brand2 uppercase tracking-wider">Vision</div>
-                <p className="mt-2 text-text/90">
-                  Building a community where lived experience becomes the foundation for 
-                  genuine connection and lasting change.
-                </p>
-              </div>
-              <div>
-                <div className="text-sm font-semibold text-brand2 uppercase tracking-wider">Approach</div>
-                <p className="mt-2 text-text/90">
-                  Combining personal understanding with professional expertise to provide 
-                  support that goes beyond sympathy to true empowerment.
-                </p>
-              </div>
-            </div>
-          </GlowCard>
-        </div>
-      </section>
-
-      {/* DASHBOARD */}
-      <DashboardSection />
-
-      {/* BOOK / SUPPORT SECTION */}
-      <section className="mx-auto max-w-container px-7 py-20">
-        <GlowCard className="p-10 text-center">
-          <div className="text-xs font-semibold tracking-[0.18em] text-brand2 uppercase">
-            Support Our Mission
+          <div className="flex items-center justify-center gap-2 text-muted text-sm">
+            <span className="w-2 h-2 rounded-full bg-brand animate-flicker" />
+            <span>Under Construction</span>
+            <span className="w-2 h-2 rounded-full bg-brand2 animate-flicker animation-delay-300" />
           </div>
-          <h2 className="h2 mt-4">
-            Go Check It Out
-          </h2>
-          <div className="mt-2 text-lg font-semibold text-brand">
-            Available Now On Amazon Platform
-          </div>
-          
-          <div className="mx-auto mt-6 max-w-[680px] space-y-4 text-text/90 leading-relaxed">
-            <p>
-              A portion of the proceeds go to helping program participants with immediate needs such as 
-              but not limited to: bus/transit passes, gas cards, work boots and clothing for work.
-            </p>
-            <p className="text-base font-semibold text-brand2">
-              We appreciate Your Support
-            </p>
-          </div>
+        </motion.div>
 
-          <div className="mt-8">
-            <a href="https://www.amazon.com/Navigating-Spiritual-Warfare-UNDERSTANDING-OVERCOMING/dp/B0CX5JB7BL" target="_blank" rel="noopener noreferrer">
-              <Button variant="primary">View on Amazon</Button>
-            </a>
-          </div>
-
-          <div className="mt-6 text-sm text-muted">
-            <strong className="text-text">Donyale Mack</strong>
-            <div className="mt-1">CEO/Author</div>
-          </div>
-        </GlowCard>
-      </section>
-
-      {/* INTEREST FORM */}
-      <section id="contact" className="mx-auto max-w-container px-7 py-20">
-        <div className="text-center mb-10">
-          <div className="text-xs font-semibold tracking-[0.18em] text-brand2 uppercase">
-            Get Started
-          </div>
-          <h2 className="h2 mt-4">
-            Ready to Start Your Journey?
-          </h2>
-          <p className="mx-auto mt-4 max-w-[680px] text-muted">
-            Let us know how we can support you. Fill out the form below and we&apos;ll respond within 48 hours.
-          </p>
-        </div>
-
-        <GlowCard className="p-8">
-          <iframe
-            src="https://forms.cloud.microsoft/r/G0kkRW4F7q"
-            width="100%"
-            height="800"
-            frameBorder="0"
-            marginHeight={0}
-            marginWidth={0}
-            title="T.O.O.L.S Inc Interest Form"
-            className="rounded-lg"
-          >
-            Loading…
-          </iframe>
-        </GlowCard>
-
-        {/* Contact Information */}
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-          <GlowCard className="p-6 text-center">
-            <div className="text-2xl mb-3">📧</div>
-            <div className="text-sm font-semibold text-brand2 uppercase tracking-wider mb-2">
-              For More Information
-            </div>
-            <a href="mailto:info@sdtoolsinc.org" className="text-text hover:text-brand transition-colors">
-              info@sdtoolsinc.org
-            </a>
-          </GlowCard>
-
-          <GlowCard className="p-6 text-center">
-            <div className="text-2xl mb-3">📰</div>
-            <div className="text-sm font-semibold text-brand2 uppercase tracking-wider mb-2">
-              Subscribe to Newsletter
-            </div>
-            <a href="mailto:news@sdtoolsinc.org" className="text-text hover:text-brand transition-colors">
-              news@sdtoolsinc.org
-            </a>
-          </GlowCard>
-
-          <GlowCard className="p-6 text-center">
-            <div className="text-2xl mb-3">🤝</div>
-            <div className="text-sm font-semibold text-brand2 uppercase tracking-wider mb-2">
-              Partnership
-            </div>
-            <a href="mailto:partner@sdtoolsinc.org" className="text-text hover:text-brand transition-colors">
-              partner@sdtoolsinc.org
-            </a>
-          </GlowCard>
-        </div>
-      </section>
-
-      {/* FOOTER CTA */}
-      <section className="mx-auto max-w-container px-7 py-16 text-center">
-        <a href="#">
-          <Button variant="primary">Back to Top</Button>
-        </a>
-
-        <div className="mt-10 text-xs text-muted">
-          © {new Date().getFullYear()} T.O.O.L.S Inc · Empowering individuals To Step Inito Their Purpose
-        </div>
-      </section>
-
-      {/* ChatBot */}
-      <ChatBot />
-      
-      {/* Cookie Consent */}
-      <CookieConsent />
+        {/* Pulsing scanline effect */}
+        <motion.div
+          animate={{
+            y: ["-100%", "100%"],
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+          className="pointer-events-none absolute inset-0 h-1 bg-gradient-to-b from-transparent via-brand/20 to-transparent"
+        />
+      </div>
     </main>
   );
 }

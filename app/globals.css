@@ -57,6 +57,18 @@ body {
   animation-delay: 0.6s;
 }
 
+/* Heartbeat animation for image pulsing */
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  25% { transform: scale(1.05); }
+  50% { transform: scale(1); }
+  75% { transform: scale(1.08); }
+}
+
+.animate-heartbeat {
+  animation: heartbeat 2s ease-in-out infinite;
+}
+
 /* Footer grid background */
 .footer-grid-bg {
   background-image: linear-gradient(rgba(56,189,248,0.3) 1px, transparent 1px),
