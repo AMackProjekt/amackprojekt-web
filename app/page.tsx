@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function Page() {
   return (
@@ -59,17 +60,17 @@ export default function Page() {
             {/* Neon glow effect around image */}
             <div className="absolute inset-0 -m-8 rounded-full bg-gradient-to-r from-brand/30 to-brand2/30 blur-3xl animate-flicker" />
             
-            {/* Placeholder image container */}
-            <div className="relative w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80 rounded-full bg-gradient-to-br from-panel to-bg border-2 border-brand/50 flex items-center justify-center animate-heartbeat shadow-glow overflow-hidden">
-              {/* Cyberpunk icon/symbol */}
-              <div className="text-6xl sm:text-7xl lg:text-8xl">
-                <span className="inline-block bg-gradient-to-br from-brand to-brand2 bg-clip-text text-transparent font-extrabold">
-                  A
-                </span>
-                <span className="inline-block bg-gradient-to-br from-brand2 to-accent bg-clip-text text-transparent font-extrabold">
-                  M
-                </span>
-              </div>
+            {/* Profile image container */}
+            <div className="relative w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80 rounded-full border-2 border-brand/50 flex items-center justify-center animate-heartbeat shadow-glow overflow-hidden bg-panel">
+              {/* GitHub Profile Picture */}
+              <Image 
+                src="https://avatars.githubusercontent.com/u/178231247?v=4&size=512" 
+                alt="AMP Logo"
+                width={512}
+                height={512}
+                className="w-full h-full object-cover rounded-full"
+                unoptimized
+              />
             </div>
           </div>
         </motion.div>
