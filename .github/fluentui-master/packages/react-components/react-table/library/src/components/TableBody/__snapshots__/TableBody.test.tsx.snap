@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`TableBody renders a default state 1`] = `
+<table>
+  <tbody
+    class="fui-TableBody"
+  >
+    <tr>
+      <td>
+        cell
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;

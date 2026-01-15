@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`BasePicker renders correctly 1`] = `
+<div
+  class="ms-BasePicker"
+>
+  <div
+    aria-live="assertive"
+    id="selected-suggestion-alert-id__0"
+  />
+  <span
+    hidden=""
+    id="selected-items-id__0-label"
+  />
+  <div
+    class="ms-SelectionZone"
+    role="presentation"
+  >
+    <div
+      class="ms-BasePicker-text"
+    >
+      <input
+        aria-autocomplete="both"
+        aria-describedby=""
+        aria-expanded="false"
+        aria-haspopup="listbox"
+        autocapitalize="off"
+        autocomplete="off"
+        class="ms-BasePicker-input"
+        data-lpignore="true"
+        id="combobox-id__0"
+        role="combobox"
+        spellcheck="false"
+        style="font-family: inherit;"
+        value=""
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`BasePicker renders with inputProps supply classnames correctly 1`] = `
+<div
+  class="ms-BasePicker"
+>
+  <div
+    aria-live="assertive"
+    id="selected-suggestion-alert-id__0"
+  />
+  <span
+    hidden=""
+    id="selected-items-id__0-label"
+  />
+  <div
+    class="ms-SelectionZone"
+    role="presentation"
+  >
+    <div
+      class="ms-BasePicker-text"
+    >
+      <input
+        aria-autocomplete="both"
+        aria-describedby=""
+        aria-expanded="false"
+        aria-haspopup="listbox"
+        autocapitalize="off"
+        autocomplete="off"
+        class="ms-BasePicker-input testclass "
+        data-lpignore="true"
+        id="pckSelectedUser"
+        placeholder="Bitte einen Benutzer angeben..."
+        role="combobox"
+        spellcheck="false"
+        style="font-family: inherit;"
+        value=""
+      />
+    </div>
+  </div>
+</div>
+`;

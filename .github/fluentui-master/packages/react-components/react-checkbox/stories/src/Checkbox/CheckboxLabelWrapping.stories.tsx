@@ -1,0 +1,19 @@
+import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
+import { Checkbox } from '@fluentui/react-components';
+
+export const LabelWrapping = (): JSXElement => (
+  <Checkbox
+    style={{ maxWidth: '400px' }}
+    label="Here is an example of a checkbox with a long label and it starts to wrap to a second line"
+  />
+);
+LabelWrapping.parameters = {
+  docs: {
+    description: {
+      story:
+        'The label will wrap if it is wider than the available space. The checkbox indicator will stay aligned ' +
+        'to the first line of text.',
+    },
+  },
+};

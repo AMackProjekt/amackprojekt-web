@@ -1,0 +1,33 @@
+{
+  "tool": "Credential Scanner",
+  "suppressions": [
+    {
+      "file": ".git/config",
+      "_justification": "Standard token for CI pipeline"
+    },
+    {
+      "file": "node_modules/node-ipc/local-node-ipc-certs/private/oldclient.key",
+      "_justification": "External dependency node-ipc, not shipping these files"
+    },
+    {
+      "file": "node_modules/node-ipc/local-node-ipc-certs/private/server.key",
+      "_justification": "External dependency node-ipc, not shipping these files"
+    },
+    {
+      "file": "node_modules/node-ipc/local-node-ipc-certs/private/oldserver.key",
+      "_justification": "External dependency node-ipc, not shipping these files"
+    },
+    {
+      "file": "node_modules/node-ipc/local-node-ipc-certs/private/client.key",
+      "_justification": "External dependency node-ipc, not shipping these files"
+    },
+    {
+      "file": "node_modules/rollup-plugin-filesize/node_modules/node-gyp/test/fixtures/server.key",
+      "_justification": "External dependency rollup-plugin-filesize has dependency node-gyp with test certs, not shipping these files"
+    },
+    {
+      "file": "node_modules/node-gyp/test/fixtures/server.key",
+      "_justification": "External dependency node-gyp, not shipping these files"
+    }
+  ]
+}

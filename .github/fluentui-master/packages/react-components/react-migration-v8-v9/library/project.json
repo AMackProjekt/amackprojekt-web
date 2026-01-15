@@ -1,0 +1,36 @@
+{
+  "name": "react-migration-v8-v9",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/react-components/react-migration-v8-v9/library/src",
+  "tags": ["vNext", "v8", "platform:web"],
+  "implicitDependencies": [],
+  "targets": {
+    "test": {
+      "dependsOn": [
+        {
+          "target": "build",
+          "projects": ["react", "react-hooks", "fluent2-theme"]
+        }
+      ]
+    },
+    "test-rit--17--test": {
+      "dependsOn": [
+        "test-rit--17--prepare",
+        {
+          "target": "build",
+          "projects": ["react", "react-hooks", "fluent2-theme"]
+        }
+      ]
+    },
+    "test-rit--19--test": {
+      "dependsOn": [
+        "test-rit--19--prepare",
+        {
+          "target": "build",
+          "projects": ["react", "react-hooks", "fluent2-theme"]
+        }
+      ]
+    }
+  }
+}

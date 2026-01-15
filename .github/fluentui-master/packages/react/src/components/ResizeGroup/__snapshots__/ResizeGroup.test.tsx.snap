@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`ResizeGroup renders the ResizeGroup correctly 1`] = `
+<div
+  class="TestClassName"
+>
+  <div
+    style="position: relative;"
+  >
+    <div
+      data-automation-id="visibleContent"
+      style="position: fixed; visibility: hidden;"
+    >
+      <div
+        id="onRenderDataId"
+      >
+         Rendered data: 
+        5
+      </div>
+    </div>
+  </div>
+</div>
+`;

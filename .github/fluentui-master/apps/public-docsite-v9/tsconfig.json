@@ -1,0 +1,25 @@
+{
+  "extends": "../../tsconfig.base.all.json",
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ES2019",
+    "noEmit": true,
+    "experimentalDecorators": true,
+    "noUnusedLocals": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true
+  },
+  "include": [],
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.spec.json"
+    },
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./.storybook/tsconfig.json"
+    }
+  ]
+}

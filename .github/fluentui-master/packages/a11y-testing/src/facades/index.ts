@@ -1,0 +1,1 @@
+export { ComponentTestFacade } from './ComponentTestFacade';

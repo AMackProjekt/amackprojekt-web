@@ -1,0 +1,17 @@
+; build output
+**/dist/**
+tmp
+
+; known directories to not incorporate into the workspace graph creation
+**/fixtures/**
+**/**fixtures**/**
+**/bundle-size/**
+**/fake_node_modules/**
+
+; scaffolding templates
+**/generators/**/files/\*_
+plop-templates
+plop-templates-_
+
+; TODO: temporary ignore - remove once https://github.com/microsoft/fluentui/pull/32371 is merged
+scripts/\*/just.config.ts

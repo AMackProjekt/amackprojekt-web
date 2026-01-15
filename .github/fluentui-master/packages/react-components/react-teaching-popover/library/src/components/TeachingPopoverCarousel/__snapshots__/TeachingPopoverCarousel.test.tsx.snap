@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`TeachingPopoverCarousel renders a default state 1`] = `
+<div>
+  <div
+    class="fui-TeachingPopoverCarousel"
+  >
+    Default TeachingPopoverCarousel
+  </div>
+</div>
+`;

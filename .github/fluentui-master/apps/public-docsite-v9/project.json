@@ -1,0 +1,37 @@
+{
+  "name": "public-docsite-v9",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "implicitDependencies": ["tag:type:stories"],
+  "tags": ["platform:web", "vNext"],
+  "targets": {
+    "build-storybook": {
+      "dependsOn": [
+        {
+          "projects": [
+            "react-storybook-addon",
+            "react-storybook-addon-export-to-sandbox",
+            "storybook-llms-extractor",
+            "react-alert",
+            "react-infobutton",
+            "react-virtualizer"
+          ],
+          "target": "build"
+        }
+      ]
+    },
+    "build-storybook:docsite": {
+      "inputs": ["default", "{workspaceRoot}/.storybook/**", "{projectRoot}/.storybook/**"],
+      "outputs": ["{projectRoot}/dist/react"],
+      "executor": "nx:noop",
+      "dependsOn": [
+        "build-storybook",
+        "build-storybook:react",
+        {
+          "projects": ["chart-docsite", "web-components"],
+          "target": "build-storybook:docsite"
+        }
+      ]
+    }
+  }
+}

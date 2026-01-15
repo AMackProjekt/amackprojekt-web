@@ -1,0 +1,772 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`PeoplePicker renders correctly 1`] = `
+<div
+  class=
+      ms-BasePicker
+      {
+        position: relative;
+      }
+>
+  <div
+    aria-live="assertive"
+    class=
+
+        {
+          border: 0px;
+          height: 1px;
+          margin-bottom: -1px;
+          margin-left: -1px;
+          margin-right: -1px;
+          margin-top: -1px;
+          overflow: hidden;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: absolute;
+          white-space: nowrap;
+          width: 1px;
+        }
+    id="selected-suggestion-alert-id__0"
+  />
+  <span
+    hidden=""
+    id="selected-items-id__0-label"
+  />
+  <div
+    class="ms-SelectionZone"
+    role="presentation"
+  >
+    <div
+      class=
+          ms-BasePicker-text
+          {
+            align-items: center;
+            border-radius: 2px;
+            border: 1px solid #605e5c;
+            box-sizing: border-box;
+            display: flex;
+            flex-wrap: wrap;
+            min-height: 30px;
+            min-width: 180px;
+            position: relative;
+          }
+          &:hover {
+            border-color: #323130;
+          }
+    >
+      <input
+        aria-autocomplete="both"
+        aria-describedby=""
+        aria-expanded="false"
+        aria-haspopup="listbox"
+        autocapitalize="off"
+        autocomplete="off"
+        class=
+            ms-BasePicker-input
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              align-self: flex-end;
+              background-color: transparent;
+              border-radius: 2px;
+              border: none;
+              color: #323130;
+              flex-grow: 1;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              height: 30px;
+              outline: none;
+              padding-bottom: 0;
+              padding-left: 6px;
+              padding-right: 6px;
+              padding-top: 0;
+            }
+            &::-ms-clear {
+              display: none;
+            }
+            &:placeholder-shown {
+              text-overflow: ellipsis;
+            }
+            &::placeholder {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #605e5c;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              opacity: 1;
+            }
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&::placeholder {
+              color: GrayText;
+            }
+            &:-ms-input-placeholder {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #605e5c;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              opacity: 1;
+            }
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:-ms-input-placeholder {
+              color: GrayText;
+            }
+            &::-ms-input-placeholder {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #605e5c;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              opacity: 1;
+            }
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&::-ms-input-placeholder {
+              color: GrayText;
+            }
+        data-lpignore="true"
+        id="combobox-id__0"
+        role="combobox"
+        spellcheck="false"
+        style="font-family: inherit;"
+        value=""
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`PeoplePicker renders correctly with preselected items 1`] = `
+<div
+  class=
+      ms-BasePicker
+      {
+        position: relative;
+      }
+>
+  <div
+    aria-live="assertive"
+    class=
+
+        {
+          border: 0px;
+          height: 1px;
+          margin-bottom: -1px;
+          margin-left: -1px;
+          margin-right: -1px;
+          margin-top: -1px;
+          overflow: hidden;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: absolute;
+          white-space: nowrap;
+          width: 1px;
+        }
+    id="selected-suggestion-alert-id__0"
+  />
+  <span
+    hidden=""
+    id="selected-items-id__0-label"
+  />
+  <div
+    class="ms-SelectionZone"
+    role="presentation"
+  >
+    <div
+      class=
+          ms-BasePicker-text
+          {
+            align-items: center;
+            border-radius: 2px;
+            border: 1px solid #605e5c;
+            box-sizing: border-box;
+            display: flex;
+            flex-wrap: wrap;
+            min-height: 30px;
+            min-width: 180px;
+            position: relative;
+          }
+          &:hover {
+            border-color: #323130;
+          }
+    >
+      <span
+        aria-labelledby="selected-items-id__0-label"
+        class=
+            ms-BasePicker-itemsWrapper
+            {
+              display: flex;
+              flex-wrap: wrap;
+              max-width: 100%;
+            }
+        id="selected-items-id__0"
+        role="list"
+      >
+        <div
+          class=
+              ms-PickerPersona-container
+              {
+                align-items: center;
+                background: #f3f2f1;
+                border-radius: 15px;
+                cursor: default;
+                display: inline-flex;
+                margin-bottom: 1px;
+                margin-left: 2px;
+                margin-right: 2px;
+                margin-top: 1px;
+                max-width: 300px;
+                min-width: 0px;
+                outline: transparent;
+                position: relative;
+                user-select: none;
+                vertical-align: middle;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: -1px;
+                content: "";
+                left: -1px;
+                outline: 1px solid #605e5c;
+                position: absolute;
+                right: -1px;
+                top: -1px;
+                z-index: 1;
+              }
+              :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: -1px;
+                content: "";
+                left: -1px;
+                outline: 1px solid #605e5c;
+                position: absolute;
+                right: -1px;
+                top: -1px;
+                z-index: 1;
+              }
+              &:hover {
+                background: #edebe9;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                border: 1px solid WindowText;
+              }
+          data-selection-index="0"
+          role="listitem"
+        >
+          <div
+            class=
+                ms-PickerItem-content
+                {
+                  flex: 0 1 auto;
+                  max-width: 100%;
+                  min-width: 0px;
+                  overflow: hidden;
+                }
+            id="selectedItemPersona-id__9"
+          >
+            <div
+              class=
+                  ms-Persona
+                  ms-Persona--size24
+                  ms-Persona--online
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    align-items: center;
+                    box-shadow: none;
+                    box-sizing: border-box;
+                    color: inherit;
+                    display: flex;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    height: 24px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
+                    min-width: 24px;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: relative;
+                  }
+                  & .contextualHost {
+                    display: none;
+                  }
+            >
+              <div
+                class=
+                    ms-Persona-coin
+                    ms-Persona--size24
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                    }
+                role="presentation"
+              >
+                <div
+                  class=
+                      ms-Persona-imageArea
+                      {
+                        flex: 0 0 auto;
+                        height: 24px;
+                        position: relative;
+                        text-align: center;
+                        width: 24px;
+                      }
+                  role="presentation"
+                >
+                  <div
+                    class=
+                        ms-Image
+                        ms-Persona-image
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          border-radius: 50%;
+                          border: 0px;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 14px;
+                          font-weight: 400;
+                          height: 24px;
+                          left: 0px;
+                          margin-right: 10px;
+                          overflow: hidden;
+                          perspective: 1px;
+                          position: absolute;
+                          top: 0px;
+                          width: 24px;
+                        }
+                    style="width: 24px; height: 24px;"
+                  >
+                    <img
+                      alt=""
+                      class=
+                          ms-Image-image
+                          ms-Image-image--cover
+                          ms-Image-image--portrait
+                          is-notLoaded
+                          is-fadeIn
+                          {
+                            display: block;
+                            height: 100%;
+                            object-fit: cover;
+                            opacity: 0;
+                            width: 100%;
+                          }
+                      src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/persona-female.png"
+                    />
+                  </div>
+                  <div
+                    class=
+                        ms-Persona-presence
+                        {
+                          -ms-high-contrast-adjust: none;
+                          background-clip: border-box;
+                          background-color: #6BB700;
+                          border-radius: 50%;
+                          border: 2px solid #ffffff;
+                          bottom: -2px;
+                          box-sizing: content-box;
+                          forced-color-adjust: none;
+                          height: 8px;
+                          position: absolute;
+                          right: -2px;
+                          text-align: center;
+                          top: auto;
+                          width: 8px;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                          background-color: Highlight;
+                          border-color: Window;
+                        }
+                    role="presentation"
+                  />
+                </div>
+              </div>
+              <div
+                class=
+                    ms-Persona-details
+                    {
+                      display: flex;
+                      flex-direction: column;
+                      justify-content: space-around;
+                      min-width: 0px;
+                      padding-bottom: 0;
+                      padding-left: 8px;
+                      padding-right: 8px;
+                      padding-top: 0;
+                      text-align: left;
+                      width: 100%;
+                    }
+              >
+                <div
+                  class=
+                      ms-Persona-primaryText
+                      {
+                        color: #323130;
+                        font-size: 14px;
+                        font-weight: 400;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                      }
+                      &:hover {
+                        color: #201f1e;
+                      }
+                  dir="auto"
+                >
+                  <div
+                    class=
+                        ms-TooltipHost
+                        {
+                          display: inline;
+                        }
+                    role="none"
+                  >
+                    Annie Lindqvist
+                    <div
+                      hidden=""
+                      id="tooltip2"
+                      style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                    >
+                      Annie Lindqvist
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class=
+                      ms-Persona-secondaryText
+                      {
+                        color: #605e5c;
+                        display: none;
+                        font-size: 12px;
+                        font-weight: 400;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                      }
+                  dir="auto"
+                >
+                  <div
+                    class=
+                        ms-TooltipHost
+                        {
+                          display: inline;
+                        }
+                    role="none"
+                  >
+                    Designer
+                    <div
+                      hidden=""
+                      id="tooltip3"
+                      style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                    >
+                      Designer
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class=
+                      ms-Persona-tertiaryText
+                      {
+                        color: #605e5c;
+                        display: none;
+                        font-size: 14px;
+                        font-weight: 400;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                      }
+                  dir="auto"
+                >
+                  <div
+                    class=
+                        ms-TooltipHost
+                        {
+                          display: inline;
+                        }
+                    role="none"
+                  >
+                    In a meeting
+                    <div
+                      hidden=""
+                      id="tooltip4"
+                      style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                    >
+                      In a meeting
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class=
+                      ms-Persona-optionalText
+                      {
+                        color: #605e5c;
+                        display: none;
+                        font-size: 14px;
+                        font-weight: 400;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                      }
+                  dir="auto"
+                >
+                  <div
+                    class=
+                        ms-TooltipHost
+                        {
+                          display: inline;
+                        }
+                    role="none"
+                  >
+                    Available at 4:00pm
+                    <div
+                      hidden=""
+                      id="tooltip5"
+                      style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                    >
+                      Available at 4:00pm
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button
+            aria-labelledby="id__9 selectedItemPersona-id__9"
+            class=
+                ms-Button
+                ms-Button--icon
+                ms-PickerItem-removeButton
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  align-items: center;
+                  background-color: transparent;
+                  border-radius: 15px;
+                  border: none;
+                  box-sizing: border-box;
+                  color: #323130;
+                  cursor: pointer;
+                  display: inline-flex;
+                  flex: 0 0 auto;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  height: 24px;
+                  justify-content: center;
+                  outline: transparent;
+                  padding-bottom: 0;
+                  padding-left: 4px;
+                  padding-right: 4px;
+                  padding-top: 0;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  width: 24px;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid transparent;
+                  bottom: 2px;
+                  content: "";
+                  left: 2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 2px;
+                  top: 2px;
+                  z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  bottom: -2px;
+                  left: -2px;
+                  outline-color: ButtonText;
+                  right: -2px;
+                  top: -2px;
+                }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid transparent;
+                  bottom: 2px;
+                  content: "";
+                  left: 2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 2px;
+                  top: 2px;
+                  z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  bottom: -2px;
+                  left: -2px;
+                  outline-color: ButtonText;
+                  right: -2px;
+                  top: -2px;
+                }
+                &:active > span {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
+                &:hover {
+                  background-color: #f3f2f1;
+                  background: #c8c6c4;
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:active {
+                  background-color: #edebe9;
+                  color: #005a9e;
+                }
+            data-is-focusable="true"
+            id="id__9"
+            type="button"
+          >
+            <span
+              class=
+                  ms-Button-flexContainer
+                  {
+                    align-items: center;
+                    display: flex;
+                    flex-wrap: nowrap;
+                    height: 100%;
+                    justify-content: center;
+                  }
+              data-automationid="splitbuttonprimary"
+            >
+              <i
+                aria-hidden="true"
+                class=
+                    ms-Icon
+                    ms-Button-icon
+                    {
+                      display: inline-block;
+                      text-decoration: inherit;
+                    }
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      font-family: "FabricMDL2Icons";
+                      font-style: normal;
+                      font-weight: normal;
+                      speak: none;
+                    }
+                    {
+                      flex-shrink: 0;
+                      font-size: 12px;
+                      height: 16px;
+                      line-height: 16px;
+                      margin-bottom: 0;
+                      margin-left: 4px;
+                      margin-right: 4px;
+                      margin-top: 0;
+                      text-align: center;
+                    }
+                data-icon-name="Cancel"
+                style="font-family: \\"FabricMDL2Icons\\";"
+              >
+                
+              </i>
+            </span>
+          </button>
+        </div>
+      </span>
+      <input
+        aria-autocomplete="both"
+        aria-describedby="selected-items-id__0 "
+        aria-expanded="false"
+        aria-haspopup="listbox"
+        autocapitalize="off"
+        autocomplete="off"
+        class=
+            ms-BasePicker-input
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              align-self: flex-end;
+              background-color: transparent;
+              border-radius: 2px;
+              border: none;
+              color: #323130;
+              flex-grow: 1;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              height: 30px;
+              outline: none;
+              padding-bottom: 0;
+              padding-left: 6px;
+              padding-right: 6px;
+              padding-top: 0;
+            }
+            &::-ms-clear {
+              display: none;
+            }
+            &:placeholder-shown {
+              text-overflow: ellipsis;
+            }
+            &::placeholder {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #605e5c;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              opacity: 1;
+            }
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&::placeholder {
+              color: GrayText;
+            }
+            &:-ms-input-placeholder {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #605e5c;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              opacity: 1;
+            }
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:-ms-input-placeholder {
+              color: GrayText;
+            }
+            &::-ms-input-placeholder {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #605e5c;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              opacity: 1;
+            }
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&::-ms-input-placeholder {
+              color: GrayText;
+            }
+        data-lpignore="true"
+        id="combobox-id__0"
+        role="combobox"
+        spellcheck="false"
+        style="font-family: inherit;"
+        value=""
+      />
+    </div>
+  </div>
+</div>
+`;

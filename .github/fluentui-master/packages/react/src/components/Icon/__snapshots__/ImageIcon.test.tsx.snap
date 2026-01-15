@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`ImageIcon renders ImageIcon correctly 1`] = `
+<div
+  aria-hidden="true"
+  class=
+      ms-Icon
+      ms-Icon-imageContainer
+      {
+        display: inline-block;
+        text-decoration: inherit;
+      }
+      {
+        overflow: hidden;
+      }
+>
+  <div
+    class=
+        ms-Image
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          overflow: hidden;
+        }
+  >
+    <img
+      alt=""
+      class=
+          ms-Image-image
+          ms-Image-image--portrait
+          is-notLoaded
+          is-fadeIn
+          {
+            display: block;
+            opacity: 0;
+          }
+      src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/icon-one.png"
+    />
+  </div>
+</div>
+`;

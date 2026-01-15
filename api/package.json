@@ -1,0 +1,18 @@
+{
+  "name": "toolsinc-swa-api",
+  "version": "1.0.0",
+  "private": true,
+  "main": "dist/src/index.js",
+  "scripts": {
+    "build": "tsc -p .",
+    "start": "func start",
+    "typecheck": "tsc -p . --noEmit",
+    "test": "node -e \"console.log('tests placeholder'); process.exit(0);\""
+  },
+  "dependencies": {
+    "@azure/functions": "^4.5.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3"
+  }
+}

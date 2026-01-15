@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`ToolbarRadioButton renders a default state 1`] = `
+<div>
+  <button
+    aria-checked="false"
+    class="fui-Button fui-ToggleButton"
+    name="name"
+    role="radio"
+    type="button"
+    value="value"
+  >
+    Default ToolbarRadio
+  </button>
+</div>
+`;

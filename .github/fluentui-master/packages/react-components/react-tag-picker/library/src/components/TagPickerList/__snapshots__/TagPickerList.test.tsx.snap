@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`TagPickerList renders a default state 1`] = `
+<div>
+  <div
+    class="fui-Listbox fui-TagPickerList"
+    id=""
+    role="listbox"
+  >
+    Default TagPickerList
+  </div>
+</div>
+`;

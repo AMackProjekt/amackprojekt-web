@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`ContextualMenuButton creates a normal button renders the contextual menu split button correctly 1`] = `
+<button
+  aria-disabled="false"
+  aria-posinset="1"
+  aria-setsize="1"
+  class="root"
+  role="menuitem"
+>
+  <div
+    class="linkContent"
+  />
+</button>
+`;

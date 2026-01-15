@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "outDir": "lib",
+    "module": "commonjs",
+    "lib": ["ES5", "ES2015.Collection", "ES2015.Iterable", "ES2015.Symbol.WellKnown", "dom"],
+    "jsx": "react",
+    "declaration": true,
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "strict": true,
+    "moduleResolution": "node",
+    "preserveConstEnums": true,
+    "isolatedModules": true,
+    "types": ["jest"]
+  },
+  "include": ["src"]
+}

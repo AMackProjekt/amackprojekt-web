@@ -1,0 +1,46 @@
+import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
+import {
+  Dialog,
+  DialogTrigger,
+  DialogSurface,
+  DialogTitle,
+  DialogContent,
+  DialogBody,
+  DialogActions,
+  Button,
+} from '@fluentui/react-components';
+import story from './DialogAlert.md';
+
+export const Alert = (): JSXElement => {
+  return (
+    <Dialog modalType="alert">
+      <DialogTrigger disableButtonEnhancement>
+        <Button>Open Alert dialog</Button>
+      </DialogTrigger>
+      <DialogSurface>
+        <DialogBody>
+          <DialogTitle>Alert dialog title</DialogTitle>
+          <DialogContent>
+            This dialog cannot be dismissed by clicking on the backdrop. Close button should be pressed to dismiss this
+            Alert, or `Escape` keydown.
+          </DialogContent>
+          <DialogActions>
+            <Button appearance="primary">Do Something</Button>
+            <DialogTrigger disableButtonEnhancement>
+              <Button appearance="secondary">Close</Button>
+            </DialogTrigger>
+          </DialogActions>
+        </DialogBody>
+      </DialogSurface>
+    </Dialog>
+  );
+};
+
+Alert.parameters = {
+  docs: {
+    description: {
+      story,
+    },
+  },
+};

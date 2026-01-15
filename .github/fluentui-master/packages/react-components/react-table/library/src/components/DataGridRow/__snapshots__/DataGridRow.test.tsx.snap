@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`DataGridRow renders a default state 1`] = `
+<div>
+  <div
+    class="fui-DataGridRow fui-TableRow"
+    role="row"
+  />
+</div>
+`;

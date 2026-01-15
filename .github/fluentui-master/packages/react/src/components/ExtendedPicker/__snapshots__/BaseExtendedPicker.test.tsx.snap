@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Pickers BasePicker renders BaseExtendedPicker correctly with no items 1`] = `
+<div
+  class="ms-BasePicker ms-BaseExtendedPicker"
+>
+  <div
+    class=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
+    data-focuszone-id="FocusZone0"
+    data-tabster="{\\"uncontrolled\\": {}}"
+  >
+    <div
+      class="ms-SelectionZone"
+      role="presentation"
+    >
+      <div
+        class="ms-BasePicker-text"
+        role="list"
+      >
+        <input
+          aria-autocomplete="both"
+          aria-expanded="false"
+          aria-haspopup="true"
+          autocapitalize="off"
+          autocomplete="off"
+          class="ms-BasePicker-input"
+          data-lpignore="true"
+          role="combobox"
+          style="font-family: inherit;"
+          tabindex="0"
+          value=""
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    class="ms-BasePicker ms-BaseFloatingPicker"
+  />
+</div>
+`;
+
+exports[`Pickers BasePicker renders BaseExtendedPicker correctly with selected and suggested items 1`] = `
+<div
+  class="ms-BasePicker ms-BaseExtendedPicker"
+>
+  <div
+    class=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
+    data-focuszone-id="FocusZone1"
+    data-tabster="{\\"uncontrolled\\": {}}"
+  >
+    <div
+      class="ms-SelectionZone"
+      role="presentation"
+    >
+      <div
+        class="ms-BasePicker-text"
+        role="list"
+      >
+        <div>
+           
+           
+        </div>
+        <div>
+           
+           
+        </div>
+        <input
+          aria-autocomplete="both"
+          aria-expanded="false"
+          aria-haspopup="true"
+          autocapitalize="off"
+          autocomplete="off"
+          class="ms-BasePicker-input"
+          data-lpignore="true"
+          role="combobox"
+          style="font-family: inherit;"
+          tabindex="0"
+          value=""
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    class="ms-BasePicker ms-BaseFloatingPicker"
+  />
+</div>
+`;

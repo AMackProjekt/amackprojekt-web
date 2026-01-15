@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Layer renders Layer correctly 1`] = `
+<span
+  class="ms-layer"
+>
+  <div
+    class=
+        ms-Fabric
+        ms-Layer-content
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: #323130;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          visibility: visible;
+        }
+        & button {
+          font-family: inherit;
+        }
+        & input {
+          font-family: inherit;
+        }
+        & textarea {
+          font-family: inherit;
+        }
+  >
+    Content
+  </div>
+</span>
+`;

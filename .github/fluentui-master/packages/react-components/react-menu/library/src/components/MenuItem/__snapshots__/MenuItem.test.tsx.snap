@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`MenuItem renders a default state 1`] = `
+<div
+  class="fui-MenuItem"
+  role="menuitem"
+  tabindex="0"
+>
+  <span
+    class="fui-MenuItem__content"
+  >
+    Default MenuItem
+  </span>
+</div>
+`;

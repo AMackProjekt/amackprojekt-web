@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`TeachingPopoverTrigger renders a default state 1`] = `
+<button
+  aria-expanded="false"
+  data-tabster="{\\"restorer\\":{\\"type\\":1}}"
+>
+  Popover trigger
+</button>
+`;

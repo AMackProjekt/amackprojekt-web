@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`DialogTitle renders a default state 1`] = `
+<div>
+  <h2
+    class="fui-DialogTitle"
+  >
+    Default DialogTitle
+  </h2>
+</div>
+`;

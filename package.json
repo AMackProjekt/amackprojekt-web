@@ -1,0 +1,43 @@
+{
+  "name": "toolsinc-dashdarkx",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "export": "next build && next export",
+    "start": "next start",
+    "lint": "next lint",
+    "optimize-logos": "node scripts/optimize-logos.js",
+    "docker:build": "docker build -t toolsinc-web:latest .",
+    "docker:run": "docker run -d -p 3000:3000 --name toolsinc-web toolsinc-web:latest",
+    "docker:stop": "docker stop toolsinc-web && docker rm toolsinc-web",
+    "docker:logs": "docker logs -f toolsinc-web",
+    "compose:up": "docker-compose up -d",
+    "compose:down": "docker-compose down",
+    "compose:logs": "docker-compose logs -f"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.0.0",
+    "next": "^14.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "recharts": "^2.12.7",
+    "serve": "^14.2.1",
+    "tailwind-merge": "^2.5.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.12",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "14.2.0",
+    "postcss": "^8.4.41",
+    "sharp": "^0.34.5",
+    "tailwindcss": "^3.4.10",
+    "typescript": "^5.4.5"
+  }
+}

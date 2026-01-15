@@ -1,0 +1,15 @@
+{
+  "name": "public-docsite",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "implicitDependencies": [],
+  "tags": ["v8"],
+  "targets": {
+    "type-check": {
+      "dependsOn": ["prebundle"]
+    },
+    "prebundle": {
+      "dependsOn": ["^build"]
+    }
+  }
+}
