@@ -10,9 +10,17 @@
     "test": "node -e \"console.log('tests placeholder'); process.exit(0);\""
   },
   "dependencies": {
-    "@azure/functions": "^4.5.0"
+    "@azure/communication-email": "^1.1.0",
+    "@azure/cosmos": "^4.9.0",
+    "@azure/functions": "^4.5.0",
+    "applicationinsights": "^3.12.1",
+    "bcryptjs": "^3.0.3",
+    "dotenv": "^17.2.3",
+    "jsonwebtoken": "^9.0.3"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.10",
     "typescript": "^5.6.3"
   }
 }

@@ -27,29 +27,31 @@ type AuthContextType = {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
+// API Base URL - use environment variable or default to production
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || '/api';
+
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    // Check for stored session (encrypted in production)
-    const storedUser = localStorage.getItem("user-session");
-    if (storedUser) {
-      try {
-        setUser(JSON.parse(atob(storedUser))); // Base64 decode (use proper encryption in production)
-      } catch (e) {
-        localStorage.removeItem("user-session");
-      }
+    // Check for stored JWT token
+    const token = localStorage.getItem("auth-token");
+    if (token) {
+      // Verify token is still valid by fetching user profile
+      fetchUserProfile(token);
     }
   }, []);
 
-  const signup = async (email: string, password: string, name: string): Promise<boolean> => {
-    // In production: Call secure backend API with bcrypt/argon2 password hashing
-    // This is a mock implementation
+  const fetchUserProfile = async (token: string) => {
     try {
-      const newUser: User = {
-        id: Date.now().toString(),
-        email,
-        name,
+      // Decode JWT to get user info (basic client-side decode)
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      
+      // Set user from token payload
+      setUser({
+        id: payload.id,
+        email: payload.email,
+        name: payload.name,
         enrolledCourses: [],
         completedLessons: [],
         preferences: {
@@ -57,43 +59,95 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           emailUpdates: true,
           theme: "dark",
         },
-      };
+      });
+    } catch (error) {
+      console.error("Failed to decode token:", error);
+      localStorage.removeItem("auth-token");
+    }
+  };
 
-      // Store encrypted session (use JWT tokens in production)
-      const encryptedSession = btoa(JSON.stringify(newUser));
-      localStorage.setItem("user-session", encryptedSession);
+  const signup = async (email: string, password: string, name: string): Promise<boolean> => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/auth/signup`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password, name }),
+      });
+
+      if (!response.ok) {
+        const error = await response.json();
+        console.error("Signup failed:", error);
+        return false;
+      }
+
+      const data = await response.json();
       
-      // Store hashed password separately (never store plain text)
-      localStorage.setItem(`pwd-${email}`, btoa(password)); // Use bcrypt in production
+      // Store JWT token
+      localStorage.setItem("auth-token", data.token);
       
-      setUser(newUser);
+      // Set user with extended properties
+      setUser({
+        ...data.user,
+        enrolledCourses: [],
+        completedLessons: [],
+        preferences: {
+          notifications: true,
+          emailUpdates: true,
+          theme: "dark",
+        },
+      });
+      
       return true;
     } catch (error) {
+      console.error("Signup error:", error);
       return false;
     }
   };
 
   const login = async (email: string, password: string): Promise<boolean> => {
-    // In production: Call secure backend API for authentication
     try {
-      const storedPassword = localStorage.getItem(`pwd-${email}`);
-      if (!storedPassword || atob(storedPassword) !== password) {
+      const response = await fetch(`${API_BASE_URL}/auth/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (!response.ok) {
+        const error = await response.json();
+        console.error("Login failed:", error);
         return false;
       }
 
-      const storedUser = localStorage.getItem("user-session");
-      if (storedUser) {
-        setUser(JSON.parse(atob(storedUser)));
-        return true;
-      }
-      return false;
+      const data = await response.json();
+      
+      // Store JWT token
+      localStorage.setItem("auth-token", data.token);
+      
+      // Set user with extended properties
+      setUser({
+        ...data.user,
+        enrolledCourses: [],
+        completedLessons: [],
+        preferences: {
+          notifications: true,
+          emailUpdates: true,
+          theme: "dark",
+        },
+      });
+      
+      return true;
     } catch (error) {
+      console.error("Login error:", error);
       return false;
     }
   };
 
   const logout = () => {
-    localStorage.removeItem("user-session");
+    localStorage.removeItem("auth-token");
     setUser(null);
   };
 
@@ -103,9 +157,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const updatedUser = { ...user, ...updates };
     setUser(updatedUser);
     
-    // Update encrypted session
-    const encryptedSession = btoa(JSON.stringify(updatedUser));
-    localStorage.setItem("user-session", encryptedSession);
+    // In production: Call API to update user profile on server
+    // For now, just update local state
   };
 
   return (

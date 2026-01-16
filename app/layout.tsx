@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "AMP - A MackProjekt | Innovation Lab of MackEnterprises",
   description: "AMP (A MackProjekt) - The innovation lab behind MackEnterprises. Creating cutting-edge digital solutions, platforms, and experiences that harness the power of AI to destroy the digital divide.",
   metadataBase: new URL("https://mackprojekt.com"),
+  manifest: "/manifest.json",
   icons: {
     icon: "/logos/amp-logo.jpeg",
     apple: "/logos/amp-logo.jpeg",
@@ -15,6 +16,11 @@ export const metadata: Metadata = {
   authors: [{ name: "Donyale Mack" }],
   creator: "MackEnterprises",
   publisher: "MackEnterprises",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "A MackProjekt",
+  },
   openGraph: {
     title: "AMP - A MackProjekt | Innovation Lab",
     description: "Creating cutting-edge digital solutions that harness AI to destroy the digital divide.",
@@ -41,6 +47,23 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
+      <head>
+        <meta name="theme-color" content="#38bdf8" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <link rel="manifest" href="/manifest.json" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if ('serviceWorker' in navigator) {
+                window.addEventListener('load', function() {
+                  navigator.serviceWorker.register('/service-worker.js');
+                });
+              }
+            `,
+          }}
+        />
+      </head>
       <body className="font-sans text-text antialiased">
         <AuthProvider>
           {children}

@@ -29,7 +29,7 @@ export default function MessagingPage() {
         </p>
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-          <Button variant="primary" href="/#contact">Join Waitlist</Button>
+          <Button variant="primary" href="mailto:ampstudio@mackprojekt.com?subject=ATTN%20Waitlist">Join Waitlist</Button>
           <Button variant="ghost" href="/">Back to Home</Button>
         </div>
       </section>
@@ -117,7 +117,7 @@ export default function MessagingPage() {
           </div>
 
           <div className="mt-12">
-            <Button variant="primary" href="/#contact">Join the Waitlist</Button>
+            <Button variant="primary" href="mailto:ampstudio@mackprojekt.com?subject=ATTN%20Waitlist">Join the Waitlist</Button>
           </div>
         </GlowCard>
       </section>

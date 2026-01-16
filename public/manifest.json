@@ -1,0 +1,42 @@
+{
+  "name": "A MackProjekt",
+  "short_name": "AMP",
+  "description": "The innovation lab behind MackEnterprises - Creating cutting-edge digital solutions that harness AI",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#06070b",
+  "theme_color": "#38bdf8",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/logos/amp-logo.jpeg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logos/amp-logo.jpeg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity", "technology"],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Innovation",
+      "short_name": "Innovation",
+      "description": "Explore our innovation initiatives",
+      "url": "/#innovation",
+      "icons": [{ "src": "/logos/amp-logo.jpeg", "sizes": "192x192" }]
+    },
+    {
+      "name": "Design",
+      "short_name": "Design",
+      "description": "View our design philosophy",
+      "url": "/#design",
+      "icons": [{ "src": "/logos/amp-logo.jpeg", "sizes": "192x192" }]
+    }
+  ]
+}
