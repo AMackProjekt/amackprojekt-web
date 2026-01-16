@@ -83,10 +83,10 @@ export default function Page() {
               Coming Soon
             </div>
             <h2 className="h2 mt-4 mb-4">
-              MackChat - Next-Gen Messaging
+              M.A.C.K - Next-Gen Messaging
             </h2>
             <p className="text-muted max-w-2xl mx-auto mb-8 leading-relaxed">
-              A revolutionary web-based messaging platform bringing teams and communities together. 
+              Military And Civilian Kommunication Network - A revolutionary web-based messaging platform bringing teams and communities together. 
               Real-time communication with modern features, beautiful design, and seamless integration.
             </p>
             <Button variant="primary" href="/messaging">

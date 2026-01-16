@@ -15,7 +15,7 @@ export function Navbar() {
           className="flex items-center gap-3"
         >
           <img
-            src="/logos/main-logo.png"
+            src="/logos/org-logo-1.png"
             alt="A MackProjekt Logo"
             className="h-10 w-auto object-contain"
           />
@@ -26,7 +26,7 @@ export function Navbar() {
 
         <nav className="hidden items-center gap-6 md:flex">
           <a className="text-sm font-medium text-muted hover:text-text" href="/#platform">Services</a>
-          <a className="text-sm font-medium text-muted hover:text-text" href="/messaging">MackChat</a>
+          <a className="text-sm font-medium text-muted hover:text-text" href="/messaging">M.A.C.K</a>
           <a className="text-sm font-medium text-muted hover:text-text" href="/#dashboard">Platform</a>
           <a className="text-sm font-medium text-muted hover:text-text" href="/portal">Portal</a>
           <a className="text-sm font-medium text-muted hover:text-text" href="/#contact">Contact</a>

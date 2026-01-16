@@ -18,10 +18,10 @@ export default function MessagingPage() {
         </div>
         <h1 className="h1">
           <span className="bg-gradient-to-r from-brand to-brand2 bg-clip-text text-transparent">
-            MackChat
+            M.A.C.K
           </span>
           <br />
-          Next-Generation Messaging
+          Military And Civilian Kommunication Network
         </h1>
 
         <p className="mx-auto mt-6 max-w-[760px] p-lead">
@@ -40,7 +40,7 @@ export default function MessagingPage() {
         <SectionHeading
           eyebrow="Key Features"
           title="Everything You Need"
-          subtitle="Built from the ground up with modern teams in mind, MackChat delivers the features you need with the experience you deserve."
+          subtitle="Built from the ground up with modern teams in mind, M.A.C.K delivers the features you need with the experience you deserve."
         />
 
         <div className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -113,7 +113,7 @@ export default function MessagingPage() {
                 Built for the Modern Web
               </h2>
               <p className="mx-auto mt-4 max-w-[680px] text-muted">
-                MackChat is built with the latest web technologies, delivering a native-app experience right in your browser.
+                M.A.C.K is built with the latest web technologies, delivering a native-app experience right in your browser.
               </p>
             </div>
 
@@ -125,7 +125,7 @@ export default function MessagingPage() {
                   <div className="w-3 h-3 rounded-full bg-yellow-400/60" />
                   <div className="w-3 h-3 rounded-full bg-green-400/60" />
                 </div>
-                <div className="text-sm text-muted ml-4">MackChat - General</div>
+                <div className="text-sm text-muted ml-4">M.A.C.K - General</div>
               </div>
 
               <div className="flex" style={{ height: "400px" }}>
@@ -149,7 +149,7 @@ export default function MessagingPage() {
                 {/* Messages */}
                 <div className="flex-1 p-6 space-y-4 overflow-y-auto">
                   {[
-                    { user: "Donyale Mack", time: "10:30 AM", message: "Welcome to MackChat! 🎉" },
+                    { user: "Donyale Mack", time: "10:30 AM", message: "Welcome to M.A.C.K! 🎉" },
                     { user: "Team Member", time: "10:32 AM", message: "This looks amazing! Love the design." },
                     { user: "You", time: "10:35 AM", message: "Can't wait to use this for our team!" }
                   ].map((msg, i) => (
@@ -185,7 +185,7 @@ export default function MessagingPage() {
         <SectionHeading
           eyebrow="Technology"
           title="Built With Modern Tools"
-          subtitle="MackChat leverages cutting-edge technologies to deliver a fast, reliable, and scalable messaging experience."
+          subtitle="M.A.C.K leverages cutting-edge technologies to deliver a fast, reliable, and scalable messaging experience."
         />
 
         <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -214,7 +214,7 @@ export default function MessagingPage() {
             Be Among the First
           </h2>
           <p className="mx-auto mt-4 max-w-[680px] text-muted">
-            MackChat is currently in development. Join our waitlist to get early access and be notified when we launch.
+            M.A.C.K (Military And Civilian Kommunication Network) is currently in development. Join our waitlist to get early access and be notified when we launch.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
