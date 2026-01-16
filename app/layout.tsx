@@ -3,8 +3,12 @@ import { AuthProvider } from "@/lib/auth";
 import { Footer } from "@/components/ui/Footer";
 
 export const metadata = {
-  title: "T.O.O.L.S Inc - Empowering Individuals To Step Into Their Purpose",
-  description: "Together Overcoming Obstacles and Limitations"
+  title: "A MackProjekt - Empowering Individuals To Step Into Their Purpose",
+  description: "Together Overcoming Obstacles and Limitations",
+  icons: {
+    icon: '/partnerships/amp-logo.jpeg',
+    apple: '/partnerships/amp-logo.jpeg',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
