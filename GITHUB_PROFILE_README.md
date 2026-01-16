@@ -88,8 +88,8 @@ const achievements = {
 
 <div align="center">
 
-[![Website](https://img.shields.io/badge/Website-A_MackProjekt-38bdf8?style=for-the-badge&logo=google-chrome&logoColor=white)](https://amackprojekt.com)
-[![Email](https://img.shields.io/badge/Email-Contact_Us-2dd4bf?style=for-the-badge&logo=gmail&logoColor=white)](mailto:info@amackprojekt.com)
+[![Website](https://img.shields.io/badge/Website-A_MackProjekt-38bdf8?style=for-the-badge&logo=google-chrome&logoColor=white)](https://mackprojekt.com)
+[![Email](https://img.shields.io/badge/Email-Contact_Us-2dd4bf?style=for-the-badge&logo=gmail&logoColor=white)](mailto:info@mackprojekt.com)
 
 </div>
 
