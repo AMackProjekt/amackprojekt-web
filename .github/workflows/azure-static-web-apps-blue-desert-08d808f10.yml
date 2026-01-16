@@ -34,18 +34,6 @@ jobs:
         env:
           NODE_OPTIONS: '--max_old_space_size=4096'
       
-      - name: Install API dependencies
-        run: cd api && npm install
-      
-      - name: Build API
-        run: cd api && npm run build
-      
-      - name: Prepare deployment directory
-        run: |
-          mkdir -p deploy
-          cp -r out/. deploy/
-          ls -R deploy/ | head -50
-      
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
@@ -55,9 +43,9 @@ jobs:
           action: "upload"
           ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
-          app_location: "deploy" # Deploy only the out directory contents
+          app_location: "/" # App source code path
           api_location: "api" # Api source code path - Azure Functions
-          output_location: "" # Already built, no additional output
+          output_location: "out" # Next.js static export output
           skip_app_build: true # We already built it above
           ###### End of Repository/Build Configurations ######
 
