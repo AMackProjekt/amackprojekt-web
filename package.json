@@ -19,6 +19,7 @@
     "compose:logs": "docker-compose logs -f"
   },
   "dependencies": {
+    "applicationinsights": "^3.12.1",
     "clsx": "^2.1.1",
     "framer-motion": "^11.0.0",
     "next": "^14.2.0",
