@@ -44,10 +44,15 @@ jobs:
           ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
           app_location: "out" # Deploy only the built output
-          api_location: "" # No API - frontend only
+          api_location: "api" # Azure Functions API
           output_location: "" # Already built, no additional output
           skip_app_build: true # We already built it above
           ###### End of Repository/Build Configurations ######
+        env:
+          COSMOS_DB_ENDPOINT: ${{ secrets.COSMOS_DB_ENDPOINT }}
+          COSMOS_DB_KEY: ${{ secrets.COSMOS_DB_KEY }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
+          APPLICATIONINSIGHTS_CONNECTION_STRING: ${{ secrets.APPLICATIONINSIGHTS_CONNECTION_STRING }}
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
