@@ -12,15 +12,14 @@ type Message = {
 };
 
 const botResponses: Record<string, string> = {
-  greeting: "Hello! I'm MackAi, here to help you learn about T.O.O.L.S Inc programs and support services. How can I assist you today?",
-  programs: "We offer four core programs: Job Readiness Training, Continued Education, Lived Experience Support, and Personal Growth Programs. Which would you like to know more about?",
-  "job readiness": "Our Job Readiness program includes resume building, mock interviews, career planning, and professional development to prepare you for success in the workforce.",
-  education: "We provide access to educational resources, training programs, skill development courses, and support for continuing your education journey.",
-  "lived experience": "Our team has lived experience with the challenges our clients face. This creates genuine understanding and more effective, empathetic support.",
-  referral: "You can submit a referral for justice-involved individuals through our Referral Form page. We also have a QR code available for easy access.",
-  support: "To get support, you can fill out our Interest Form or contact us directly. We typically respond within 48 hours.",
-  contact: "You can reach us through our Contact page, submit an Interest Form, or call our office. We're here to help you start your journey.",
-  help: "I can help you with information about our programs, how to get support, referral process, and general questions about T.O.O.L.S Inc. What would you like to know?",
+  greeting: "Hello! I'm MackAi, your digital assistant from A MackProjekt. I can help you learn about our innovative digital solutions and services. How can I assist you today?",
+  innovation: "At A MackProjekt, we focus on cutting-edge solutions that harness AI and modern technology to destroy the digital divide and empower communities.",
+  design: "We create beautiful, intuitive user experiences backed by research and best practices in UX design. Our interfaces are both powerful and delightful to use.",
+  technology: "We leverage modern tech stacks including Next.js, React, TypeScript, and cloud platforms to build scalable, high-performance solutions.",
+  growth: "Our solutions are designed with scalability in mind, ensuring your platform can grow seamlessly with your business needs and user base.",
+  mackchat: "MackChat is our next-gen messaging platform coming soon! It will bring teams and communities together with real-time communication, modern features, and seamless integration.",
+  contact: "You can reach us through the Join Waitlist button to stay updated on our latest projects and launches. We'll be in touch soon!",
+  help: "I can help you learn about our innovation approach, design philosophy, technology stack, growth solutions, and upcoming projects like MackChat. What would you like to know?",
 };
 
 function getBotResponse(userMessage: string): string {
@@ -29,29 +28,29 @@ function getBotResponse(userMessage: string): string {
   if (msg.includes("hello") || msg.includes("hi") || msg.includes("hey")) {
     return botResponses.greeting;
   }
-  if (msg.includes("program") || msg.includes("service")) {
-    return botResponses.programs;
+  if (msg.includes("innovation") || msg.includes("ai") || msg.includes("cutting-edge")) {
+    return botResponses.innovation;
   }
-  if (msg.includes("job") || msg.includes("employment") || msg.includes("career")) {
-    return botResponses["job readiness"];
+  if (msg.includes("design") || msg.includes("ux") || msg.includes("interface") || msg.includes("experience")) {
+    return botResponses.design;
   }
-  if (msg.includes("education") || msg.includes("training") || msg.includes("learn")) {
-    return botResponses.education;
+  if (msg.includes("technology") || msg.includes("tech") || msg.includes("stack") || msg.includes("next") || msg.includes("react")) {
+    return botResponses.technology;
   }
-  if (msg.includes("lived experience") || msg.includes("understanding")) {
-    return botResponses["lived experience"];
+  if (msg.includes("growth") || msg.includes("scalable") || msg.includes("scale")) {
+    return botResponses.growth;
   }
-  if (msg.includes("referral") || msg.includes("refer")) {
-    return botResponses.referral;
+  if (msg.includes("mackchat") || msg.includes("messaging") || msg.includes("chat")) {
+    return botResponses.mackchat;
   }
-  if (msg.includes("support") || msg.includes("help") || msg.includes("need")) {
-    return botResponses.support;
-  }
-  if (msg.includes("contact") || msg.includes("reach") || msg.includes("call")) {
+  if (msg.includes("contact") || msg.includes("reach") || msg.includes("waitlist") || msg.includes("join")) {
     return botResponses.contact;
   }
+  if (msg.includes("help") || msg.includes("what") || msg.includes("how")) {
+    return botResponses.help;
+  }
   
-  return "I'd be happy to help you with information about our programs, support services, or how to get started. You can also visit our Interest Form page or Contact us directly for personalized assistance.";
+  return "I'd be happy to help you learn about A MackProjekt's innovation approach, design philosophy, technology solutions, or our upcoming MackChat platform. What interests you most?";
 }
 
 export function ChatBot() {
@@ -59,7 +58,7 @@ export function ChatBot() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "welcome",
-      text: "Hi! I'm MackAi, your T.O.O.L.S Inc assistant. Ask me about our programs, how to get support, or anything else!",
+      text: "Hi! I'm MackAi, your A MackProjekt assistant. Ask me about our innovation, design, technology solutions, or the upcoming MackChat platform!",
       sender: "bot",
       timestamp: new Date(),
     },

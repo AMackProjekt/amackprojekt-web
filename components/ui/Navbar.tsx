@@ -15,31 +15,25 @@ export function Navbar() {
           className="flex items-center gap-3"
         >
           <img
-            src="/logos/main-logo.png"
-            alt="T.O.O.LS Inc Logo"
+            src="/logos/amp-logo.jpeg"
+            alt="AMP Logo"
             className="h-10 w-auto object-contain"
           />
           <span className="font-extrabold tracking-tight text-text">
-            T.O.O.LS Inc
+            MackEnterprises
           </span>
         </motion.a>
 
         <nav className="hidden items-center gap-6 md:flex">
-          <a className="text-sm font-medium text-muted hover:text-text" href="/#platform">Programs</a>
-          <a className="text-sm font-medium text-muted hover:text-text" href="/reentry">Reentry</a>
-          <a className="text-sm font-medium text-muted hover:text-text" href="/#dashboard">Impact</a>
-          <a className="text-sm font-medium text-muted hover:text-text" href="/partnerships">Partnerships</a>
-          <a className="text-sm font-medium text-muted hover:text-text" href="/api-test">API</a>
-          <a className="text-sm font-medium text-muted hover:text-text" href="/referral">Referral</a>
-          <a className="text-sm font-medium text-muted hover:text-text" href="/#contact">Contact</a>
+          <span className="text-sm font-medium text-muted cursor-not-allowed" title="Coming Soon">Innovation</span>
+          <span className="text-sm font-medium text-muted cursor-not-allowed" title="Coming Soon">Design</span>
+          <span className="text-sm font-medium text-muted cursor-not-allowed" title="Coming Soon">Technology</span>
+          <span className="text-sm font-medium text-muted cursor-not-allowed" title="Coming Soon">Growth</span>
         </nav>
 
         <div className="flex items-center gap-3">
-          <Button variant="ghost" className="hidden sm:inline-flex">
-            <a href="/referral">Submit Referral</a>
-          </Button>
           <Button variant="primary">
-            <a href="/#contact">Get Support</a>
+            <a href="/#contact">Join Waitlist</a>
           </Button>
         </div>
       </div>

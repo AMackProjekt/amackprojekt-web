@@ -69,7 +69,7 @@ export function Footer() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xs text-muted/60 text-center font-mono"
           >
-            © {new Date().getFullYear()} T.O.O.L.S Inc. All rights reserved.
+            © {new Date().getFullYear()} MackEnterprises™. All rights reserved.
           </motion.p>
         </div>
       </div>

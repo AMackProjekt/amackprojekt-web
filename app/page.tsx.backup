@@ -11,30 +11,54 @@ export default function Page() {
     <main className="min-h-screen bg-bg">
       {/* Background glow */}
       <div className="pointer-events-none fixed inset-0 -z-10 bg-dash-glow" />
-
+      
       <Navbar />
 
       {/* HERO */}
-      <section className="mx-auto max-w-container px-7 pt-24 pb-16 text-center">
-        <h1 className="h1">
-          Welcome To
+      <section className="relative mx-auto max-w-container px-7 pt-24 pb-16 text-center">
+        {/* Neon corner accents */}
+        <div className="pointer-events-none absolute top-0 left-0 w-32 h-32 border-t-2 border-l-2 border-brand animate-pulse" />
+        <div className="pointer-events-none absolute top-0 right-0 w-32 h-32 border-t-2 border-r-2 border-brand2 animate-pulse animation-delay-300" />
+        
+        <h1 className="h1 relative">
+          <span className="absolute inset-0 blur-lg text-brand animate-pulse">Welcome to</span>
+          <span className="relative">Welcome to</span>
           <br />
           <span className="relative inline-block">
-            <span className="absolute inset-0 blur-xl bg-gradient-to-r from-brand to-brand2 opacity-50"></span>
+            <span className="absolute inset-0 blur-2xl bg-gradient-to-r from-brand via-brand2 to-accent animate-pulse"></span>
             <span className="relative bg-gradient-to-r from-brand to-brand2 bg-clip-text text-transparent">
               A MackProjekt
             </span>
           </span>
         </h1>
 
-        <p className="mx-auto mt-6 max-w-[760px] p-lead">
-          The visionary startup behind MackEnterprises. We build innovative digital solutions 
-          that transform businesses and empower communities through technology and creativity.
+        <p className="mx-auto mt-6 max-w-[760px] p-lead relative">
+          <span className="absolute inset-0 blur-sm text-brand2/40 animate-pulse animation-delay-500">Harnessing the Power of AI and the Mind to Destroy the Digital Divide</span>
+          <span className="relative">Harnessing the Power of AI and the Mind to Destroy the Digital Divide</span>
         </p>
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
           <Button variant="primary">Get Started</Button>
           <Button variant="ghost">View Platform</Button>
+        </div>
+
+        {/* KPI band */}
+        <div className="mt-14 grid grid-cols-1 gap-4 md:grid-cols-4">
+          {[
+            ["Innovation", "Cutting-Edge Solutions"],
+            ["Design", "Beautiful User Experiences"],
+            ["Technology", "Modern Tech Stack"],
+            ["Growth", "Scalable Architecture"]
+          ].map(([v, t], i) => (
+            <GlowCard key={t} className="p-5 text-left relative group hover:border-brand/50 transition-all">
+              <div className="absolute -inset-1 bg-gradient-to-r from-brand to-brand2 rounded-xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity animate-pulse" />
+              <div className="relative">
+                <div className="text-2xl font-extrabold tracking-tight bg-gradient-to-r from-brand to-brand2 bg-clip-text text-transparent">{v}</div>
+                <div className="mt-2 text-sm text-muted">{t}</div>
+                <div className={`absolute -bottom-2 left-0 h-0.5 bg-gradient-to-r from-brand to-transparent animate-pulse`} style={{width: `${(i + 1) * 25}%`, animationDelay: `${i * 0.2}s`}} />
+              </div>
+            </GlowCard>
+          ))}
         </div>
       </section>
 
@@ -52,10 +76,13 @@ export default function Page() {
             ["Platform Engineering", "Scalable platforms and APIs designed to grow with your business needs and user base."],
             ["User Experience", "Beautiful, intuitive interfaces that users love, backed by research and best practices in UX design."],
             ["Digital Strategy", "Comprehensive planning and execution to help your business thrive in the digital landscape."]
-          ].map(([h, p]) => (
-            <GlowCard key={h} className="group hover:shadow-neon transition-shadow duration-300">
+          ].map(([h, p], i) => (
+            <GlowCard key={h} className="relative group hover:border-brand2/60 transition-all">
+              <div className="absolute top-0 left-0 w-2 h-2 bg-brand rounded-full animate-pulse" style={{animationDelay: `${i * 0.15}s`}} />
+              <div className="absolute top-0 right-0 w-2 h-2 bg-brand2 rounded-full animate-pulse" style={{animationDelay: `${i * 0.15 + 0.3}s`}} />
               <div className="text-lg font-extrabold tracking-tight bg-gradient-to-r from-text to-brand bg-clip-text text-transparent">{h}</div>
               <div className="mt-2 text-sm text-muted leading-relaxed">{p}</div>
+              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-brand to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
             </GlowCard>
           ))}
         </div>
@@ -63,17 +90,24 @@ export default function Page() {
 
       {/* MESSAGING APP HIGHLIGHT */}
       <section className="mx-auto max-w-container px-7 py-20">
-        <GlowCard className="p-10 text-center overflow-hidden relative">
+        <GlowCard className="p-10 text-center overflow-hidden relative group">
           <div className="absolute inset-0 bg-gradient-to-br from-brand/10 via-transparent to-brand2/10" />
+          {/* Animated border effect */}
+          <div className="absolute -inset-1 bg-gradient-to-r from-brand via-brand2 to-accent rounded-xl opacity-20 blur-lg animate-pulse" />
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-brand to-transparent animate-pulse" />
           <div className="relative">
-            <div className="text-xs font-semibold tracking-[0.18em] text-brand2 uppercase">
-              Coming Soon
+            <div className="text-xs font-semibold tracking-[0.18em] text-brand2 uppercase animate-pulse">
+              <span className="inline-flex items-center gap-2">
+                <span className="w-2 h-2 bg-brand2 rounded-full animate-ping" />
+                Coming Soon
+              </span>
             </div>
-            <h2 className="h2 mt-4 mb-4">
-              MackChat - Next-Gen Messaging
+            <h2 className="h2 mt-4 mb-4 relative">
+              <span className="absolute inset-0 blur-xl bg-gradient-to-r from-brand to-brand2 animate-pulse" />
+              <span className="relative">MackChat - Next-Gen Messaging</span>
             </h2>
             <p className="text-muted max-w-2xl mx-auto mb-8 leading-relaxed">
-              A revolutionary web-based messaging platform bringing teams and communities together. 
+              A revolutionary web-based messaging platform bringing teams and communities together.
               Real-time communication with modern features, beautiful design, and seamless integration.
             </p>
             <Button variant="primary" href="/messaging">
@@ -96,14 +130,14 @@ export default function Page() {
             <div className="mt-2 text-lg font-semibold text-muted">
               Founder: Donyale &quot;DThree&quot; Mack
             </div>
-            
+
             <div className="mt-6 space-y-4 text-text/90 leading-relaxed">
               <p>
-                A MackProjekt is the innovation lab behind MackEnterprises, dedicated to creating 
+                A MackProjekt is the innovation lab behind MackEnterprises, dedicated to creating
                 cutting-edge digital solutions that make a difference in people&apos;s lives.
               </p>
               <p>
-                Founded by visionary entrepreneur Donyale Mack, we combine technical excellence with 
+                Founded by visionary entrepreneur Donyale Mack, we combine technical excellence with
                 creative thinking to build platforms that connect, empower, and inspire.
               </p>
               <p className="text-brand font-semibold">
@@ -111,27 +145,27 @@ export default function Page() {
               </p>
             </div>
           </div>
-          
+
           <GlowCard className="p-8 lg:p-10">
             <div className="space-y-6">
               <div>
                 <div className="text-sm font-semibold text-brand2 uppercase tracking-wider">Mission</div>
                 <p className="mt-2 text-text/90">
-                  To deliver innovative digital solutions that drive business growth and create 
+                  To deliver innovative digital solutions that drive business growth and create
                   meaningful connections in the digital age.
                 </p>
               </div>
               <div>
                 <div className="text-sm font-semibold text-brand2 uppercase tracking-wider">Vision</div>
                 <p className="mt-2 text-text/90">
-                  Building a future where technology seamlessly integrates into every aspect of 
+                  Building a future where technology seamlessly integrates into every aspect of
                   business and life, making things simpler and more connected.
                 </p>
               </div>
               <div>
                 <div className="text-sm font-semibold text-brand2 uppercase tracking-wider">Approach</div>
                 <p className="mt-2 text-text/90">
-                  Combining modern technology stacks with user-centered design to create 
+                  Combining modern technology stacks with user-centered design to create
                   solutions that are both powerful and delightful to use.
                 </p>
               </div>
@@ -142,20 +176,29 @@ export default function Page() {
 
       {/* PORTFOLIO / PROJECTS SECTION */}
       <section className="mx-auto max-w-container px-7 py-20">
-        <GlowCard className="p-10 text-center">
-          <div className="text-xs font-semibold tracking-[0.18em] text-brand2 uppercase">
-            Our Work
+        <GlowCard className="p-10 text-center relative overflow-hidden">
+          {/* Electric grid background */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="h-full w-full bg-[linear-gradient(rgba(56,189,248,0.4)_1px,transparent_1px),linear-gradient(90deg,rgba(56,189,248,0.4)_1px,transparent_1px)] bg-[size:50px_50px] animate-pulse" />
           </div>
-          <h2 className="h2 mt-4">
-            Projects & Innovations
-          </h2>
-          <div className="mt-2 text-lg font-semibold text-brand">
-            Transforming Ideas Into Reality
-          </div>
-          
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-1 bg-gradient-to-r from-transparent via-brand to-transparent animate-pulse" />
+          <div className="relative">
+            <div className="text-xs font-semibold tracking-[0.18em] text-brand2 uppercase flex items-center justify-center gap-2">
+              <span className="w-1.5 h-1.5 bg-brand2 rounded-full animate-pulse" />
+              Our Work
+              <span className="w-1.5 h-1.5 bg-brand2 rounded-full animate-pulse animation-delay-300" />
+            </div>
+            <h2 className="h2 mt-4 relative">
+              <span className="absolute inset-0 blur-lg text-brand/50 animate-pulse">Projects & Innovations</span>
+              <span className="relative">Projects & Innovations</span>
+            </h2>
+            <div className="mt-2 text-lg font-semibold text-brand animate-pulse">
+              Transforming Ideas Into Reality
+            </div>
+
           <div className="mx-auto mt-6 max-w-[680px] space-y-4 text-text/90 leading-relaxed">
             <p>
-              From web platforms to messaging applications, we build solutions that combine 
+              From web platforms to messaging applications, we build solutions that combine
               technical excellence with user-centered design.
             </p>
             <p className="text-base font-semibold text-brand2">
@@ -182,7 +225,7 @@ export default function Page() {
 
       {/* ChatBot */}
       <ChatBot />
-      
+
       {/* Cookie Consent */}
       <CookieConsent />
     </main>

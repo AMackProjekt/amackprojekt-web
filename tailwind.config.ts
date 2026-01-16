@@ -19,7 +19,10 @@ export default {
         tight2: "-0.035em"
       },
       boxShadow: {
-        glow: "0 0 0 1px rgba(56,189,248,.18), 0 10px 30px rgba(0,0,0,.35)"
+        glow: "0 0 0 1px rgba(56,189,248,.18), 0 10px 30px rgba(0,0,0,.35)",
+        neon: "0 0 5px rgba(56,189,248,0.5), 0 0 10px rgba(56,189,248,0.3), 0 0 15px rgba(56,189,248,0.2)",
+        "neon-brand2": "0 0 5px rgba(45,212,191,0.5), 0 0 10px rgba(45,212,191,0.3), 0 0 15px rgba(45,212,191,0.2)",
+        "neon-accent": "0 0 5px rgba(167,139,250,0.5), 0 0 10px rgba(167,139,250,0.3), 0 0 15px rgba(167,139,250,0.2)"
       },
       colors: {
         bg: "#06070b",
