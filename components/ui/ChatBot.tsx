@@ -15,10 +15,10 @@ const botResponses: Record<string, string> = {
   greeting: "Hello! I'm MackAi, your digital assistant from A MackProjekt. I can help you learn about our innovative digital solutions and services. How can I assist you today?",
   innovation: "At A MackProjekt, we focus on cutting-edge solutions that harness AI and modern technology to destroy the digital divide and empower communities.",
   design: "We create beautiful, intuitive user experiences backed by research and best practices in UX design. Our interfaces are both powerful and delightful to use.",
-  technology: "We leverage modern tech stacks including Next.js, React, TypeScript, and cloud platforms to build scalable, high-performance solutions.",
+  technology: "We leverage modern tech stacks including Next.js, React, TypeScript, Azure, and cloud platforms to build scalable, high-performance solutions.",
   growth: "Our solutions are designed with scalability in mind, ensuring your platform can grow seamlessly with your business needs and user base.",
   mackchat: "MackChat is our next-gen messaging platform coming soon! It will bring teams and communities together with real-time communication, modern features, and seamless integration.",
-  contact: "You can reach us through the Join Waitlist button to stay updated on our latest projects and launches. We'll be in touch soon!",
+  contact: "You can reach us at ampstudio@mackprojekt.com or join our waitlist to stay updated on our latest projects and launches!",
   help: "I can help you learn about our innovation approach, design philosophy, technology stack, growth solutions, and upcoming projects like MackChat. What would you like to know?",
 };
 
@@ -58,7 +58,7 @@ export function ChatBot() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "welcome",
-      text: "Hi! I'm MackAi, your A MackProjekt assistant. Ask me about our innovation, design, technology solutions, or the upcoming MackChat platform!",
+      text: "Hi! I'm MackAi, your A MackProjekt assistant. Ask me about our digital innovation, design services, technology solutions, or our upcoming MackChat platform!",
       sender: "bot",
       timestamp: new Date(),
     },
@@ -110,10 +110,10 @@ export function ChatBot() {
   };
 
   const quickActions = [
-    "Programs",
-    "Get Support",
-    "Referral Process",
-    "Contact Info",
+    "Innovation",
+    "Design Services",
+    "Technology Stack",
+    "MackChat Platform",
   ];
 
   return (
