@@ -32,8 +32,8 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <Button variant="primary">
-            <a href="mailto:ampstudio@mackprojekt.com?subject=ATTN%20Waitlist">Join Waitlist</a>
+          <Button variant="primary" href="mailto:ampstudio@mackprojekt.com?subject=ATTN%20Waitlist">
+            Join Waitlist
           </Button>
         </div>
       </div>
