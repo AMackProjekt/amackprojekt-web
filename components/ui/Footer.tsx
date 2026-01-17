@@ -43,16 +43,16 @@ export function Footer() {
               <div className="relative inline-block">
                 {/* Multiple glowing text layers for cyberpunk effect */}
                 <span className="absolute inset-0 text-xl md:text-2xl font-extrabold tracking-wider blur-sm text-brand animate-pulse">
-                  POWERED BY A MACKPROJEKT
+                  POWERED BY<br />A MACKPROJEKT
                 </span>
                 <span className="absolute inset-0 text-xl md:text-2xl font-extrabold tracking-wider blur-md text-brand2 animate-pulse animation-delay-300">
-                  POWERED BY A MACKPROJEKT
+                  POWERED BY<br />A MACKPROJEKT
                 </span>
                 <span className="absolute inset-0 text-xl md:text-2xl font-extrabold tracking-wider blur-lg text-accent animate-pulse animation-delay-600">
-                  POWERED BY A MACKPROJEKT
+                  POWERED BY<br />A MACKPROJEKT
                 </span>
                 <span className="relative text-xl md:text-2xl font-extrabold tracking-wider bg-gradient-to-r from-brand via-brand2 to-accent bg-clip-text text-transparent animate-flicker">
-                  POWERED BY A MACKPROJEKT
+                  POWERED BY<br />A MACKPROJEKT
                 </span>
               </div>
             </div>
