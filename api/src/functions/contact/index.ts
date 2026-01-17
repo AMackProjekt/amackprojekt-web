@@ -2,25 +2,27 @@ import { app, HttpRequest, HttpResponseInit, InvocationContext } from '@azure/fu
 import { getContainer } from '../../utils/cosmos';
 import { config } from '../../config';
 import { EmailClient } from '@azure/communication-email';
-
-interface ContactRequest {
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
-}
+import { contactSchema, validateRequest } from '../../utils/validation';
+import { checkRateLimit } from '../../utils/rateLimit';
 
 export async function contactSubmit(request: HttpRequest, context: InvocationContext): Promise<HttpResponseInit> {
   try {
-    const body = await request.json() as ContactRequest;
-    const { name, email, subject, message } = body;
+    // Rate limiting: 5 submissions per hour per IP
+    const rateLimitResponse = checkRateLimit(request, 5, 3600000);
+    if (rateLimitResponse) return rateLimitResponse;
 
-    if (!name || !email || !subject || !message) {
+    const body = await request.json();
+    
+    // Validate input
+    const validation = validateRequest(contactSchema, body);
+    if (!validation.success) {
       return {
         status: 400,
-        jsonBody: { error: 'All fields are required' }
+        jsonBody: { error: 'Validation failed', details: validation.errors }
       };
     }
+
+    const { name, email, subject, message } = validation.data;
 
     // Save to Cosmos DB
     const container = await getContainer(config.cosmosDb.containers.contacts);
@@ -77,9 +79,10 @@ export async function contactSubmit(request: HttpRequest, context: InvocationCon
     };
   } catch (error) {
     context.error('Contact submission error:', error);
+    // Don't leak internal error details
     return {
       status: 500,
-      jsonBody: { error: 'Failed to submit contact form' }
+      jsonBody: { error: 'An error occurred while submitting your message. Please try again.' }
     };
   }
 }

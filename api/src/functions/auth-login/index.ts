@@ -2,23 +2,27 @@ import { app, HttpRequest, HttpResponseInit, InvocationContext } from '@azure/fu
 import { getContainer } from '../../utils/cosmos';
 import { comparePassword, generateToken } from '../../utils/auth';
 import { config } from '../../config';
-
-interface LoginRequest {
-  email: string;
-  password: string;
-}
+import { loginSchema, validateRequest } from '../../utils/validation';
+import { checkRateLimit } from '../../utils/rateLimit';
 
 export async function authLogin(request: HttpRequest, context: InvocationContext): Promise<HttpResponseInit> {
   try {
-    const body = await request.json() as LoginRequest;
-    const { email, password } = body;
+    // Rate limiting: 5 attempts per minute
+    const rateLimitResponse = checkRateLimit(request, 5, 60000);
+    if (rateLimitResponse) return rateLimitResponse;
 
-    if (!email || !password) {
+    const body = await request.json();
+    
+    // Validate input
+    const validation = validateRequest(loginSchema, body);
+    if (!validation.success) {
       return {
         status: 400,
-        jsonBody: { error: 'Email and password are required' }
+        jsonBody: { error: 'Validation failed', details: validation.errors }
       };
     }
+
+    const { email, password } = validation.data;
 
     const container = await getContainer(config.cosmosDb.containers.users);
     
@@ -60,9 +64,10 @@ export async function authLogin(request: HttpRequest, context: InvocationContext
     };
   } catch (error) {
     context.error('Login error:', error);
+    // Don't leak internal error details
     return {
       status: 500,
-      jsonBody: { error: 'Internal server error' }
+      jsonBody: { error: 'An error occurred during login. Please try again.' }
     };
   }
 }

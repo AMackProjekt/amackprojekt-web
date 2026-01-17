@@ -10,7 +10,7 @@ export const config = {
     }
   },
   jwt: {
-    secret: process.env.JWT_SECRET || 'your-secret-key-change-in-production',
+    secret: process.env.JWT_SECRET!,
     expiresIn: '7d'
   },
   email: {
@@ -21,3 +21,12 @@ export const config = {
     connectionString: process.env.APPLICATIONINSIGHTS_CONNECTION_STRING || ''
   }
 };
+
+// Validate required environment variables
+if (!config.jwt.secret || config.jwt.secret === '') {
+  throw new Error('JWT_SECRET environment variable is required');
+}
+
+if (!config.cosmosDb.endpoint || !config.cosmosDb.key) {
+  throw new Error('COSMOS_DB_ENDPOINT and COSMOS_DB_KEY environment variables are required');
+}

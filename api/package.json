@@ -16,7 +16,8 @@
     "applicationinsights": "^3.12.1",
     "bcryptjs": "^3.0.3",
     "dotenv": "^17.2.3",
-    "jsonwebtoken": "^9.0.3"
+    "jsonwebtoken": "^9.0.3",
+    "zod": "^4.3.5"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
