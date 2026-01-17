@@ -1,6 +1,0 @@
-{
-  "include": [
-    "<%= relativePathToProjectRoot %>/**/*.cy.ts",
-    "<%= relativePathToProjectRoot %>/**/*.cy.tsx"
-  ]
-}

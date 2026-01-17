@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
-
-exports[`Pickers BaseFloatingPicker renders BaseFloatingPicker correctly 1`] = `
-<div
-  class="ms-BasePicker ms-BaseFloatingPicker"
-/>
-`;
