@@ -61,6 +61,23 @@ export function Footer() {
           {/* Electric line decoration */}
           <div className="w-full max-w-xs h-[1px] bg-gradient-to-r from-transparent via-brand to-transparent animate-pulse" />
 
+          {/* Legal Links */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="flex items-center gap-6 text-xs text-muted/70 font-mono"
+          >
+            <a href="/privacy" className="hover:text-brand transition-colors">
+              Privacy Policy
+            </a>
+            <span className="text-muted/30">|</span>
+            <a href="/terms" className="hover:text-brand transition-colors">
+              Terms of Service
+            </a>
+          </motion.div>
+
           {/* Copyright */}
           <motion.p
             initial={{ opacity: 0 }}

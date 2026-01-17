@@ -29,11 +29,13 @@ export function CookieConsent() {
       functional: true,
     };
     localStorage.setItem("cookie-consent", JSON.stringify(allAccepted));
+    window.dispatchEvent(new Event("storage")); // Trigger analytics reload
     setShowBanner(false);
   };
 
   const acceptSelected = () => {
     localStorage.setItem("cookie-consent", JSON.stringify(preferences));
+    window.dispatchEvent(new Event("storage")); // Trigger analytics reload
     setShowBanner(false);
   };
 
@@ -45,6 +47,7 @@ export function CookieConsent() {
       functional: false,
     };
     localStorage.setItem("cookie-consent", JSON.stringify(essentialOnly));
+    window.dispatchEvent(new Event("storage")); // Trigger analytics reload
     setShowBanner(false);
   };
 
@@ -188,7 +191,7 @@ export function CookieConsent() {
                 </div>
 
                 <div className="flex items-center justify-between pt-4 border-t border-border">
-                  <a href="#" className="text-xs text-brand hover:text-brand2 underline">
+                  <a href="/privacy" className="text-xs text-brand hover:text-brand2 underline" target="_blank" rel="noopener noreferrer">
                     Privacy Policy
                   </a>
                   <div className="flex items-center gap-3">

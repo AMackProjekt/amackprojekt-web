@@ -1,12 +1,31 @@
 "use client";
 
 import Script from "next/script";
+import { useEffect, useState } from "react";
 
 interface GoogleTagManagerProps {
   gtmId: string;
 }
 
 export function GoogleTagManager({ gtmId }: GoogleTagManagerProps) {
+  const [hasConsent, setHasConsent] = useState(false);
+
+  useEffect(() => {
+    const checkConsent = () => {
+      const consent = localStorage.getItem("cookie-consent");
+      if (consent) {
+        const preferences = JSON.parse(consent);
+        setHasConsent(preferences.marketing === true);
+      }
+    };
+    
+    checkConsent();
+    window.addEventListener("storage", checkConsent);
+    return () => window.removeEventListener("storage", checkConsent);
+  }, []);
+
+  if (!hasConsent) return null;
+
   return (
     <>
       <Script
@@ -27,6 +46,18 @@ export function GoogleTagManager({ gtmId }: GoogleTagManagerProps) {
 }
 
 export function GoogleTagManagerNoScript({ gtmId }: GoogleTagManagerProps) {
+  const [hasConsent, setHasConsent] = useState(false);
+
+  useEffect(() => {
+    const consent = localStorage.getItem("cookie-consent");
+    if (consent) {
+      const preferences = JSON.parse(consent);
+      setHasConsent(preferences.marketing === true);
+    }
+  }, []);
+
+  if (!hasConsent) return null;
+
   return (
     <noscript>
       <iframe
