@@ -1,0 +1,56 @@
+;;
+;; Domain:     mackprojekt.com.
+;; Exported:   2026-01-17 00:30:18
+;;
+;; This file is intended for use for informational and archival
+;; purposes ONLY and MUST be edited before use on a production
+;; DNS server.  In particular, you must:
+;;   -- update the SOA record with the correct authoritative name server
+;;   -- update the SOA record with the contact e-mail address information
+;;   -- update the NS record(s) with the authoritative name servers for this domain.
+;;
+;; For further information, please consult the BIND documentation
+;; located on the following website:
+;;
+;; http://www.isc.org/
+;;
+;; And RFC 1035:
+;;
+;; http://www.ietf.org/rfc/rfc1035.txt
+;;
+;; Please note that we do NOT offer technical support for any use
+;; of this zone data, the BIND name server, or any other third-party
+;; DNS software.
+;;
+;; Use at your own risk.
+;; SOA Record
+mackprojekt.com	3600	IN	SOA	ignat.ns.cloudflare.com. dns.cloudflare.com. 2052027641 10000 2400 604800 3600
+
+;; NS Records
+mackprojekt.com.	86400	IN	NS	ignat.ns.cloudflare.com.
+mackprojekt.com.	86400	IN	NS	tia.ns.cloudflare.com.
+
+;; A Records
+mackprojekt.com.	1	IN	A	20.3.34.31 ; cf_tags=cf-proxied:true
+
+;; CNAME Records
+autodiscover.mackprojekt.com.	3600	IN	CNAME	autodiscover.outlook.com. ; cf_tags=cf-proxied:false
+enterpriseenrollment.mackprojekt.com.	3600	IN	CNAME	enterpriseenrollment-s.manage.microsoft.com. ; cf_tags=cf-proxied:false
+enterpriseregistration.mackprojekt.com.	3600	IN	CNAME	enterpriseregistration.windows.net. ; cf_tags=cf-proxied:false
+selector2-azurecomm-prod-net._domainkey.mackprojekt.com.	1	IN	CNAME	selector2-azurecomm-prod-net._domainkey.azurecomm.net. ; cf_tags=cf-proxied:false
+sig1._domainkey.mackprojekt.com.	3600	IN	CNAME	sig1.dkim.mackprojekt.com.at.icloudmailadmin.com. ; cf_tags=cf-proxied:false
+www.mackprojekt.com.	1	IN	CNAME	calm-sand-0e9f2e010.6.azurestaticapps.net. ; cf_tags=cf-proxied:true
+
+;; MX Records
+mackprojekt.com.	3600	IN	MX	0 mackprojekt-com.mail.protection.outlook.com.
+
+;; TXT Records
+cf2024-1._domainkey.mackprojekt.com.	1	IN	TXT	"v=DKIM1; h=sha256; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAiweykoi+o48IOGuP7GR3X0MOExCUDY/BCRHoWBnh3rChl7WhdyCxW3jgq1daEjPPqoi7sJvdg5hEQVsgVRQP4DcnQDVjGMbASQtrY4WmB1VebF+RPJB2ECPsEDTpeiI5ZyUAwJaVX7r6bznU67g7LvFq35yIo4sdlmtZGV+i0H4cpYH9+3JJ78k" "m4KXwaf9xUJCWF6nxeD+qG6Fyruw1Qlbds2r85U9dkNDVAS3gioCvELryh1TxKGiVTkg4wqHTyHfWsp7KD3WQHYJn0RyfJJu6YEmL77zonn7p2SRMvTMP3ZEXibnC9gz3nnhR6wcYL8Q7zXypKTMD58bTixDSJwIDAQAB"
+_dmarc.mackprojekt.com.	1	IN	TXT	"v=DMARC1; p=none; rua=mailto:f6db36458918425cbb32a3b2c0d9ed11@dmarc-reports.cloudflare.net"
+mackprojekt.com.	1	IN	TXT	"ms-domain-verification=2f6a0a2d-d9ee-49bc-b0cb-85072689e99a"
+mackprojekt.com.	1	IN	TXT	"_qd6kstmnmay94yjxgexzch2oh0lkajr"
+mackprojekt.com.	3600	IN	TXT	"v=spf1 include:_spf.mx.cloudflare.net include:icloud.com include:spf.protection.outlook.com ~all"
+mackprojekt.com.	3600	IN	TXT	"MS=ms27041845"
+mackprojekt.com.	1	IN	TXT	"MS=ms10381165"
+mackprojekt.com.	3600	IN	TXT	"apple-domain=RkeWLcIxwbMlYlQN"
+mackprojekt.com.	3600	IN	TXT	"apple-domain=SKnLls47dRypxVDT"

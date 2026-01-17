@@ -9,6 +9,8 @@ type Props = {
   children?: React.ReactNode;
   onClick?: () => void;
   href?: string;
+  type?: "button" | "submit" | "reset";
+  disabled?: boolean;
 };
 
 export function Button({ className, variant = "ghost", children, href, ...props }: Props) {
