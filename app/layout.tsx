@@ -3,6 +3,7 @@ import "./globals.css";
 import { AuthProvider } from "@/lib/auth";
 import { Footer } from "@/components/ui/Footer";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
+import { GoogleTagManager, GoogleTagManagerNoScript } from "@/components/GoogleTagManager";
 
 export const metadata: Metadata = {
   title: "AMP - A MackProjekt | Innovation Lab of MackEnterprises",
@@ -66,6 +67,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="font-sans text-text antialiased">
+        {process.env.NEXT_PUBLIC_GTM_ID && (
+          <>
+            <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
+            <GoogleTagManagerNoScript gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
+          </>
+        )}
         {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
           <GoogleAnalytics measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
         )}
