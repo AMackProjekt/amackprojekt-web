@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/ui/Navbar";
 import { GlowCard } from "@/components/ui/GlowCard";
 import { Button } from "@/components/ui/Button";
+import { WaitlistForm } from "@/components/ui/WaitlistForm";
 
 export default function MessagingPage() {
   return (
@@ -29,7 +30,6 @@ export default function MessagingPage() {
         </p>
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-          <Button variant="primary" href="mailto:ampstudio@mackprojekt.com?subject=ATTN%20Waitlist">Join Waitlist</Button>
           <Button variant="ghost" href="/">Back to Home</Button>
         </div>
       </section>
@@ -89,19 +89,21 @@ export default function MessagingPage() {
 
       {/* PREVIEW SECTION */}
       <section className="mx-auto max-w-container px-7 py-20">
-        <GlowCard className="p-10 lg:p-16 text-center">
-          <div className="text-xs font-semibold tracking-[0.18em] text-brand2 uppercase mb-4">
-            Coming Soon
+        <GlowCard className="p-10 lg:p-16">
+          <div className="text-center">
+            <div className="text-xs font-semibold tracking-[0.18em] text-brand2 uppercase mb-4">
+              Coming Soon
+            </div>
+            <h2 className="h2 mb-6">
+              Be Part of Something Revolutionary
+            </h2>
+            <p className="text-muted max-w-2xl mx-auto mb-8 leading-relaxed">
+              M.A.C.K. is currently in development. Join our waitlist to be notified when we launch 
+              and get early access to the platform that will transform how military and civilian communities connect.
+            </p>
           </div>
-          <h2 className="h2 mb-6">
-            Be Part of Something Revolutionary
-          </h2>
-          <p className="text-muted max-w-2xl mx-auto mb-8 leading-relaxed">
-            M.A.C.K. is currently in development. Join our waitlist to be notified when we launch 
-            and get early access to the platform that will transform how military and civilian communities connect.
-          </p>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 text-left">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 mb-12">
             <div className="glass rounded-lg p-6">
               <div className="text-3xl font-extrabold text-brand mb-2">Q2 2026</div>
               <div className="text-sm text-muted">Private Beta Launch</div>
@@ -116,8 +118,8 @@ export default function MessagingPage() {
             </div>
           </div>
 
-          <div className="mt-12">
-            <Button variant="primary" href="mailto:ampstudio@mackprojekt.com?subject=ATTN%20Waitlist">Join the Waitlist</Button>
+          <div className="max-w-xl mx-auto">
+            <WaitlistForm source="mack-messaging" />
           </div>
         </GlowCard>
       </section>

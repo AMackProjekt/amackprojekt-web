@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { AuthProvider } from "@/lib/auth";
+import { ThemeProvider } from "@/lib/theme";
 import { Footer } from "@/components/ui/Footer";
 import { CookieConsent } from "@/components/ui/CookieConsent";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
@@ -13,7 +14,10 @@ export const metadata: Metadata = {
   manifest: "/manifest.json",
   icons: {
     icon: "/logos/amp-logo.jpeg",
-    apple: "/logos/amp-logo.jpeg",
+    apple: [
+      { url: "/logos/amp-logo.jpeg" },
+      { url: "/logos/amp-logo.jpeg", sizes: "180x180", type: "image/jpeg" },
+    ],
   },
   keywords: ["AMP", "A MackProjekt", "MackEnterprises", "AI", "Digital Solutions", "Web Development", "Innovation", "Technology"],
   authors: [{ name: "Donyale Mack" }],
@@ -51,6 +55,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
+        {/* eslint-disable-next-line compat/compat */}
         <meta name="theme-color" content="#38bdf8" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -77,11 +82,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
           <GoogleAnalytics measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
         )}
-        <AuthProvider>
-          {children}
-          <Footer />
-          <CookieConsent />
-        </AuthProvider>
+        <ThemeProvider>
+          <AuthProvider>
+            {children}
+            <Footer />
+            <CookieConsent />
+          </AuthProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

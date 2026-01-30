@@ -5,19 +5,23 @@ import { Button } from "@/components/ui/Button";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ChatBot } from "@/components/ui/ChatBot";
 import { CookieConsent } from "@/components/ui/CookieConsent";
+import { ElectricText, ElectricButton, ElectricDivider } from "@/components/ui/ElectricEffects";
+import { MackChatDemo } from "@/components/ui/MackChatDemo";
+import { FoundersLetter } from "@/components/ui/FoundersLetter";
+import { WaitlistForm } from "@/components/ui/WaitlistForm";
 
 export default function Page() {
   return (
     <main className="min-h-screen bg-bg">
-      {/* Background glow */}
-      <div className="pointer-events-none fixed inset-0 -z-10 bg-dash-glow" />
+      {/* Background glow with electric accent */}
+      <div className="pointer-events-none fixed inset-0 -z-10 bg-electric-glow" />
 
       <Navbar />
 
       {/* HERO */}
       <section className="mx-auto max-w-container px-7 pt-24 pb-16 text-center">
         <h1 className="h1">
-          Welcome To
+          <ElectricText color="green">Welcome To</ElectricText>
           <br />
           <span className="relative inline-block">
             <span className="absolute inset-0 blur-xl bg-gradient-to-r from-brand to-brand2 opacity-50"></span>
@@ -33,8 +37,11 @@ export default function Page() {
         </p>
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-          <Button variant="primary">Get Started</Button>
-          <Button variant="ghost">View Platform</Button>
+          <ElectricButton color="green" variant="solid" onClick={() => window.location.href = '/launch'}>
+            Watch Launch Video
+          </ElectricButton>
+          <Button variant="primary" href="/portal/auth">Get Started</Button>
+          <Button variant="ghost" href="/portal/dashboard">View Platform</Button>
         </div>
       </section>
 
@@ -53,118 +60,186 @@ export default function Page() {
             ["User Experience", "Beautiful, intuitive interfaces that users love, backed by research and best practices in UX design."],
             ["Digital Strategy", "Comprehensive planning and execution to help your business thrive in the digital landscape."]
           ].map(([h, p]) => (
-            <GlowCard key={h} className="group hover:shadow-neon transition-shadow duration-300">
-              <div className="text-lg font-extrabold tracking-tight bg-gradient-to-r from-text to-brand bg-clip-text text-transparent">{h}</div>
+            <GlowCard key={h} className="group hover:shadow-neon-green transition-all duration-300 hover:border-green-400/20">
+              <div className="text-lg font-extrabold tracking-tight bg-gradient-to-r from-text to-green-400 bg-clip-text text-transparent">{h}</div>
               <div className="mt-2 text-sm text-muted leading-relaxed">{p}</div>
             </GlowCard>
           ))}
         </div>
       </section>
 
-      {/* MESSAGING APP HIGHLIGHT */}
-      <section className="mx-auto max-w-container px-7 py-20">
-        <GlowCard className="p-10 text-center overflow-hidden relative">
-          <div className="absolute inset-0 bg-gradient-to-br from-brand/10 via-transparent to-brand2/10" />
-          <div className="relative">
-            <div className="text-xs font-semibold tracking-[0.18em] text-brand2 uppercase">
-              Coming Soon
-            </div>
-            <h2 className="h2 mt-4 mb-4">
-              MackChat - Next-Gen Messaging
-            </h2>
-            <p className="text-muted max-w-2xl mx-auto mb-8 leading-relaxed">
-              A revolutionary web-based messaging platform bringing teams and communities together. 
-              Real-time communication with modern features, beautiful design, and seamless integration.
-            </p>
-            <Button variant="primary" href="/messaging">
-              Learn More
-            </Button>
-          </div>
-        </GlowCard>
-      </section>
+      <ElectricDivider className="mx-auto max-w-container px-7" color="green" />
 
-      {/* FOUNDER STORY */}
+      {/* T.O.O.L.S. INC FLAGSHIP PRODUCT */}
       <section className="mx-auto max-w-container px-7 py-20">
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 items-center">
-          <div>
-            <div className="text-xs font-semibold tracking-[0.18em] text-brand2 uppercase">
-              About Us
-            </div>
-            <h2 className="h2 mt-4">
-              MackEnterprises - Building the Future
-            </h2>
-            <div className="mt-2 text-lg font-semibold text-muted">
-              Founder: Donyale &quot;DThree&quot; Mack
-            </div>
-            
-            <div className="mt-6 space-y-4 text-text/90 leading-relaxed">
-              <p>
-                A MackProjekt is the innovation lab behind MackEnterprises, dedicated to creating 
-                cutting-edge digital solutions that make a difference in people&apos;s lives.
-              </p>
-              <p>
-                Founded by visionary entrepreneur Donyale Mack, we combine technical excellence with 
-                creative thinking to build platforms that connect, empower, and inspire.
-              </p>
-              <p className="text-brand font-semibold">
-                &quot;Innovation happens when technology meets purpose.&quot;
-              </p>
-            </div>
-          </div>
-          
-          <GlowCard className="p-8 lg:p-10">
-            <div className="space-y-6">
-              <div>
-                <div className="text-sm font-semibold text-brand2 uppercase tracking-wider">Mission</div>
-                <p className="mt-2 text-text/90">
-                  To deliver innovative digital solutions that drive business growth and create 
-                  meaningful connections in the digital age.
-                </p>
-              </div>
-              <div>
-                <div className="text-sm font-semibold text-brand2 uppercase tracking-wider">Vision</div>
-                <p className="mt-2 text-text/90">
-                  Building a future where technology seamlessly integrates into every aspect of 
-                  business and life, making things simpler and more connected.
-                </p>
-              </div>
-              <div>
-                <div className="text-sm font-semibold text-brand2 uppercase tracking-wider">Approach</div>
-                <p className="mt-2 text-text/90">
-                  Combining modern technology stacks with user-centered design to create 
-                  solutions that are both powerful and delightful to use.
+        <SectionHeading
+          eyebrow="Flagship Innovation"
+          title="Proof of Impact, Not Just Ideas"
+          subtitle="We don't just talk about innovation—we build working products that change lives."
+        />
+
+        <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* T.O.O.L.S. Inc Card */}
+          <GlowCard className="p-8 lg:p-10 group hover:shadow-brand2/25 transition-all duration-300">
+            <div className="flex items-start gap-4 mb-6">
+              <div className="text-5xl">🎓</div>
+              <div className="flex-1">
+                <h3 className="text-2xl font-extrabold tracking-tight mb-2">
+                  <span className="bg-gradient-to-r from-brand2 to-accent bg-clip-text text-transparent">
+                    T.O.O.L.S. Inc.
+                  </span>
+                </h3>
+                <p className="text-lg font-semibold text-brand2">
+                  Empowering Reentry through AI & Data Science
                 </p>
               </div>
             </div>
+
+            <p className="text-text/90 leading-relaxed mb-6">
+              Together Overcoming Obstacles and Limitations—a comprehensive platform supporting 
+              justice-involved individuals with job readiness, education programs, lived-experience 
+              mentorship, and AI-powered career guidance.
+            </p>
+
+            <div className="grid grid-cols-2 gap-4 mb-6">
+              <div className="glass rounded-lg p-4 text-center">
+                <div className="text-2xl font-extrabold text-brand">1,200+</div>
+                <div className="text-xs text-muted">Users Served</div>
+              </div>
+              <div className="glass rounded-lg p-4 text-center">
+                <div className="text-2xl font-extrabold text-brand2">87%</div>
+                <div className="text-xs text-muted">Success Rate</div>
+              </div>
+            </div>
+
+            <div className="space-y-3 mb-6">
+              <div className="flex items-center gap-2 text-sm">
+                <span className="text-brand">✓</span>
+                <span className="text-text/90">AI-Powered Career Matching</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm">
+                <span className="text-brand">✓</span>
+                <span className="text-text/90">Live Job Board & Referrals</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm">
+                <span className="text-brand">✓</span>
+                <span className="text-text/90">Education & Skill Development</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm">
+                <span className="text-brand">✓</span>
+                <span className="text-text/90">Peer Mentorship Network</span>
+              </div>
+            </div>
+
+            <div className="flex gap-3">
+              <Button variant="primary" href="/reentry" className="flex-1">
+                Learn More
+              </Button>
+              <Button variant="ghost" href="/portal/auth">
+                Get Started
+              </Button>
+            </div>
+          </GlowCard>
+
+          {/* MackChat Card */}
+          <GlowCard className="p-8 lg:p-10 group hover:shadow-brand/25 transition-all duration-300">
+            <div className="flex items-start gap-4 mb-6">
+              <div className="text-5xl">💬</div>
+              <div className="flex-1">
+                <h3 className="text-2xl font-extrabold tracking-tight mb-2">
+                  <span className="bg-gradient-to-r from-brand to-brand2 bg-clip-text text-transparent">
+                    MackChat
+                  </span>
+                </h3>
+                <p className="text-lg font-semibold text-brand">
+                  Bridging Military & Civilian Communities
+                </p>
+              </div>
+            </div>
+
+            <p className="text-text/90 leading-relaxed mb-6">
+              A revolutionary web-based messaging platform designed to connect military members with 
+              civilian supporters. Real-time communication with modern features, beautiful design, 
+              and military-grade security.
+            </p>
+
+            <div className="grid grid-cols-3 gap-3 mb-6">
+              <div className="glass rounded-lg p-3 text-center">
+                <div className="text-xl font-extrabold text-brand">Q2</div>
+                <div className="text-xs text-muted">Beta Launch</div>
+              </div>
+              <div className="glass rounded-lg p-3 text-center">
+                <div className="text-xl font-extrabold text-brand2">Q3</div>
+                <div className="text-xs text-muted">Public Release</div>
+              </div>
+              <div className="glass rounded-lg p-3 text-center">
+                <div className="text-xl font-extrabold text-accent">Q4</div>
+                <div className="text-xs text-muted">Full Launch</div>
+              </div>
+            </div>
+
+            <div className="space-y-3 mb-6">
+              <div className="flex items-center gap-2 text-sm">
+                <span className="text-brand">✓</span>
+                <span className="text-text/90">Real-Time Messaging & Groups</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm">
+                <span className="text-brand">✓</span>
+                <span className="text-text/90">Military-Grade Encryption</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm">
+                <span className="text-brand">✓</span>
+                <span className="text-text/90">Cross-Platform Support</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm">
+                <span className="text-brand">✓</span>
+                <span className="text-text/90">Community Channels</span>
+              </div>
+            </div>
+
+            <Button variant="primary" href="/messaging" className="w-full">
+              Learn More & Join Waitlist
+            </Button>
           </GlowCard>
         </div>
       </section>
 
-      {/* PORTFOLIO / PROJECTS SECTION */}
+      {/* MACKCHAT INTERACTIVE DEMO */}
       <section className="mx-auto max-w-container px-7 py-20">
-        <GlowCard className="p-10 text-center">
-          <div className="text-xs font-semibold tracking-[0.18em] text-brand2 uppercase">
-            Our Work
-          </div>
-          <h2 className="h2 mt-4">
-            Projects & Innovations
-          </h2>
-          <div className="mt-2 text-lg font-semibold text-brand">
-            Transforming Ideas Into Reality
-          </div>
-          
-          <div className="mx-auto mt-6 max-w-[680px] space-y-4 text-text/90 leading-relaxed">
-            <p>
-              From web platforms to messaging applications, we build solutions that combine 
-              technical excellence with user-centered design.
-            </p>
-            <p className="text-base font-semibold text-brand2">
-              Let&apos;s Build Something Amazing Together
+        <SectionHeading
+          eyebrow="Live Preview"
+          title="Experience MackChat"
+          subtitle="See our revolutionary messaging platform in action with this interactive demo."
+        />
+
+        <div className="mt-10 max-w-4xl mx-auto">
+          <MackChatDemo />
+        </div>
+      </section>
+
+      {/* FOUNDER'S LETTER */}
+      <section className="mx-auto max-w-container px-7 py-20">
+        <FoundersLetter />
+      </section>
+
+      {/* INNOVATION LAB WAITLIST */}
+      <section className="mx-auto max-w-container px-7 py-20">
+        <GlowCard className="p-10 lg:p-16">
+          <div className="text-center mb-10">
+            <div className="text-xs font-semibold tracking-[0.18em] text-brand2 uppercase">
+              Join the Innovation Lab
+            </div>
+            <h2 className="h2 mt-4 mb-4">
+              Get Early Access to Our Products
+            </h2>
+            <p className="text-muted max-w-2xl mx-auto leading-relaxed">
+              Be the first to know about new features, product launches, and exclusive opportunities. 
+              Get our 2026 Innovation Roadmap PDF when you join.
             </p>
           </div>
 
-          <div className="mt-8">
-            <Button variant="primary" href="/portal">Explore Our Platform</Button>
+          <div className="max-w-xl mx-auto">
+            <WaitlistForm source="homepage" />
           </div>
         </GlowCard>
       </section>

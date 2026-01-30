@@ -6,12 +6,55 @@
   color-scheme: dark;
 }
 
+html.light {
+  color-scheme: light;
+}
+
 html, body {
   height: 100%;
 }
 
 body {
   background: #06070b;
+}
+
+html.light body {
+  background: #ffffff;
+}
+
+/* Light mode color overrides */
+html.light {
+  --color-bg: #ffffff;
+  --color-panel: #f8f9fa;
+  --color-glass: rgba(0,0,0,.04);
+  --color-border: rgba(0,0,0,.1);
+  --color-text: rgba(15,23,42,.96);
+  --color-muted: rgba(100,116,139,.92);
+}
+
+html.light .bg-bg {
+  background-color: #ffffff !important;
+}
+
+html.light .text-text {
+  color: rgba(15,23,42,.96) !important;
+}
+
+html.light .text-muted {
+  color: rgba(100,116,139,.92) !important;
+}
+
+html.light .glass {
+  background: rgba(0,0,0,.04);
+  border-color: rgba(0,0,0,.1);
+}
+
+html.light .border-border {
+  border-color: rgba(0,0,0,.1) !important;
+}
+
+html.light .bg-panel {
+  background-color: #f8f9fa !important;
 }
 
 /* Webflow/DashDark-style type rhythm */

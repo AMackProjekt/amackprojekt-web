@@ -19,6 +19,11 @@ export const config = {
   },
   appInsights: {
     connectionString: process.env.APPLICATIONINSIGHTS_CONNECTION_STRING || ''
+  },
+  mailchimp: {
+    apiKey: process.env.MAILCHIMP_API_KEY || '',
+    serverPrefix: process.env.MAILCHIMP_SERVER_PREFIX || 'us1',
+    audienceId: process.env.MAILCHIMP_AUDIENCE_ID || ''
   }
 };
 
@@ -30,3 +35,8 @@ if (!config.jwt.secret || config.jwt.secret === '') {
 if (!config.cosmosDb.endpoint || !config.cosmosDb.key) {
   throw new Error('COSMOS_DB_ENDPOINT and COSMOS_DB_KEY environment variables are required');
 }
+
+if (!config.mailchimp.apiKey || !config.mailchimp.audienceId) {
+  console.warn('MAILCHIMP_API_KEY or MAILCHIMP_AUDIENCE_ID not configured - Mailchimp integration disabled');
+}
+

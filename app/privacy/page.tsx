@@ -202,9 +202,82 @@ export default function PrivacyPage() {
             </p>
           </div>
 
+          {/* Security & Compliance */}
+          <div>
+            <h2 className="text-xl font-bold text-text mb-3">10. Security & Compliance</h2>
+            <div className="space-y-4">
+              <div>
+                <h3 className="font-semibold text-text mb-2">10.1 Data Security</h3>
+                <p className="leading-relaxed mb-2">
+                  We implement appropriate technical and organizational security measures to protect your personal information:
+                </p>
+                <ul className="list-disc pl-6 space-y-1">
+                  <li>Encryption of data in transit (HTTPS/TLS 1.3)</li>
+                  <li>Encryption of data at rest in Azure Cosmos DB</li>
+                  <li>Secure authentication mechanisms (bcrypt password hashing, JWT tokens)</li>
+                  <li>Regular security audits and vulnerability assessments</li>
+                  <li>Access controls and role-based permissions</li>
+                  <li>Network security groups and firewalls</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="font-semibold text-text mb-2">10.2 Industry Compliance</h3>
+                <p className="leading-relaxed mb-2">
+                  While we are not currently HIPAA or SOC 2 certified, our infrastructure and practices are designed with these standards in mind:
+                </p>
+                <ul className="list-disc pl-6 space-y-1">
+                  <li><strong>HIPAA Readiness:</strong> For T.O.O.L.S. Inc. platform serving justice-involved individuals, 
+                  we implement controls aligned with HIPAA requirements including data encryption, access logging, and audit trails. 
+                  We do not currently handle Protected Health Information (PHI) but are prepared to meet HIPAA compliance when required.</li>
+                  <li><strong>SOC 2 Type II Alignment:</strong> Our security controls align with SOC 2 Trust Service Criteria 
+                  for security, availability, and confidentiality. We leverage Azure's SOC 2 Type II certified infrastructure.</li>
+                  <li><strong>GDPR Compliance:</strong> We adhere to GDPR principles including data minimization, purpose limitation, 
+                  and user rights (access, rectification, erasure, portability).</li>
+                  <li><strong>CCPA Compliance:</strong> California residents have additional rights under CCPA including the right to 
+                  know what personal information is collected, sold, or disclosed.</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="font-semibold text-text mb-2">10.3 Azure Security Features</h3>
+                <p className="leading-relaxed mb-2">
+                  Our infrastructure is hosted on Microsoft Azure, leveraging enterprise-grade security:
+                </p>
+                <ul className="list-disc pl-6 space-y-1">
+                  <li>Azure Cosmos DB with automatic encryption and geo-replication</li>
+                  <li>Azure Static Web Apps with DDoS protection</li>
+                  <li>Azure Functions with managed identity and Key Vault integration</li>
+                  <li>Application Insights for monitoring and threat detection</li>
+                  <li>Azure Active Directory for identity management</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="font-semibold text-text mb-2">10.4 Third-Party Services</h3>
+                <p className="leading-relaxed mb-2">
+                  We work with trusted third-party services that maintain their own compliance certifications:
+                </p>
+                <ul className="list-disc pl-6 space-y-1">
+                  <li><strong>Microsoft Azure:</strong> ISO 27001, SOC 2, HIPAA, FedRAMP certified</li>
+                  <li><strong>Mailchimp:</strong> GDPR compliant, SOC 2 Type II certified</li>
+                  <li><strong>Google Analytics:</strong> GDPR compliant with data processing agreement</li>
+                </ul>
+              </div>
+
+              <div className="bg-brand/10 border border-brand/30 rounded-lg p-4">
+                <p className="text-sm text-text/90 leading-relaxed">
+                  <strong>⚠️ Important Note:</strong> While we implement security best practices and align with industry 
+                  standards, no method of transmission over the Internet or electronic storage is 100% secure. We cannot 
+                  guarantee absolute security but are committed to protecting your information using industry-standard measures.
+                </p>
+              </div>
+            </div>
+          </div>
+
           {/* International Transfers */}
           <div>
-            <h2 className="text-xl font-bold text-text mb-3">10. International Data Transfers</h2>
+            <h2 className="text-xl font-bold text-text mb-3">11. International Data Transfers</h2>
             <p className="leading-relaxed">
               Your information may be transferred to and processed in the United States and other countries 
               where our service providers operate. These countries may have different data protection laws. 
@@ -219,7 +292,7 @@ export default function PrivacyPage() {
 
           {/* California Privacy Rights */}
           <div>
-            <h2 className="text-xl font-bold text-text mb-3">11. California Privacy Rights (CCPA)</h2>
+            <h2 className="text-xl font-bold text-text mb-3">12. California Privacy Rights (CCPA)</h2>
             <p className="mb-3">California residents have additional rights under the CCPA:</p>
             <ul className="list-disc pl-6 space-y-1">
               <li>Know what personal information is collected, used, and shared</li>
@@ -234,7 +307,7 @@ export default function PrivacyPage() {
 
           {/* GDPR Compliance */}
           <div>
-            <h2 className="text-xl font-bold text-text mb-3">12. GDPR Compliance (EU Users)</h2>
+            <h2 className="text-xl font-bold text-text mb-3">13. GDPR Compliance (EU Users)</h2>
             <p className="mb-3">If you are in the European Economic Area (EEA), we process your data under the following lawful bases:</p>
             <ul className="list-disc pl-6 space-y-1">
               <li><strong>Consent:</strong> You have given clear consent for us to process your data (e.g., analytics cookies)</li>
@@ -249,7 +322,7 @@ export default function PrivacyPage() {
 
           {/* Do Not Track */}
           <div>
-            <h2 className="text-xl font-bold text-text mb-3">13. Do Not Track Signals</h2>
+            <h2 className="text-xl font-bold text-text mb-3">14. Do Not Track Signals</h2>
             <p className="leading-relaxed">
               Some browsers support "Do Not Track" (DNT) signals. Because there is no industry standard for DNT, 
               our Site does not currently respond to DNT signals. However, you can control tracking through our 
@@ -259,7 +332,7 @@ export default function PrivacyPage() {
 
           {/* Changes to Privacy Policy */}
           <div>
-            <h2 className="text-xl font-bold text-text mb-3">14. Changes to This Privacy Policy</h2>
+            <h2 className="text-xl font-bold text-text mb-3">15. Changes to This Privacy Policy</h2>
             <p className="leading-relaxed">
               We may update this Privacy Policy from time to time. Changes will be posted on this page with 
               an updated "Last updated" date. We encourage you to review this policy periodically. Continued 
@@ -269,7 +342,7 @@ export default function PrivacyPage() {
 
           {/* Contact Information */}
           <div>
-            <h2 className="text-xl font-bold text-text mb-3">15. Contact Us</h2>
+            <h2 className="text-xl font-bold text-text mb-3">16. Contact Us</h2>
             <p className="leading-relaxed mb-3">
               If you have questions about this Privacy Policy or our data practices, contact us:
             </p>

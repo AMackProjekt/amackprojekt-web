@@ -13,6 +13,7 @@
     "@azure/communication-email": "^1.1.0",
     "@azure/cosmos": "^4.9.0",
     "@azure/functions": "^4.5.0",
+    "@mailchimp/mailchimp_marketing": "^3.0.80",
     "applicationinsights": "^3.12.1",
     "bcryptjs": "^3.0.3",
     "dotenv": "^17.2.3",

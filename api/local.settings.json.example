@@ -1,0 +1,21 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "MAILCHIMP_API_KEY": "your-mailchimp-api-key-here",
+    "MAILCHIMP_SERVER_PREFIX": "us1",
+    "MAILCHIMP_AUDIENCE_ID": "your-audience-id-here",
+    "COSMOS_DB_ENDPOINT": "your-cosmos-endpoint",
+    "COSMOS_DB_KEY": "your-cosmos-key",
+    "JWT_SECRET": "your-secure-jwt-secret-minimum-32-characters",
+    "COMMUNICATION_SERVICES_CONNECTION_STRING": "your-communication-services-connection",
+    "SENDER_EMAIL": "noreply@mackprojekt.com",
+    "APPLICATIONINSIGHTS_CONNECTION_STRING": "your-app-insights-connection"
+  },
+  "Host": {
+    "LocalHttpPort": 7071,
+    "CORS": "*",
+    "CORSCredentials": false
+  }
+}
