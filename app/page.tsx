@@ -12,6 +12,7 @@ import { WaitlistForm } from "@/components/ui/WaitlistForm";
 import { ApiDocsPreview } from "@/components/ui/ApiDocsPreview";
 import { TechnicalBlog } from "@/components/ui/TechnicalBlog";
 import { Web3Connect } from "@/components/ui/Web3Connect";
+import { MackAssistant } from "@/components/ui/MackAssistant";
 
 export default function Page() {
   return (
@@ -406,6 +407,21 @@ export default function Page() {
             <WaitlistForm source="homepage" />
           </div>
         </GlowCard>
+      </section>
+
+      <ElectricDivider className="mx-auto max-w-container px-7" color="accent" />
+
+      {/* MACKASSISTANT RAG AI SEARCH */}
+      <section className="mx-auto max-w-container px-7 py-20">
+        <SectionHeading
+          eyebrow="AI-Powered Search"
+          title="Ask MackAssistant Anything"
+          subtitle="Natural language search for our products, services, pricing, and capabilities"
+        />
+
+        <div className="mt-10">
+          <MackAssistant />
+        </div>
       </section>
 
       {/* FOOTER CTA */}
