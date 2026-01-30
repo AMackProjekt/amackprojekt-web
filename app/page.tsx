@@ -9,6 +9,9 @@ import { ElectricText, ElectricButton, ElectricDivider } from "@/components/ui/E
 import { MackChatDemo } from "@/components/ui/MackChatDemo";
 import { FoundersLetter } from "@/components/ui/FoundersLetter";
 import { WaitlistForm } from "@/components/ui/WaitlistForm";
+import { ApiDocsPreview } from "@/components/ui/ApiDocsPreview";
+import { TechnicalBlog } from "@/components/ui/TechnicalBlog";
+import { Web3Connect } from "@/components/ui/Web3Connect";
 
 export default function Page() {
   return (
@@ -325,10 +328,63 @@ export default function Page() {
 
       <ElectricDivider className="mx-auto max-w-container px-7" color="green" />
 
+      {/* API DOCUMENTATION PREVIEW */}
+      <section className="mx-auto max-w-container px-7 py-20">
+        <SectionHeading
+          eyebrow="For Developers"
+          title="Platform Engineering at Scale"
+          subtitle="Production-ready APIs with comprehensive documentation. Built for developers who value clean code and reliable infrastructure."
+        />
+
+        <div className="mt-12">
+          <ApiDocsPreview />
+        </div>
+
+        <div className="mt-12 text-center">
+          <Button variant="primary" href="https://github.com/amackprojekt" aria-label="View full API documentation on GitHub">
+            View Full Documentation →
+          </Button>
+        </div>
+      </section>
+
+      <ElectricDivider className="mx-auto max-w-container px-7" color="brand" />
+
+      {/* WEB3 INNOVATION */}
+      <section className="mx-auto max-w-container px-7 py-20">
+        <SectionHeading
+          eyebrow="Next Generation"
+          title="Web3 Integration (Beta)"
+          subtitle="We're at the forefront of decentralized technology. Connect your wallet and experience the future of digital identity."
+        />
+
+        <div className="mt-12 max-w-2xl mx-auto">
+          <Web3Connect />
+        </div>
+      </section>
+
+      <ElectricDivider className="mx-auto max-w-container px-7" color="brand2" />
+
       {/* FOUNDER'S LETTER */}
       <section className="mx-auto max-w-container px-7 py-20">
         <FoundersLetter />
       </section>
+
+      <ElectricDivider className="mx-auto max-w-container px-7" color="accent" />
+
+      {/* TECHNICAL BLOG */}
+      <section className="mx-auto max-w-container px-7 py-20">
+        <SectionHeading
+          eyebrow="Thought Leadership"
+          title="Engineering & Philosophy Blog"
+          subtitle="Deep dives into the technology, strategy, and purpose behind everything we build. Written by Donyale 'DThree' Mack."
+        />
+
+        <div className="mt-12">
+          <TechnicalBlog />
+        </div>
+      </section>
+
+      <ElectricDivider className="mx-auto max-w-container px-7" color="green" />
 
       {/* INNOVATION LAB WAITLIST */}
       <section className="mx-auto max-w-container px-7 py-20">
