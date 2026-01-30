@@ -37,11 +37,28 @@ export default function Page() {
         </p>
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-          <ElectricButton color="green" variant="solid" onClick={() => window.location.href = '/launch'}>
+          <ElectricButton 
+            color="green" 
+            variant="solid" 
+            onClick={() => window.location.href = '/launch'}
+            aria-label="Watch our product launch video demo"
+          >
             Watch Launch Video
           </ElectricButton>
-          <Button variant="primary" href="/portal/auth">Get Started</Button>
-          <Button variant="ghost" href="/portal/dashboard">View Platform</Button>
+          <Button 
+            variant="primary" 
+            href="/portal/auth"
+            aria-label="Sign up and get started with our platform"
+          >
+            Get Started
+          </Button>
+          <Button 
+            variant="ghost" 
+            href="/portal/dashboard"
+            aria-label="View the user dashboard and platform overview"
+          >
+            View Platform
+          </Button>
         </div>
       </section>
 
@@ -80,7 +97,8 @@ export default function Page() {
 
         <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* T.O.O.L.S. Inc Card */}
-          <GlowCard className="p-8 lg:p-10 group hover:shadow-brand2/25 transition-all duration-300">
+          <article aria-label="T.O.O.L.S. Inc - Reentry support platform with 1200+ users and 87% success rate">
+            <GlowCard className="p-8 lg:p-10 group hover:shadow-brand2/25 transition-all duration-300">
             <div className="flex items-start gap-4 mb-6">
               <div className="text-5xl">🎓</div>
               <div className="flex-1">
@@ -140,9 +158,11 @@ export default function Page() {
               </Button>
             </div>
           </GlowCard>
+          </article>
 
           {/* MackChat Card */}
-          <GlowCard className="p-8 lg:p-10 group hover:shadow-brand/25 transition-all duration-300">
+          <article aria-label="MackChat - Military and civilian messaging platform launching Q2-Q4 2026">
+            <GlowCard className="p-8 lg:p-10 group hover:shadow-brand/25 transition-all duration-300">
             <div className="flex items-start gap-4 mb-6">
               <div className="text-5xl">💬</div>
               <div className="flex-1">
@@ -200,8 +220,7 @@ export default function Page() {
             <Button variant="primary" href="/messaging" className="w-full">
               Learn More & Join Waitlist
             </Button>
-          </GlowCard>
-        </div>
+          </GlowCard>          </article>        </div>
       </section>
 
       {/* MACKCHAT INTERACTIVE DEMO */}
@@ -216,6 +235,95 @@ export default function Page() {
           <MackChatDemo />
         </div>
       </section>
+
+      {/* LIVE ROADMAP & PROGRESS TRACKER */}
+      <section className="mx-auto max-w-container px-7 py-20">
+        <SectionHeading
+          eyebrow="Our Journey"
+          title="2026 Innovation Roadmap"
+          subtitle="See what we're building right now and what's coming next. Transparency drives accountability."
+        />
+
+        <div className="mt-12 space-y-6">
+          {/* Phase 1: Foundation */}
+          <div className="glass rounded-xl p-6 border border-green-400/20 hover:border-green-400/40 transition-all duration-300">
+            <div className="flex items-center justify-between mb-4">
+              <div>
+                <h3 className="text-lg font-bold text-text mb-1">Phase 1: Foundation</h3>
+                <p className="text-sm text-muted">Core infrastructure & MVP launch</p>
+              </div>
+              <div className="text-right">
+                <div className="text-2xl font-bold text-green-400">100%</div>
+                <div className="text-xs text-muted">COMPLETE</div>
+              </div>
+            </div>
+            <div className="w-full h-2 bg-panel rounded-full overflow-hidden">
+              <div className="h-full w-full bg-green-400 rounded-full"></div>
+            </div>
+            <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
+              <div>✓ Homepage</div>
+              <div>✓ Brand System</div>
+              <div>✓ T.O.O.L.S. Inc</div>
+              <div>✓ MackChat MVP</div>
+            </div>
+          </div>
+
+          {/* Phase 2: Expansion */}
+          <div className="glass rounded-xl p-6 border border-brand/20 hover:border-brand/40 transition-all duration-300">
+            <div className="flex items-center justify-between mb-4">
+              <div>
+                <h3 className="text-lg font-bold text-text mb-1">Phase 2: Expansion</h3>
+                <p className="text-sm text-muted">Feature releases & community building</p>
+              </div>
+              <div className="text-right">
+                <div className="text-2xl font-bold text-brand">60%</div>
+                <div className="text-xs text-muted">IN PROGRESS</div>
+              </div>
+            </div>
+            <div className="w-full h-2 bg-panel rounded-full overflow-hidden">
+              <div className="h-full w-3/5 bg-brand rounded-full"></div>
+            </div>
+            <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
+              <div>✓ MackChat Beta</div>
+              <div>✓ API Docs</div>
+              <div>⟳ Analytics Dashboard</div>
+              <div>⟳ Community Portal</div>
+            </div>
+          </div>
+
+          {/* Phase 3: Scaling */}
+          <div className="glass rounded-xl p-6 border border-brand2/20 hover:border-brand2/40 transition-all duration-300">
+            <div className="flex items-center justify-between mb-4">
+              <div>
+                <h3 className="text-lg font-bold text-text mb-1">Phase 3: Scaling</h3>
+                <p className="text-sm text-muted">Enterprise features & integrations</p>
+              </div>
+              <div className="text-right">
+                <div className="text-2xl font-bold text-brand2">30%</div>
+                <div className="text-xs text-muted">PLANNING</div>
+              </div>
+            </div>
+            <div className="w-full h-2 bg-panel rounded-full overflow-hidden">
+              <div className="h-full w-3/10 bg-brand2 rounded-full"></div>
+            </div>
+            <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
+              <div>⟳ Enterprise Suite</div>
+              <div>⟳ Mobile Apps</div>
+              <div>⟳ AI Integration</div>
+              <div>⟳ Web3 Support</div>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-12 text-center">
+          <p className="text-muted mb-6">Want detailed build logs? Check our GitHub repositories for the full technical journey.</p>
+          <Button variant="primary" href="https://github.com/amackprojekt">
+            View Build Logs on GitHub →
+          </Button>
+        </div>
+      </section>
+
+      <ElectricDivider className="mx-auto max-w-container px-7" color="green" />
 
       {/* FOUNDER'S LETTER */}
       <section className="mx-auto max-w-container px-7 py-20">
