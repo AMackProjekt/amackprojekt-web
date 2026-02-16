@@ -9,6 +9,7 @@
     "export": "next build && next export",
     "start": "next start",
     "lint": "next lint",
+    "create-client-site": "node scripts/create-client-site.js",
     "optimize-logos": "node scripts/optimize-logos.js",
     "docker:build": "docker build -t toolsinc-web:latest .",
     "docker:run": "docker run -d -p 3000:3000 --name toolsinc-web toolsinc-web:latest",
