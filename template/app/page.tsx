@@ -102,7 +102,6 @@ export default function Page() {
           </p>
           <Button 
             variant="primary"
-            size="lg"
             onClick={() => window.location.href = '/contact'}
             aria-label="Contact us today"
           >
