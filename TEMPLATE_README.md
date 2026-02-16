@@ -2,6 +2,45 @@
 
 Welcome! This is a **production-ready, multi-client template** designed for rapid deployment of modern SaaS websites.
 
+## 🚀 Using the CLI Generator (Recommended)
+
+The fastest way to create a new client site is using our automated CLI tool:
+
+```bash
+# Interactive mode - prompts for all settings
+npm run create-client-site
+
+# Non-interactive mode - provide all settings via flags
+npm run create-client-site -- \
+  --name "Acme Corporation" \
+  --slug acme-corp \
+  --domain acmecorp.com \
+  --primary-color "#3B82F6" \
+  --secondary-color "#10B981" \
+  --accent-color "#F59E0B" \
+  --email contact@acmecorp.com \
+  --description "Professional consulting services" \
+  --output ../acme-corp
+
+# Using a config file
+npm run create-client-site -- --config client-config.json
+```
+
+### What the CLI Does:
+
+1. ✅ Creates project directory
+2. ✅ Copies all template files
+3. ✅ Replaces placeholders with your branding
+4. ✅ Configures colors in Tailwind
+5. ✅ Sets up environment variables
+6. ✅ Installs dependencies
+7. ✅ Initializes git repository
+8. ✅ Creates initial commit
+
+**Time to launch: 5-10 minutes!** ⚡
+
+---
+
 ## 📚 Documentation
 
 ### 1. **FRAMEWORK_TEMPLATE.md** ← START HERE
