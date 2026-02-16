@@ -30,7 +30,7 @@ export default function Page() {
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
           <Button 
-            variant="solid"
+            variant="primary"
             onClick={() => window.location.href = '/contact'}
             aria-label="Get in touch with us"
           >
@@ -101,7 +101,7 @@ export default function Page() {
             Join thousands of satisfied customers who trust {{CLIENT_NAME}} for their needs.
           </p>
           <Button 
-            variant="solid"
+            variant="primary"
             size="lg"
             onClick={() => window.location.href = '/contact'}
             aria-label="Contact us today"

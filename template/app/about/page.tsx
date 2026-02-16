@@ -87,8 +87,7 @@ export default function AboutPage() {
             Get in touch with us to discuss how we can help you achieve your goals.
           </p>
           <Button 
-            variant="solid"
-            size="lg"
+            variant="primary"
             onClick={() => window.location.href = '/contact'}
           >
             Contact Us
