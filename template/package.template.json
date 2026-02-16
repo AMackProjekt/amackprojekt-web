@@ -1,0 +1,45 @@
+{
+  "name": "{{PROJECT_NAME}}",
+  "private": true,
+  "version": "1.0.0",
+  "description": "{{COMPANY_DESCRIPTION}}",
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "export": "next build && next export",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "applicationinsights": "^3.12.1",
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.12.0",
+    "next": "^15.5.10",
+    "qrcode.react": "^4.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "recharts": "^2.15.0",
+    "tailwind-merge": "^2.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "@types/react": "^19.0.6",
+    "@types/react-dom": "^19.0.3",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.18.0",
+    "eslint-config-next": "^16.1.2",
+    "postcss": "^8.4.49",
+    "sharp": "^0.34.5",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.3"
+  },
+  "overrides": {
+    "glob": "^11.0.0",
+    "semver": "^7.6.3",
+    "cross-spawn": "^7.0.6",
+    "micromatch": "^4.0.8",
+    "tar": "^7.4.3",
+    "qs": "^6.13.1"
+  }
+}
