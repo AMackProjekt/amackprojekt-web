@@ -1,23 +1,77 @@
 # Client Customization Checklist
 ## Step-by-Step Template Configuration Guide
 
+> **⚡ Quick Win**: Use the CLI generator (`npm run create-client-site`) to skip manual setup and launch in 1 hour!
+
 ---
 
-## 📋 Pre-Setup Requirements
+## 📋 Overview
+
+This checklist guides you through customizing the template for a new client. Organized into three phases:
+
+- **Pre-Launch** (4-6 hours): Branding, content, and configuration
+- **Launch Day** (1-2 hours): Deployment and testing
+- **Post-Launch** (Ongoing): Monitoring and optimization
+
+**Estimated total time**: 16-26 hours for complete customization (or 1 hour with CLI tool!)
+
+---
+
+## 🚀 Quick Win: 1-Hour MVP Launch
+
+Use the CLI generator for fastest setup:
+
+```bash
+npm run create-client-site
+# Follow prompts, launch in ~10 minutes
+```
+
+Then customize:
+1. Replace logo in `public/logos/` (10 min)
+2. Edit homepage copy in `app/page.tsx` (20 min)
+3. Update contact page (10 min)
+4. Deploy to Azure/Vercel (20 min)
+
+**Total time: ~1 hour for working site!**
+
+---
+
+## Phase 1: Pre-Launch Setup
+
+### Step 1: Project Creation (10 min)
+
+**Option A: Use CLI Generator (Recommended)**
+```bash
+npm run create-client-site
+# Automatically creates project with your branding
+```
+
+**Option B: Manual Setup**
+- [ ] Copy template directory
+- [ ] Replace all `{{PLACEHOLDERS}}` manually
+- [ ] Rename template files
+
+**Time saved with CLI: 2-3 hours**
+
+---
+
+### Step 2: Pre-Setup Requirements (Before starting)
+
+Gather these materials:
 
 - [ ] Client brand guidelines (colors, logo, fonts)
 - [ ] Client content/copy (homepage text, features, etc.)
 - [ ] Domain name ready
-- [ ] Azure subscription with credits
+- [ ] Azure subscription with credits (or Vercel account)
 - [ ] GitHub account for repository
-- [ ] Mailchimp account (if using email)
+- [ ] Mailchimp account (if using email marketing)
 - [ ] Google Analytics 4 property (if tracking)
 
 ---
 
-## 🎨 Phase 1: Visual Branding (2-3 hours)
+### Step 3: Visual Branding (30 min - 2 hours)
 
-### Color System
+#### Color System
 **File:** `tailwind.config.ts` (lines 15-30)
 
 ```typescript

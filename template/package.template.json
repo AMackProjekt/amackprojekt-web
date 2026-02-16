@@ -1,23 +1,15 @@
 {
-  "name": "toolsinc-dashdarkx",
+  "name": "{{PROJECT_NAME}}",
   "private": true,
   "version": "1.0.0",
+  "description": "{{COMPANY_DESCRIPTION}}",
   "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "export": "next build && next export",
     "start": "next start",
-    "lint": "next lint",
-    "create-client-site": "node scripts/create-client-site.js",
-    "optimize-logos": "node scripts/optimize-logos.js",
-    "docker:build": "docker build -t toolsinc-web:latest .",
-    "docker:run": "docker run -d -p 3000:3000 --name toolsinc-web toolsinc-web:latest",
-    "docker:stop": "docker stop toolsinc-web && docker rm toolsinc-web",
-    "docker:logs": "docker logs -f toolsinc-web",
-    "compose:up": "docker-compose up -d",
-    "compose:down": "docker-compose down",
-    "compose:logs": "docker-compose logs -f"
+    "lint": "next lint"
   },
   "dependencies": {
     "applicationinsights": "^3.12.1",
@@ -28,7 +20,6 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "recharts": "^2.15.0",
-    "serve": "^14.2.4",
     "tailwind-merge": "^2.6.0"
   },
   "devDependencies": {
