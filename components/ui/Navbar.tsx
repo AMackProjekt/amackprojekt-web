@@ -42,7 +42,7 @@ export function Navbar() {
 
         <div className="flex items-center gap-3">
           {mounted && <ThemeToggle />}
-          <Button variant="primary" href="mailto:ampstudio@mackprojekt.com?subject=ATTN%20Waitlist">
+          <Button variant="primary" href="/waitlist">
             Join Waitlist
           </Button>
         </div>
