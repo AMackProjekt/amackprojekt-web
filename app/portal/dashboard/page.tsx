@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/auth";
 import { motion } from "framer-motion";
 import { GlowCard } from "@/components/ui/GlowCard";
+import { PortalAssistant } from "@/components/ui/PortalAssistant";
 
 export default function DashboardPage() {
   const { user, isAuthenticated, logout } = useAuth();
@@ -98,6 +99,16 @@ export default function DashboardPage() {
             </motion.div>
           ))}
         </div>
+
+        {/* AI Assistant */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="mb-8"
+        >
+          <PortalAssistant />
+        </motion.div>
 
         {/* Navigation Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
