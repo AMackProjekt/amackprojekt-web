@@ -12,6 +12,9 @@ const compat = new FlatCompat({
 export default [
   ...compat.extends('next/core-web-vitals'),
   {
+    ignores: ['template/**', 'node_modules/**', '.next/**'],
+  },
+  {
     rules: {
       'react-hooks/exhaustive-deps': 'warn',
     },
