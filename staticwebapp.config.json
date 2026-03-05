@@ -4,9 +4,33 @@
       "route": "/api/*"
     },
     {
-      "route": "/*",
+      "route": "/_next/static/*",
       "headers": {
         "cache-control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
+      "route": "/logos/*",
+      "headers": {
+        "cache-control": "public, max-age=2592000, immutable"
+      }
+    },
+    {
+      "route": "/*.{js,css,woff,woff2,ttf}",
+      "headers": {
+        "cache-control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
+      "route": "/*.{html,json}",
+      "headers": {
+        "cache-control": "public, max-age=0, must-revalidate"
+      }
+    },
+    {
+      "route": "/*",
+      "headers": {
+        "cache-control": "public, max-age=3600"
       }
     }
   ],
