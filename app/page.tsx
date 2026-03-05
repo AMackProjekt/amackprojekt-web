@@ -101,7 +101,7 @@ export default function Page() {
 
         <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* T.O.O.L.S. Inc Card */}
-          <article aria-label="T.O.O.L.S. Inc - Reentry support platform with 1200+ users and 87% success rate">
+          <article aria-label="T.O.O.L.S. Inc - Reentry support platform with 120+ users and 87% success rate">
             <GlowCard className="p-8 lg:p-10 group hover:shadow-brand2/25 transition-all duration-300">
             <div className="flex items-start gap-4 mb-6">
               <div className="text-5xl">🎓</div>
@@ -125,7 +125,7 @@ export default function Page() {
 
             <div className="grid grid-cols-2 gap-4 mb-6">
               <div className="glass rounded-lg p-4 text-center">
-                <div className="text-2xl font-extrabold text-brand">1,200+</div>
+                <div className="text-2xl font-extrabold text-brand">120+</div>
                 <div className="text-xs text-muted">Users Served</div>
               </div>
               <div className="glass rounded-lg p-4 text-center">

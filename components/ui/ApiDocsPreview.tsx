@@ -12,7 +12,7 @@ const endpoints = [
     response: {
       success: true,
       data: [
-        { id: 1, name: "T.O.O.L.S. Inc", status: "live", users: 1200 },
+        { id: 1, name: "T.O.O.L.S. Inc", status: "live", users: 120 },
         { id: 2, name: "MackChat", status: "beta", users: 450 }
       ]
     }
