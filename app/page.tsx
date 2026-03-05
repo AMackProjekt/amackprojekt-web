@@ -69,20 +69,20 @@ export default function Page() {
       {/* FEATURES */}
       <section id="platform" className="mx-auto max-w-container px-7 pt-4 pb-10 md:pt-8 md:pb-20">
         <SectionHeading
-          eyebrow="What We Do"
-          title="Digital Solutions That Matter"
-          subtitle="We create innovative web applications, platforms, and digital experiences that drive business growth and community engagement."
+          eyebrow="Strategic Development"
+          title="We Build Systems Engineered to Win"
+          subtitle="Technology is a means to an end. We align architecture with business strategy, ensuring every feature drives measurable results."
         />
 
         <div className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
           {[
-            ["Web Development", "Custom websites and web applications built with modern technologies like Next.js, React, and TypeScript."],
-            ["Platform Engineering", "Scalable platforms and APIs designed to grow with your business needs and user base."],
-            ["User Experience", "Beautiful, intuitive interfaces that users love, backed by research and best practices in UX design."],
-            ["Digital Strategy", "Comprehensive planning and execution to help your business thrive in the digital landscape."]
+            ["🚀 Full-Stack Systems", "Production-grade applications from frontend to backend API. We architect for scale, performance, and reliability from day one—not afterthoughts."],
+            ["📊 Data-Driven Design", "Every pixel serves a purpose. We craft interfaces that convert users into customers, measure success, and iterate on what works."],
+            ["🔗 API & Integration", "Powerful, well-documented APIs that connect your systems. Secure, fast, and built for partners and third-party developers to build on."],
+            ["🎯 Strategic Development", "We don't just code—we align tech with business goals. Market analysis, competitive positioning, and GTM strategy baked into every project."]
           ].map(([h, p]) => (
             <GlowCard key={h} className="group hover:shadow-neon-green transition-all duration-300 hover:border-green-400/20">
-              <div className="text-lg font-extrabold tracking-tight bg-gradient-to-r from-text to-green-400 bg-clip-text text-transparent">{h}</div>
+              <div className="text-lg font-extrabold tracking-tight text-text">{h}</div>
               <div className="mt-2 text-sm text-muted leading-relaxed">{p}</div>
             </GlowCard>
           ))}
@@ -90,6 +90,83 @@ export default function Page() {
       </section>
 
       <ElectricDivider className="mx-auto max-w-container px-7" color="green" />
+
+      {/* WHAT WE DELIVER */}
+      <section className="mx-auto max-w-container px-7 py-10 md:py-20">
+        <SectionHeading
+          eyebrow="Real Outcomes"
+          title="Here's What Actually Gets Built"
+          subtitle="We don't sell hours—we deliver results. Here's the toolkit we bring to every project."
+        />
+
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Left column */}
+          <div className="space-y-4">
+            <GlowCard className="p-6 group hover:shadow-brand/25 transition-all duration-300">
+              <div className="flex items-start gap-3">
+                <div className="text-2xl">⚡</div>
+                <div className="flex-1">
+                  <h3 className="font-bold text-text mb-2">Lightning-Fast Performance</h3>
+                  <p className="text-xs text-muted">Sub-second page loads, optimized for mobile-first. We measure performance obsessively.</p>
+                </div>
+              </div>
+            </GlowCard>
+
+            <GlowCard className="p-6 group hover:shadow-brand/25 transition-all duration-300">
+              <div className="flex items-start gap-3">
+                <div className="text-2xl">🔒</div>
+                <div className="flex-1">
+                  <h3 className="font-bold text-text mb-2">Military-Grade Security</h3>
+                  <p className="text-xs text-muted">Encryption, HTTPS, secure auth, GDPR-compliant. Security isn't optional—it's foundational.</p>
+                </div>
+              </div>
+            </GlowCard>
+
+            <GlowCard className="p-6 group hover:shadow-brand/25 transition-all duration-300">
+              <div className="flex items-start gap-3">
+                <div className="text-2xl">📈</div>
+                <div className="flex-1">
+                  <h3 className="font-bold text-text mb-2">Built for Growth</h3>
+                  <p className="text-xs text-muted">Scalable architecture from day one. Handle 100 users or 100K—your app grows with you.</p>
+                </div>
+              </div>
+            </GlowCard>
+          </div>
+
+          {/* Right column */}
+          <div className="space-y-4">
+            <GlowCard className="p-6 group hover:shadow-brand2/25 transition-all duration-300">
+              <div className="flex items-start gap-3">
+                <div className="text-2xl">🧠</div>
+                <div className="flex-1">
+                  <h3 className="font-bold text-text mb-2">Smart Infrastructure</h3>
+                  <p className="text-xs text-muted">AI integration, data pipelines, real-time analytics. Modern problems = modern solutions.</p>
+                </div>
+              </div>
+            </GlowCard>
+
+            <GlowCard className="p-6 group hover:shadow-brand2/25 transition-all duration-300">
+              <div className="flex items-start gap-3">
+                <div className="text-2xl">🎯</div>
+                <div className="flex-1">
+                  <h3 className="font-bold text-text mb-2">Conversion-Optimized Design</h3>
+                  <p className="text-xs text-muted">Every interface is tested, measured, and refined. We design for outcomes, not beauty.</p>
+                </div>
+              </div>
+            </GlowCard>
+
+            <GlowCard className="p-6 group hover:shadow-brand2/25 transition-all duration-300">
+              <div className="flex items-start gap-3">
+                <div className="text-2xl">📋</div>
+                <div className="flex-1">
+                  <h3 className="font-bold text-text mb-2">Documentation & Support</h3>
+                  <p className="text-xs text-muted">Every project ships with API docs, deployment guides, and ongoing technical support.</p>
+                </div>
+              </div>
+            </GlowCard>
+          </div>
+        </div>
+      </section>
 
       {/* T.O.O.L.S. INC FLAGSHIP PRODUCT */}
       <section className="mx-auto max-w-container px-7 py-10 md:py-20">
