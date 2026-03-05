@@ -83,6 +83,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="font-sans text-text antialiased">
+        {/* Google Analytics */}
+        <GoogleAnalytics measurementId="G-HDG1JR4N7X" />
+        
         {process.env.NEXT_PUBLIC_GTM_ID && (
           <>
             <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
