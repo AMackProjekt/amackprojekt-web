@@ -23,7 +23,7 @@ export default function Page() {
       <Navbar />
 
       {/* HERO */}
-      <section className="mx-auto max-w-container px-7 pt-24 pb-16 text-center">
+      <section className="mx-auto max-w-container px-7 pt-24 pb-8 md:pb-16 text-center">
         <h1 className="h1">
           <ElectricText color="green">Welcome To</ElectricText>
           <br />
@@ -67,7 +67,7 @@ export default function Page() {
       </section>
 
       {/* FEATURES */}
-      <section id="platform" className="mx-auto max-w-container px-7 pt-8 pb-20">
+      <section id="platform" className="mx-auto max-w-container px-7 pt-4 pb-10 md:pt-8 md:pb-20">
         <SectionHeading
           eyebrow="What We Do"
           title="Digital Solutions That Matter"
@@ -92,7 +92,7 @@ export default function Page() {
       <ElectricDivider className="mx-auto max-w-container px-7" color="green" />
 
       {/* T.O.O.L.S. INC FLAGSHIP PRODUCT */}
-      <section className="mx-auto max-w-container px-7 py-20">
+      <section className="mx-auto max-w-container px-7 py-10 md:py-20">
         <SectionHeading
           eyebrow="Flagship Innovation"
           title="Proof of Impact, Not Just Ideas"
@@ -228,7 +228,7 @@ export default function Page() {
       </section>
 
       {/* MACKCHAT INTERACTIVE DEMO */}
-      <section className="mx-auto max-w-container px-7 py-20">
+      <section className="mx-auto max-w-container px-7 py-10 md:py-20">
         <SectionHeading
           eyebrow="Live Preview"
           title="Experience MackChat"
@@ -241,7 +241,7 @@ export default function Page() {
       </section>
 
       {/* LIVE ROADMAP & PROGRESS TRACKER */}
-      <section className="mx-auto max-w-container px-7 py-20">
+      <section className="mx-auto max-w-container px-7 py-10 md:py-20">
         <SectionHeading
           eyebrow="Our Journey"
           title="2026 Innovation Roadmap"
@@ -327,10 +327,10 @@ export default function Page() {
         </div>
       </section>
 
-      <ElectricDivider className="mx-auto max-w-container px-7" color="green" />
+      <ElectricDivider className="mx-auto max-w-container px-7 hidden md:block" color="green" />
 
       {/* API DOCUMENTATION PREVIEW */}
-      <section className="mx-auto max-w-container px-7 py-20">
+      <section className="mx-auto max-w-container px-7 py-10 md:py-20 hidden md:block">
         <SectionHeading
           eyebrow="For Developers"
           title="Platform Engineering at Scale"
@@ -348,10 +348,10 @@ export default function Page() {
         </div>
       </section>
 
-      <ElectricDivider className="mx-auto max-w-container px-7" color="brand" />
+      <ElectricDivider className="mx-auto max-w-container px-7 hidden md:block" color="brand" />
 
       {/* WEB3 INNOVATION */}
-      <section className="mx-auto max-w-container px-7 py-20">
+      <section className="mx-auto max-w-container px-7 py-10 md:py-20 hidden md:block">
         <SectionHeading
           eyebrow="Next Generation"
           title="Web3 Integration (Beta)"
@@ -363,17 +363,17 @@ export default function Page() {
         </div>
       </section>
 
-      <ElectricDivider className="mx-auto max-w-container px-7" color="brand2" />
+      <ElectricDivider className="mx-auto max-w-container px-7 hidden md:block" color="brand2" />
 
       {/* FOUNDER'S LETTER */}
-      <section className="mx-auto max-w-container px-7 py-20">
+      <section className="mx-auto max-w-container px-7 py-10 md:py-20">
         <FoundersLetter />
       </section>
 
-      <ElectricDivider className="mx-auto max-w-container px-7" color="accent" />
+      <ElectricDivider className="mx-auto max-w-container px-7 hidden md:block" color="accent" />
 
       {/* TECHNICAL BLOG */}
-      <section className="mx-auto max-w-container px-7 py-20">
+      <section className="mx-auto max-w-container px-7 py-10 md:py-20 hidden md:block">
         <SectionHeading
           eyebrow="Thought Leadership"
           title="Engineering & Philosophy Blog"
@@ -385,10 +385,10 @@ export default function Page() {
         </div>
       </section>
 
-      <ElectricDivider className="mx-auto max-w-container px-7" color="green" />
+      <ElectricDivider className="mx-auto max-w-container px-7 hidden md:block" color="green" />
 
       {/* INNOVATION LAB WAITLIST */}
-      <section className="mx-auto max-w-container px-7 py-20">
+      <section className="mx-auto max-w-container px-7 py-10 md:py-20">
         <GlowCard className="p-10 lg:p-16">
           <div className="text-center mb-10">
             <div className="text-xs font-semibold tracking-[0.18em] text-brand2 uppercase">
@@ -409,10 +409,10 @@ export default function Page() {
         </GlowCard>
       </section>
 
-      <ElectricDivider className="mx-auto max-w-container px-7" color="accent" />
+      <ElectricDivider className="mx-auto max-w-container px-7 hidden md:block" color="accent" />
 
       {/* MACKASSISTANT RAG AI SEARCH */}
-      <section className="mx-auto max-w-container px-7 py-20">
+      <section className="mx-auto max-w-container px-7 py-10 md:py-20">
         <SectionHeading
           eyebrow="AI-Powered Search"
           title="Ask MackAssistant Anything"

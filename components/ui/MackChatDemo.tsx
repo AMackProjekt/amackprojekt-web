@@ -5,26 +5,61 @@ import { motion, AnimatePresence } from "framer-motion";
 import { GlowCard } from "./GlowCard";
 
 const demoMessages = [
-  { id: 1, user: "Sarah M.", avatar: "👩‍💼", message: "Team, the new deployment is live!", time: "2:34 PM", type: "sent" },
-  { id: 2, user: "Mike R.", avatar: "👨‍💻", message: "Great work! Testing now.", time: "2:35 PM", type: "received" },
-  { id: 3, user: "You", avatar: "🚀", message: "Thanks team! Let me know if you see any issues.", time: "2:36 PM", type: "sent" },
+  { 
+    id: 1, 
+    user: "Sarah M.", 
+    avatar: "SM", 
+    avatarColor: "from-purple-500 to-pink-500",
+    message: "Team, the new deployment is live!", 
+    time: "2:34 PM", 
+    type: "sent" 
+  },
+  { 
+    id: 2, 
+    user: "Mike R.", 
+    avatar: "MR", 
+    avatarColor: "from-blue-500 to-cyan-500",
+    message: "Great work! Testing now.", 
+    time: "2:35 PM", 
+    type: "received" 
+  },
+  { 
+    id: 3, 
+    user: "You", 
+    avatar: "YOU", 
+    avatarColor: "from-brand to-brand2",
+    message: "Thanks team! Let me know if you see any issues.", 
+    time: "2:36 PM", 
+    type: "sent" 
+  },
 ];
 
+interface Message {
+  id: number;
+  user: string;
+  avatar: string;
+  avatarColor: string;
+  message: string;
+  time: string;
+  type: "sent" | "received";
+}
+
 export function MackChatDemo() {
-  const [messages, setMessages] = useState(demoMessages);
+  const [messages, setMessages] = useState<Message[]>(demoMessages);
   const [inputValue, setInputValue] = useState("");
   const [isTyping, setIsTyping] = useState(false);
 
   const handleSend = () => {
     if (!inputValue.trim()) return;
 
-    const newMessage = {
+    const newMessage: Message = {
       id: messages.length + 1,
       user: "You",
-      avatar: "🚀",
+      avatar: "YOU",
+      avatarColor: "from-brand to-brand2",
       message: inputValue,
       time: new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }),
-      type: "sent" as const,
+      type: "sent",
     };
 
     setMessages([...messages, newMessage]);
@@ -34,13 +69,14 @@ export function MackChatDemo() {
     setIsTyping(true);
     setTimeout(() => {
       setIsTyping(false);
-      const response = {
+      const response: Message = {
         id: messages.length + 2,
         user: "MackAI",
-        avatar: "🤖",
+        avatar: "AI",
+        avatarColor: "from-green-500 to-emerald-500",
         message: "This is a demo preview! Full features coming Q2 2026.",
         time: new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }),
-        type: "received" as const,
+        type: "received",
       };
       setMessages(prev => [...prev, response]);
     }, 1500);
@@ -53,8 +89,14 @@ export function MackChatDemo() {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="flex -space-x-2">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-brand to-brand2 flex items-center justify-center text-sm">
-                👥
+              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-xs font-bold text-white border-2 border-bg">
+                SM
+              </div>
+              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-xs font-bold text-white border-2 border-bg">
+                MR
+              </div>
+              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-brand to-brand2 flex items-center justify-center text-xs font-bold text-white border-2 border-bg">
+                Y
               </div>
             </div>
             <div>
@@ -80,7 +122,7 @@ export function MackChatDemo() {
               transition={{ duration: 0.3 }}
               className={`flex items-start gap-3 ${msg.type === 'sent' ? 'flex-row-reverse' : ''}`}
             >
-              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-brand/20 to-brand2/20 flex items-center justify-center text-lg flex-shrink-0">
+              <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${msg.avatarColor} flex items-center justify-center text-xs font-bold text-white shadow-lg flex-shrink-0`}>
                 {msg.avatar}
               </div>
               <div className={`flex-1 ${msg.type === 'sent' ? 'text-right' : ''}`}>
@@ -110,8 +152,8 @@ export function MackChatDemo() {
             animate={{ opacity: 1 }}
             className="flex items-center gap-3"
           >
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-brand/20 to-brand2/20 flex items-center justify-center text-lg">
-              🤖
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center text-xs font-bold text-white shadow-lg">
+              AI
             </div>
             <div className="glass border border-border rounded-2xl px-4 py-2">
               <div className="flex gap-1">
