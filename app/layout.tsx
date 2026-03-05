@@ -13,10 +13,20 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://mackprojekt.com"),
   manifest: "/manifest.json",
   icons: {
-    icon: "/logos/amp-logo.jpeg",
+    icon: [
+      { url: "/logos/amp-logo.jpeg", type: "image/jpeg" },
+      { url: "/logos/amp-logo.jpeg", sizes: "any" },
+    ],
     apple: [
       { url: "/logos/amp-logo.jpeg" },
       { url: "/logos/amp-logo.jpeg", sizes: "180x180", type: "image/jpeg" },
+    ],
+    other: [
+      {
+        rel: "icon",
+        url: "/logos/amp-logo.jpeg",
+        type: "image/jpeg",
+      },
     ],
   },
   keywords: ["AMP", "A MackProjekt", "MackEnterprises", "AI", "Digital Solutions", "Web Development", "Innovation", "Technology"],
