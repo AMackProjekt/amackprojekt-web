@@ -12,11 +12,12 @@
   ],
   "navigationFallback": {
     "rewrite": "/index.html",
-    "exclude": ["/images/*.{png,jpg,jpeg,gif,webp,svg}", "/api/*"]
+    "exclude": ["/images/*.{png,jpg,jpeg,gif,webp,svg}", "/api/*", "/_next/*"]
   },
   "responseOverrides": {
     "404": {
       "rewrite": "/index.html",
+      "exclude": ["/_next/*", "/api/*"],
       "statusCode": 200
     }
   },
