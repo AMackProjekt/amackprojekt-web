@@ -5,6 +5,13 @@ const urlsToCache = [
   '/manifest.json'
 ];
 
+// Only cache HTTP/HTTPS requests
+const isCacheableRequest = (request) => {
+  const url = new URL(request.url);
+  // Only cache http and https schemes
+  return url.protocol === 'http:' || url.protocol === 'https:';
+};
+
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME)
@@ -13,6 +20,11 @@ self.addEventListener('install', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
+  // Skip non-cacheable requests (chrome-extension, etc.)
+  if (!isCacheableRequest(event.request)) {
+    return;
+  }
+
   event.respondWith(
     caches.match(event.request)
       .then((response) => {
@@ -29,14 +41,26 @@ self.addEventListener('fetch', (event) => {
 
             const responseToCache = response.clone();
 
-            caches.open(CACHE_NAME)
-              .then((cache) => {
-                cache.put(event.request, responseToCache);
-              });
+            // Only cache if it's a cacheable request
+            if (isCacheableRequest(event.request)) {
+              caches.open(CACHE_NAME)
+                .then((cache) => {
+                  cache.put(event.request, responseToCache).catch((err) => {
+                    console.warn('Cache put failed:', err);
+                  });
+                })
+                .catch((err) => {
+                  console.warn('Cache open failed:', err);
+                });
+            }
 
             return response;
           }
-        );
+        ).catch((err) => {
+          console.warn('Fetch failed:', err);
+          // Try to return cached response on network error
+          return caches.match(event.request);
+        });
       })
   );
 });
