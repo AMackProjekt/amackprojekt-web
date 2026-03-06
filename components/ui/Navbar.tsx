@@ -34,7 +34,7 @@ export function Navbar() {
 
         <nav className="hidden items-center gap-6 md:flex">
           <a href="/launch" className="text-sm font-medium text-green-400 hover:text-green-300 transition-colors">Launch</a>
-          <span className="text-sm font-medium text-muted cursor-not-allowed" title="Coming Soon">Innovation</span>
+          <a href="/innovation" className="text-sm font-medium text-text hover:text-green-400 transition-colors">Innovation</a>
           <span className="text-sm font-medium text-muted cursor-not-allowed" title="Coming Soon">Design</span>
           <span className="text-sm font-medium text-muted cursor-not-allowed" title="Coming Soon">Technology</span>
           <span className="text-sm font-medium text-muted cursor-not-allowed" title="Coming Soon">Growth</span>
