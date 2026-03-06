@@ -196,10 +196,11 @@ export default function DocumentsPage() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.03 }}
+                    onClick={() => setSelectedDocument(doc)}
+                    className="cursor-pointer"
                   >
                     <GlowCard 
-                      className="p-4 cursor-pointer hover:border-brand/50 transition-colors"
-                      onClick={() => setSelectedDocument(doc)}
+                      className="p-4 hover:border-brand/50 transition-colors"
                     >
                       <div className="flex items-start gap-4">
                         {/* Icon */}

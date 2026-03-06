@@ -25,7 +25,9 @@
     "allowedOrigins": [
       "https://calm-sand-0e9f2e010.6.azurestaticapps.net",
       "https://mackprojekt.com",
-      "https://www.mackprojekt.com"
+      "https://www.mackprojekt.com",
+      "http://localhost:3000",
+      "http://127.0.0.1:3000"
     ],
     "allowedMethods": ["GET", "POST", "OPTIONS"],
     "allowedHeaders": ["Content-Type", "Authorization"],

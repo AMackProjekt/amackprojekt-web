@@ -156,17 +156,18 @@ export default function NotificationsPage() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.03 }}
+                onClick={() => {
+                  if (notification.link) {
+                    handleMarkAsRead(notification.id);
+                    router.push(notification.link);
+                  }
+                }}
+                className="cursor-pointer"
               >
                 <GlowCard 
-                  className={`p-4 transition-colors cursor-pointer ${
+                  className={`p-4 transition-colors ${
                     !notification.read ? "bg-brand/5 border-l-4 " + priorityColors[notification.priority] : "hover:border-brand/30"
                   }`}
-                  onClick={() => {
-                    if (notification.link) {
-                      handleMarkAsRead(notification.id);
-                      router.push(notification.link);
-                    }
-                  }}
                 >
                   <div className="flex items-start gap-4">
                     {/* Icon */}

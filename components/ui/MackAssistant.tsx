@@ -79,7 +79,11 @@ const knowledgeBase = {
     keywords: ["ai", "machine learning", "artificial intelligence", "ml", "llm", "neural"],
     category: "Technical"
   },
-  "default": "I'm **MackAssistant**, your AI guide to A MackProjekt. I can help with: Products (T.O.O.L.S. Inc, MackChat), Services, Technology, Pricing, Industry solutions, and more. What interests you?"
+  "default": {
+    text: "I'm **MackAssistant**, your AI guide to A MackProjekt. I can help with: Products (T.O.O.L.S. Inc, MackChat), Services, Technology, Pricing, Industry solutions, and more. What interests you?",
+    keywords: [],
+    category: "General"
+  }
 };
 
 function getResponse(query: string): string {

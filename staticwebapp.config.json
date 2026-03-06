@@ -4,6 +4,11 @@
       "route": "/api/*"
     },
     {
+      "route": "/*",
+      "allowedRoles": ["anonymous", "authenticated"],
+      "methods": ["GET", "HEAD", "POST", "PUT", "DELETE", "OPTIONS"]
+    },
+    {
       "route": "/_next/static/*",
       "headers": {
         "cache-control": "public, max-age=31536000, immutable"

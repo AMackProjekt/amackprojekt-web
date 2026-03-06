@@ -160,10 +160,11 @@ export default function TasksPage() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.03 }}
+                  onClick={() => setSelectedTask(task)}
+                  className="cursor-pointer"
                 >
                   <GlowCard 
-                    className="p-4 cursor-pointer hover:border-brand/50 transition-colors"
-                    onClick={() => setSelectedTask(task)}
+                    className="p-4 hover:border-brand/50 transition-colors"
                   >
                     <div className="flex items-start gap-4">
                       {/* Checkbox */}
@@ -251,10 +252,11 @@ export default function TasksPage() {
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: index * 0.05 }}
+                        onClick={() => setSelectedTask(task)}
+                        className="cursor-pointer"
                       >
                         <GlowCard 
-                          className="p-3 cursor-pointer hover:border-brand/50 transition-colors"
-                          onClick={() => setSelectedTask(task)}
+                          className="p-3 hover:border-brand/50 transition-colors"
                         >
                           <div className="flex items-start justify-between gap-2 mb-2">
                             <h4 className="font-semibold text-sm text-text flex-1">{task.title}</h4>

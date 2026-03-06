@@ -158,10 +158,11 @@ export default function KnowledgeBasePage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.05 }}
+                    onClick={() => setSelectedArticle(article)}
+                    className="cursor-pointer h-full"
                   >
                     <GlowCard 
-                      className="p-5 cursor-pointer hover:border-brand/50 transition-colors h-full flex flex-col"
-                      onClick={() => setSelectedArticle(article)}
+                      className="p-5 hover:border-brand/50 transition-colors h-full flex flex-col"
                     >
                       <div className="flex items-start gap-3 mb-3">
                         <div className="text-3xl">📖</div>

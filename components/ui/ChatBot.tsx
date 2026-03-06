@@ -137,17 +137,6 @@ export function ChatBot() {
       handleSend();
     }
   };
-      setIsTyping(false);
-    }, 800);
-  };
-
-  const handleKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter" && !e.shiftKey) {
-      e.preventDefault();
-      handleSend();
-    }
-  };
-
 
   return (
     <>

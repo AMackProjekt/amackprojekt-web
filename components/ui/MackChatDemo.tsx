@@ -4,7 +4,17 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { GlowCard } from "./GlowCard";
 
-const demoMessages = [
+interface Message {
+  id: number;
+  user: string;
+  avatar: string;
+  avatarColor: string;
+  message: string;
+  time: string;
+  type: "sent" | "received";
+}
+
+const demoMessages: Message[] = [
   { 
     id: 1, 
     user: "Sarah M.", 
@@ -33,16 +43,6 @@ const demoMessages = [
     type: "sent" 
   },
 ];
-
-interface Message {
-  id: number;
-  user: string;
-  avatar: string;
-  avatarColor: string;
-  message: string;
-  time: string;
-  type: "sent" | "received";
-}
 
 export function MackChatDemo() {
   const [messages, setMessages] = useState<Message[]>(demoMessages);

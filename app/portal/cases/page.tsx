@@ -145,10 +145,11 @@ export default function CasesPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.05 }}
+                    onClick={() => setSelectedParticipant(participant)}
+                    className="cursor-pointer"
                   >
                     <GlowCard 
-                      className="p-5 cursor-pointer hover:border-brand/50 transition-colors"
-                      onClick={() => setSelectedParticipant(participant)}
+                      className="p-5 hover:border-brand/50 transition-colors"
                     >
                       <div className="flex items-start justify-between mb-3">
                         <div className="flex items-center gap-3">
