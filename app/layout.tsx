@@ -63,7 +63,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         {/* eslint-disable-next-line compat/compat */}
         <meta name="theme-color" content="#38bdf8" />
