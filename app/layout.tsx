@@ -4,6 +4,7 @@ import { AuthProvider } from "@/lib/auth";
 import { ThemeProvider } from "@/lib/theme";
 import { Footer } from "@/components/ui/Footer";
 import { CookieConsent } from "@/components/ui/CookieConsent";
+import { VisitTracker } from "@/components/ui/VisitTracker";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { GoogleTagManager, GoogleTagManagerNoScript } from "@/components/GoogleTagManager";
 
@@ -83,6 +84,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="font-sans text-text antialiased">
+        <VisitTracker />
         {/* Google Analytics */}
         <GoogleAnalytics measurementId="G-HDG1JR4N7X" />
         

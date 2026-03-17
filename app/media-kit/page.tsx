@@ -265,7 +265,7 @@ export default function MediaKitPage() {
               <div>
                 <h3 className="font-semibold text-text mb-2">Key Statistics</h3>
                 <ul className="space-y-2">
-                  <li>• 1,200+ users served through T.O.O.L.S. Inc. platform</li>
+                  <li>• 1,200+ views generated across T.O.O.L.S. Inc. preview materials</li>
                   <li>• 87% success rate for job placement and reentry programs</li>
                   <li>• 3 flagship products launching in 2026</li>
                   <li>• AI-powered career matching with 90%+ accuracy</li>

@@ -1,0 +1,68 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+      time: "06:00"
+      timezone: "America/New_York"
+    open-pull-requests-limit: 5
+    labels:
+      - dependencies
+      - automated
+    commit-message:
+      prefix: "deps"
+      include: scope
+    versioning-strategy: increase-if-necessary
+    groups:
+      frontend-runtime:
+        patterns:
+          - next
+          - react
+          - react-dom
+      frontend-tooling:
+        patterns:
+          - eslint*
+          - "@types/*"
+          - tailwindcss
+          - postcss
+          - autoprefixer
+      misc-dependencies:
+        patterns:
+          - "*"
+        exclude-patterns:
+          - next
+          - react
+          - react-dom
+          - eslint*
+          - "@types/*"
+          - tailwindcss
+          - postcss
+          - autoprefixer
+    ignore:
+      - dependency-name: next
+        update-types:
+          - version-update:semver-major
+      - dependency-name: react
+        update-types:
+          - version-update:semver-major
+      - dependency-name: react-dom
+        update-types:
+          - version-update:semver-major
+
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+      time: "06:30"
+      timezone: "America/New_York"
+    open-pull-requests-limit: 3
+    labels:
+      - dependencies
+      - github-actions
+      - automated
+    commit-message:
+      prefix: "ci"
+      include: scope

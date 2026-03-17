@@ -178,7 +178,7 @@ export default function Page() {
 
         <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* T.O.O.L.S. Inc Card */}
-          <article aria-label="T.O.O.L.S. Inc - Reentry support platform with 120+ users and 87% success rate">
+          <article aria-label="T.O.O.L.S. Inc - Reentry support platform with 1200 plus views and 87 percent success rate">
             <GlowCard className="p-8 lg:p-10 group hover:shadow-brand2/25 transition-all duration-300">
             <div className="flex items-start gap-4 mb-6">
               <div className="text-5xl">🎓</div>
@@ -200,10 +200,24 @@ export default function Page() {
               mentorship, and AI-powered career guidance.
             </p>
 
+            <div className="grid grid-cols-2 gap-3 mb-6">
+              {[
+                ["💼", "Workforce Readiness"],
+                ["🧭", "Guided Reentry Paths"],
+                ["🎓", "Learning Tracks"],
+                ["🤝", "Mentor Support"],
+              ].map(([icon, label]) => (
+                <div key={label} className="glass rounded-lg p-4 border border-brand2/15">
+                  <div className="text-lg mb-2">{icon}</div>
+                  <div className="text-sm font-semibold text-text">{label}</div>
+                </div>
+              ))}
+            </div>
+
             <div className="grid grid-cols-2 gap-4 mb-6">
               <div className="glass rounded-lg p-4 text-center">
-                <div className="text-2xl font-extrabold text-brand">120+</div>
-                <div className="text-xs text-muted">Users Served</div>
+                <div className="text-2xl font-extrabold text-brand">1200+</div>
+                <div className="text-xs text-muted">Views</div>
               </div>
               <div className="glass rounded-lg p-4 text-center">
                 <div className="text-2xl font-extrabold text-brand2">87%</div>
@@ -255,13 +269,16 @@ export default function Page() {
                 <p className="text-lg font-semibold text-brand">
                   Bridging Military & Civilian Communities
                 </p>
+                <div className="mt-3 inline-flex rounded-full border border-brand/30 bg-brand/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-brand2">
+                  Preview Build
+                </div>
               </div>
             </div>
 
             <p className="text-text/90 leading-relaxed mb-6">
-              A revolutionary web-based messaging platform designed to connect military members with 
-              civilian supporters. Real-time communication with modern features, beautiful design, 
-              and military-grade security.
+              A preview of our web-based messaging platform designed to connect military members with 
+              civilian supporters. The current build focuses on real-time communication, clear UX, 
+              secure architecture, and the trust layer required for military-to-civilian collaboration.
             </p>
 
             <div className="grid grid-cols-3 gap-3 mb-6">
@@ -298,10 +315,79 @@ export default function Page() {
               </div>
             </div>
 
+            <div className="mb-6 rounded-xl border border-brand/20 bg-brand/5 p-4">
+              <div className="text-sm font-bold uppercase tracking-[0.18em] text-brand2">What We&apos;re Building Now</div>
+              <div className="mt-3 grid grid-cols-1 gap-2 text-sm text-text/90">
+                <div>• Trusted onboarding and identity-aware member flows</div>
+                <div>• Secure group channels for units, families, and supporters</div>
+                <div>• Moderation, safety, and encrypted communication foundations</div>
+                <div>• Mobile-friendly messaging UX for fast, low-friction access</div>
+              </div>
+            </div>
+
             <Button variant="primary" href="/messaging" className="w-full">
-              Learn More & Join Waitlist
+              View Preview & Join Waitlist
             </Button>
           </GlowCard>          </article>        </div>
+
+        <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-[1.1fr_.9fr]">
+          <GlowCard className="p-8 lg:p-10 border border-accent/20">
+            <div className="flex items-start gap-4 mb-6">
+              <div className="text-5xl">⚖️</div>
+              <div>
+                <div className="text-xs font-semibold uppercase tracking-[0.18em] text-accent mb-2">Proof of Work</div>
+                <h3 className="text-2xl font-extrabold tracking-tight text-text">IwantMylawyerPresent</h3>
+                <p className="mt-2 text-lg font-semibold text-accent">A rights-first product concept rooted in lived experience</p>
+              </div>
+            </div>
+
+            <p className="text-text/90 leading-relaxed mb-6">
+              IwantMylawyerPresent is part of the proof behind the studio: turning real-world pressure points into clear, usable product thinking.
+              The concept centers on documentation, legal-presence awareness, and accountability workflows that help people understand their rights,
+              capture key moments, and navigate high-stakes interactions with more clarity.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
+              <div className="glass rounded-lg p-4 border border-accent/15">
+                <div className="font-semibold text-text">Rights Awareness</div>
+                <div className="mt-2 text-muted">Clear prompts and guided flows built around knowing when representation matters.</div>
+              </div>
+              <div className="glass rounded-lg p-4 border border-accent/15">
+                <div className="font-semibold text-text">Proof Capture</div>
+                <div className="mt-2 text-muted">Structured notes, timelines, and context capture designed for stressful moments.</div>
+              </div>
+              <div className="glass rounded-lg p-4 border border-accent/15">
+                <div className="font-semibold text-text">Trust by Design</div>
+                <div className="mt-2 text-muted">A product direction focused on safety, transparency, and defensible user experience.</div>
+              </div>
+            </div>
+          </GlowCard>
+
+          <GlowCard className="p-8 lg:p-10 border border-brand/20">
+            <div className="text-xs font-semibold uppercase tracking-[0.18em] text-brand2 mb-2">Current Focus</div>
+            <h3 className="text-2xl font-extrabold tracking-tight text-text">Where MackChat Is Headed</h3>
+            <p className="mt-3 text-text/90 leading-relaxed">
+              MackChat is the active buildout right now. The current sprint is centered on the product foundations needed to move from preview to trusted beta.
+            </p>
+
+            <div className="mt-6 space-y-4">
+              {[
+                ["01", "Messaging Core", "Reliable chat flows, fast interaction states, and group channel behavior."],
+                ["02", "Security Layer", "Encrypted transport, access controls, and safer member-to-member communication."],
+                ["03", "Community Design", "Experiences that make military and civilian participation feel structured and welcoming."],
+                ["04", "Beta Readiness", "Waitlist capture, onboarding, analytics, and the operational basics for launch."],
+              ].map(([step, title, body]) => (
+                <div key={step} className="flex gap-4 rounded-lg border border-border bg-panel/60 p-4">
+                  <div className="text-lg font-extrabold text-brand2">{step}</div>
+                  <div>
+                    <div className="font-semibold text-text">{title}</div>
+                    <div className="mt-1 text-sm text-muted">{body}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </GlowCard>
+        </div>
       </section>
 
       {/* MACKCHAT INTERACTIVE DEMO */}

@@ -20,11 +20,11 @@ const blogPosts = [
     tags: ["Next.js", "Azure", "Architecture"],
   },
   {
-    title: "1,200 Users in 90 Days: Launching T.O.O.L.S. Inc Without VC Funding",
+    title: "1,200+ Views in 90 Days: Launching T.O.O.L.S. Inc Without VC Funding",
     date: "December 20, 2025",
     readTime: "10 min read",
     category: "Startup",
-    excerpt: "How we validated product-market fit, built credibility through impact, and bootstrapped to profitability while staying mission-aligned.",
+    excerpt: "How we turned early attention into proof of demand, built credibility through visible traction, and stayed mission-aligned without VC funding.",
     tags: ["Bootstrap", "Product Launch", "Community"],
   },
   {

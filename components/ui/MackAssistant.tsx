@@ -20,7 +20,7 @@ const suggestedQuestions = [
 
 const knowledgeBase = {
   "tools inc": {
-    text: "T.O.O.L.S. Inc (Together Overcoming Obstacles and Limitations) is our flagship platform supporting justice-involved individuals with job readiness, education programs, lived-experience mentorship, and AI-powered career guidance. We've served 120+ users with an 87% success rate.",
+    text: "T.O.O.L.S. Inc (Together Overcoming Obstacles and Limitations) is our flagship platform supporting justice-involved individuals with job readiness, education programs, lived-experience mentorship, and AI-powered career guidance. Current public traction includes 1,200+ views and an 87% success rate across program outcomes.",
     keywords: ["tools", "t.o.o.l.s", "reentry", "justice", "justice-involved", "program"],
     category: "Products"
   },
@@ -137,10 +137,16 @@ export function MackAssistant() {
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const [selectedQuestion, setSelectedQuestion] = useState<string | null>(null);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    const container = messagesContainerRef.current;
+    if (!container) return;
+
+    container.scrollTo({
+      top: container.scrollHeight,
+      behavior: messages.length <= 1 ? "auto" : "smooth",
+    });
   }, [messages]);
 
   const handleSend = (text?: string) => {
@@ -194,7 +200,7 @@ export function MackAssistant() {
       </div>
 
       {/* Messages & Suggestions */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-4">
+      <div ref={messagesContainerRef} className="flex-1 overflow-y-auto p-4 space-y-4">
         <AnimatePresence>
           {messages.map((message) => (
             <motion.div
@@ -258,7 +264,6 @@ export function MackAssistant() {
             </div>
           </motion.div>
         )}
-        <div ref={messagesEndRef} />
       </div>
 
       {/* Input */}
