@@ -328,41 +328,56 @@ export default function Page() {
             <Button variant="primary" href="/messaging" className="w-full">
               View Preview & Join Waitlist
             </Button>
-          </GlowCard>          </article>        </div>
-
-        <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-[1.1fr_.9fr]">
-          <GlowCard className="p-8 lg:p-10 border border-accent/20">
-            <div className="flex items-start gap-4 mb-6">
-              <div className="text-5xl">⚖️</div>
-              <div>
-                <div className="text-xs font-semibold uppercase tracking-[0.18em] text-accent mb-2">Proof of Work</div>
-                <h3 className="text-2xl font-extrabold tracking-tight text-text">IwantMylawyerPresent</h3>
-                <p className="mt-2 text-lg font-semibold text-accent">A rights-first product concept rooted in lived experience</p>
-              </div>
-            </div>
-
-            <p className="text-text/90 leading-relaxed mb-6">
-              IwantMylawyerPresent is part of the proof behind the studio: turning real-world pressure points into clear, usable product thinking.
-              The concept centers on documentation, legal-presence awareness, and accountability workflows that help people understand their rights,
-              capture key moments, and navigate high-stakes interactions with more clarity.
-            </p>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
-              <div className="glass rounded-lg p-4 border border-accent/15">
-                <div className="font-semibold text-text">Rights Awareness</div>
-                <div className="mt-2 text-muted">Clear prompts and guided flows built around knowing when representation matters.</div>
-              </div>
-              <div className="glass rounded-lg p-4 border border-accent/15">
-                <div className="font-semibold text-text">Proof Capture</div>
-                <div className="mt-2 text-muted">Structured notes, timelines, and context capture designed for stressful moments.</div>
-              </div>
-              <div className="glass rounded-lg p-4 border border-accent/15">
-                <div className="font-semibold text-text">Trust by Design</div>
-                <div className="mt-2 text-muted">A product direction focused on safety, transparency, and defensible user experience.</div>
-              </div>
-            </div>
           </GlowCard>
+          </article>
 
+          {/* IWantMyLawyerPresent Card */}
+          <article className="lg:col-span-2" aria-label="IWantMyLawyerPresent - Rights-awareness website built by MackProjekt">
+            <GlowCard className="p-8 lg:p-10 group hover:shadow-accent/25 transition-all duration-300 border border-accent/20">
+              <div className="flex items-start gap-4 mb-6">
+                <div className="text-5xl">⚖️</div>
+                <div className="flex-1">
+                  <div className="mb-2 inline-flex rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-accent">
+                    Built by Us
+                  </div>
+                  <h3 className="text-2xl font-extrabold tracking-tight mb-2">
+                    <span className="bg-gradient-to-r from-accent to-brand bg-clip-text text-transparent">
+                      IWantMyLawyerPresent
+                    </span>
+                  </h3>
+                  <p className="text-lg font-semibold text-accent">
+                    A rights-awareness website rooted in lived experience
+                  </p>
+                </div>
+              </div>
+
+              <p className="text-text/90 leading-relaxed mb-8">
+                IWantMyLawyerPresent is a website we built — a clear, accessible resource helping people understand their legal rights during high-stakes interactions.
+                Designed from lived experience, it centers on one core message: you have the right to ask for legal representation, and knowing when and how to exercise that right matters.
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                <div className="glass rounded-xl p-5 border border-accent/15">
+                  <div className="text-2xl mb-3">📋</div>
+                  <div className="font-semibold text-text mb-2">Rights Education</div>
+                  <div className="text-muted leading-relaxed">Clear, plain-language guidance on when and how to invoke your right to legal representation.</div>
+                </div>
+                <div className="glass rounded-xl p-5 border border-accent/15">
+                  <div className="text-2xl mb-3">🛡️</div>
+                  <div className="font-semibold text-text mb-2">Accountability Focus</div>
+                  <div className="text-muted leading-relaxed">Structured around transparency and documentation — tools for navigating high-pressure moments with more confidence.</div>
+                </div>
+                <div className="glass rounded-xl p-5 border border-accent/15">
+                  <div className="text-2xl mb-3">🤝</div>
+                  <div className="font-semibold text-text mb-2">Community-Driven</div>
+                  <div className="text-muted leading-relaxed">Built to serve those who need it most — people who face legal exposure without access to clear, immediate guidance.</div>
+                </div>
+              </div>
+            </GlowCard>
+          </article>
+        </div>
+
+        <div className="mt-8">
           <GlowCard className="p-8 lg:p-10 border border-brand/20">
             <div className="text-xs font-semibold uppercase tracking-[0.18em] text-brand2 mb-2">Current Focus</div>
             <h3 className="text-2xl font-extrabold tracking-tight text-text">Where MackChat Is Headed</h3>

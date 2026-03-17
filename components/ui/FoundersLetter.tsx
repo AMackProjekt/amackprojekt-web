@@ -97,7 +97,6 @@ export function FoundersLetter() {
             </div>
 
             <div className="glass rounded-xl p-6 border border-accent/20">
-              <div className="text-4xl mb-3">🚀</div>
               <div className="text-sm font-semibold text-accent uppercase tracking-wider mb-2">
                 Our Products
               </div>
@@ -105,6 +104,7 @@ export function FoundersLetter() {
                 <li>• <strong>T.O.O.L.S. Inc.</strong> - Reentry platform</li>
                 <li>• <strong>MackChat</strong> - Community messaging</li>
                 <li>• <strong>MackAI</strong> - AI-powered guidance</li>
+                <li>• <strong>Website Development</strong> - Modern web experiences</li>
               </ul>
             </div>
           </div>
