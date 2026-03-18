@@ -4,6 +4,7 @@ import { comparePassword, generateToken } from '../../utils/auth';
 import { config } from '../../config';
 import { loginSchema, validateRequest } from '../../utils/validation';
 import { checkRateLimit } from '../../utils/rateLimit';
+import { writeAuditLog } from '../../utils/auditLog';
 
 export async function authLogin(request: HttpRequest, context: InvocationContext): Promise<HttpResponseInit> {
   try {
@@ -46,6 +47,14 @@ export async function authLogin(request: HttpRequest, context: InvocationContext
     // Verify password
     const isValid = await comparePassword(password, user.password);
     if (!isValid) {
+      // HIPAA audit: failed login attempt
+      await writeAuditLog({
+        userId: user.id,
+        action: 'AUTH_LOGIN_FAILURE',
+        sourceIp: request.headers.get('x-forwarded-for') ?? undefined,
+        userAgent: request.headers.get('user-agent') ?? undefined,
+        context: { reason: 'invalid_password' },
+      });
       return {
         status: 401,
         jsonBody: { error: 'Invalid credentials' }
@@ -54,6 +63,14 @@ export async function authLogin(request: HttpRequest, context: InvocationContext
 
     // Generate JWT token
     const token = generateToken({ id: user.id, email: user.email, name: user.name });
+
+    // HIPAA audit: successful authentication event
+    await writeAuditLog({
+      userId: user.id,
+      action: 'AUTH_LOGIN_SUCCESS',
+      sourceIp: request.headers.get('x-forwarded-for') ?? undefined,
+      userAgent: request.headers.get('user-agent') ?? undefined,
+    });
 
     return {
       status: 200,

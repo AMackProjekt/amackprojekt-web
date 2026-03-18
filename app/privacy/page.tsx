@@ -222,19 +222,42 @@ export default function PrivacyPage() {
               </div>
 
               <div>
-                <h3 className="font-semibold text-text mb-2">10.2 Industry Compliance</h3>
+                <h3 className="font-semibold text-text mb-2">10.2 HIPAA Notice of Privacy Practices &amp; Industry Compliance</h3>
                 <p className="leading-relaxed mb-2">
-                  While we are not currently HIPAA or SOC 2 certified, our infrastructure and practices are designed with these standards in mind:
+                  The T.O.O.L.S. Inc. platform serves justice-involved individuals who may share sensitive personal information,
+                  including information that may constitute Protected Health Information (PHI) under the Health Insurance Portability
+                  and Accountability Act (HIPAA). The following describes our privacy practices in that context.
                 </p>
-                <ul className="list-disc pl-6 space-y-1">
-                  <li><strong>HIPAA Readiness:</strong> For T.O.O.L.S. Inc. platform serving justice-involved individuals, 
-                  we implement controls aligned with HIPAA requirements including data encryption, access logging, and audit trails. 
-                  We do not currently handle Protected Health Information (PHI) but are prepared to meet HIPAA compliance when required.</li>
-                  <li><strong>SOC 2 Type II Alignment:</strong> Our security controls align with SOC 2 Trust Service Criteria 
+                <ul className="list-disc pl-6 space-y-2">
+                  <li><strong>HIPAA-Ready Infrastructure:</strong> Our platform implements controls aligned with HIPAA Security Rule
+                  (45 CFR Part 164), including AES-256 encryption at rest, TLS 1.3 in transit, role-based access control, automatic
+                  session timeout (30 minutes of inactivity), tamper-evident audit logs retained for six years per
+                  §164.316(b)(2), and hardware-backed key management via Azure Key Vault.</li>
+
+                  <li><strong>42 CFR Part 2 — Substance Use Disorder Records:</strong> If any information you share relates to
+                  substance use disorder treatment, it receives heightened federal protection under 42 CFR Part 2 and will not be
+                  disclosed without your express written consent except as otherwise permitted by law.</li>
+
+                  <li><strong>Categories of PHI That May Be Collected:</strong> In the context of case management, this may include
+                  mental health status, substance use history, legal/court records, housing status, and employment history — only
+                  as voluntarily provided by you or your case manager for program participation.</li>
+
+                  <li><strong>Your HIPAA Rights (when applicable):</strong> You have the right to (a) access and receive a copy of
+                  your health information; (b) request corrections to inaccurate records; (c) receive an accounting of disclosures
+                  of your PHI; (d) request restrictions on certain uses and disclosures; and (e) receive this notice in paper form
+                  upon request. Submit requests to <strong>privacy@mackprojekt.com</strong>.</li>
+
+                  <li><strong>Business Associate Agreements (BAA):</strong> Organizations that use T.O.O.L.S. Inc. to process PHI
+                  on behalf of a Covered Entity may request a signed BAA. Contact
+                  <strong> privacy@mackprojekt.com</strong> for BAA requests and HIPAA-related inquiries.</li>
+
+                  <li><strong>SOC 2 Type II Alignment:</strong> Our security controls align with SOC 2 Trust Service Criteria
                   for security, availability, and confidentiality. We leverage Azure's SOC 2 Type II certified infrastructure.</li>
-                  <li><strong>GDPR Compliance:</strong> We adhere to GDPR principles including data minimization, purpose limitation, 
+
+                  <li><strong>GDPR Compliance:</strong> We adhere to GDPR principles including data minimization, purpose limitation,
                   and user rights (access, rectification, erasure, portability).</li>
-                  <li><strong>CCPA Compliance:</strong> California residents have additional rights under CCPA including the right to 
+
+                  <li><strong>CCPA Compliance:</strong> California residents have additional rights under CCPA including the right to
                   know what personal information is collected, sold, or disclosed.</li>
                 </ul>
               </div>

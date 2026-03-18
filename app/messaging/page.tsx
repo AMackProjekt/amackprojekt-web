@@ -49,7 +49,18 @@ export default function MessagingPage() {
             <div className="text-4xl mb-4">🔒</div>
             <h3 className="text-xl font-extrabold tracking-tight mb-3">Secure & Private</h3>
             <p className="text-sm text-muted leading-relaxed">
-              Military-grade encryption ensures your conversations remain private and secure. Built with security at its core.
+              AES-256 encryption at rest via Azure Cosmos DB and TLS 1.3 in transit secure every conversation.
+              Access controls, audit logging, and session management are built into the core architecture.
+            </p>
+          </GlowCard>
+
+          <GlowCard className="p-8">
+            <div className="text-4xl mb-4">🏥</div>
+            <h3 className="text-xl font-extrabold tracking-tight mb-3">HIPAA-Ready Architecture</h3>
+            <p className="text-sm text-muted leading-relaxed">
+              Designed with healthcare and social-services compliance in mind: tamper-evident audit trails,
+              automatic session timeout, role-based access control, and Business Associate Agreement (BAA)
+              availability for qualifying organizations. Data sovereignty via Azure US regions.
             </p>
           </GlowCard>
 

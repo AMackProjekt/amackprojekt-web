@@ -6,12 +6,14 @@ export const config = {
     containers: {
       users: 'users',
       contacts: 'contacts',
-      sessions: 'sessions'
+      sessions: 'sessions',
+      auditLog: 'audit-log'
     }
   },
   jwt: {
     secret: process.env.JWT_SECRET!,
-    expiresIn: '7d'
+    // HIPAA: short-lived tokens reduce exposure window; clients must re-authenticate after 8 h
+    expiresIn: '8h'
   },
   email: {
     connectionString: process.env.COMMUNICATION_SERVICES_CONNECTION_STRING || '',

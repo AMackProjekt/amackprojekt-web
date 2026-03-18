@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import { createContext, useContext, useState, useEffect, useRef, useCallback, ReactNode } from "react";
 
 type User = {
   id: string;
@@ -23,6 +23,8 @@ type AuthContextType = {
   logout: () => void;
   updateProfile: (updates: Partial<User>) => void;
   isAuthenticated: boolean;
+  /** Minutes remaining before automatic session expiry (null = no active session) */
+  sessionWarning: boolean;
 };
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -30,8 +32,59 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 // API Base URL - use environment variable or default to production
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || '/api';
 
+/**
+ * HIPAA §164.312(a)(2)(iii): Automatic logoff — terminate an electronic session
+ * after a predetermined period of user inactivity.
+ * 30 minutes inactivity → warning dialog; 5 minutes later → forced logout.
+ */
+const INACTIVITY_TIMEOUT_MS = 30 * 60 * 1000; // 30 minutes
+const WARNING_BEFORE_MS = 5 * 60 * 1000;       // warn 5 minutes before logout
+
+const ACTIVITY_EVENTS: (keyof WindowEventMap)[] = [
+  'mousemove', 'mousedown', 'keydown', 'touchstart', 'scroll', 'click',
+];
+
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
+  const [sessionWarning, setSessionWarning] = useState(false);
+  const inactivityTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const warningTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const clearTimers = () => {
+    if (inactivityTimerRef.current) clearTimeout(inactivityTimerRef.current);
+    if (warningTimerRef.current) clearTimeout(warningTimerRef.current);
+  };
+
+  const performLogout = useCallback(() => {
+    clearTimers();
+    setSessionWarning(false);
+    localStorage.removeItem("auth-token");
+    setUser(null);
+  }, []);
+
+  const resetInactivityTimer = useCallback(() => {
+    if (!localStorage.getItem("auth-token")) return; // no active session, nothing to reset
+    clearTimers();
+    setSessionWarning(false);
+    warningTimerRef.current = setTimeout(() => {
+      setSessionWarning(true);
+    }, INACTIVITY_TIMEOUT_MS - WARNING_BEFORE_MS);
+    inactivityTimerRef.current = setTimeout(() => {
+      performLogout();
+    }, INACTIVITY_TIMEOUT_MS);
+  }, [performLogout]);
+
+  // Register and clean up activity listeners
+  useEffect(() => {
+    if (!user) return;
+    const handler = () => resetInactivityTimer();
+    ACTIVITY_EVENTS.forEach((evt) => window.addEventListener(evt, handler, { passive: true }));
+    resetInactivityTimer();
+    return () => {
+      ACTIVITY_EVENTS.forEach((evt) => window.removeEventListener(evt, handler));
+      clearTimers();
+    };
+  }, [user, resetInactivityTimer]);
 
   useEffect(() => {
     // Check for stored JWT token
@@ -46,7 +99,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     try {
       // Decode JWT to get user info (basic client-side decode)
       const payload = JSON.parse(atob(token.split('.')[1]));
-      
+
+      // Reject already-expired tokens on the client side (exp is Unix seconds)
+      if (payload.exp && Date.now() / 1000 > payload.exp) {
+        localStorage.removeItem("auth-token");
+        return;
+      }
+
       // Set user from token payload
       setUser({
         id: payload.id,
@@ -146,19 +205,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  const logout = () => {
-    localStorage.removeItem("auth-token");
-    setUser(null);
-  };
+  const logout = performLogout;
 
   const updateProfile = (updates: Partial<User>) => {
     if (!user) return;
-    
     const updatedUser = { ...user, ...updates };
     setUser(updatedUser);
-    
     // In production: Call API to update user profile on server
-    // For now, just update local state
   };
 
   return (
@@ -170,6 +223,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         logout,
         updateProfile,
         isAuthenticated: !!user,
+        sessionWarning,
       }}
     >
       {children}
