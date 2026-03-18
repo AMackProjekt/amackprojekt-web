@@ -2,15 +2,16 @@ version: 2
 updates:
   - package-ecosystem: npm
     directory: "/"
+    target-branch: "main"
     schedule:
-      interval: weekly
-      day: monday
+      interval: daily
       time: "06:00"
       timezone: "America/New_York"
-    open-pull-requests-limit: 5
+    open-pull-requests-limit: 10
     labels:
       - dependencies
       - automated
+      - dependabot
     commit-message:
       prefix: "deps"
       include: scope
@@ -44,6 +45,9 @@ updates:
       - dependency-name: next
         update-types:
           - version-update:semver-major
+      - dependency-name: eslint
+        update-types:
+          - version-update:semver-major
       - dependency-name: react
         update-types:
           - version-update:semver-major
@@ -53,6 +57,7 @@ updates:
 
   - package-ecosystem: github-actions
     directory: "/"
+    target-branch: "main"
     schedule:
       interval: weekly
       day: monday

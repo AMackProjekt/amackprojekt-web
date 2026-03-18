@@ -7,7 +7,7 @@ interface Message {
   id: number;
   text: string;
   sender: "user" | "assistant";
-  timestamp: Date;
+  timestamp: Date | null;
 }
 
 const suggestedQuestions = [
@@ -131,7 +131,7 @@ export function MackAssistant() {
       id: 1,
       text: "👋 **Welcome!** I'm MackAssistant, powered by semantic search. Ask me about our products, services, pricing, or how we solve problems. What would you like to know?",
       sender: "assistant",
-      timestamp: new Date(),
+      timestamp: null,
     },
   ]);
   const [input, setInput] = useState("");
@@ -217,9 +217,11 @@ export function MackAssistant() {
                 }`}
               >
                 <p className="text-sm leading-relaxed">{message.text}</p>
-                <p className="text-xs opacity-60 mt-1">
-                  {message.timestamp.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
-                </p>
+                {message.timestamp && (
+                  <p className="text-xs opacity-60 mt-1">
+                    {message.timestamp.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
+                  </p>
+                )}
               </div>
             </motion.div>
           ))}

@@ -225,7 +225,6 @@ export default function InnovationPage() {
           >
             <GlowCard className="border-green-400/30">
               <div className="flex flex-col md:flex-row gap-6 items-start">
-                <div className="text-5xl">🚀</div>
                 <div className="flex-1">
                   <h3 className="text-2xl font-extrabold text-text mb-3">Founder Support Program</h3>
                   <p className="text-muted leading-relaxed mb-4">
@@ -282,6 +281,83 @@ export default function InnovationPage() {
                   </ul>
                 </div>
               </div>
+            </GlowCard>
+          </motion.div>
+        </div>
+      </section>
+
+      <ElectricDivider className="mx-auto max-w-container px-7" color="green" />
+
+      {/* WHAT WE'VE BUILT */}
+      <section className="mx-auto max-w-container px-7 py-16">
+        <SectionHeading
+          eyebrow="Proof of Work"
+          title="What We&apos;ve Built"
+          subtitle="Real products, real platforms, and real problem-solving already in motion."
+        />
+
+        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <GlowCard className="h-full border-green-400/30">
+              <div className="text-4xl mb-4">🎓</div>
+              <h3 className="text-xl font-extrabold text-text mb-3">T.O.O.L.S. Inc.</h3>
+              <p className="text-sm text-muted leading-relaxed">
+                A reentry platform supporting justice-involved individuals through guided pathways,
+                job readiness, education support, and AI-powered direction.
+              </p>
+            </GlowCard>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+          >
+            <GlowCard className="h-full border-green-400/30">
+              <div className="text-4xl mb-4">💬</div>
+              <h3 className="text-xl font-extrabold text-text mb-3">MackChat</h3>
+              <p className="text-sm text-muted leading-relaxed">
+                A community messaging platform connecting military members and civilian supporters
+                through secure, structured, real-time communication.
+              </p>
+            </GlowCard>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+          >
+            <GlowCard className="h-full border-green-400/30">
+              <div className="text-4xl mb-4">⚙️</div>
+              <h3 className="text-xl font-extrabold text-text mb-3">A MackProjekt</h3>
+              <p className="text-sm text-muted leading-relaxed">
+                The parent innovation lab and digital platform brand behind the products, strategy,
+                engineering execution, and community-facing experiences we build.
+              </p>
+            </GlowCard>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
+          >
+            <GlowCard className="h-full border-green-400/30">
+              <div className="text-4xl mb-4">⚖️</div>
+              <h3 className="text-xl font-extrabold text-text mb-3">IWantMyLawyerPresent</h3>
+              <p className="text-sm text-muted leading-relaxed">
+                A rights-awareness website built to help people better understand legal representation,
+                accountability, and high-stakes interactions.
+              </p>
             </GlowCard>
           </motion.div>
         </div>
