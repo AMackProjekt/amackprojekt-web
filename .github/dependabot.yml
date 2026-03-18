@@ -71,3 +71,24 @@ updates:
     commit-message:
       prefix: "ci"
       include: scope
+
+  - package-ecosystem: pip
+    directory: "/"
+    target-branch: "main"
+    schedule:
+      interval: daily
+      time: "06:15"
+      timezone: "America/New_York"
+    open-pull-requests-limit: 5
+    labels:
+      - dependencies
+      - automated
+      - dependabot
+      - python
+    commit-message:
+      prefix: "deps"
+      include: scope
+    ignore:
+      - dependency-name: django
+        update-types:
+          - version-update:semver-major

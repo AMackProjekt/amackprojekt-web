@@ -1,0 +1,2 @@
+# Python dependencies for Django services integrated with this repo
+Django>=5.1,<6.0
