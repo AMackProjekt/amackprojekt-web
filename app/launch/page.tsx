@@ -56,6 +56,38 @@ export default function LaunchPage() {
 
         <ElectricDivider className="my-16" color="green" />
 
+        {/* Demo Video Section */}
+        <div className="mt-16">
+          <SectionHeading
+            eyebrow="See It In Action"
+            title="DFC Demo"
+            subtitle="A preview of the DFC experience — see what&apos;s coming."
+          />
+
+          <div className="mt-10">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="relative rounded-2xl overflow-hidden shadow-[0_0_40px_rgba(56,189,248,0.3),0_0_80px_rgba(56,189,248,0.2)] border-2 border-brand/30 bg-bg"
+            >
+              <video
+                className="w-full aspect-video"
+                controls
+                playsInline
+                preload="metadata"
+                poster="/logos/amp-logo.jpeg"
+              >
+                <source src="/videos/dfc-teaser.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </motion.div>
+          </div>
+        </div>
+
+        <ElectricDivider className="my-16" color="brand" />
+
         {/* QR Code Section */}
         <div className="mt-16">
           <SectionHeading

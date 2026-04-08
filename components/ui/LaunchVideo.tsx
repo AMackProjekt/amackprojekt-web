@@ -15,7 +15,7 @@ interface LaunchVideoProps {
 }
 
 export function LaunchVideo({
-  videoUrl = "/videos/amp-launch.mp4",
+  videoUrl = "/videos/supreme-launch.mp4",
   title = "AMP Launch - Destroying the Digital Divide",
   description = "Watch our mission to harness AI and innovation to create digital solutions for all.",
   className,
