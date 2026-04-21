@@ -497,12 +497,6 @@ export default function Page() {
           </div>
         </div>
 
-        <div className="mt-12 text-center">
-          <p className="text-muted mb-6">Want detailed build logs? Check our GitHub repositories for the full technical journey.</p>
-          <Button variant="primary" href="https://github.com/amackprojekt">
-            View Build Logs on GitHub →
-          </Button>
-        </div>
       </section>
 
       <ElectricDivider className="mx-auto max-w-container px-7 hidden md:block" color="green" />
@@ -520,7 +514,7 @@ export default function Page() {
         </div>
 
         <div className="mt-12 text-center">
-          <Button variant="primary" href="https://github.com/amackprojekt" aria-label="View full API documentation on GitHub">
+          <Button variant="primary" href="/api-test" aria-label="View full API documentation">
             View Full Documentation →
           </Button>
         </div>
