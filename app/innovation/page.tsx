@@ -345,21 +345,6 @@ export default function InnovationPage() {
             </GlowCard>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
-          >
-            <GlowCard className="h-full border-green-400/30">
-              <div className="text-4xl mb-4">⚖️</div>
-              <h3 className="text-xl font-extrabold text-text mb-3">IWantMyLawyerPresent</h3>
-              <p className="text-sm text-muted leading-relaxed">
-                A rights-awareness website built to help people better understand legal representation,
-                accountability, and high-stakes interactions.
-              </p>
-            </GlowCard>
-          </motion.div>
         </div>
       </section>
 
