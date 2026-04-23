@@ -1,0 +1,121 @@
+name: Site Health Monitor
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+jobs:
+  site-health:
+    name: Check mackprojekt.com uptime
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+
+    steps:
+      - name: Probe site
+        id: probe
+        run: |
+          START=$(date +%s%N)
+          HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" \
+            --max-time 15 --retry 2 --retry-delay 3 \
+            https://www.mackprojekt.com)
+          END=$(date +%s%N)
+          ELAPSED_MS=$(( (END - START) / 1000000 ))
+
+          echo "http_code=$HTTP_CODE"     >> "$GITHUB_OUTPUT"
+          echo "elapsed_ms=$ELAPSED_MS"  >> "$GITHUB_OUTPUT"
+
+          echo "HTTP $HTTP_CODE — ${ELAPSED_MS}ms"
+
+      - name: Find existing incident issue
+        id: find_issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          ISSUE_NUMBER=$(gh issue list \
+            --repo "${{ github.repository }}" \
+            --state open \
+            --label "bot-site-down,incident" \
+            --json number \
+            --jq '.[0].number // empty')
+          echo "issue_number=${ISSUE_NUMBER}" >> "$GITHUB_OUTPUT"
+
+      # ── Site is DOWN ──────────────────────────────────────────────────────────
+      - name: Open incident issue (site down)
+        if: steps.probe.outputs.http_code != '200' && steps.find_issue.outputs.issue_number == ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh issue create \
+            --repo "${{ github.repository }}" \
+            --title "🚨 Site down — HTTP ${{ steps.probe.outputs.http_code }} ($(date -u '+%Y-%m-%d %H:%M UTC'))" \
+            --label "bot-site-down,incident" \
+            --body "## Uptime Incident
+
+          **URL**: https://www.mackprojekt.com
+          **Status**: HTTP \`${{ steps.probe.outputs.http_code }}\`
+          **Response time**: ${{ steps.probe.outputs.elapsed_ms }}ms
+          **Detected**: $(date -u '+%Y-%m-%d %H:%M UTC')
+          **Workflow**: [${{ github.run_id }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+
+          Automatic monitoring will close this issue when the site recovers."
+
+      - name: Comment on existing incident (still down)
+        if: steps.probe.outputs.http_code != '200' && steps.find_issue.outputs.issue_number != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh issue comment ${{ steps.find_issue.outputs.issue_number }} \
+            --repo "${{ github.repository }}" \
+            --body "⚠️ Still down — HTTP \`${{ steps.probe.outputs.http_code }}\` at $(date -u '+%H:%M UTC')"
+
+      # ── Site is UP ────────────────────────────────────────────────────────────
+      - name: Close incident issue (site recovered)
+        if: steps.probe.outputs.http_code == '200' && steps.find_issue.outputs.issue_number != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh issue comment ${{ steps.find_issue.outputs.issue_number }} \
+            --repo "${{ github.repository }}" \
+            --body "✅ Site recovered — HTTP \`200\` at $(date -u '+%H:%M UTC') (${${{ steps.probe.outputs.elapsed_ms }}}ms)"
+
+          gh issue close ${{ steps.find_issue.outputs.issue_number }} \
+            --repo "${{ github.repository }}" \
+            --reason completed
+
+      # ── Slow response warning ─────────────────────────────────────────────────
+      - name: Warn on slow response (> 10s)
+        if: steps.probe.outputs.http_code == '200' && steps.probe.outputs.elapsed_ms > 10000
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          EXISTING=$(gh issue list \
+            --repo "${{ github.repository }}" \
+            --state open \
+            --label "bot-slow-response" \
+            --json number \
+            --jq '.[0].number // empty')
+
+          if [ -z "$EXISTING" ]; then
+            gh issue create \
+              --repo "${{ github.repository }}" \
+              --title "⚠️ Slow response — ${{ steps.probe.outputs.elapsed_ms }}ms ($(date -u '+%Y-%m-%d %H:%M UTC'))" \
+              --label "bot-slow-response" \
+              --body "## Performance Warning
+
+          **URL**: https://www.mackprojekt.com
+          **Response time**: ${{ steps.probe.outputs.elapsed_ms }}ms (threshold: 10 000ms)
+          **HTTP status**: ${{ steps.probe.outputs.http_code }}
+          **Detected**: $(date -u '+%Y-%m-%d %H:%M UTC')"
+          fi
+
+      - name: Summary
+        run: |
+          echo "### Health Check Result" >> "$GITHUB_STEP_SUMMARY"
+          echo "| | |" >> "$GITHUB_STEP_SUMMARY"
+          echo "|---|---|" >> "$GITHUB_STEP_SUMMARY"
+          echo "| **URL** | https://www.mackprojekt.com |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| **HTTP** | \`${{ steps.probe.outputs.http_code }}\` |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| **Response time** | ${{ steps.probe.outputs.elapsed_ms }}ms |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| **Checked** | $(date -u '+%Y-%m-%d %H:%M UTC') |" >> "$GITHUB_STEP_SUMMARY"
