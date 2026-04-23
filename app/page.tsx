@@ -333,6 +333,69 @@ export default function Page() {
 
         </div>
 
+        {/* T.O.O.L.S. INC PORTAL SUITE HIGHLIGHT */}
+        <div className="mt-8">
+          <article aria-label="T.O.O.L.S. Inc Portal Suite - Live authenticated user platform">
+            <GlowCard className="p-8 lg:p-10 border border-accent/25 hover:shadow-accent/20 transition-all duration-300">
+              <div className="flex flex-col md:flex-row md:items-center gap-6 mb-6">
+                <div className="text-5xl">🛡️</div>
+                <div className="flex-1">
+                  <div className="inline-flex rounded-full border border-green-400/30 bg-green-400/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-green-400 mb-3">
+                    Live &amp; Deployed
+                  </div>
+                  <h3 className="text-2xl font-extrabold tracking-tight mb-1">
+                    <span className="bg-gradient-to-r from-accent to-brand2 bg-clip-text text-transparent">
+                      T.O.O.L.S. Inc Portal Suite
+                    </span>
+                  </h3>
+                  <p className="text-lg font-semibold text-accent">
+                    Full-Stack Authenticated User Platform
+                  </p>
+                </div>
+              </div>
+
+              <p className="text-text/90 leading-relaxed mb-6">
+                A production-deployed, end-to-end user portal built for justice-involved individuals. Features secure authentication, 
+                personalized dashboards, structured learning tracks, case management, and activity tracking—all within a 
+                cohesive, accessible dark-theme experience.
+              </p>
+
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+                {[
+                  ["🔐", "Secure Auth", "JWT sessions & protected routes"],
+                  ["📊", "Dashboard", "Real-time stats & progress KPIs"],
+                  ["🎓", "Course Portal", "Structured learning with video tracks"],
+                  ["📁", "Case Management", "Referral tracking & case workflows"],
+                ].map(([icon, title, desc]) => (
+                  <div key={title} className="glass rounded-lg p-4 border border-accent/10">
+                    <div className="text-2xl mb-2">{icon}</div>
+                    <div className="text-sm font-bold text-text mb-1">{title}</div>
+                    <div className="text-xs text-muted">{desc}</div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex flex-wrap items-center gap-2 mb-6">
+                <span className="text-xs text-muted font-semibold uppercase tracking-widest mr-1">Integrations:</span>
+                {["Google Workspace", "Microsoft 365", "Adobe Creative Cloud", "Canva", "& more"].map((name) => (
+                  <span key={name} className="rounded-full border border-brand2/25 bg-brand2/8 px-3 py-1 text-xs font-semibold text-brand2/90">
+                    {name}
+                  </span>
+                ))}
+              </div>
+
+              <div className="flex gap-3">
+                <Button variant="primary" href="/portal/dashboard" className="flex-1">
+                  View Portal
+                </Button>
+                <Button variant="ghost" href="/portal/auth">
+                  Sign In
+                </Button>
+              </div>
+            </GlowCard>
+          </article>
+        </div>
+
         <div className="mt-8">
           <GlowCard className="p-8 lg:p-10 border border-brand/20">
             <div className="text-xs font-semibold uppercase tracking-[0.18em] text-brand2 mb-2">Current Focus</div>
@@ -453,27 +516,6 @@ export default function Page() {
           </div>
         </div>
 
-      </section>
-
-      <ElectricDivider className="mx-auto max-w-container px-7 hidden md:block" color="green" />
-
-      {/* API DOCUMENTATION PREVIEW */}
-      <section className="mx-auto max-w-container px-7 py-10 md:py-20 hidden md:block">
-        <SectionHeading
-          eyebrow="For Developers"
-          title="Platform Engineering at Scale"
-          subtitle="Production-ready APIs with comprehensive documentation. Built for developers who value clean code and reliable infrastructure."
-        />
-
-        <div className="mt-12">
-          <ApiDocsPreview />
-        </div>
-
-        <div className="mt-12 text-center">
-          <Button variant="primary" href="/api-test" aria-label="View full API documentation">
-            View Full Documentation →
-          </Button>
-        </div>
       </section>
 
       <ElectricDivider className="mx-auto max-w-container px-7 hidden md:block" color="brand" />
