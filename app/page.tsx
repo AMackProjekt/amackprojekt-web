@@ -13,6 +13,8 @@ import { ApiDocsPreview } from "@/components/ui/ApiDocsPreview";
 import { TechnicalBlog } from "@/components/ui/TechnicalBlog";
 import { Web3Connect } from "@/components/ui/Web3Connect";
 import { MackAssistant } from "@/components/ui/MackAssistant";
+import { FlipKpiCard } from "@/components/ui/FlipKpiCard";
+import { motion } from "framer-motion";
 
 export default function Page() {
   return (
@@ -334,13 +336,30 @@ export default function Page() {
         </div>
 
         {/* T.O.O.L.S. INC PORTAL SUITE HIGHLIGHT */}
-        <div className="mt-8">
+        <motion.div
+          className="mt-8"
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+        >
           <article aria-label="T.O.O.L.S. Inc Portal Suite - Live authenticated user platform">
-            <GlowCard className="p-8 lg:p-10 border border-accent/25 hover:shadow-accent/20 transition-all duration-300">
-              <div className="flex flex-col md:flex-row md:items-center gap-6 mb-6">
-                <div className="text-5xl">🛡️</div>
+            <GlowCard className="p-8 lg:p-10 relative overflow-hidden border border-accent/25">
+              {/* Ambient glow orbs */}
+              <div className="pointer-events-none absolute -top-28 -right-28 w-96 h-96 rounded-full bg-accent/8 blur-3xl animate-pulse" />
+              <div className="pointer-events-none absolute -bottom-20 -left-20 w-72 h-72 rounded-full bg-brand2/8 blur-2xl animate-pulse" style={{ animationDelay: "1.2s" }} />
+
+              <div className="flex flex-col md:flex-row md:items-center gap-6 mb-6 relative">
+                <motion.div
+                  animate={{ rotateY: [0, 12, -8, 0], scale: [1, 1.08, 1] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                  className="text-5xl"
+                >
+                  🛡️
+                </motion.div>
                 <div className="flex-1">
-                  <div className="inline-flex rounded-full border border-green-400/30 bg-green-400/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-green-400 mb-3">
+                  <div className="inline-flex items-center gap-2 rounded-full border border-green-400/30 bg-green-400/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-green-400 mb-3">
+                    <span className="inline-block w-2 h-2 rounded-full bg-green-400 animate-pulse" />
                     Live &amp; Deployed
                   </div>
                   <h3 className="text-2xl font-extrabold tracking-tight mb-1">
@@ -354,22 +373,22 @@ export default function Page() {
                 </div>
               </div>
 
-              <p className="text-text/90 leading-relaxed mb-6">
+              <p className="text-text/90 leading-relaxed mb-8 relative">
                 A unified, purpose-built case management platform for nonprofit and mission-driven organizations serving justice-involved and unhoused communities, it combines enterprise-grade security, compliant access controls, personalized operational dashboards, and standardized, client-centered workflows. Through centralized data, guided service plans, and coordinated team collaboration, the platform strengthens continuity of care and supports measurable outcomes at scale.
               </p>
 
+              {/* 3D Flip KPI Cards */}
+              <div className="mb-2">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted/60 mb-3">Hover or tap a card to flip</p>
+              </div>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
                 {[
-                  ["🔐", "Secure Auth", "JWT sessions & protected routes"],
-                  ["📊", "Dashboard", "Real-time stats & progress KPIs"],
-                  ["🎓", "Course Portal", "Structured learning with video tracks"],
-                  ["📁", "Case Management", "Referral tracking & case workflows"],
-                ].map(([icon, title, desc]) => (
-                  <div key={title} className="glass rounded-lg p-4 border border-accent/10">
-                    <div className="text-2xl mb-2">{icon}</div>
-                    <div className="text-sm font-bold text-text mb-1">{title}</div>
-                    <div className="text-xs text-muted">{desc}</div>
-                  </div>
+                  { icon: "🔐", title: "Secure Auth", desc: "JWT sessions & protected routes", back: "Role-based access control with encrypted JWT session management, route guards, and compliance-grade auth flows." },
+                  { icon: "📊", title: "Dashboard", desc: "Real-time stats & progress KPIs", back: "Personalized operational dashboards with live KPI tracking, progress charts, and milestone visibility." },
+                  { icon: "🎓", title: "Course Portal", desc: "Structured learning with video tracks", back: "Curated learning paths with video modules, skills assessments, and completion tracking for clients." },
+                  { icon: "📁", title: "Case Management", desc: "Referral tracking & case workflows", back: "Centralized referral intake, real-time status tracking, notes, and coordinated team case collaboration." },
+                ].map(({ icon, title, desc, back }, i) => (
+                  <FlipKpiCard key={title} icon={icon} title={title} desc={desc} back={back} index={i} />
                 ))}
               </div>
 
