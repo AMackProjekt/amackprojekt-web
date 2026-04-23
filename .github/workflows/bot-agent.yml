@@ -1,0 +1,447 @@
+name: 🤖 Monitor Bot Agent
+
+on:
+  schedule:
+    - cron: '0 7 * * *'   # Daily 7am UTC (3am ET)
+    - cron: '0 19 * * *'  # Daily 7pm UTC (3pm ET)
+  workflow_dispatch:
+    inputs:
+      jobs:
+        description: 'Jobs to run (all | security | deploy | hygiene | api-health)'
+        required: false
+        default: 'all'
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+  actions: read
+
+env:
+  SITE_URL: https://www.mackprojekt.com
+  LABEL_SECURITY: bot-security-audit
+  LABEL_DEPLOY: bot-deploy-failure
+  LABEL_API: bot-api-down
+  LABEL_STALE: stale
+
+jobs:
+  # ─────────────────────────────────────────────────────────────────────────────
+  # 0 · SETUP — Ensure required labels exist
+  # ─────────────────────────────────────────────────────────────────────────────
+  setup-labels:
+    name: Ensure Bot Labels
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create labels (skip if already exist)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh label create "bot-security-audit" --color "d93f0b" --description "Security vulnerability found by bot audit"    --repo "${{ github.repository }}" --force
+          gh label create "bot-deploy-failure"  --color "e4e669" --description "Deployment failure detected by monitor bot" --repo "${{ github.repository }}" --force
+          gh label create "bot-api-down"        --color "b60205" --description "API health check failure detected by bot"   --repo "${{ github.repository }}" --force
+          gh label create "bot-site-down"       --color "b60205" --description "Site down alert from health monitor"        --repo "${{ github.repository }}" --force
+          gh label create "stale"               --color "ededed" --description "No recent activity"                        --repo "${{ github.repository }}" --force
+          gh label create "security"            --color "b60205" --description "Security related"                          --repo "${{ github.repository }}" --force
+          gh label create "incident"            --color "d93f0b" --description "Active production incident"                --repo "${{ github.repository }}" --force
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  # 1 · SECURITY — npm audit in root and api/
+  # ─────────────────────────────────────────────────────────────────────────────
+  security-audit:
+    name: Security Audit (npm)
+    runs-on: ubuntu-latest
+    needs: setup-labels
+    if: ${{ github.event.inputs.jobs == 'all' || github.event.inputs.jobs == 'security' || github.event_name == 'schedule' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install root dependencies
+        run: npm ci
+
+      - name: Install API dependencies
+        run: npm ci
+        working-directory: api
+
+      - name: Audit root package
+        id: audit-root
+        run: |
+          npm audit --json > /tmp/audit-root.json 2>/dev/null || true
+          CRITICAL=$(jq -r '.metadata.vulnerabilities.critical // 0' /tmp/audit-root.json)
+          HIGH=$(jq -r '.metadata.vulnerabilities.high // 0' /tmp/audit-root.json)
+          MODERATE=$(jq -r '.metadata.vulnerabilities.moderate // 0' /tmp/audit-root.json)
+          echo "critical=$CRITICAL" >> "$GITHUB_OUTPUT"
+          echo "high=$HIGH"         >> "$GITHUB_OUTPUT"
+          echo "moderate=$MODERATE" >> "$GITHUB_OUTPUT"
+          echo "Root → critical=$CRITICAL  high=$HIGH  moderate=$MODERATE"
+
+      - name: Audit API package
+        id: audit-api
+        working-directory: api
+        run: |
+          npm audit --json > /tmp/audit-api.json 2>/dev/null || true
+          CRITICAL=$(jq -r '.metadata.vulnerabilities.critical // 0' /tmp/audit-api.json)
+          HIGH=$(jq -r '.metadata.vulnerabilities.high // 0' /tmp/audit-api.json)
+          MODERATE=$(jq -r '.metadata.vulnerabilities.moderate // 0' /tmp/audit-api.json)
+          echo "critical=$CRITICAL" >> "$GITHUB_OUTPUT"
+          echo "high=$HIGH"         >> "$GITHUB_OUTPUT"
+          echo "moderate=$MODERATE" >> "$GITHUB_OUTPUT"
+          echo "API → critical=$CRITICAL  high=$HIGH  moderate=$MODERATE"
+
+      - name: Build vulnerability report
+        id: report
+        run: |
+          ROOT_C=${{ steps.audit-root.outputs.critical }}
+          ROOT_H=${{ steps.audit-root.outputs.high }}
+          ROOT_M=${{ steps.audit-root.outputs.moderate }}
+          API_C=${{ steps.audit-api.outputs.critical }}
+          API_H=${{ steps.audit-api.outputs.high }}
+          API_M=${{ steps.audit-api.outputs.moderate }}
+
+          TOTAL_HIGH=$(( ROOT_C + ROOT_H + API_C + API_H ))
+          echo "total_high=$TOTAL_HIGH" >> "$GITHUB_OUTPUT"
+
+          # Build markdown details for root vulns
+          ROOT_DETAIL=$(jq -r '
+            .vulnerabilities | to_entries |
+            map(select(.value.severity == "critical" or .value.severity == "high")) |
+            map("| `\(.key)` | \(.value.severity) | \(.value.via[0].title // .value.via[0] // "—") | \(.value.range // "—") |") |
+            .[] ' /tmp/audit-root.json 2>/dev/null | head -20 || echo "| (none) | — | — | — |")
+
+          API_DETAIL=$(jq -r '
+            .vulnerabilities | to_entries |
+            map(select(.value.severity == "critical" or .value.severity == "high")) |
+            map("| `\(.key)` | \(.value.severity) | \(.value.via[0].title // .value.via[0] // "—") | \(.value.range // "—") |") |
+            .[] ' /tmp/audit-api.json 2>/dev/null | head -20 || echo "| (none) | — | — | — |")
+
+          {
+            echo "BODY<<EOF"
+            echo "## 🔐 Security Audit Report"
+            echo ""
+            echo "> Generated by [Monitor Bot](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}) · $(date -u +'%Y-%m-%d %H:%M UTC')"
+            echo ""
+            echo "### Summary"
+            echo "| Scope | Critical | High | Moderate |"
+            echo "| --- | --- | --- | --- |"
+            echo "| Root package | $ROOT_C | $ROOT_H | $ROOT_M |"
+            echo "| API package  | $API_C  | $API_H  | $API_M  |"
+            echo ""
+            echo "### Root — High/Critical vulnerabilities"
+            echo "| Package | Severity | Title | Affected range |"
+            echo "| --- | --- | --- | --- |"
+            echo "$ROOT_DETAIL"
+            echo ""
+            echo "### API — High/Critical vulnerabilities"
+            echo "| Package | Severity | Title | Affected range |"
+            echo "| --- | --- | --- | --- |"
+            echo "$API_DETAIL"
+            echo ""
+            echo "### Recommended actions"
+            echo "- Run \`npm audit fix\` in root and/or \`api/\` to auto-fix patched issues."
+            echo "- Review unfixable vulnerabilities against [GitHub Security Advisories](https://github.com/advisories)."
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Open or update vulnerability issue
+        if: steps.report.outputs.total_high != '0'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          EXISTING=$(gh issue list \
+            --label "${{ env.LABEL_SECURITY }}" \
+            --state open \
+            --json number \
+            --jq '.[0].number' 2>/dev/null)
+
+          if [ -n "$EXISTING" ]; then
+            gh issue comment "$EXISTING" \
+              --body "${{ steps.report.outputs.BODY }}"
+            echo "Updated existing issue #$EXISTING"
+          else
+            gh issue create \
+              --title "🔐 Security vulnerabilities detected ($(date -u +'%Y-%m-%d'))" \
+              --body "${{ steps.report.outputs.BODY }}" \
+              --label "${{ env.LABEL_SECURITY }},security"
+            echo "Created new security issue"
+          fi
+
+      - name: Close resolved vulnerability issue
+        if: steps.report.outputs.total_high == '0'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          EXISTING=$(gh issue list \
+            --label "${{ env.LABEL_SECURITY }}" \
+            --state open \
+            --json number \
+            --jq '.[0].number' 2>/dev/null)
+
+          if [ -n "$EXISTING" ]; then
+            gh issue close "$EXISTING" \
+              --comment "✅ No high/critical vulnerabilities found as of $(date -u +'%Y-%m-%d %H:%M UTC'). Closing automatically." \
+              --reason "completed"
+            echo "Closed resolved issue #$EXISTING"
+          fi
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  # 2 · DEPLOY — Check recent CI/CD workflow run health
+  # ─────────────────────────────────────────────────────────────────────────────
+  deploy-status:
+    name: Deployment Health Check
+    runs-on: ubuntu-latest
+    needs: setup-labels
+    if: ${{ github.event.inputs.jobs == 'all' || github.event.inputs.jobs == 'deploy' || github.event_name == 'schedule' }}
+    steps:
+      - name: Evaluate recent deployment runs
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Resolve the CI/CD workflow ID by name
+          WORKFLOW_ID=$(gh api "repos/${{ github.repository }}/actions/workflows" \
+            --jq '.workflows[] | select(.name == "Azure Static Web Apps CI/CD") | .id' \
+            2>/dev/null | head -1)
+
+          if [ -z "$WORKFLOW_ID" ]; then
+            echo "⚠️ Could not locate CI/CD workflow — skipping deploy check."
+            exit 0
+          fi
+
+          echo "Workflow ID: $WORKFLOW_ID"
+
+          # Fetch last 15 main-branch runs
+          RUNS_JSON=$(gh api \
+            "repos/${{ github.repository }}/actions/workflows/$WORKFLOW_ID/runs?per_page=15&branch=main" \
+            --jq '.workflow_runs | map({id, status, conclusion, created_at, html_url})')
+
+          TOTAL=$(echo "$RUNS_JSON" | jq 'length')
+          FAILURES=$(echo "$RUNS_JSON" | jq '[.[] | select(.conclusion == "failure")] | length')
+          LATEST=$(echo "$RUNS_JSON" | jq -r '.[0] | "\(.conclusion // .status) — \(.created_at)"')
+          LATEST_URL=$(echo "$RUNS_JSON" | jq -r '.[0].html_url')
+
+          echo "Last $TOTAL runs: $FAILURES failures"
+          echo "Latest: $LATEST"
+
+          # Alert if ≥3 of the last 15 runs failed
+          if [ "$FAILURES" -ge 3 ]; then
+            EXISTING=$(gh issue list \
+              --label "${{ env.LABEL_DEPLOY }}" \
+              --state open \
+              --json number \
+              --jq '.[0].number' 2>/dev/null)
+
+            BODY=$(printf '## 🚨 Deployment Failure Alert\n\n> Generated by Monitor Bot · %s\n\n**%s of the last %s workflow runs on `main` failed.**\n\nLatest run: **%s**\n[View run](%s)\n\n[All workflow runs](https://github.com/%s/actions/workflows/%s)\n\n### Recommended actions\n- Check the failing workflow run logs.\n- Verify Azure SWA deployment token is valid (`A_MACKPROJEKT_DEPKEY`).\n- Confirm build output exists at `out/`.' \
+              "$(date -u +'%Y-%m-%d %H:%M UTC')" "$FAILURES" "$TOTAL" "$LATEST" "$LATEST_URL" \
+              "${{ github.repository }}" "$WORKFLOW_ID")
+
+            if [ -n "$EXISTING" ]; then
+              gh issue comment "$EXISTING" --body "$BODY"
+              echo "Updated existing deploy issue #$EXISTING"
+            else
+              gh issue create \
+                --title "🚨 CI/CD deployment failures detected ($(date -u +'%Y-%m-%d'))" \
+                --body "$BODY" \
+                --label "${{ env.LABEL_DEPLOY }}"
+              echo "Created new deploy failure issue"
+            fi
+          else
+            # Resolve any open deploy-failure issue
+            EXISTING=$(gh issue list \
+              --label "${{ env.LABEL_DEPLOY }}" \
+              --state open \
+              --json number \
+              --jq '.[0].number' 2>/dev/null)
+
+            if [ -n "$EXISTING" ]; then
+              gh issue close "$EXISTING" \
+                --comment "✅ Deployment health recovered as of $(date -u +'%Y-%m-%d %H:%M UTC'). Only $FAILURES of the last $TOTAL runs failed." \
+                --reason "completed"
+              echo "Closed resolved deploy issue #$EXISTING"
+            fi
+          fi
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  # 3 · API HEALTH — Ping live API endpoints and check response content
+  # ─────────────────────────────────────────────────────────────────────────────
+  api-health:
+    name: API & Content Health
+    runs-on: ubuntu-latest
+    needs: setup-labels
+    if: ${{ github.event.inputs.jobs == 'all' || github.event.inputs.jobs == 'api-health' || github.event_name == 'schedule' }}
+    steps:
+      - name: Check API endpoints
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          SITE="${{ env.SITE_URL }}"
+          FAILED_ENDPOINTS=""
+
+          check_endpoint() {
+            local path="$1"
+            local expected_status="${2:-200}"
+            local label="$3"
+
+            HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" \
+              --max-time 15 --retry 1 --retry-delay 2 \
+              "$SITE$path" 2>/dev/null || echo "000")
+            RESP_TIME=$(curl -s -o /dev/null -w "%{time_total}" \
+              --max-time 15 "$SITE$path" 2>/dev/null || echo "timeout")
+
+            echo "$label → HTTP $HTTP_CODE (${RESP_TIME}s)"
+
+            if [ "$HTTP_CODE" != "$expected_status" ]; then
+              FAILED_ENDPOINTS="$FAILED_ENDPOINTS\n| \`$path\` | $expected_status | $HTTP_CODE | ${RESP_TIME}s |"
+              return 1
+            fi
+            return 0
+          }
+
+          # Check API endpoints (404 is acceptable for unimplemented; 000/5xx are problems)
+          check_endpoint "/api/healthz" "200" "API healthz" || true
+          check_endpoint "/api/readyz"  "200" "API readyz"  || true
+
+          # Check key static pages
+          check_endpoint "/"             "200" "Homepage"    || FAILED_ENDPOINTS="$FAILED_ENDPOINTS\n| \`/\` | 200 | $HTTP_CODE | ${RESP_TIME}s |"
+          check_endpoint "/interest"     "200" "Interest"    || true
+          check_endpoint "/referral"     "200" "Referral"    || true
+          check_endpoint "/partnerships" "200" "Partnerships"|| true
+
+          if [ -n "$FAILED_ENDPOINTS" ]; then
+            EXISTING=$(gh issue list \
+              --label "${{ env.LABEL_API }}" \
+              --state open \
+              --json number \
+              --jq '.[0].number' 2>/dev/null)
+
+            BODY=$(printf '## 🔴 API / Content Health Check Failed\n\n> Generated by Monitor Bot · %s\n\n| Path | Expected | Received | Response Time |\n| --- | --- | --- | --- |\n%b\n\n**Site base URL:** `%s`\n\n### Recommended actions\n- Check Azure Static Web Apps deployment status.\n- Verify Azure Functions are running (check Application Insights if configured).\n- Check `staticwebapp.config.json` routing rules.' \
+              "$(date -u +'%Y-%m-%d %H:%M UTC')" "$FAILED_ENDPOINTS" "$SITE")
+
+            if [ -z "$EXISTING" ]; then
+              gh issue create \
+                --title "🔴 API/Content health check failed ($(date -u +'%Y-%m-%d'))" \
+                --body "$BODY" \
+                --label "${{ env.LABEL_API }},incident"
+              echo "Created API health issue"
+            else
+              gh issue comment "$EXISTING" --body "$BODY"
+              echo "Updated existing API health issue #$EXISTING"
+            fi
+          else
+            # Resolve any open API-down issue
+            EXISTING=$(gh issue list \
+              --label "${{ env.LABEL_API }}" \
+              --state open \
+              --json number \
+              --jq '.[0].number' 2>/dev/null)
+
+            if [ -n "$EXISTING" ]; then
+              gh issue close "$EXISTING" \
+                --comment "✅ All API and content endpoints healthy as of $(date -u +'%Y-%m-%d %H:%M UTC')." \
+                --reason "completed"
+            fi
+            echo "All endpoints OK"
+          fi
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  # 4 · REPO HYGIENE — Label & close stale issues, report open PRs
+  # ─────────────────────────────────────────────────────────────────────────────
+  repo-hygiene:
+    name: Repo Hygiene
+    runs-on: ubuntu-latest
+    needs: setup-labels
+    if: ${{ github.event.inputs.jobs == 'all' || github.event.inputs.jobs == 'hygiene' || github.event_name == 'schedule' }}
+    steps:
+      - name: Label stale issues (no activity > 30 days)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          STALE_ISSUES=$(gh issue list \
+            --state open \
+            --json number,title,updatedAt,labels \
+            --jq '
+              .[] |
+              select(
+                (.updatedAt | fromdateiso8601) < (now - 30*86400) and
+                ([.labels[].name] | contains(["stale"]) | not) and
+                ([.labels[].name] | contains(["pinned"]) | not) and
+                ([.labels[].name] | contains(["bot-security-audit"]) | not) and
+                ([.labels[].name] | contains(["bot-deploy-failure"]) | not) and
+                ([.labels[].name] | contains(["bot-api-down"]) | not) and
+                ([.labels[].name] | contains(["bot-site-down"]) | not)
+              ) | .number
+            ' 2>/dev/null)
+
+          if [ -z "$STALE_ISSUES" ]; then
+            echo "No stale issues found."
+          else
+            echo "$STALE_ISSUES" | while IFS= read -r NUM; do
+              echo "Labeling issue #$NUM as stale"
+              gh issue edit "$NUM" --add-label "stale"
+              gh issue comment "$NUM" \
+                --body "👋 This issue has been automatically labeled **stale** after 30 days without activity. It will be closed in 7 days unless further activity occurs. Remove the \`stale\` label to keep it open."
+            done
+          fi
+
+      - name: Close very stale issues (stale > 7 additional days)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          VERY_STALE=$(gh issue list \
+            --state open \
+            --label "stale" \
+            --json number,updatedAt \
+            --jq '.[] | select((.updatedAt | fromdateiso8601) < (now - 37*86400)) | .number' \
+            2>/dev/null)
+
+          if [ -z "$VERY_STALE" ]; then
+            echo "No issues ready for auto-close."
+          else
+            echo "$VERY_STALE" | while IFS= read -r NUM; do
+              echo "Closing stale issue #$NUM"
+              gh issue close "$NUM" \
+                --comment "🤖 Closing automatically after 37 days of inactivity. Reopen if still relevant." \
+                --reason "not planned"
+            done
+          fi
+
+      - name: Report open PRs > 14 days
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          OLD_PRS=$(gh pr list \
+            --state open \
+            --json number,title,author,createdAt,headRefName \
+            --jq '
+              [.[] |
+                select((.createdAt | fromdateiso8601) < (now - 14*86400)) |
+                "| #\(.number) | \(.title[0:60]) | @\(.author.login) | \(.createdAt[0:10]) |"
+              ] | .[]
+            ' 2>/dev/null)
+
+          if [ -n "$OLD_PRS" ]; then
+            echo "PRs open for > 14 days:"
+            echo "$OLD_PRS"
+          else
+            echo "No PRs older than 14 days."
+          fi
+
+      - name: Report dependency update summary
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          DEP_PRS=$(gh pr list \
+            --state open \
+            --label "dependencies" \
+            --json number,title,createdAt \
+            --jq '[.[] | "- #\(.number) \(.title) (opened \(.createdAt[0:10]))"] | .[]' \
+            2>/dev/null)
+
+          if [ -n "$DEP_PRS" ]; then
+            echo "=== Open Dependabot PRs ==="
+            echo "$DEP_PRS"
+          else
+            echo "No open dependency PRs."
+          fi
