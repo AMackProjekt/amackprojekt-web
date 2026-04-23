@@ -355,9 +355,7 @@ export default function Page() {
               </div>
 
               <p className="text-text/90 leading-relaxed mb-6">
-                A production-deployed, end-to-end user portal built for justice-involved individuals. Features secure authentication, 
-                personalized dashboards, structured learning tracks, case management, and activity tracking—all within a 
-                cohesive, accessible dark-theme experience.
+                A unified, purpose-built case management platform for nonprofit and mission-driven organizations serving justice-involved and unhoused communities, it combines enterprise-grade security, compliant access controls, personalized operational dashboards, and standardized, client-centered workflows. Through centralized data, guided service plans, and coordinated team collaboration, the platform strengthens continuity of care and supports measurable outcomes at scale.
               </p>
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
