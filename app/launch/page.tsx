@@ -188,10 +188,18 @@ export default function LaunchPage() {
                 AMP has the tools and solutions to help you succeed in the digital age.
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
-                <ElectricButton color="green" variant="solid">
+                <ElectricButton
+                  color="green"
+                  variant="solid"
+                  onClick={() => window.location.assign("/waitlist")}
+                >
                   Get Started Now
                 </ElectricButton>
-                <ElectricButton color="green" variant="outline">
+                <ElectricButton
+                  color="green"
+                  variant="outline"
+                  onClick={() => window.location.assign("/innovation")}
+                >
                   Learn More
                 </ElectricButton>
               </div>

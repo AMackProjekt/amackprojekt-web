@@ -1,50 +1,57 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Button } from "./Button";
-import { ThemeToggle } from "./ThemeToggle";
-import { useState, useEffect } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+
+const links = [
+  { href: "/innovation", label: "Work" },
+  { href: "/#capabilities", label: "Capabilities" },
+  { href: "/partnerships", label: "Studio" },
+  { href: "/media-kit", label: "Media" },
+];
 
 export function Navbar() {
-  const [mounted, setMounted] = useState(false);
+  const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  useEffect(() => setOpen(false), [pathname]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-bg/70 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-container items-center justify-between px-7 py-4">
-        <motion.a
-          href="/"
-          initial={{ opacity: 0, y: -8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.35 }}
-          className="flex items-center gap-3"
-        >
-          <img
-            src="/logos/amp-logo.jpeg"
-            alt="AMP Logo"
-            className="h-10 w-auto object-contain"
-          />
-          <span className="font-extrabold tracking-tight text-text">
-            MackEnterprises
-          </span>
-        </motion.a>
+    <header className="site-header">
+      <div className="site-container nav-inner">
+        <Link href="/" className="wordmark" aria-label="A MackProjekt home">
+          <span className="wordmark-symbol">A</span>
+          <span>A MackProjekt</span>
+        </Link>
 
-        <nav className="hidden items-center gap-6 md:flex">
-          <a href="/launch" className="text-sm font-medium text-green-400 hover:text-green-300 transition-colors">Launch</a>
-          <a href="/innovation" className="text-sm font-medium text-text hover:text-green-400 transition-colors">Innovation</a>
-          <span className="text-sm font-medium text-muted cursor-not-allowed" title="Coming Soon">Design</span>
-          <span className="text-sm font-medium text-muted cursor-not-allowed" title="Coming Soon">Technology</span>
-          <span className="text-sm font-medium text-muted cursor-not-allowed" title="Coming Soon">Growth</span>
+        <nav className={`nav-links ${open ? "is-open" : ""}`} aria-label="Main navigation">
+          {links.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={pathname === link.href ? "active" : undefined}
+            >
+              {link.label}
+            </Link>
+          ))}
+          <Link href="/portal/auth" className="nav-mobile-only">Portal sign in</Link>
+          <Link href="/interest" className="button button-primary nav-mobile-only">Start a project</Link>
         </nav>
 
-        <div className="flex items-center gap-3">
-          {mounted && <ThemeToggle />}
-          <Button variant="primary" href="/waitlist">
-            Join Waitlist
-          </Button>
+        <div className="nav-actions">
+          <Link href="/portal/auth" className="portal-link">Portal sign in</Link>
+          <Link href="/interest" className="button button-primary">Start a project</Link>
+          <button
+            type="button"
+            className="menu-button"
+            onClick={() => setOpen((value) => !value)}
+            aria-expanded={open}
+            aria-controls="mobile-navigation"
+            aria-label={open ? "Close navigation" : "Open navigation"}
+          >
+            <span /><span />
+          </button>
         </div>
       </div>
     </header>

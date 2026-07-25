@@ -10,8 +10,11 @@ import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { GoogleTagManager, GoogleTagManagerNoScript } from "@/components/GoogleTagManager";
 
 export const metadata: Metadata = {
-  title: "AMP - A MackProjekt | Innovation Lab of MackEnterprises",
-  description: "AMP (A MackProjekt) - The innovation lab behind MackEnterprises. Creating cutting-edge digital solutions, platforms, and experiences that harness the power of AI to destroy the digital divide.",
+  title: {
+    default: "A MackProjekt — Technology built to move people forward",
+    template: "%s — A MackProjekt",
+  },
+  description: "An independent innovation studio turning human-centered ideas into useful digital products for access, opportunity, and trust.",
   metadataBase: new URL("https://mackprojekt.com"),
   manifest: "/manifest.json",
   icons: {
@@ -31,7 +34,7 @@ export const metadata: Metadata = {
       },
     ],
   },
-  keywords: ["AMP", "A MackProjekt", "MackEnterprises", "AI", "Digital Solutions", "Web Development", "Innovation", "Technology"],
+  keywords: ["A MackProjekt", "MackEnterprises", "product strategy", "digital products", "social impact technology", "web development"],
   authors: [{ name: "Donyale Mack" }],
   creator: "MackEnterprises",
   publisher: "MackEnterprises",
@@ -41,25 +44,25 @@ export const metadata: Metadata = {
     title: "A MackProjekt",
   },
   openGraph: {
-    title: "AMP - A MackProjekt | Innovation Lab",
-    description: "Creating cutting-edge digital solutions that harness AI to destroy the digital divide.",
+    title: "A MackProjekt — Technology built to move people forward",
+    description: "An independent innovation studio building useful digital products for access, opportunity, and trust.",
     url: "https://mackprojekt.com",
     siteName: "A MackProjekt",
     type: "website",
     images: [
       {
-        url: "/logos/amp-logo.jpeg",
+        url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "AMP - A MackProjekt Logo",
+        alt: "A MackProjekt — Technology built to move people forward",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "AMP - A MackProjekt | Innovation Lab",
-    description: "Creating cutting-edge digital solutions that harness AI to destroy the digital divide.",
-    images: ["/logos/amp-logo.jpeg"],
+    title: "A MackProjekt — Technology built to move people forward",
+    description: "An independent innovation studio building useful digital products for access, opportunity, and trust.",
+    images: ["/og.png"],
   },
 };
 
