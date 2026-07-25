@@ -3,7 +3,7 @@
 import { Navbar } from "@/components/ui/Navbar";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { GlowCard } from "@/components/ui/GlowCard";
-import { WaitlistForm } from "@/components/WaitlistForm";
+import { WaitlistForm } from "@/components/ui/WaitlistForm";
 import { motion } from "framer-motion";
 
 export default function WaitlistPage() {
@@ -46,7 +46,7 @@ export default function WaitlistPage() {
           >
             <GlowCard className="p-8 h-full">
               <h2 className="text-xl font-bold text-text mb-6">Quick Sign Up</h2>
-              <WaitlistForm />
+              <WaitlistForm source="waitlist-page" />
             </GlowCard>
           </motion.div>
 

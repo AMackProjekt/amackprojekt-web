@@ -62,8 +62,8 @@ export default function HomePage() {
               where access, opportunity, and trust matter most.
             </p>
             <div className="action-row">
-              <Link className="button button-primary" href="/interest">
-                Start a project <span aria-hidden="true">↗</span>
+              <Link className="button button-primary" href="/waitlist">
+                Get started <span aria-hidden="true">↗</span>
               </Link>
               <Link className="button button-secondary" href="/innovation">
                 Explore our work
