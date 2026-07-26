@@ -43,19 +43,15 @@ button, input, textarea, select { font: inherit; }
 }
 .site-header::after { content: ""; position: absolute; inset: auto 0 -1px; height: 1px; background: linear-gradient(90deg, transparent, rgba(199,255,74,.5), rgba(85,230,211,.35), transparent); }
 .nav-inner { height: 76px; display: flex; align-items: center; justify-content: space-between; }
-.wordmark { display: inline-flex; align-items: center; gap: 11px; font-size: 15px; font-weight: 750; letter-spacing: -0.02em; }
-.wordmark-symbol {
-  display: grid; place-items: center; width: 32px; height: 32px; border: 1px solid rgba(199,255,74,.55);
-  color: var(--lime); font-size: 14px; font-weight: 900; transform: skew(-8deg);
-  background: linear-gradient(145deg, rgba(199,255,74,.13), rgba(85,230,211,.04));
-  box-shadow: inset 0 0 18px rgba(199,255,74,.08), 0 0 20px rgba(199,255,74,.08);
-}
-.nav-links { display: flex; align-items: center; gap: 30px; margin-left: auto; margin-right: 34px; }
+.brand-link { display: block; flex: 0 0 auto; width: 194px; height: 54px; overflow: hidden; }
+.brand-logo { width: 194px; height: 194px; max-width: none; object-fit: cover; object-position: center 52%; transform: translateY(-70px); filter: drop-shadow(0 0 16px rgba(85,230,211,.16)); }
+.nav-links { display: flex; align-items: center; gap: 28px; margin-left: auto; }
 .nav-links > a { color: var(--muted-ink); font-size: 14px; transition: color .2s ease; }
 .nav-links > a:hover, .nav-links > a.active { color: var(--ink); }
 .nav-actions { display: flex; align-items: center; gap: 20px; }
-.portal-link { color: var(--muted-ink); font-size: 13px; }
-.nav-mobile-only, .menu-button { display: none; }
+.menu-button { display: none; }
+.nav-links > .nav-cta { color: #11150f; margin-left: 4px; }
+.nav-links > .nav-cta:hover { color: #11150f; }
 
 .button {
   display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 48px;
@@ -191,7 +187,8 @@ button, input, textarea, select { font: inherit; }
 
 .site-footer { border-top: 1px solid var(--line); background: #050706; padding: 80px 0 28px; }
 .footer-top { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding-bottom: 70px; border-bottom: 1px solid var(--line); }
-.wordmark-footer { align-self: start; font-size: 20px; }
+.footer-brand-link { align-self: start; width: 250px; height: 112px; }
+.footer-brand-logo { width: 250px; height: 250px; transform: translateY(-73px); }
 .footer-top p { max-width: 520px; margin: 0; color: #aeb5b0; font-size: 20px; line-height: 1.5; }
 .footer-links { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; padding: 60px 0; }
 .footer-links > div { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
@@ -273,7 +270,9 @@ button, input, textarea, select { font: inherit; }
 
 @media (max-width: 900px) {
   .site-container { width: min(100% - 32px, 1220px); }
-  .portal-link, .nav-actions > .button, .nav-links { display: none; }
+  .nav-links { display: none; }
+  .brand-link { width: 160px; }
+  .brand-logo { width: 178px; height: 178px; transform: translate(-9px, -62px); }
   .menu-button { display: flex; width: 42px; height: 42px; padding: 0; border: 1px solid var(--line); background: transparent; flex-direction: column; justify-content: center; align-items: center; gap: 6px; }
   .menu-button span { width: 17px; height: 1px; background: var(--ink); }
   .nav-links.is-open {
@@ -281,7 +280,7 @@ button, input, textarea, select { font: inherit; }
     border-bottom: 1px solid var(--line); flex-direction: column; align-items: stretch; gap: 4px; margin: 0;
   }
   .nav-links.is-open > a { padding: 13px 0; font-size: 17px; }
-  .nav-links.is-open .nav-mobile-only { display: flex; }
+  .nav-links.is-open .nav-cta { display: flex; margin: 14px 0 0; }
   .hero-shell { min-height: 700px; padding: 90px 0 70px; }
   .hero-title { margin-top: 30px; }
   .hero-layout, .section-heading-grid { grid-template-columns: 1fr; }
@@ -322,6 +321,8 @@ button, input, textarea, select { font: inherit; }
   .manifesto { padding: 42px 24px; }
   .manifesto-footer { align-items: flex-start; flex-direction: column; gap: 28px; }
   .footer-top { grid-template-columns: 1fr; }
+  .footer-brand-link { width: 220px; height: 100px; }
+  .footer-brand-logo { width: 220px; height: 220px; transform: translateY(-65px); }
   .footer-links { grid-template-columns: 1fr 1fr; }
   .footer-bottom { flex-direction: column; }
   .systems-ribbon { grid-template-columns: 1fr 1fr; gap: 18px; }

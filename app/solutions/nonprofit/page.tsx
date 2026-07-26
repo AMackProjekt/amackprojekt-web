@@ -21,7 +21,7 @@ export default function NonprofitSolutionsPage() {
           Affordable donation platforms, volunteer management, impact tracking, and community engagement tools designed for organizations changing the world.
         </p>
         <div className="mt-8 flex flex-wrap gap-3 justify-center">
-          <Button variant="primary" href="/portal/auth">Apply for Nonprofit Pricing</Button>
+          <Button variant="primary" href="/interest">Apply for Nonprofit Pricing</Button>
         </div>
       </section>
 
@@ -105,7 +105,7 @@ export default function NonprofitSolutionsPage() {
               <li>✓ Training for your team</li>
             </ul>
 
-            <Button variant="primary" href="/portal/auth" className="w-full">
+            <Button variant="primary" href="/interest" className="w-full">
               Apply Now
             </Button>
           </GlowCard>
@@ -128,7 +128,7 @@ export default function NonprofitSolutionsPage() {
               <li>✓ 12 months premium support</li>
             </ul>
 
-            <Button variant="primary" href="/portal/auth" className="w-full">
+            <Button variant="primary" href="/interest" className="w-full">
               Apply Now
             </Button>
           </GlowCard>
@@ -147,7 +147,7 @@ export default function NonprofitSolutionsPage() {
           <p className="text-muted max-w-2xl mx-auto mb-8">
             Let's discuss how technology can help you reach more people, raise more funds, and measure your impact more effectively.
           </p>
-          <Button variant="primary" href="/portal/auth">Schedule Free Consultation</Button>
+          <Button variant="primary" href="/interest">Schedule Free Consultation</Button>
         </GlowCard>
       </section>
 

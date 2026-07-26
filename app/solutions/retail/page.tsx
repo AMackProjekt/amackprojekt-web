@@ -22,7 +22,7 @@ export default function RetailSolutionsPage() {
           Transform your retail business with modern e-commerce platforms, inventory management, customer analytics, and marketing automation designed to increase sales and streamline operations.
         </p>
         <div className="mt-8 flex flex-wrap gap-3 justify-center">
-          <Button variant="primary" href="/portal/auth">Get Started</Button>
+          <Button variant="primary" href="/interest">Get Started</Button>
           <Button variant="ghost" href="#features">View Features</Button>
         </div>
       </section>
@@ -183,7 +183,7 @@ export default function RetailSolutionsPage() {
               </ul>
               <Button
                 variant={plan.highlighted ? "primary" : "ghost"}
-                href="/portal/auth"
+                href="/interest"
                 className="w-full"
               >
                 Get Started
@@ -201,7 +201,7 @@ export default function RetailSolutionsPage() {
             Schedule a free 30-minute consultation to discuss your business goals and get a custom quote.
           </p>
           <div className="flex gap-3 justify-center">
-            <Button variant="primary" href="/portal/auth">Schedule Consultation</Button>
+            <Button variant="primary" href="/interest">Schedule Consultation</Button>
             <Button variant="ghost" href="/">View More Solutions</Button>
           </div>
         </GlowCard>

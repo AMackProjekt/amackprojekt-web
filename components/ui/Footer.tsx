@@ -5,9 +5,12 @@ export function Footer() {
     <footer className="site-footer">
       <div className="site-container">
         <div className="footer-top">
-          <Link href="/" className="wordmark wordmark-footer" aria-label="A MackProjekt home">
-            <span className="wordmark-symbol">A</span>
-            <span>A MackProjekt</span>
+          <Link href="/" className="brand-link footer-brand-link" aria-label="A MackProjekt home">
+            <img
+              src="/logos/amp-logo.jpeg"
+              alt="A MackProjekt"
+              className="brand-logo footer-brand-logo"
+            />
           </Link>
           <p>Independent innovation studio building technology for access, opportunity, and trust.</p>
         </div>
@@ -20,7 +23,7 @@ export function Footer() {
           </div>
           <div>
             <span>Connect</span>
-            <Link href="/interest">Start a project</Link>
+            <Link href="/interest">Start A Projekt</Link>
             <Link href="/waitlist">Join the waitlist</Link>
             <a href="mailto:hello@mackprojekt.com">hello@mackprojekt.com</a>
           </div>
@@ -28,7 +31,6 @@ export function Footer() {
             <span>Products</span>
             <Link href="/reentry">T.O.O.L.S. Inc.</Link>
             <Link href="/messaging">MackChat</Link>
-            <Link href="/portal/auth">Member portal</Link>
           </div>
         </div>
         <div className="footer-bottom">
