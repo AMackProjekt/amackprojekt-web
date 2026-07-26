@@ -21,7 +21,7 @@ export default function HealthcareSolutionsPage() {
           Secure patient portals, telemedicine platforms, health data analytics, and practice management systems built with privacy and compliance at the core.
         </p>
         <div className="mt-8 flex flex-wrap gap-3 justify-center">
-          <Button variant="primary" href="/portal/auth">Request Demo</Button>
+          <Button variant="primary" href="/interest">Request Demo</Button>
           <Button variant="ghost" href="#features">Learn More</Button>
         </div>
       </section>
@@ -118,7 +118,7 @@ export default function HealthcareSolutionsPage() {
           <p className="text-muted max-w-2xl mx-auto mb-8">
             Schedule a HIPAA-compliant consultation to discuss your needs and receive a detailed proposal.
           </p>
-          <Button variant="primary" href="/portal/auth">Schedule Consultation</Button>
+          <Button variant="primary" href="/interest">Schedule Consultation</Button>
         </GlowCard>
       </section>
 

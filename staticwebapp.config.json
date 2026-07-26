@@ -1,6 +1,16 @@
 {
   "routes": [
     {
+      "route": "/portal",
+      "redirect": "https://sdtoolsinc.org",
+      "statusCode": 301
+    },
+    {
+      "route": "/portal/*",
+      "redirect": "https://sdtoolsinc.org",
+      "statusCode": 301
+    },
+    {
       "route": "/api/*"
     },
     {

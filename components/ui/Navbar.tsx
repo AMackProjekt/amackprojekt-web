@@ -20,9 +20,12 @@ export function Navbar() {
   return (
     <header className="site-header">
       <div className="site-container nav-inner">
-        <Link href="/" className="wordmark" aria-label="A MackProjekt home">
-          <span className="wordmark-symbol">A</span>
-          <span>A MackProjekt</span>
+        <Link href="/" className="brand-link" aria-label="A MackProjekt home">
+          <img
+            src="/logos/amp-logo.jpeg"
+            alt="A MackProjekt"
+            className="brand-logo"
+          />
         </Link>
 
         <nav className={`nav-links ${open ? "is-open" : ""}`} aria-label="Main navigation">
@@ -35,13 +38,10 @@ export function Navbar() {
               {link.label}
             </Link>
           ))}
-          <Link href="/portal/auth" className="nav-mobile-only">Portal sign in</Link>
-          <Link href="/interest" className="button button-primary nav-mobile-only">Start a project</Link>
+          <Link href="/interest" className="button button-primary nav-cta">Start A Projekt</Link>
         </nav>
 
         <div className="nav-actions">
-          <Link href="/portal/auth" className="portal-link">Portal sign in</Link>
-          <Link href="/interest" className="button button-primary">Start a project</Link>
           <button
             type="button"
             className="menu-button"
