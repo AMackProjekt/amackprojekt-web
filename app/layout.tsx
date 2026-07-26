@@ -80,7 +80,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             __html: `
               if ('serviceWorker' in navigator) {
                 window.addEventListener('load', function() {
-                  navigator.serviceWorker.register('/service-worker.js');
+                  navigator.serviceWorker
+                    .register('/service-worker.js', { updateViaCache: 'none' })
+                    .then(function(registration) {
+                      registration.update();
+                    });
                 });
               }
             `,

@@ -46,39 +46,60 @@ export default function HomePage() {
       <section className="hero-shell">
         <div className="ambient ambient-one" />
         <div className="ambient ambient-two" />
+        <div className="hero-beam" aria-hidden="true" />
         <div className="site-container relative z-10">
-          <div className="hero-kicker">
-            <span className="status-dot" />
-            Independent innovation studio · California
-          </div>
-          <h1 className="hero-title">
-            Technology built
-            <br />
-            <span>to move people forward.</span>
-          </h1>
-          <div className="hero-bottom">
-            <p className="hero-copy">
-              A MackProjekt turns ambitious, human-centered ideas into useful digital products—especially
-              where access, opportunity, and trust matter most.
-            </p>
-            <div className="action-row">
-              <Link className="button button-primary" href="/waitlist">
-                Get started <span aria-hidden="true">↗</span>
-              </Link>
-              <Link className="button button-secondary" href="/innovation">
-                Explore our work
-              </Link>
+          <div className="hero-layout">
+            <div className="hero-content">
+              <div className="hero-kicker">
+                <span className="status-dot" />
+                Innovation systems online · California
+              </div>
+              <h1 className="hero-title">
+                Technology built
+                <br />
+                <span>to move people forward.</span>
+              </h1>
+              <p className="hero-copy">
+                A MackProjekt turns ambitious, human-centered ideas into useful digital products—especially
+                where access, opportunity, and trust matter most.
+              </p>
+              <div className="action-row">
+                <Link className="button button-primary" href="/waitlist">
+                  Get started <span aria-hidden="true">↗</span>
+                </Link>
+                <Link className="button button-secondary" href="/innovation">
+                  Explore our work
+                </Link>
+              </div>
+            </div>
+
+            <div className="hero-visual" aria-hidden="true">
+              <div className="visual-grid" />
+              <div className="orbit orbit-one"><i /></div>
+              <div className="orbit orbit-two"><i /></div>
+              <div className="orbit orbit-three" />
+              <div className="signal-core">
+                <span className="core-a">A</span>
+                <span className="core-pulse" />
+              </div>
+              <div className="visual-label visual-label-one"><b>01</b> STRATEGY</div>
+              <div className="visual-label visual-label-two"><b>02</b> SYSTEMS</div>
+              <div className="visual-label visual-label-three"><b>03</b> IMPACT</div>
+              <div className="visual-status"><span /> BUILDING WHAT MATTERS</div>
             </div>
           </div>
         </div>
       </section>
 
       <section className="signal-strip" aria-label="Studio focus">
-        <div className="site-container signal-grid">
-          <div><strong>3</strong><span>ventures in motion</span></div>
-          <div><strong>1</strong><span>mission: widen access</span></div>
-          <div><strong>End-to-end</strong><span>strategy through launch</span></div>
-          <div><strong>Founder-led</strong><span>close, accountable work</span></div>
+        <div className="signal-track">
+          <span>PRODUCT STRATEGY</span><i>✦</i>
+          <span>EXPERIENCE DESIGN</span><i>✦</i>
+          <span>FULL-STACK ENGINEERING</span><i>✦</i>
+          <span>AI + DATA SYSTEMS</span><i>✦</i>
+          <span>COMMUNITY IMPACT</span><i>✦</i>
+          <span>PRODUCT STRATEGY</span><i>✦</i>
+          <span>EXPERIENCE DESIGN</span><i>✦</i>
         </div>
       </section>
 
@@ -111,6 +132,10 @@ export default function HomePage() {
                   <h3>{venture.name}</h3>
                   <span>{venture.description}</span>
                 </div>
+                <div className={`venture-orb orb-${venture.accent}`} aria-hidden="true">
+                  <span>{venture.index}</span>
+                  <i />
+                </div>
                 <span className="venture-arrow" aria-hidden="true">↗</span>
               </Link>
             );
@@ -138,6 +163,31 @@ export default function HomePage() {
                 <p>{description}</p>
               </article>
             ))}
+          </div>
+          <div className="systems-ribbon" aria-label="Studio system">
+            <div><span>DISCOVER</span><i /></div>
+            <div><span>DESIGN</span><i /></div>
+            <div><span>BUILD</span><i /></div>
+            <div><span>LAUNCH</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section className="lab-band">
+        <div className="site-container lab-band-inner">
+          <div className="lab-mark" aria-hidden="true">
+            <span>AMP</span>
+            <i />
+          </div>
+          <div>
+            <p className="eyebrow">Inside the lab</p>
+            <h2>Technology with pulse, purpose, and a point of view.</h2>
+          </div>
+          <div className="lab-tags">
+            <span>AI systems</span>
+            <span>Community platforms</span>
+            <span>Digital access</span>
+            <span>Founder-led builds</span>
           </div>
         </div>
       </section>

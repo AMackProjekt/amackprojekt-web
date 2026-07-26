@@ -1,81 +1,70 @@
-const CACHE_NAME = 'mackprojekt-v1';
-const urlsToCache = [
-  '/',
-  '/logos/amp-logo.jpeg',
-  '/manifest.json'
+const CACHE_NAME = "mackprojekt-v2";
+const STATIC_ASSETS = [
+  "/logos/amp-logo.jpeg",
+  "/manifest.json",
 ];
 
-// Only cache HTTP/HTTPS requests
-const isCacheableRequest = (request) => {
-  const url = new URL(request.url);
-  // Only cache http and https schemes
-  return url.protocol === 'http:' || url.protocol === 'https:';
-};
-
-self.addEventListener('install', (event) => {
+self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then((cache) => cache.addAll(urlsToCache))
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(STATIC_ASSETS))
+  );
+  self.skipWaiting();
+});
+
+self.addEventListener("activate", (event) => {
+  event.waitUntil(
+    caches
+      .keys()
+      .then((cacheNames) =>
+        Promise.all(
+          cacheNames
+            .filter((cacheName) => cacheName !== CACHE_NAME)
+            .map((cacheName) => caches.delete(cacheName))
+        )
+      )
+      .then(() => self.clients.claim())
   );
 });
 
-self.addEventListener('fetch', (event) => {
-  // Skip non-cacheable requests (chrome-extension, etc.)
-  if (!isCacheableRequest(event.request)) {
+self.addEventListener("fetch", (event) => {
+  const request = event.request;
+  const url = new URL(request.url);
+
+  if (
+    request.method !== "GET" ||
+    (url.protocol !== "http:" && url.protocol !== "https:")
+  ) {
     return;
   }
 
+  // Always prefer fresh HTML so releases are visible immediately.
+  if (request.mode === "navigate") {
+    event.respondWith(
+      fetch(request).catch(() => caches.match(request))
+    );
+    return;
+  }
+
+  // Fingerprinted assets can remain cache-first.
   event.respondWith(
-    caches.match(event.request)
-      .then((response) => {
-        // Cache hit - return response
-        if (response) {
-          return response;
+    caches.match(request).then((cachedResponse) => {
+      if (cachedResponse) {
+        return cachedResponse;
+      }
+
+      return fetch(request).then((networkResponse) => {
+        if (!networkResponse || networkResponse.status !== 200) {
+          return networkResponse;
         }
-        return fetch(event.request).then(
-          (response) => {
-            // Check if we received a valid response
-            if (!response || response.status !== 200 || response.type !== 'basic') {
-              return response;
-            }
 
-            const responseToCache = response.clone();
+        const responseToCache = networkResponse.clone();
+        caches
+          .open(CACHE_NAME)
+          .then((cache) => cache.put(request, responseToCache))
+          .catch(() => undefined);
 
-            // Only cache if it's a cacheable request
-            if (isCacheableRequest(event.request)) {
-              caches.open(CACHE_NAME)
-                .then((cache) => {
-                  cache.put(event.request, responseToCache).catch((err) => {
-                    console.warn('Cache put failed:', err);
-                  });
-                })
-                .catch((err) => {
-                  console.warn('Cache open failed:', err);
-                });
-            }
-
-            return response;
-          }
-        ).catch((err) => {
-          console.warn('Fetch failed:', err);
-          // Try to return cached response on network error
-          return caches.match(event.request);
-        });
-      })
-  );
-});
-
-self.addEventListener('activate', (event) => {
-  const cacheWhitelist = [CACHE_NAME];
-  event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.map((cacheName) => {
-          if (cacheWhitelist.indexOf(cacheName) === -1) {
-            return caches.delete(cacheName);
-          }
-        })
-      );
+        return networkResponse;
+      });
     })
   );
 });
