@@ -150,12 +150,12 @@ export default function MediaKitPage() {
               {/* Logos */}
               <div>
                 <h3 className="font-semibold text-text mb-4">Logos</h3>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div className="glass rounded-xl p-6 text-center">
-                    <div className="bg-white rounded-lg p-4 mb-3">
-                      <img src="/logos/amp-logo.jpeg" alt="AMP Logo" className="w-full h-auto" />
+                    <div className="bg-white rounded-lg p-4 mb-3 h-52 flex items-center justify-center">
+                      <img src="/logos/amp-logo.jpeg" alt="A MackProjekt logo" className="max-w-full max-h-full object-contain" />
                     </div>
-                    <p className="text-sm text-muted">Primary Logo</p>
+                    <p className="font-semibold text-text">A MackProjekt</p>
                     <a 
                       href="/logos/amp-logo.jpeg" 
                       download 
@@ -166,12 +166,12 @@ export default function MediaKitPage() {
                   </div>
 
                   <div className="glass rounded-xl p-6 text-center">
-                    <div className="bg-white rounded-lg p-4 mb-3">
-                      <img src="/logos/tools-logo.jpeg" alt="T.O.O.L.S. Logo" className="w-full h-auto" />
+                    <div className="bg-white rounded-lg p-4 mb-3 h-52 flex items-center justify-center">
+                      <img src="/logos/main-logo.png" alt="T.O.O.LS INC logo" className="max-w-full max-h-full object-contain" />
                     </div>
-                    <p className="text-sm text-muted">T.O.O.L.S. Inc.</p>
+                    <p className="font-semibold text-text">T.O.O.LS INC</p>
                     <a 
-                      href="/logos/tools-logo.jpeg" 
+                      href="/logos/main-logo.png" 
                       download 
                       className="inline-block mt-2 px-4 py-2 text-xs text-muted hover:text-brand transition-colors border border-border rounded-lg hover:border-brand/50"
                     >
@@ -180,12 +180,12 @@ export default function MediaKitPage() {
                   </div>
 
                   <div className="glass rounded-xl p-6 text-center">
-                    <div className="bg-white rounded-lg p-4 mb-3">
-                      <img src="/partnerships/amp-logo.jpeg" alt="Partnership Logo" className="w-full h-auto" />
+                    <div className="bg-white rounded-lg p-4 mb-3 h-52 flex items-center justify-center">
+                      <img src="/partnerships/mph-logo.png" alt="MacksPoolHall LLC logo" className="max-w-full max-h-full object-contain" />
                     </div>
-                    <p className="text-sm text-muted">Partnership Logo</p>
+                    <p className="font-semibold text-text">MacksPoolHall LLC</p>
                     <a 
-                      href="/partnerships/amp-logo.jpeg" 
+                      href="/partnerships/mph-logo.png" 
                       download 
                       className="inline-block mt-2 px-4 py-2 text-xs text-muted hover:text-brand transition-colors border border-border rounded-lg hover:border-brand/50"
                     >
