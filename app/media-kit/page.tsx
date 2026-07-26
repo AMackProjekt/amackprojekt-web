@@ -167,11 +167,11 @@ export default function MediaKitPage() {
 
                   <div className="glass rounded-xl p-6 text-center">
                     <div className="bg-white rounded-lg p-4 mb-3 h-52 flex items-center justify-center">
-                      <img src="/logos/main-logo.png" alt="T.O.O.LS INC logo" className="max-w-full max-h-full object-contain" />
+                      <img src="/logos/tools.webp" alt="T.O.O.LS INC logo" className="max-w-full max-h-full object-contain" />
                     </div>
                     <p className="font-semibold text-text">T.O.O.LS INC</p>
                     <a 
-                      href="/logos/main-logo.png" 
+                      href="/logos/tools.webp" 
                       download 
                       className="inline-block mt-2 px-4 py-2 text-xs text-muted hover:text-brand transition-colors border border-border rounded-lg hover:border-brand/50"
                     >
@@ -181,11 +181,11 @@ export default function MediaKitPage() {
 
                   <div className="glass rounded-xl p-6 text-center">
                     <div className="bg-white rounded-lg p-4 mb-3 h-52 flex items-center justify-center">
-                      <img src="/partnerships/mph-logo.png" alt="MacksPoolHall LLC logo" className="max-w-full max-h-full object-contain" />
+                      <img src="/partnerships/MPH.webp" alt="MacksPoolHall LLC logo" className="max-w-full max-h-full object-contain" />
                     </div>
                     <p className="font-semibold text-text">MacksPoolHall LLC</p>
                     <a 
-                      href="/partnerships/mph-logo.png" 
+                      href="/partnerships/MPH.webp" 
                       download 
                       className="inline-block mt-2 px-4 py-2 text-xs text-muted hover:text-brand transition-colors border border-border rounded-lg hover:border-brand/50"
                     >
