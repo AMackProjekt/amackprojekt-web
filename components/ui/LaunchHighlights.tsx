@@ -164,7 +164,7 @@ export function LaunchHighlights() {
                 fill
                 priority={active === 0}
                 sizes="(max-width: 1200px) 100vw, 1140px"
-                className={slide.contain ? "object-contain p-16" : "object-cover"}
+                className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#05070b] via-[#05070b]/35 to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6 lg:p-8">
