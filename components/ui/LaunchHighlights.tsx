@@ -40,6 +40,51 @@ const highlights = [
     contain: true,
   },
   {
+    eyebrow: "DOCUREADY",
+    title: "Core identity documents, organized for the next step.",
+    description:
+      "A guided readiness workflow for identification, benefit access, employment, education, and housing documentation.",
+    image: "/logos/amp-logo.jpeg",
+    accent: "from-amber-300 via-green-400 to-cyan-400",
+    contain: true,
+  },
+  {
+    eyebrow: "WORKFLOW AUTOMATION",
+    title: "Less administrative drag. More time for people.",
+    description:
+      "Smart reminders, structured follow-ups, reusable templates, and operational signals help teams stay ahead of the work.",
+    image: "/logos/tools.webp",
+    accent: "from-cyan-400 via-blue-400 to-violet-400",
+    contain: true,
+  },
+  {
+    eyebrow: "PRIVACY BY DESIGN",
+    title: "Useful technology without exposing client identity.",
+    description:
+      "Role-aware access, privacy shields, audit-friendly workflows, and name-free public demonstrations keep dignity at the center.",
+    image: "/logos/amp-logo.jpeg",
+    accent: "from-violet-400 via-fuchsia-400 to-rose-400",
+    contain: true,
+  },
+  {
+    eyebrow: "I WANT MY LAWYER PRESENT",
+    title: "Know the right to pause, protect, and get counsel.",
+    description:
+      "A legal-access platform translating constitutional rights into clear, practical guidance people can use during critical encounters.",
+    image: "/logos/amp-logo.jpeg",
+    accent: "from-rose-400 via-amber-300 to-yellow-200",
+    contain: true,
+  },
+  {
+    eyebrow: "T.O.O.L.S. PORTAL SUITE",
+    title: "Connected program pages built for reentry momentum.",
+    description:
+      "Program navigation, enrollment, resources, workforce pathways, mentorship, and participant support organized into one accessible experience.",
+    image: "/logos/tools.webp",
+    accent: "from-emerald-300 via-cyan-400 to-blue-500",
+    contain: true,
+  },
+  {
     eyebrow: "A MACKPROJEKT",
     title: "Ideas. Innovation. Solutions.",
     description:
