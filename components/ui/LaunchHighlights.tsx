@@ -100,6 +100,7 @@ const SLIDE_DURATION = 6500;
 export function LaunchHighlights() {
   const [active, setActive] = useState(0);
   const [playing, setPlaying] = useState(true);
+  const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
     if (!playing) return;
@@ -223,6 +224,13 @@ export function LaunchHighlights() {
           </button>
           <button
             type="button"
+            onClick={() => { setExpanded(true); setPlaying(false); }}
+            className="rounded-lg border border-cyan-300/40 px-4 py-2 text-xs font-bold uppercase tracking-wider text-cyan-100 transition hover:border-cyan-300 hover:bg-cyan-300/10"
+          >
+            View full screen
+          </button>
+          <button
+            type="button"
             onClick={share}
             className="rounded-lg bg-gradient-to-r from-green-400 to-cyan-400 px-4 py-2 text-xs font-extrabold uppercase tracking-wider text-[#05070b] transition hover:brightness-110"
           >
@@ -234,6 +242,39 @@ export function LaunchHighlights() {
       <p className="mt-3 text-sm font-semibold uppercase tracking-[0.2em] text-muted">
         Highlight {String(active + 1).padStart(2, "0")} / {String(highlights.length).padStart(2, "0")}
       </p>
+
+      <AnimatePresence>
+        {expanded && (
+          <motion.div
+            role="dialog"
+            aria-modal="true"
+            aria-label={"Full-screen preview: " + slide.eyebrow}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 p-3 sm:p-6"
+            onClick={() => setExpanded(false)}
+          >
+            <div className="relative h-full w-full max-w-[1600px]" onClick={(event) => event.stopPropagation()}>
+              <Image
+                src={slide.image}
+                alt={slide.eyebrow + " full-screen project snapshot"}
+                fill
+                sizes="100vw"
+                className="object-contain"
+                priority
+              />
+              <button
+                type="button"
+                onClick={() => setExpanded(false)}
+                className="absolute right-3 top-3 z-10 rounded-full border border-white/25 bg-black/75 px-4 py-2 text-xs font-extrabold uppercase tracking-wider text-white backdrop-blur transition hover:border-cyan-300 hover:text-cyan-200"
+              >
+                Close
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 }
