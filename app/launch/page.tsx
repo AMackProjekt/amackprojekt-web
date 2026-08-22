@@ -3,7 +3,7 @@
 import { Navbar } from "@/components/ui/Navbar";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { QRCodeWithTracking } from "@/components/ui/QRCodeWithTracking";
-import { LaunchVideo } from "@/components/ui/LaunchVideo";
+import { LaunchHighlights } from "@/components/ui/LaunchHighlights";
 import { ElectricBorder, ElectricText, ElectricButton, ElectricDivider } from "@/components/ui/ElectricEffects";
 import { GlowCard } from "@/components/ui/GlowCard";
 import { motion } from "framer-motion";
@@ -38,19 +38,16 @@ export default function LaunchPage() {
 
         <ElectricDivider className="my-12" color="green" />
 
-        {/* Launch Video Section */}
+        {/* Project Highlights Section */}
         <div className="mt-16">
           <SectionHeading
-            eyebrow="Watch Our Story"
-            title="The AMP Launch Video"
-            subtitle="Discover how we're transforming digital experiences through innovation and technology"
+            eyebrow="Built In Public"
+            title="Project Highlights"
+            subtitle="A snapshot of the platforms and systems we are building to move people forward"
           />
           
           <div className="mt-10">
-            <LaunchVideo 
-              title="AMP Launch - A MackProjekt Revolution"
-              description="Experience the future of digital innovation. Watch how AMP is destroying the digital divide through cutting-edge technology and AI-powered solutions."
-            />
+            <LaunchHighlights />
           </div>
         </div>
 
