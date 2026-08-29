@@ -19,35 +19,58 @@ jobs:
         with:
           submodules: true
           lfs: false
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
-      
+
       - name: Install dependencies
         run: npm ci
-      
+
       - name: Build Next.js app
         run: npm run build
         env:
           NODE_OPTIONS: '--max_old_space_size=4096'
-      
+
+      - name: Validate complete static export
+        shell: bash
+        run: |
+          set -euo pipefail
+          required_files=(
+            out/index.html
+            out/innovation/index.html
+            out/partnerships/index.html
+            out/media-kit/index.html
+            out/interest/index.html
+            out/waitlist/index.html
+            out/reentry/index.html
+            out/messaging/index.html
+            out/privacy/index.html
+            out/terms/index.html
+            out/logos/amp-logo.jpeg
+            out/service-worker.js
+            out/staticwebapp.config.json
+          )
+          for required_file in "${required_files[@]}"; do
+            test -s "$required_file" || {
+              echo "::error file=$required_file::Required static export file is missing or empty"
+              exit 1
+            }
+          done
+
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.A_MACKPROJEKT_DEPKEY }}
-          repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
-          ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
-          # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
-          app_location: "out" # Deploy only the built output
-          api_location: "api" # Azure Functions API
-          output_location: "" # Already built, no additional output
-          skip_app_build: true # We already built it above
-          ###### End of Repository/Build Configurations ######
+          app_location: "out"
+          api_location: "api"
+          output_location: ""
+          skip_app_build: true
         env:
           COSMOS_DB_ENDPOINT: ${{ secrets.COSMOS_DB_ENDPOINT }}
           COSMOS_DB_KEY: ${{ secrets.COSMOS_DB_KEY }}
