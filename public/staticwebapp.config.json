@@ -11,12 +11,47 @@
       "statusCode": 301
     },
     {
-      "route": "/api/*"
+      "route": "/",
+      "rewrite": "/index.html"
     },
     {
-      "route": "/*",
-      "allowedRoles": ["anonymous", "authenticated"],
-      "methods": ["GET", "HEAD", "POST", "PUT", "DELETE", "OPTIONS"]
+      "route": "/innovation/*",
+      "rewrite": "/innovation/index.html"
+    },
+    {
+      "route": "/partnerships/*",
+      "rewrite": "/partnerships/index.html"
+    },
+    {
+      "route": "/media-kit/*",
+      "rewrite": "/media-kit/index.html"
+    },
+    {
+      "route": "/interest/*",
+      "rewrite": "/interest/index.html"
+    },
+    {
+      "route": "/waitlist/*",
+      "rewrite": "/waitlist/index.html"
+    },
+    {
+      "route": "/reentry/*",
+      "rewrite": "/reentry/index.html"
+    },
+    {
+      "route": "/messaging/*",
+      "rewrite": "/messaging/index.html"
+    },
+    {
+      "route": "/privacy/*",
+      "rewrite": "/privacy/index.html"
+    },
+    {
+      "route": "/terms/*",
+      "rewrite": "/terms/index.html"
+    },
+    {
+      "route": "/api/*"
     },
     {
       "route": "/_next/static/*",
@@ -34,7 +69,7 @@
       "route": "/service-worker.js",
       "headers": {
         "cache-control": "public, max-age=0, must-revalidate",
-        "content-type": "application/javascript; charset=utf-8"
+        "content-type": "application/javascript"
       }
     },
     {
@@ -51,11 +86,26 @@
     },
     {
       "route": "/*",
+      "allowedRoles": ["anonymous", "authenticated"],
+      "methods": ["GET", "HEAD", "POST", "PUT", "DELETE", "OPTIONS"],
       "headers": {
         "cache-control": "public, max-age=3600"
       }
     }
   ],
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": [
+      "/api/*",
+      "/_next/*",
+      "/logos/*",
+      "/partnerships/*",
+      "/videos/*",
+      "/service-worker.js",
+      "/manifest.json",
+      "/*.{js,css,json,png,jpg,jpeg,gif,webp,svg,ico,woff,woff2,ttf,mp4}"
+    ]
+  },
   "mimeTypes": {
     ".js": "application/javascript",
     ".json": "application/json",
