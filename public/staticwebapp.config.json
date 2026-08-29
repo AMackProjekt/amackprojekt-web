@@ -31,6 +31,13 @@
       }
     },
     {
+      "route": "/service-worker.js",
+      "headers": {
+        "cache-control": "public, max-age=0, must-revalidate",
+        "content-type": "application/javascript; charset=utf-8"
+      }
+    },
+    {
       "route": "/*.{js,css,woff,woff2,ttf}",
       "headers": {
         "cache-control": "public, max-age=31536000, immutable"
@@ -49,19 +56,10 @@
       }
     }
   ],
-  "navigationFallback": {
-    "rewrite": "/index.html",
-    "exclude": ["/images/*.{png,jpg,jpeg,gif,webp,svg}", "/api/*", "/_next/*"]
-  },
-  "responseOverrides": {
-    "404": {
-      "rewrite": "/index.html",
-      "exclude": ["/_next/*", "/api/*"],
-      "statusCode": 200
-    }
-  },
   "mimeTypes": {
+    ".js": "application/javascript",
     ".json": "application/json",
+    ".jpeg": "image/jpeg",
     ".webp": "image/webp",
     ".woff2": "font/woff2",
     ".woff": "font/woff",
