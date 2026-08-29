@@ -1,0 +1,68 @@
+name: Deploy AMackProjekt production
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    name: Build and deploy AMackProjekt
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+          lfs: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Next.js static export
+        run: npm run build
+        env:
+          NODE_OPTIONS: '--max_old_space_size=4096'
+
+      - name: Validate complete static export
+        shell: bash
+        run: |
+          set -euo pipefail
+          required_files=(
+            out/index.html
+            out/innovation/index.html
+            out/partnerships/index.html
+            out/media-kit/index.html
+            out/interest/index.html
+            out/waitlist/index.html
+            out/reentry/index.html
+            out/messaging/index.html
+            out/privacy/index.html
+            out/terms/index.html
+            out/logos/amp-logo.jpeg
+            out/service-worker.js
+            out/staticwebapp.config.json
+          )
+          for required_file in "${required_files[@]}"; do
+            test -s "$required_file" || {
+              echo "::error file=$required_file::Required static export file is missing or empty"
+              exit 1
+            }
+          done
+
+      - name: Deploy to AMackProjekt production
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_CALM_SAND_0E9F2E010 }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          action: "upload"
+          app_location: "out"
+          api_location: "api"
+          output_location: ""
+          skip_app_build: true
