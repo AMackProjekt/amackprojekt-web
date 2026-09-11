@@ -8,6 +8,7 @@ import { SessionTimeoutBanner } from "@/components/ui/SessionTimeoutBanner";
 import { VisitTracker } from "@/components/ui/VisitTracker";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { GoogleTagManager, GoogleTagManagerNoScript } from "@/components/GoogleTagManager";
+import { InteractionAnalytics } from "@/components/InteractionAnalytics";
 
 export const metadata: Metadata = {
   title: {
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
     template: "%s — A MackProjekt",
   },
   description: "An independent innovation studio turning human-centered ideas into useful digital products for access, opportunity, and trust.",
+  alternates: { canonical: "https://mackprojekt.com/" },
   metadataBase: new URL("https://mackprojekt.com"),
   manifest: "/manifest.json",
   icons: {
@@ -67,6 +69,16 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "A MackProjekt",
+    url: "https://mackprojekt.com",
+    logo: "https://mackprojekt.com/logos/amp-logo.jpeg",
+    description: "An independent innovation studio building human-centered digital products for access, opportunity, and trust.",
+    founder: { "@type": "Person", name: "Donyale Mack" },
+    knowsAbout: ["Digital product strategy", "Web development", "Artificial intelligence", "Social impact technology", "Healthcare technology", "Nonprofit technology"],
+  };
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -75,6 +87,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <link rel="manifest" href="/manifest.json" />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -93,6 +106,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="font-sans text-text antialiased">
         <VisitTracker />
+        <InteractionAnalytics />
         {/* Google Analytics */}
         <GoogleAnalytics measurementId="G-HDG1JR4N7X" />
         
