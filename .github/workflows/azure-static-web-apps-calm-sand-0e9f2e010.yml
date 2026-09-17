@@ -75,7 +75,7 @@ jobs:
       - name: Deploy to AMackProjekt production
         uses: Azure/static-web-apps-deploy@v1
         with:
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_CALM_SAND_0E9F2E010 }}
+          azure_static_web_apps_api_token: ${{ secrets.A_MACKPROJEKT_DEPKEY }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
           app_location: "out"
