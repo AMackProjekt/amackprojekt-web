@@ -53,5 +53,15 @@
     "path": "brand/toolsinc-logo.png",
     "bytes": 617966,
     "sha256": "e243d3d4023576dddc3bfe997972667a26252039d8c3fc57831e45145dc64b0c"
+  },
+  {
+    "path": "fonts/manrope.ttf",
+    "bytes": 164700,
+    "sha256": "3ae11c49db0455a3cc33e37d380f20fdb8c7f8b41dc07625c177e3d87a9d6ae6"
+  },
+  {
+    "path": "fonts/spacegrotesk.ttf",
+    "bytes": 136676,
+    "sha256": "acad6de1fc93436f5c0f1f4137751ef04f1aea3063e7036535970ffcfbd79f72"
   }
 ]

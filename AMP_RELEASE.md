@@ -35,3 +35,7 @@ HTML, navigation payloads, API responses, and unversioned files must revalidate.
 The service worker caches only `/_next/static/` assets and removes older AMP caches.
 Page rewrites use exact routes, so `/partnerships/` does not intercept brand image files.
 Keep these checks in place when adding pages or replacing artwork.
+
+## Impact design update
+
+Space Grotesk headlines and Manrope body text are self-hosted in public/fonts with their OFL licenses. The homepage includes a keyboard-accessible featured-venture selector and an explicit motion control. Reduced-motion preferences disable ambient animation and scroll reveals. Keep the original portfolio destinations and do not replace the venture artwork with placeholders.

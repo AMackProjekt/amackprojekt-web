@@ -1,89 +1,25 @@
 import Link from "next/link";
 import { Navbar } from "@/components/ui/Navbar";
 import { Portfolio } from "@/components/Portfolio";
-import { HeroWords, HighlightFilm } from "@/components/AmpMotion";
+import { HighlightFilm } from "@/components/AmpMotion";
 import { Books } from "@/components/Books";
 import { AmpCTA } from "@/components/AmpCTA";
+import { ImpactHero, ImpactReveal } from "@/components/ImpactHero";
 export default function Home() {
   return (
     <main id="main-content">
       <Navbar />
-      <section className="amp-hero amp-wrap">
-        <div className="amp-hero-top">
-          <p className="amp-label">
-            A MackProjekt / Independent innovation studio
-          </p>
-          <span className="amp-label amp-location">
-            California · Built with purpose
-          </span>
-        </div>
-        <div className="amp-hero-grid">
-          <div>
-            <h1>
-              Technology
-              <br />
-              built to
-              <br />
-              <HeroWords />
-            </h1>
-            <p className="amp-hero-intro">
-              We turn purpose into platforms, ideas into movements, and
-              ambitious next steps into things people can use.
-            </p>
-            <div className="amp-actions">
-              <Link className="amp-button" href="/innovation">
-                Explore the work <span aria-hidden="true">↗</span>
-              </Link>
-              <Link className="amp-text-link" href="/interest">
-                Build with AMP <span aria-hidden="true">↗</span>
-              </Link>
-            </div>
-          </div>
-          <div className="amp-identity">
-            <div className="amp-identity-line">
-              <span>AMP / THE STUDIO</span>
-              <span>01—07</span>
-            </div>
-            <img
-              src="/brand/amp-logo.jpg"
-              alt="A MackProjekt — official studio identity"
-              width="650"
-              height="650"
-              fetchPriority="high"
-            />
-            <div className="amp-identity-bottom">
-              <span>
-                STRATEGY
-                <br />
-                DESIGN
-                <br />
-                ENGINEERING
-              </span>
-              <p>
-                Ideas with purpose.
-                <br />
-                Execution with intention.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="amp-hero-index">
-          <span>01 / Platforms</span>
-          <span>02 / Community</span>
-          <span>03 / Culture</span>
-          <a href="#work">
-            Discover AMP <span aria-hidden="true">↓</span>
-          </a>
-        </div>
-      </section>
+      <ImpactHero />
+      <ImpactReveal />
+      <section className="impact-manifesto" aria-label="Our conviction"><div className="amp-wrap"><p className="amp-label">The AMP conviction</p><p>Ideas are only the beginning.<br /><span>What we build with them changes the story.</span></p><a href="/partnerships">Meet the studio <span aria-hidden="true">↗</span></a></div></section>
       <section id="work" className="amp-section amp-wrap">
         <div className="amp-section-heading">
           <div>
             <p className="amp-label">The AMP portfolio</p>
             <h2>
-              Different ventures.
+              One studio.
               <br />
-              <em>One purpose.</em>
+              <em>Many ways forward.</em>
             </h2>
           </div>
           <p>
