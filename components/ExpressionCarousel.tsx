@@ -5,6 +5,7 @@ import { ventures } from "@/lib/portfolio";
 const slides = [
   { venture: ventures[5], title: "Show up.", emphasis: "As yourself.", copy: "Your mood. Your look. Your expression.", image: "/brand/miminks.png" },
   { venture: ventures[4], title: "Own your presence.", emphasis: "Keep your crown.", copy: "Self-worth. Sisterhood. The courage to realign.", image: "/brand/queenme.png" },
+  { venture: ventures[2], title: "Open the door.", emphasis: "Build a pathway.", copy: "Education. Mentorship. Opportunity that moves people forward.", image: "/brand/toolsinc-logo.png" },
   { venture: ventures[3], title: "Rewrite the script.", emphasis: "Build your legacy.", copy: "Brotherhood. Purpose. Ownership.", image: "/brand/kingme.jpg" },
 ];
 
@@ -48,7 +49,7 @@ export function ExpressionCarousel() {
         </div>
         <div className="expression-deck" aria-label="Swipe or select a brand" onTouchStart={e => { touch.current = e.touches[0].clientX; }} onTouchEnd={e => { if (touch.current !== null) { const distance = e.changedTouches[0].clientX - touch.current; if (Math.abs(distance) > 35) select(active + (distance < 0 ? 1 : -1)); } touch.current = null; }}>
           <div className="expression-ribbon" aria-hidden="true"/>
-          {slides.map((slide, i) => { const position = (i - active + slides.length) % slides.length; return <button key={slide.venture.id} className={'expression-card expression-position-' + position} aria-label={'Feature expression: ' + slide.venture.name} aria-pressed={active === i} onClick={() => select(i)}>
+          {slides.map((slide, i) => { const position = (i - active + slides.length) % slides.length; return <button key={slide.venture.id} className={'expression-card expression-position-' + position} tabIndex={position === 2 ? -1 : 0} aria-hidden={position === 2} aria-label={'Feature expression: ' + slide.venture.name} aria-pressed={active === i} onClick={() => select(i)}>
             <span className="expression-art"><img src={slide.image} alt="" width="500" height="500" loading="lazy" draggable="false"/></span><span className="expression-card-caption"><span>{slide.venture.name}</span><span aria-hidden="true">↗</span></span>
           </button>; })}
         </div>
