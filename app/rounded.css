@@ -1,5 +1,13 @@
 /* Shared geometry: soft panels, compact controls, consistent responsive radii. */
 :root { --amp-radius-panel:24px; --amp-radius-card:18px; --amp-radius-control:12px; }
+/* Blend the original AMP artwork into each dark surface without altering the asset. */
+img[src="/brand/amp-logo.jpg"],img[src="/brand/thumb-amp.webp"],img[src="/logos/amp-logo.jpeg"],img[src="/partnerships/amp-logo.jpeg"] {
+  mix-blend-mode:screen;
+  filter:contrast(1.25);
+  background:transparent;
+  box-shadow:none;
+}
+.universe-core img { mix-blend-mode:screen; }
 .crown-art>.crown-lettering,.crown-queen .crown-art>.crown-lettering { inset:16px 0 auto; display:flex; flex-direction:column; align-items:center; font-size:clamp(68px,9vw,128px); font-weight:800; line-height:.88; letter-spacing:-.08em; transform:rotate(-8deg) skew(-7deg); pointer-events:none; z-index:0; }
 .crown-lettering>span:first-child { color:#d5ad51; opacity:.7; text-shadow:3px 4px 0 #102b35,5px 6px 0 #48626a; }
 .crown-lettering>span:last-child { color:#389bc0; opacity:.62; margin-left:28%; font-size:1.12em; text-shadow:3px 4px 0 #102b35,5px 6px 0 #48626a; }
