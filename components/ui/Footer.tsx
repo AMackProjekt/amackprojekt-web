@@ -1,41 +1,54 @@
 import Link from "next/link";
-
+import { family } from "@/lib/portfolio";
 export function Footer() {
   return (
-    <footer className="site-footer">
-      <div className="site-container">
-        <div className="footer-top">
-          <Link href="/" className="brand-link footer-brand-link" aria-label="A MackProjekt home">
-            <img
-              src="/logos/amp-logo.jpeg"
-              alt="A MackProjekt"
-              className="brand-logo footer-brand-logo"
-            />
-          </Link>
-          <p>Independent innovation studio building technology for access, opportunity, and trust.</p>
-        </div>
-        <div className="footer-links">
+    <footer className="amp-footer">
+      <div className="amp-wrap">
+        <div className="amp-footer-top">
           <div>
-            <span>Explore</span>
-            <Link href="/innovation">Our work</Link>
-            <Link href="/partnerships">Studio</Link>
-            <Link href="/media-kit">Media kit</Link>
+            <img
+              className="amp-footer-logo"
+              src="/brand/amp-logo.jpg"
+              alt="A MackProjekt"
+              width="180"
+              height="120"
+            />
+            <p>
+              Technology. Culture. Purpose.
+              <br />
+              Every move, intentional.
+            </p>
           </div>
           <div>
-            <span>Connect</span>
-            <Link href="/interest">Start A Projekt</Link>
-            <Link href="/waitlist">Join the waitlist</Link>
+            <span className="amp-label">Explore AMP</span>
+            <Link href="/innovation">Work & ventures</Link>
+            <Link href="/portals">Enterprise platforms</Link>
+            <Link href="/books">Books & ideas</Link>
+            <Link href="/partnerships">The studio</Link>
+          </div>
+          <div>
+            <span className="amp-label">Connect</span>
+            <Link href="/interest">Start a Projekt</Link>
+            <Link href="/media-kit">Brand & media</Link>
             <a href="mailto:hello@mackprojekt.com">hello@mackprojekt.com</a>
           </div>
+        </div>
+        <div className="amp-family">
+          <span className="amp-label">Powered By A MackProjekt</span>
           <div>
-            <span>Products</span>
-            <Link href="/reentry">T.O.O.L.S. Inc.</Link>
-            <Link href="/messaging">MackChat</Link>
+            {family.map((name) => (
+              <span key={name}>{name}</span>
+            ))}
           </div>
         </div>
-        <div className="footer-bottom">
-          <p>© {new Date().getFullYear()} MackEnterprises. All rights reserved.</p>
-          <div><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link></div>
+        <div className="amp-footer-bottom">
+          <span>
+            © {new Date().getFullYear()} MackEnterprises. All rights reserved.
+          </span>
+          <div>
+            <Link href="/privacy">Privacy</Link>
+            <Link href="/terms">Terms</Link>
+          </div>
         </div>
       </div>
     </footer>

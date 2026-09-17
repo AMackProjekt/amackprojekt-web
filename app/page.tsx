@@ -1,225 +1,230 @@
-import { Navbar } from "@/components/ui/Navbar";
 import Link from "next/link";
-
-const ventures = [
-  {
-    index: "01",
-    name: "T.O.O.L.S. Inc.",
-    type: "Reentry technology",
-    description:
-      "A guided support platform helping justice-involved people move toward education, employment, and lasting stability.",
-    href: "/reentry",
-    accent: "lime",
-  },
-  {
-    index: "02",
-    name: "MackChat",
-    type: "Community infrastructure",
-    description:
-      "A trust-centered communication platform built to strengthen connection between military and civilian communities.",
-    href: "/messaging",
-    accent: "cyan",
-  },
-  {
-    index: "03",
-    name: "Rights, clearly.",
-    type: "Public-interest design",
-    description:
-      "Accessible digital tools that make high-stakes legal information easier to understand and act on.",
-    href: "https://iwantmylawyerpresent.com",
-    accent: "violet",
-  },
-];
-
-const capabilities = [
-  ["Product strategy", "Turn a real community or business need into a focused, testable product plan."],
-  ["Experience design", "Create clear, accessible interfaces that feel intentional on every screen."],
-  ["Full-stack engineering", "Build dependable web platforms, APIs, data systems, and AI-assisted workflows."],
-  ["Launch & growth", "Ship the right first version, measure what matters, and improve from evidence."],
-];
-
-export default function HomePage() {
+import { Navbar } from "@/components/ui/Navbar";
+import { Portfolio } from "@/components/Portfolio";
+import { HeroWords, HighlightFilm } from "@/components/AmpMotion";
+import { Books } from "@/components/Books";
+import { AmpCTA } from "@/components/AmpCTA";
+export default function Home() {
   return (
-    <main>
+    <main id="main-content">
       <Navbar />
-
-      <section className="hero-shell">
-        <div className="ambient ambient-one" />
-        <div className="ambient ambient-two" />
-        <div className="hero-beam" aria-hidden="true" />
-        <div className="site-container relative z-10">
-          <div className="hero-layout">
-            <div className="hero-content">
-              <div className="hero-kicker">
-                <span className="status-dot" />
-                Innovation systems online · California
-              </div>
-              <h1 className="hero-title">
-                Technology built
-                <br />
-                <span>to move people forward.</span>
-              </h1>
-              <p className="hero-copy">
-                A MackProjekt turns ambitious, human-centered ideas into useful digital products—especially
-                where access, opportunity, and trust matter most.
-              </p>
-              <div className="action-row">
-                <Link className="button button-primary" href="/waitlist">
-                  Get started <span aria-hidden="true">↗</span>
-                </Link>
-                <Link className="button button-secondary" href="/innovation">
-                  Explore our work
-                </Link>
-              </div>
+      <section className="amp-hero amp-wrap">
+        <div className="amp-hero-top">
+          <p className="amp-label">
+            A MackProjekt / Independent innovation studio
+          </p>
+          <span className="amp-label amp-location">
+            California · Built with purpose
+          </span>
+        </div>
+        <div className="amp-hero-grid">
+          <div>
+            <h1>
+              Technology
+              <br />
+              built to
+              <br />
+              <HeroWords />
+            </h1>
+            <p className="amp-hero-intro">
+              We turn purpose into platforms, ideas into movements, and
+              ambitious next steps into things people can use.
+            </p>
+            <div className="amp-actions">
+              <Link className="amp-button" href="/innovation">
+                Explore the work <span aria-hidden="true">↗</span>
+              </Link>
+              <Link className="amp-text-link" href="/interest">
+                Build with AMP <span aria-hidden="true">↗</span>
+              </Link>
             </div>
-
-            <div className="hero-visual" aria-hidden="true">
-              <div className="visual-grid" />
-              <div className="orbit orbit-one"><i /></div>
-              <div className="orbit orbit-two"><i /></div>
-              <div className="orbit orbit-three" />
-              <div className="signal-core">
-                <span className="core-a">A</span>
-                <span className="core-pulse" />
-              </div>
-              <div className="visual-label visual-label-one"><b>01</b> STRATEGY</div>
-              <div className="visual-label visual-label-two"><b>02</b> SYSTEMS</div>
-              <div className="visual-label visual-label-three"><b>03</b> IMPACT</div>
-              <div className="visual-status"><span /> BUILDING WHAT MATTERS</div>
+          </div>
+          <div className="amp-identity">
+            <div className="amp-identity-line">
+              <span>AMP / THE STUDIO</span>
+              <span>01—07</span>
+            </div>
+            <img
+              src="/brand/amp-logo.jpg"
+              alt="A MackProjekt — official studio identity"
+              width="650"
+              height="650"
+              fetchPriority="high"
+            />
+            <div className="amp-identity-bottom">
+              <span>
+                STRATEGY
+                <br />
+                DESIGN
+                <br />
+                ENGINEERING
+              </span>
+              <p>
+                Ideas with purpose.
+                <br />
+                Execution with intention.
+              </p>
             </div>
           </div>
         </div>
-      </section>
-
-      <section className="signal-strip" aria-label="Studio focus">
-        <div className="signal-track">
-          <span>PRODUCT STRATEGY</span><i>✦</i>
-          <span>EXPERIENCE DESIGN</span><i>✦</i>
-          <span>FULL-STACK ENGINEERING</span><i>✦</i>
-          <span>AI + DATA SYSTEMS</span><i>✦</i>
-          <span>COMMUNITY IMPACT</span><i>✦</i>
-          <span>PRODUCT STRATEGY</span><i>✦</i>
-          <span>EXPERIENCE DESIGN</span><i>✦</i>
+        <div className="amp-hero-index">
+          <span>01 / Platforms</span>
+          <span>02 / Community</span>
+          <span>03 / Culture</span>
+          <a href="#work">
+            Discover AMP <span aria-hidden="true">↓</span>
+          </a>
         </div>
       </section>
-
-      <section className="section site-container">
-        <div className="section-heading-grid">
-          <p className="eyebrow">Selected ventures</p>
+      <section id="work" className="amp-section amp-wrap">
+        <div className="amp-section-heading">
           <div>
-            <h2 className="display-title">Ideas become credible when they work.</h2>
-            <p className="section-intro">
-              We build our own ventures and partner with organizations whose work can create meaningful,
-              measurable change.
+            <p className="amp-label">The AMP portfolio</p>
+            <h2>
+              Different ventures.
+              <br />
+              <em>One purpose.</em>
+            </h2>
+          </div>
+          <p>
+            Digital products, community movements, and original ideas. Explore
+            the work—and the people it is built to move forward.
+          </p>
+        </div>
+        <Portfolio />
+      </section>
+      <section className="amp-feature">
+        <div className="amp-wrap amp-feature-grid">
+          <div>
+            <p className="amp-label">In motion / The AMP story</p>
+            <h2>
+              Build the idea.
+              <br />
+              <em>Move the culture.</em>
+            </h2>
+            <p>
+              From KingMe and QueenMe to enterprise tools and creative ventures,
+              the work starts with a point of view—and becomes something people
+              can experience.
+            </p>
+            <Link className="amp-text-link" href="/partnerships">
+              Inside the studio ↗
+            </Link>
+          </div>
+          <HighlightFilm />
+        </div>
+      </section>
+      <section id="capabilities" className="amp-section amp-wrap">
+        <div className="amp-section-heading">
+          <div>
+            <p className="amp-label">From first question to launch</p>
+            <h2>
+              Think clearly.
+              <br />
+              <em>Build deliberately.</em>
+            </h2>
+          </div>
+          <p>
+            Strategy, experience design, engineering, and launch support under
+            one studio. The mission stays connected to the work.
+          </p>
+        </div>
+        <div className="amp-services">
+          {[
+            [
+              "01",
+              "Strategy",
+              "Define the problem, the people, and the most useful next move.",
+            ],
+            [
+              "02",
+              "Experience",
+              "Build a clear visual identity and intuitive paths through complex work.",
+            ],
+            [
+              "03",
+              "Engineering",
+              "Connect interfaces, data, and workflows into dependable digital products.",
+            ],
+            [
+              "04",
+              "Launch",
+              "Put the work in people’s hands, learn from use, and keep improving.",
+            ],
+          ].map(([n, title, copy]) => (
+            <article key={n}>
+              <span className="amp-label">{n}</span>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+      <section id="books" className="amp-section amp-books-section">
+        <div className="amp-wrap">
+          <div className="amp-section-heading">
+            <div>
+              <p className="amp-label">Written by Donyale Mack</p>
+              <h2>
+                Read the battle.
+                <br />
+                <em>Master the board.</em>
+              </h2>
+            </div>
+            <p>
+              The ideas go beyond the screen. Books on spiritual ground,
+              workplace strategy, and making your next move with intention.
             </p>
           </div>
-        </div>
-
-        <div className="venture-list">
-          {ventures.map((venture) => {
-            const external = venture.href.startsWith("http");
-            return (
-              <Link
-                key={venture.name}
-                href={venture.href}
-                className={`venture-card accent-${venture.accent}`}
-                target={external ? "_blank" : undefined}
-                rel={external ? "noreferrer" : undefined}
-              >
-                <span className="venture-index">{venture.index}</span>
-                <div className="venture-main">
-                  <p>{venture.type}</p>
-                  <h3>{venture.name}</h3>
-                  <span>{venture.description}</span>
-                </div>
-                <div className={`venture-orb orb-${venture.accent}`} aria-hidden="true">
-                  <span>{venture.index}</span>
-                  <i />
-                </div>
-                <span className="venture-arrow" aria-hidden="true">↗</span>
-              </Link>
-            );
-          })}
+          <Books />
         </div>
       </section>
-
-      <section id="capabilities" className="section section-tinted">
-        <div className="site-container">
-          <div className="section-heading-grid">
-            <p className="eyebrow">What we do</p>
-            <div>
-              <h2 className="display-title">One studio from first question to real-world launch.</h2>
-              <p className="section-intro">
-                Less handoff. More shared context. Every decision connects the mission, the user, and the
-                technology.
-              </p>
-            </div>
-          </div>
-          <div className="capability-grid">
-            {capabilities.map(([title, description], index) => (
-              <article className="capability-card" key={title}>
-                <span>0{index + 1}</span>
-                <h3>{title}</h3>
-                <p>{description}</p>
-              </article>
-            ))}
-          </div>
-          <div className="systems-ribbon" aria-label="Studio system">
-            <div><span>DISCOVER</span><i /></div>
-            <div><span>DESIGN</span><i /></div>
-            <div><span>BUILD</span><i /></div>
-            <div><span>LAUNCH</span></div>
-          </div>
+      <section id="studio" className="amp-section amp-wrap amp-founder">
+        <div>
+          <p className="amp-label">Founder’s perspective</p>
+          <h2>
+            Purpose isn’t a layer.
+            <br />
+            <em>It’s the foundation.</em>
+          </h2>
         </div>
-      </section>
-
-      <section className="lab-band">
-        <div className="site-container lab-band-inner">
-          <div className="lab-mark" aria-hidden="true">
-            <span>AMP</span>
-            <i />
-          </div>
-          <div>
-            <p className="eyebrow">Inside the lab</p>
-            <h2>Technology with pulse, purpose, and a point of view.</h2>
-          </div>
-          <div className="lab-tags">
-            <span>AI systems</span>
-            <span>Community platforms</span>
-            <span>Digital access</span>
-            <span>Founder-led builds</span>
-          </div>
-        </div>
-      </section>
-
-      <section className="section site-container">
-        <div className="manifesto">
-          <p className="eyebrow">Our point of view</p>
+        <div>
           <blockquote>
-            “The best technology doesn’t ask people to adapt to the system. It builds a better system
-            around people.”
+            “The best technology doesn’t ask people to adapt to the system. It
+            builds a better system around people.”
           </blockquote>
-          <div className="manifesto-footer">
-            <div>
-              <strong>Donyale “DThree” Mack</strong>
-              <span>Founder, A MackProjekt</span>
-            </div>
-            <Link href="/partnerships">Meet the studio <span aria-hidden="true">→</span></Link>
-          </div>
-        </div>
-      </section>
-
-      <section className="section site-container">
-        <div className="cta-panel">
-          <div>
-            <p className="eyebrow">Have a meaningful problem?</p>
-            <h2>Let’s make the next move real.</h2>
-          </div>
-          <Link className="button button-light" href="/interest">
-            Tell us about it <span aria-hidden="true">↗</span>
+          <p className="amp-founder-name">
+            Donyale “DThree” Mack<span>Founder, A MackProjekt</span>
+          </p>
+          <Link className="amp-text-link" href="/partnerships">
+            Meet the studio ↗
           </Link>
         </div>
       </section>
+      <section className="amp-legacy">
+        <div className="amp-wrap amp-legacy-grid">
+          <div>
+            <p className="amp-label">On a personal note</p>
+            <h2>
+              Legacy for
+              <br />
+              <em>generations.</em>
+            </h2>
+          </div>
+          <p>
+            Every Projekt is inspired and motivated through my father Donald
+            “DT” Mack, my uncle Robert Ingram Sr., and my father Paul Cruz Sr.
+          </p>
+          <img
+            src="/brand/mackenterprises.png"
+            alt="MackEnterprises legacy identity"
+            width="450"
+            height="300"
+            loading="lazy"
+          />
+        </div>
+      </section>
+      <AmpCTA />
     </main>
   );
 }

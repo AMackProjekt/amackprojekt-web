@@ -1,70 +1,41 @@
-const CACHE_NAME = "mackprojekt-v2";
-const STATIC_ASSETS = [
-  "/logos/amp-logo.jpeg",
-  "/manifest.json",
-];
+const CACHE_NAME = "mackprojekt-v3";
 
 self.addEventListener("install", (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(STATIC_ASSETS))
-  );
-  self.skipWaiting();
+  event.waitUntil(self.skipWaiting());
 });
 
 self.addEventListener("activate", (event) => {
   event.waitUntil(
-    caches
-      .keys()
-      .then((cacheNames) =>
-        Promise.all(
-          cacheNames
-            .filter((cacheName) => cacheName !== CACHE_NAME)
-            .map((cacheName) => caches.delete(cacheName))
-        )
-      )
-      .then(() => self.clients.claim())
+    caches.keys().then((names) => Promise.all(
+      names
+        .filter((name) => name.startsWith("mackprojekt-") && name !== CACHE_NAME)
+        .map((name) => caches.delete(name))
+    )).then(() => self.clients.claim())
   );
 });
 
 self.addEventListener("fetch", (event) => {
   const request = event.request;
   const url = new URL(request.url);
+  if (request.method !== "GET" || url.origin !== self.location.origin) return;
 
-  if (
-    request.method !== "GET" ||
-    (url.protocol !== "http:" && url.protocol !== "https:")
-  ) {
+  // Only Next.js build-versioned assets are safe to keep across page visits.
+  // HTML, RSC navigation payloads, API responses and unversioned files must
+  // never be served from a previous release's service-worker cache.
+  if (!url.pathname.startsWith("/_next/static/")) {
+    event.respondWith(fetch(request, { cache: "no-cache" }));
     return;
   }
 
-  // Always prefer fresh HTML so releases are visible immediately.
-  if (request.mode === "navigate") {
-    event.respondWith(
-      fetch(request).catch(() => caches.match(request))
-    );
-    return;
-  }
-
-  // Fingerprinted assets can remain cache-first.
   event.respondWith(
-    caches.match(request).then((cachedResponse) => {
-      if (cachedResponse) {
-        return cachedResponse;
+    caches.open(CACHE_NAME).then(async (cache) => {
+      const cached = await cache.match(request);
+      if (cached) return cached;
+      const response = await fetch(request);
+      if (response.ok) {
+        await cache.put(request, response.clone()).catch(() => undefined);
       }
-
-      return fetch(request).then((networkResponse) => {
-        if (!networkResponse || networkResponse.status !== 200) {
-          return networkResponse;
-        }
-
-        const responseToCache = networkResponse.clone();
-        caches
-          .open(CACHE_NAME)
-          .then((cache) => cache.put(request, responseToCache))
-          .catch(() => undefined);
-
-        return networkResponse;
-      });
+      return response;
     })
   );
 });

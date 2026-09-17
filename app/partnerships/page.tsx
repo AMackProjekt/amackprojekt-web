@@ -1,78 +1,114 @@
 import { Navbar } from "@/components/ui/Navbar";
+import { AmpCTA } from "@/components/AmpCTA";
 import Link from "next/link";
-
-const principles = [
-  ["Lived experience is expertise.", "The people closest to a problem often see the most useful path through it."],
-  ["Clarity earns trust.", "Straightforward language, transparent decisions, and useful interfaces beat spectacle."],
-  ["Shipping creates evidence.", "A focused working product teaches more than a long deck ever will."],
-  ["Access belongs in the architecture.", "Accessibility, privacy, and dignity are product requirements from day one."],
-];
-
-export default function StudioPage() {
+export const metadata = {
+  title: "The AMP Studio",
+  alternates: { canonical: "/partnerships/" },
+};
+export default function Page() {
   return (
-    <main>
+    <main id="main-content">
       <Navbar />
-      <section className="inner-hero site-container">
-        <p className="eyebrow">The studio</p>
-        <h1>Purpose sets the direction. Craft makes it real.</h1>
+      <section className="amp-page-hero amp-wrap">
+        <p className="amp-label">A MackProjekt / The studio</p>
+        <h1>
+          Purpose sets
+          <br />
+          <em>the direction.</em>
+        </h1>
         <p>
-          A MackProjekt is a founder-led innovation studio inside MackEnterprises. We work across
-          strategy, design, and engineering to build technology with a clear public or business purpose.
+          AMP brings strategy, design, and engineering together to create
+          technology, movements, and original work grounded in real experience.
         </p>
       </section>
-
-      <section className="section section-tinted">
-        <div className="site-container studio-split">
-          <div>
-            <p className="eyebrow">Why we exist</p>
-            <h2>Too many systems are designed without the people who must live with them.</h2>
-          </div>
-          <div>
-            <p>
-              We started this studio to close that distance. Our work combines hard-earned perspective
-              with modern product practice—asking better questions, reducing unnecessary complexity, and
-              building with the communities a product is meant to serve.
-            </p>
-            <p>
-              That can mean launching one of our own ventures, helping a nonprofit modernize its service
-              delivery, or giving an ambitious founder the technical partner needed to get moving.
-            </p>
-          </div>
+      <section className="amp-wrap amp-section amp-no-top amp-founder">
+        <div>
+          <img
+            className="amp-studio-logo"
+            src="/brand/amp-logo.jpg"
+            alt="A MackProjekt"
+            width="500"
+            height="500"
+          />
+        </div>
+        <div>
+          <p className="amp-label">Founder</p>
+          <h2>
+            Donyale
+            <br />
+            <em>“DThree” Mack</em>
+          </h2>
+          <p>
+            Founder of A MackProjekt and MackEnterprises. Author. Builder. The
+            work begins with a belief that access, opportunity, and dignity
+            belong in the design of a product—not as an afterthought.
+          </p>
+          <blockquote>
+            “The best technology doesn’t ask people to adapt to the system. It
+            builds a better system around people.”
+          </blockquote>
+          <Link className="amp-text-link" href="/media-kit">
+            Brand & media resources ↗
+          </Link>
         </div>
       </section>
-
-      <section className="section site-container">
-        <div className="section-heading-grid">
-          <p className="eyebrow">Working principles</p>
-          <h2 className="display-title">The standards behind every engagement.</h2>
+      <section className="amp-legacy">
+        <div className="amp-wrap amp-legacy-grid">
+          <div>
+            <p className="amp-label">On a personal note</p>
+            <h2>
+              Legacy for
+              <br />
+              <em>generations.</em>
+            </h2>
+          </div>
+          <p>
+            Every Projekt is inspired and motivated through my father Donald
+            “DT” Mack, my uncle Robert Ingram Sr., and my father Paul Cruz Sr.
+          </p>
+          <img
+            src="/brand/mackenterprises.png"
+            alt="MackEnterprises legacy identity"
+            width="450"
+            height="300"
+            loading="lazy"
+          />
         </div>
-        <div className="principle-list">
-          {principles.map(([title, copy], index) => (
-            <div key={title}><span>0{index + 1}</span><h3>{title}</h3><p>{copy}</p></div>
+      </section>
+      <section className="amp-section amp-wrap">
+        <p className="amp-label">Our principles</p>
+        <div className="amp-services">
+          {[
+            [
+              "01",
+              "Experience matters.",
+              "Build with the people closest to the problem.",
+            ],
+            [
+              "02",
+              "Clarity earns trust.",
+              "Make decisions and interfaces understandable.",
+            ],
+            [
+              "03",
+              "Craft is a commitment.",
+              "Carry the same care from the first idea through the final detail.",
+            ],
+            [
+              "04",
+              "Progress is practical.",
+              "Put useful work into people’s hands and learn from it.",
+            ],
+          ].map(([n, title, copy]) => (
+            <article key={n}>
+              <span className="amp-label">{n}</span>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </article>
           ))}
         </div>
       </section>
-
-      <section className="section site-container founder-panel">
-        <div className="founder-mark" aria-hidden="true">DM</div>
-        <div>
-          <p className="eyebrow">Founder</p>
-          <h2>Donyale “DThree” Mack</h2>
-          <p>
-            Donyale founded A MackProjekt around a straightforward belief: thoughtful technology can
-            bridge gaps in communication, opportunity, and access—but only when it is grounded in real
-            experience and accountable to real outcomes.
-          </p>
-          <Link href="/media-kit">Founder profile and media kit →</Link>
-        </div>
-      </section>
-
-      <section className="section site-container">
-        <div className="cta-panel">
-          <div><p className="eyebrow">Work together</p><h2>Good partnerships start with a real conversation.</h2></div>
-          <Link className="button button-light" href="/interest">Introduce yourself ↗</Link>
-        </div>
-      </section>
+      <AmpCTA />
     </main>
   );
 }

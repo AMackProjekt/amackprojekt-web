@@ -42,8 +42,8 @@ export function TechnicalBlog() {
     <div className="space-y-6">
       <div className="text-center mb-8">
         <p className="text-muted max-w-2xl mx-auto">
-          Technical insights, product deep-dives, and the philosophy behind building technology that matters. 
-          Written by Donyale "DThree" Mack, Founder & CEO.
+          Technical insights, product deep-dives, and the philosophy behind building technology that matters.
+          Written by Donyale &quot;DThree&quot; Mack, Founder & CEO.
         </p>
       </div>
 

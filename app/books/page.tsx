@@ -1,28 +1,28 @@
 import { Navbar } from "@/components/ui/Navbar";
-import { Portfolio } from "@/components/Portfolio";
+import { Books } from "@/components/Books";
 import { AmpCTA } from "@/components/AmpCTA";
 export const metadata = {
-  title: "Work & Ventures",
-  alternates: { canonical: "/innovation/" },
+  title: "Books by Donyale Mack",
+  alternates: { canonical: "/books/" },
 };
-export default function Work() {
+export default function Page() {
   return (
     <main id="main-content">
       <Navbar />
       <section className="amp-page-hero amp-wrap">
-        <p className="amp-label">A MackProjekt / Selected work</p>
+        <p className="amp-label">Donyale Mack / Books & ideas</p>
         <h1>
-          Purpose,
+          Every page.
           <br />
-          <em>put to work.</em>
+          <em>A next move.</em>
         </h1>
         <p>
-          Explore the platforms, movements, and creative ventures that make up
-          the AMP portfolio.
+          Explore Navigating Spiritual Warfare and the forthcoming AlphaKode:
+          Navigating Workplace Environments.
         </p>
       </section>
       <section className="amp-wrap amp-section amp-no-top">
-        <Portfolio />
+        <Books />
       </section>
       <AmpCTA />
     </main>

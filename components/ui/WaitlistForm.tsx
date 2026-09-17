@@ -43,7 +43,7 @@ export function WaitlistForm({ source = "direct", className = "" }: WaitlistForm
       if (response.ok && data.success) {
         setSuccess(true);
         setMessage(
-          data.message || "✅ Welcome! Check your email for the Innovation Roadmap PDF."
+          data.message || " Welcome! Check your email for the Innovation Roadmap PDF."
         );
         setEmail("");
         setFirstName("");
@@ -134,7 +134,7 @@ export function WaitlistForm({ source = "direct", className = "" }: WaitlistForm
       </form>
 
       <p className="mt-4 text-xs text-muted text-center">
-        By joining, you'll receive early access, exclusive updates, and our 2026 Innovation Roadmap PDF.
+        By joining, you&apos;ll receive early access, exclusive updates, and our 2026 Innovation Roadmap PDF.
       </p>
     </div>
   );

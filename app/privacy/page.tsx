@@ -1,32 +1,29 @@
 import { Navbar } from "@/components/ui/Navbar";
-import { Footer } from "@/components/ui/Footer";
-import { SectionHeading } from "@/components/ui/SectionHeading";
+
+
 
 export const metadata = {
-  title: "Privacy Policy - A MackProjekt",
+  title: "Privacy Policy",
+  alternates: { canonical: '/privacy/' },
   description: "Our privacy policy and data protection practices",
 };
 
 export default function PrivacyPage() {
   return (
-    <main className="min-h-screen bg-bg">
+    <main id="main-content" className="min-h-screen bg-bg">
       <div className="pointer-events-none fixed inset-0 -z-10 bg-dash-glow" />
       <Navbar />
-      
+
       <section className="mx-auto max-w-4xl px-7 pt-32 pb-20">
-        <SectionHeading
-          eyebrow="Legal"
-          title="Privacy Policy"
-          subtitle="Last updated: January 16, 2026"
-        />
+        <div className="amp-legal-heading"><p className="amp-label">A MackProjekt / Legal</p><h1>Privacy Policy</h1><p>Last updated: January 16, 2026</p></div>
 
         <div className="mt-12 space-y-8 text-muted">
           {/* Introduction */}
           <div>
             <h2 className="text-xl font-bold text-text mb-3">1. Introduction</h2>
             <p className="leading-relaxed">
-              A MackProjekt ("we," "our," or "us") operates mackprojekt.com (the "Site"). 
-              This Privacy Policy explains how we collect, use, disclose, and safeguard your 
+              A MackProjekt (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) operates mackprojekt.com (the &quot;Site&quot;).
+              This Privacy Policy explains how we collect, use, disclose, and safeguard your
               information when you visit our Site and use our services.
             </p>
           </div>
@@ -84,7 +81,7 @@ export default function PrivacyPage() {
             <h2 className="text-xl font-bold text-text mb-3">4. Cookies and Tracking Technologies</h2>
             <div className="space-y-3">
               <p>We use the following types of cookies:</p>
-              
+
               <div className="glass rounded-lg p-4 space-y-2">
                 <div>
                   <strong className="text-text">Essential Cookies (Always Active)</strong>
@@ -125,17 +122,17 @@ export default function PrivacyPage() {
             <p className="mb-3">We share information with the following third parties:</p>
             <ul className="list-disc pl-6 space-y-2">
               <li>
-                <strong className="text-text">Google LLC:</strong> Analytics data is processed by Google Analytics 4 
-                and Google Tag Manager. Google may associate this data with your Google account if you're signed in. 
-                See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-brand hover:text-brand2 underline">Google's Privacy Policy</a> and <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" className="text-brand hover:text-brand2 underline">opt-out options</a>.
+                <strong className="text-text">Google LLC:</strong> Analytics data is processed by Google Analytics 4
+                and Google Tag Manager. Google may associate this data with your Google account if you&apos;re signed in.
+                See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-brand hover:text-brand2 underline">Google&apos;s Privacy Policy</a> and <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" className="text-brand hover:text-brand2 underline">opt-out options</a>.
               </li>
               <li>
-                <strong className="text-text">Microsoft Azure:</strong> Data is stored and processed on Azure infrastructure 
-                (Cosmos DB, Azure Functions, Azure Communication Services) in the United States. Microsoft complies with 
+                <strong className="text-text">Microsoft Azure:</strong> Data is stored and processed on Azure infrastructure
+                (Cosmos DB, Azure Functions, Azure Communication Services) in the United States. Microsoft complies with
                 GDPR and data protection frameworks.
               </li>
               <li>
-                <strong className="text-text">Service Providers:</strong> We may share data with trusted vendors who 
+                <strong className="text-text">Service Providers:</strong> We may share data with trusted vendors who
                 perform services on our behalf (email delivery, hosting, security).
               </li>
             </ul>
@@ -181,7 +178,7 @@ export default function PrivacyPage() {
             <ul className="list-disc pl-6 space-y-2">
               <li><strong>Access:</strong> Request a copy of personal data we hold about you</li>
               <li><strong>Correction:</strong> Request correction of inaccurate or incomplete data</li>
-              <li><strong>Deletion:</strong> Request deletion of your personal data ("right to be forgotten")</li>
+              <li><strong>Deletion:</strong> Request deletion of your personal data (&quot;right to be forgotten&quot;)</li>
               <li><strong>Portability:</strong> Request data in a machine-readable format</li>
               <li><strong>Opt-Out:</strong> Unsubscribe from marketing communications or disable cookies</li>
               <li><strong>Object:</strong> Object to data processing for direct marketing purposes</li>
@@ -194,10 +191,10 @@ export default function PrivacyPage() {
 
           {/* Children's Privacy */}
           <div>
-            <h2 className="text-xl font-bold text-text mb-3">9. Children's Privacy</h2>
+            <h2 className="text-xl font-bold text-text mb-3">9. Children&apos;s Privacy</h2>
             <p className="leading-relaxed">
-              Our Site is not intended for children under 13 years of age. We do not knowingly collect 
-              personal information from children under 13. If you believe we have collected information 
+              Our Site is not intended for children under 13 years of age. We do not knowingly collect
+              personal information from children under 13. If you believe we have collected information
               from a child, please contact us immediately.
             </p>
           </div>
@@ -252,7 +249,7 @@ export default function PrivacyPage() {
                   <strong> privacy@mackprojekt.com</strong> for BAA requests and HIPAA-related inquiries.</li>
 
                   <li><strong>SOC 2 Type II Alignment:</strong> Our security controls align with SOC 2 Trust Service Criteria
-                  for security, availability, and confidentiality. We leverage Azure's SOC 2 Type II certified infrastructure.</li>
+                  for security, availability, and confidentiality. We leverage Azure&apos;s SOC 2 Type II certified infrastructure.</li>
 
                   <li><strong>GDPR Compliance:</strong> We adhere to GDPR principles including data minimization, purpose limitation,
                   and user rights (access, rectification, erasure, portability).</li>
@@ -290,8 +287,8 @@ export default function PrivacyPage() {
 
               <div className="bg-brand/10 border border-brand/30 rounded-lg p-4">
                 <p className="text-sm text-text/90 leading-relaxed">
-                  <strong>⚠️ Important Note:</strong> While we implement security best practices and align with industry 
-                  standards, no method of transmission over the Internet or electronic storage is 100% secure. We cannot 
+                  <strong>⚠️ Important Note:</strong> While we implement security best practices and align with industry
+                  standards, no method of transmission over the Internet or electronic storage is 100% secure. We cannot
                   guarantee absolute security but are committed to protecting your information using industry-standard measures.
                 </p>
               </div>
@@ -302,8 +299,8 @@ export default function PrivacyPage() {
           <div>
             <h2 className="text-xl font-bold text-text mb-3">11. International Data Transfers</h2>
             <p className="leading-relaxed">
-              Your information may be transferred to and processed in the United States and other countries 
-              where our service providers operate. These countries may have different data protection laws. 
+              Your information may be transferred to and processed in the United States and other countries
+              where our service providers operate. These countries may have different data protection laws.
               We ensure appropriate safeguards are in place, including:
             </p>
             <ul className="list-disc pl-6 mt-2 space-y-1">
@@ -324,7 +321,7 @@ export default function PrivacyPage() {
               <li>Non-discrimination for exercising CCPA rights</li>
             </ul>
             <p className="mt-3">
-              To submit a CCPA request, email <a href="mailto:privacy@mackprojekt.com" className="text-brand hover:text-brand2 underline">privacy@mackprojekt.com</a> with "CCPA Request" in the subject line.
+              To submit a CCPA request, email <a href="mailto:privacy@mackprojekt.com" className="text-brand hover:text-brand2 underline">privacy@mackprojekt.com</a> with &quot;CCPA Request&quot; in the subject line.
             </p>
           </div>
 
@@ -347,8 +344,8 @@ export default function PrivacyPage() {
           <div>
             <h2 className="text-xl font-bold text-text mb-3">14. Do Not Track Signals</h2>
             <p className="leading-relaxed">
-              Some browsers support "Do Not Track" (DNT) signals. Because there is no industry standard for DNT, 
-              our Site does not currently respond to DNT signals. However, you can control tracking through our 
+              Some browsers support &quot;Do Not Track&quot; (DNT) signals. Because there is no industry standard for DNT,
+              our Site does not currently respond to DNT signals. However, you can control tracking through our
               cookie consent banner.
             </p>
           </div>
@@ -357,8 +354,8 @@ export default function PrivacyPage() {
           <div>
             <h2 className="text-xl font-bold text-text mb-3">15. Changes to This Privacy Policy</h2>
             <p className="leading-relaxed">
-              We may update this Privacy Policy from time to time. Changes will be posted on this page with 
-              an updated "Last updated" date. We encourage you to review this policy periodically. Continued 
+              We may update this Privacy Policy from time to time. Changes will be posted on this page with
+              an updated &quot;Last updated&quot; date. We encourage you to review this policy periodically. Continued
               use of our Site after changes constitutes acceptance of the updated policy.
             </p>
           </div>
@@ -381,12 +378,12 @@ export default function PrivacyPage() {
           <div className="glass rounded-lg p-6 border border-brand/30 mt-8">
             <h3 className="text-lg font-bold text-brand mb-3">⚠️ Google Analytics 4 & Tag Manager Notice</h3>
             <p className="text-sm leading-relaxed mb-3">
-              This site uses Google Analytics 4 (Measurement ID: G-D78085990C) and Google Tag Manager (GTM-N2TDDSNS) 
-              to collect and analyze website traffic. Google Analytics collects information such as how often users 
+              This site uses Google Analytics 4 (Measurement ID: G-D78085990C) and Google Tag Manager (GTM-N2TDDSNS)
+              to collect and analyze website traffic. Google Analytics collects information such as how often users
               visit this site, what pages they visit, and what other sites they used prior to coming to this site.
             </p>
             <p className="text-sm leading-relaxed mb-3">
-              Google uses this data to provide us with reports about traffic and your visit. Google may also use 
+              Google uses this data to provide us with reports about traffic and your visit. Google may also use
               the data collected to contextualize and personalize ads within its own advertising network.
             </p>
             <p className="text-sm leading-relaxed">
@@ -401,8 +398,6 @@ export default function PrivacyPage() {
           </div>
         </div>
       </section>
-
-      <Footer />
     </main>
   );
 }

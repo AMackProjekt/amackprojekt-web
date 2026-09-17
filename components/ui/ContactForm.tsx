@@ -35,11 +35,11 @@ export function ContactForm() {
       }
 
       const data = await response.json();
-      console.log("Contact form submitted:", data);
-      
+      void data;
+
       setStatus("success");
       setFormData({ name: "", email: "", subject: "", message: "" });
-      
+
       // Reset success message after 5 seconds
       setTimeout(() => setStatus("idle"), 5000);
     } catch (error) {
@@ -113,13 +113,13 @@ export function ContactForm() {
 
       {status === "success" && (
         <div className="rounded-lg bg-brand2/10 border border-brand2/20 px-4 py-3 text-brand2 text-sm">
-          ✓ Message sent successfully! We'll get back to you soon.
+           Message sent successfully! We&apos;ll get back to you soon.
         </div>
       )}
 
       {status === "error" && (
         <div className="rounded-lg bg-red-500/10 border border-red-500/20 px-4 py-3 text-red-400 text-sm">
-          ✗ {errorMessage || "Failed to send message. Please try again."}
+           {errorMessage || "We could not send your message. Please try again."} <a className="underline" href="mailto:hello@mackprojekt.com">Email the studio instead.</a>
         </div>
       )}
 

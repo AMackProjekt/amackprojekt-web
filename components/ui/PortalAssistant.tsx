@@ -213,7 +213,7 @@ export function PortalAssistant() {
       <div className="mt-6 pt-6 border-t border-border">
         <p className="text-xs text-muted/70">
           💡 <strong>How it works:</strong> Our AI analyzes your progress and learning patterns to suggest
-          the best next steps. Dismiss recommendations you're not interested in, and we'll learn your
+          the best next steps. Dismiss recommendations you&apos;re not interested in, and we&apos;ll learn your
           preferences.
         </p>
       </div>

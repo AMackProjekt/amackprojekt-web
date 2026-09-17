@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./amp.css";
 import { AuthProvider } from "@/lib/auth";
 import { ThemeProvider } from "@/lib/theme";
 import { Footer } from "@/components/ui/Footer";
@@ -21,17 +22,17 @@ export const metadata: Metadata = {
   manifest: "/manifest.json",
   icons: {
     icon: [
-      { url: "/logos/amp-logo.jpeg", type: "image/jpeg" },
-      { url: "/logos/amp-logo.jpeg", sizes: "any" },
+      { url: "/brand/amp-logo.jpg", type: "image/jpeg" },
+      { url: "/brand/amp-logo.jpg", sizes: "any" },
     ],
     apple: [
-      { url: "/logos/amp-logo.jpeg" },
-      { url: "/logos/amp-logo.jpeg", sizes: "180x180", type: "image/jpeg" },
+      { url: "/brand/amp-logo.jpg" },
+      { url: "/brand/amp-logo.jpg", sizes: "180x180", type: "image/jpeg" },
     ],
     other: [
       {
         rel: "icon",
-        url: "/logos/amp-logo.jpeg",
+        url: "/brand/amp-logo.jpg",
         type: "image/jpeg",
       },
     ],
@@ -74,7 +75,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     "@type": "Organization",
     name: "A MackProjekt",
     url: "https://mackprojekt.com",
-    logo: "https://mackprojekt.com/logos/amp-logo.jpeg",
+    logo: "https://mackprojekt.com/brand/amp-logo.jpg",
     description: "An independent innovation studio building human-centered digital products for access, opportunity, and trust.",
     founder: { "@type": "Person", name: "Donyale Mack" },
     knowsAbout: ["Digital product strategy", "Web development", "Artificial intelligence", "Social impact technology", "Healthcare technology", "Nonprofit technology"],
@@ -82,8 +83,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* eslint-disable-next-line compat/compat */}
-        <meta name="theme-color" content="#38bdf8" />
+
+        <meta name="theme-color" content="#24b8c8" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <link rel="manifest" href="/manifest.json" />
@@ -108,17 +109,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <VisitTracker />
         <InteractionAnalytics />
         {/* Google Analytics */}
-        <GoogleAnalytics measurementId="G-HDG1JR4N7X" />
-        
+        <GoogleAnalytics measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-HDG1JR4N7X"} />
+
         {process.env.NEXT_PUBLIC_GTM_ID && (
           <>
             <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
             <GoogleTagManagerNoScript gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
           </>
         )}
-        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
-          <GoogleAnalytics measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
-        )}
+
         <ThemeProvider>
           <AuthProvider>
             {children}

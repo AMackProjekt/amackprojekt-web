@@ -6,6 +6,10 @@ on:
       - main
   workflow_dispatch:
 
+concurrency:
+  group: amp-production
+  cancel-in-progress: false
+
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
@@ -35,6 +39,13 @@ jobs:
         run: |
           set -euo pipefail
           required_files=(
+            out/books/index.html
+            out/portals/index.html
+            out/careport/index.html
+            out/brand/amp-logo.jpg
+            out/brand/kingme.jpg
+            out/brand/queenme.png
+            out/brand/mackenterprises.png
             out/index.html
             out/innovation/index.html
             out/partnerships/index.html
@@ -55,6 +66,11 @@ jobs:
               exit 1
             }
           done
+
+      - name: Validate restored AMP portfolio
+        run: |
+          node scripts/verify-amp.mjs
+          node scripts/test-cache-policy.mjs
 
       - name: Deploy to AMackProjekt production
         uses: Azure/static-web-apps-deploy@v1

@@ -1,6 +1,96 @@
 {
   "routes": [
     {
+      "route": "/api-test/",
+      "rewrite": "/api-test/index.html"
+    },
+    {
+      "route": "/api-test",
+      "rewrite": "/api-test/index.html"
+    },
+    {
+      "route": "/referral/",
+      "rewrite": "/referral/index.html"
+    },
+    {
+      "route": "/referral",
+      "rewrite": "/referral/index.html"
+    },
+    {
+      "route": "/joinwaitlist/",
+      "rewrite": "/joinwaitlist/index.html"
+    },
+    {
+      "route": "/joinwaitlist",
+      "rewrite": "/joinwaitlist/index.html"
+    },
+    {
+      "route": "/launch/",
+      "rewrite": "/launch/index.html"
+    },
+    {
+      "route": "/launch",
+      "rewrite": "/launch/index.html"
+    },
+    {
+      "route": "/solutions/retail/",
+      "rewrite": "/solutions/retail/index.html"
+    },
+    {
+      "route": "/solutions/retail",
+      "rewrite": "/solutions/retail/index.html"
+    },
+    {
+      "route": "/solutions/nonprofit/",
+      "rewrite": "/solutions/nonprofit/index.html"
+    },
+    {
+      "route": "/solutions/nonprofit",
+      "rewrite": "/solutions/nonprofit/index.html"
+    },
+    {
+      "route": "/solutions/healthcare/",
+      "rewrite": "/solutions/healthcare/index.html"
+    },
+    {
+      "route": "/solutions/healthcare",
+      "rewrite": "/solutions/healthcare/index.html"
+    },
+    {
+      "route": "/careport",
+      "rewrite": "/careport/index.html"
+    },
+    {
+      "route": "/careport/",
+      "rewrite": "/careport/index.html"
+    },
+    {
+      "route": "/portals",
+      "rewrite": "/portals/index.html"
+    },
+    {
+      "route": "/portals/",
+      "rewrite": "/portals/index.html"
+    },
+    {
+      "route": "/books",
+      "rewrite": "/books/index.html"
+    },
+    {
+      "route": "/books/",
+      "rewrite": "/books/index.html"
+    },
+    {
+      "route": "/messaging",
+      "redirect": "/innovation/",
+      "statusCode": 301
+    },
+    {
+      "route": "/messaging/*",
+      "redirect": "/innovation/",
+      "statusCode": 301
+    },
+    {
       "route": "/portal",
       "redirect": "https://sdtoolsinc.org",
       "statusCode": 301
@@ -15,39 +105,67 @@
       "rewrite": "/index.html"
     },
     {
-      "route": "/innovation/*",
+      "route": "/innovation",
       "rewrite": "/innovation/index.html"
     },
     {
-      "route": "/partnerships/*",
+      "route": "/innovation/",
+      "rewrite": "/innovation/index.html"
+    },
+    {
+      "route": "/partnerships",
       "rewrite": "/partnerships/index.html"
     },
     {
-      "route": "/media-kit/*",
+      "route": "/partnerships/",
+      "rewrite": "/partnerships/index.html"
+    },
+    {
+      "route": "/media-kit",
       "rewrite": "/media-kit/index.html"
     },
     {
-      "route": "/interest/*",
+      "route": "/media-kit/",
+      "rewrite": "/media-kit/index.html"
+    },
+    {
+      "route": "/interest",
       "rewrite": "/interest/index.html"
     },
     {
-      "route": "/waitlist/*",
+      "route": "/interest/",
+      "rewrite": "/interest/index.html"
+    },
+    {
+      "route": "/waitlist",
       "rewrite": "/waitlist/index.html"
     },
     {
-      "route": "/reentry/*",
+      "route": "/waitlist/",
+      "rewrite": "/waitlist/index.html"
+    },
+    {
+      "route": "/reentry",
       "rewrite": "/reentry/index.html"
     },
     {
-      "route": "/messaging/*",
-      "rewrite": "/messaging/index.html"
+      "route": "/reentry/",
+      "rewrite": "/reentry/index.html"
     },
     {
-      "route": "/privacy/*",
+      "route": "/privacy",
       "rewrite": "/privacy/index.html"
     },
     {
-      "route": "/terms/*",
+      "route": "/privacy/",
+      "rewrite": "/privacy/index.html"
+    },
+    {
+      "route": "/terms",
+      "rewrite": "/terms/index.html"
+    },
+    {
+      "route": "/terms/",
       "rewrite": "/terms/index.html"
     },
     {
@@ -62,34 +180,44 @@
     {
       "route": "/logos/*",
       "headers": {
-        "cache-control": "public, max-age=2592000, immutable"
+        "cache-control": "no-cache, must-revalidate"
       }
     },
     {
       "route": "/service-worker.js",
       "headers": {
-        "cache-control": "public, max-age=0, must-revalidate",
+        "cache-control": "no-cache, must-revalidate",
         "content-type": "application/javascript"
       }
     },
     {
       "route": "/*.{js,css,woff,woff2,ttf}",
       "headers": {
-        "cache-control": "public, max-age=31536000, immutable"
+        "cache-control": "no-cache, must-revalidate"
       }
     },
     {
       "route": "/*.{html,json}",
       "headers": {
-        "cache-control": "public, max-age=0, must-revalidate"
+        "cache-control": "no-cache, must-revalidate"
       }
     },
     {
       "route": "/*",
-      "allowedRoles": ["anonymous", "authenticated"],
-      "methods": ["GET", "HEAD", "POST", "PUT", "DELETE", "OPTIONS"],
+      "allowedRoles": [
+        "anonymous",
+        "authenticated"
+      ],
+      "methods": [
+        "GET",
+        "HEAD",
+        "POST",
+        "PUT",
+        "DELETE",
+        "OPTIONS"
+      ],
       "headers": {
-        "cache-control": "public, max-age=3600"
+        "cache-control": "no-cache, must-revalidate"
       }
     }
   ],
@@ -121,7 +249,8 @@
     "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
     "Referrer-Policy": "strict-origin-when-cross-origin",
     "X-XSS-Protection": "1; mode=block",
-    "Permissions-Policy": "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()"
+    "Permissions-Policy": "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()",
+    "Cache-Control": "no-cache, must-revalidate"
   },
   "platform": {
     "apiRuntime": "node:18"

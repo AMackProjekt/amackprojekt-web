@@ -15,7 +15,7 @@ export function FoundersLetter() {
         <div className="text-xs font-semibold tracking-[0.18em] text-brand2 uppercase mb-4">
           Letter from the Founder
         </div>
-        
+
         <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-6">
           <span className="bg-gradient-to-r from-brand to-brand2 bg-clip-text text-transparent">
             Bridging Social Gaps Through Technology
@@ -28,47 +28,47 @@ export function FoundersLetter() {
             <p className="text-lg font-semibold text-brand2">
               Dear Innovators,
             </p>
-            
+
             <p>
-              When I founded A MackProjekt, I had a simple yet powerful vision: <strong className="text-brand">use technology 
-              to bridge the gaps that divide us</strong>—whether those gaps are in communication, opportunity, or access to 
+              When I founded A MackProjekt, I had a simple yet powerful vision: <strong className="text-brand">use technology
+              to bridge the gaps that divide us</strong>—whether those gaps are in communication, opportunity, or access to
               resources that can change lives.
             </p>
 
             <p>
-              Growing up, I witnessed firsthand how the right support at the right time could transform someone's trajectory. 
-              I also saw how technology, when wielded thoughtfully, could amplify that support exponentially. That's what 
+              Growing up, I witnessed firsthand how the right support at the right time could transform someone&apos;s trajectory.
+              I also saw how technology, when wielded thoughtfully, could amplify that support exponentially. That&apos;s what
               drives everything we build at MackEnterprises.
             </p>
 
             <p>
-              <strong className="text-brand2">T.O.O.L.S. Inc.</strong> (Together Overcoming Obstacles and Limitations) 
-              isn't just a platform—it's a promise. A promise to justice-involved individuals that their past doesn't 
-              define their future. A promise that with the right tools, education, and AI-powered guidance, anyone can 
+              <strong className="text-brand2">T.O.O.L.S. Inc.</strong> (Together Overcoming Obstacles and Limitations)
+              isn&apos;t just a platform—it&apos;s a promise. A promise to justice-involved individuals that their past doesn&apos;t
+              define their future. A promise that with the right tools, education, and AI-powered guidance, anyone can
               rebuild and thrive.
             </p>
 
             <p>
-              <strong className="text-brand">MackChat</strong> emerged from recognizing another gap: the disconnect between 
+              <strong className="text-brand">MackChat</strong> emerged from recognizing another gap: the disconnect between
               military communities and the civilians they protect. Technology should bring us together, not keep us apart.
             </p>
 
             <p className="text-lg font-semibold text-text">
-              This isn't about building startups with cool ideas. This is about building working, high-impact products 
+              This isn&apos;t about building startups with cool ideas. This is about building working, high-impact products
               that solve real problems for real people.
             </p>
 
             <p>
-              We're not generic tech templates. We're a team committed to using AI, data science, and thoughtful 
+              We&apos;re not generic tech templates. We&apos;re a team committed to using AI, data science, and thoughtful
               engineering to create genuine social impact. Every line of code we write is in service of that mission.
             </p>
 
             <p className="text-brand2 font-semibold italic">
-              "Innovation happens when technology meets purpose. Together, we're building bridges where walls once stood."
+              &quot;Innovation happens when technology meets purpose. Together, we&apos;re building bridges where walls once stood.&quot;
             </p>
 
             <div className="pt-6 border-t border-border">
-              <p className="font-semibold text-text">Donyale "DThree" Mack</p>
+              <p className="font-semibold text-text">Donyale &quot;DThree&quot; Mack</p>
               <p className="text-sm text-muted">Founder & CEO, MackEnterprises</p>
               <p className="text-sm text-muted">Chief Innovation Officer, A MackProjekt</p>
             </div>

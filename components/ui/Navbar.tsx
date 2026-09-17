@@ -1,58 +1,62 @@
 "use client";
-
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
-
+import { useState, useEffect } from "react";
 const links = [
-  { href: "/innovation", label: "Work" },
-  { href: "/#capabilities", label: "Capabilities" },
-  { href: "/partnerships", label: "Studio" },
-  { href: "/media-kit", label: "Media" },
+  ["/innovation", "Work"],
+  ["/portals", "Platforms"],
+  ["/books", "Books"],
+  ["/partnerships", "Studio"],
+  ["/media-kit", "Brand & media"],
 ];
-
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
-
   useEffect(() => setOpen(false), [pathname]);
-
   return (
-    <header className="site-header">
-      <div className="site-container nav-inner">
-        <Link href="/" className="brand-link" aria-label="A MackProjekt home">
+    <header className="amp-header">
+      <a className="skip-link" href="#main-content">
+        Skip to content
+      </a>
+      <div className="amp-wrap amp-nav">
+        <Link href="/" className="amp-wordmark" aria-label="A MackProjekt home">
           <img
-            src="/logos/amp-logo.jpeg"
+            src="/brand/amp-logo.jpg"
             alt="A MackProjekt"
-            className="brand-logo"
+            width="126"
+            height="70"
           />
+          <span>INNOVATION STUDIO</span>
         </Link>
-
-        <nav className={`nav-links ${open ? "is-open" : ""}`} aria-label="Main navigation">
-          {links.map((link) => (
+        <nav
+          id="amp-navigation"
+          className={open ? "amp-navigation open" : "amp-navigation"}
+          aria-label="Main navigation"
+        >
+          {links.map(([href, label]) => (
             <Link
-              key={link.href}
-              href={link.href}
-              className={pathname === link.href ? "active" : undefined}
+              key={href}
+              href={href}
+              aria-current={pathname === href ? "page" : undefined}
+              onClick={() => setOpen(false)}
             >
-              {link.label}
+              {label}
             </Link>
           ))}
-          <Link href="/interest" className="button button-primary nav-cta">Start A Projekt</Link>
+          <Link href="/interest" className="amp-button nav-start">
+            Start a Projekt <span aria-hidden="true">↗</span>
+          </Link>
         </nav>
-
-        <div className="nav-actions">
-          <button
-            type="button"
-            className="menu-button"
-            onClick={() => setOpen((value) => !value)}
-            aria-expanded={open}
-            aria-controls="mobile-navigation"
-            aria-label={open ? "Close navigation" : "Open navigation"}
-          >
-            <span /><span />
-          </button>
-        </div>
+        <button
+          className="amp-menu"
+          aria-controls="amp-navigation"
+          aria-expanded={open}
+          aria-label={open ? "Close navigation" : "Open navigation"}
+          onClick={() => setOpen(!open)}
+        >
+          {open ? "Close" : "Menu"}{" "}
+          <span aria-hidden="true">{open ? "−" : "+"}</span>
+        </button>
       </div>
     </header>
   );
