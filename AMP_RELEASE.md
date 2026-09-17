@@ -41,3 +41,11 @@ Keep these checks in place when adding pages or replacing artwork.
 Space Grotesk headlines and Manrope body text are self-hosted in public/fonts with their OFL licenses. The homepage includes a keyboard-accessible featured-venture selector and an explicit motion control. Reduced-motion preferences disable ambient animation and scroll reveals. Keep the original portfolio destinations and do not replace the venture artwork with placeholders.
 
 The hero ecosystem supports drag rotation, seven venture selections, previous/next controls and direct product links. Hover or keyboard focus pauses ambient rotation. Thumbnail assets are derived from the original artwork and covered by release integrity checks.
+
+## Interactive chapters
+
+The homepage preserves the AMP universe and introduces distinct technology, movement, publication, and culture chapters. CaseFlow Operations uses the CF identity and role descriptions informed by the Projekt-Enterprise repository. Its generated floating-device illustration is a labeled concept visualization, with interactive Participant, Staff, and Admin overviews rather than fabricated customer data.
+
+KingMe and QueenMe have custom procedural Three.js chess sculptures with original-art fallbacks. Motion respects reduced-motion preferences and the homepage motion control. Parallax targets are refreshed after product changes to avoid retaining detached DOM elements. The full-screen navigation and introduction use native modal dialogs, restore focus, and support Escape. The introduction combines the existing AMP highlight film with short timed explanatory captions and a readable transcript.
+
+Verified at widths 320, 390, 768, 1024, 1440, and 1920: no horizontal overflow, working product/book/process selectors, 3D rendering, dialog keyboard behavior, video playback, valid image assets, preserved hero controls, and no browser runtime errors. Static export and cache/asset checks remain required by production CI.

@@ -12,7 +12,7 @@ const assets = [
   [
     "Projekt Enterprise Portal Suite",
     "Platform identity",
-    "/brand/projekt-enterprise-logo.webp",
+    "/brand/projekt-enterprise-icon.svg",
   ],
   ["T.O.O.L.S. Inc.", "Community organization", "/brand/toolsinc-logo.png"],
   ["KingMe", "Adjust The Krown Movement", "/brand/kingme.jpg"],

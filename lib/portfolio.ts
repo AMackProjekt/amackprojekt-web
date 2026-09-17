@@ -3,10 +3,10 @@ export const ventures = [
     id: "enterprise",
     category: "Platforms",
     name: "Projekt Enterprise Portal Suite",
-    label: "Connected operations",
+    label: "CaseFlow Operations",
     description:
-      "Personalized dashboards, course access, case management, and client-centered workflows. One connected place for mission-driven organizations to work.",
-    image: "/brand/projekt-enterprise-logo.webp",
+      "CaseFlow Operations connects participant, staff, and admin portals with case management, documents, scheduling, and enterprise oversight.",
+    image: "/brand/projekt-enterprise-icon.svg",
     href: "/portals",
     action: "Explore the suite",
   },

@@ -70,11 +70,6 @@
     "sha256": "51a3d9d58dfeeded7104d6b07467bee3077102d08627092c5cd94de75a53f914"
   },
   {
-    "path": "brand/thumb-enterprise.webp",
-    "bytes": 21876,
-    "sha256": "78cc8150ac2feb90e9d26e05791d4bfe0abcd50dec80c38d722b06d59f111471"
-  },
-  {
     "path": "brand/thumb-kingme.webp",
     "bytes": 8724,
     "sha256": "6f50c2b9c6ac8968ff925e76d05bba80643cf9887f0b6eae90e2accdbbbd8954"
@@ -98,5 +93,20 @@
     "path": "brand/thumb-tools.webp",
     "bytes": 9564,
     "sha256": "8368bb15997cbf70c3852cd37e69558f8f25ef3b9b4ae5b9e1553096394ad8b1"
+  },
+  {
+    "path": "brand/thumb-enterprise.webp",
+    "bytes": 3370,
+    "sha256": "1ed7b61ff0d634a5a2f2b035693b3473a49437359a1f8993cf5160df0a629e72"
+  },
+  {
+    "path": "brand/projekt-enterprise-icon.svg",
+    "bytes": 924,
+    "sha256": "05dd1ba212a795a4024de99b4cd4843193c6b32e0fd5ccb6a69ef01bee7cd24a"
+  },
+  {
+    "path": "brand/amp-device-scene.webp",
+    "bytes": 62884,
+    "sha256": "5ad0a32d56db83784eb1ecbfa3bc224d13f6505c5d15fd2051eaf81c05104473"
   }
 ]

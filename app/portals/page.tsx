@@ -17,13 +17,11 @@ export default function Page() {
           <em>together.</em>
         </h1>
         <p>
-          Projekt Enterprise Portal Suite connects the dashboards, learning,
-          case management, and service workflows that mission-driven
-          organizations depend on.
+          Projekt Enterprise brings CaseFlow Operations together with participant, staff, and admin portals. Case management, records, scheduling, and enterprise oversight in one connected workspace.
         </p>
         <div className="amp-actions">
           <a className="amp-button" href="https://www.sdtoolsinc.org">
-            Open T.O.O.L.S. platform ↗
+            Explore the T.O.O.L.S. deployment ↗
           </a>
           <Link className="amp-text-link" href="/interest">
             Discuss your organization ↗
@@ -33,13 +31,13 @@ export default function Page() {
       <section className="amp-wrap amp-section amp-no-top">
         <div className="amp-system-panel">
           <img
-            src="/brand/projekt-enterprise-logo.webp"
+            src="/brand/projekt-enterprise-icon.svg"
             alt="Projekt Enterprise Portal Suite identity"
             width="400"
             height="400"
           />
           <div>
-            <p className="amp-label">A connected operations approach</p>
+            <p className="amp-label">CaseFlow Operations / By A MackProjekt</p>
             <h2>
               People. Programs.
               <br />

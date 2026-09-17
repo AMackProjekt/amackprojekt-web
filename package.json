@@ -32,12 +32,14 @@
     "recharts": "^2.15.0",
     "serve": "^14.2.4",
     "tailwind-merge": "^2.6.0",
+    "three": "^0.186.0",
     "vue": "^3.5.30"
   },
   "devDependencies": {
     "@types/node": "^22.10.5",
     "@types/react": "^19.0.6",
     "@types/react-dom": "^19.0.3",
+    "@types/three": "^0.186.0",
     "autoprefixer": "^10.4.20",
     "eslint": "^9.18.0",
     "eslint-config-next": "15.5.15",

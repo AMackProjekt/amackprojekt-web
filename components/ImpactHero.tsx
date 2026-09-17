@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { IntroTrigger } from "@/components/IntroVideo";
 import { useEffect, useState } from "react";
 import { ImpactUniverse } from "@/components/ImpactUniverse";
 
@@ -10,8 +11,9 @@ export function ImpactHero() {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
     const sync = () => setPaused(media.matches);
     sync(); media.addEventListener("change", sync);
-    return () => media.removeEventListener("change", sync);
+  return () => media.removeEventListener("change", sync);
   }, []);
+  useEffect(() => { document.documentElement.dataset.ampMotion = paused ? "paused" : "active"; return () => { delete document.documentElement.dataset.ampMotion; }; }, [paused]);
 
   return (
     <section className={`impact-hero ${paused ? "motion-paused" : ""}`} aria-labelledby="impact-title">
@@ -22,8 +24,9 @@ export function ImpactHero() {
           <div className="impact-statement">
             <p className="impact-eyebrow">Technology. Culture. Purpose.</p>
             <h1 id="impact-title">Built to<br /><span className="impact-outline">move</span><br /><em>what’s next.</em></h1>
-            <p className="impact-intro">Platforms that connect. Movements that empower. Ideas that become part of people’s lives.</p>
+            <p className="impact-intro">One independent studio connecting technology, creative identity, and community ventures.</p>
             <div className="amp-actions"><a href="#work" className="amp-button">Enter the AMP portfolio <span aria-hidden="true">↗</span></a><Link href="/interest" className="amp-text-link">Bring your vision <span aria-hidden="true">↗</span></Link></div>
+            <IntroTrigger />
           </div>
           <ImpactUniverse paused={paused} />
         </div>

@@ -1,63 +1,13 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
-const links = [
-  ["/innovation", "Work"],
-  ["/portals", "Platforms"],
-  ["/books", "Books"],
-  ["/partnerships", "Studio"],
-  ["/media-kit", "Brand & media"],
-];
-export function Navbar() {
-  const [open, setOpen] = useState(false);
-  const pathname = usePathname();
-  useEffect(() => setOpen(false), [pathname]);
-  return (
-    <header className="amp-header">
-      <a className="skip-link" href="#main-content">
-        Skip to content
-      </a>
-      <div className="amp-wrap amp-nav">
-        <Link href="/" className="amp-wordmark" aria-label="A MackProjekt home">
-          <img
-            src="/brand/amp-logo.jpg"
-            alt="A MackProjekt"
-            width="126"
-            height="70"
-          />
-          <span>INNOVATION STUDIO</span>
-        </Link>
-        <nav
-          id="amp-navigation"
-          className={open ? "amp-navigation open" : "amp-navigation"}
-          aria-label="Main navigation"
-        >
-          {links.map(([href, label]) => (
-            <Link
-              key={href}
-              href={href}
-              aria-current={pathname === href ? "page" : undefined}
-              onClick={() => setOpen(false)}
-            >
-              {label}
-            </Link>
-          ))}
-          <Link href="/interest" className="amp-button nav-start">
-            Start a Projekt <span aria-hidden="true">↗</span>
-          </Link>
-        </nav>
-        <button
-          className="amp-menu"
-          aria-controls="amp-navigation"
-          aria-expanded={open}
-          aria-label={open ? "Close navigation" : "Open navigation"}
-          onClick={() => setOpen(!open)}
-        >
-          {open ? "Close" : "Menu"}{" "}
-          <span aria-hidden="true">{open ? "−" : "+"}</span>
-        </button>
-      </div>
-    </header>
-  );
+import { useState, useEffect, useRef } from "react";
+const links = [["/innovation","Work"],["/portals","Platforms"],["/books","Books"],["/partnerships","Studio"],["/media-kit","Brand & media"]];
+export function Navbar(){
+ const [open,setOpen]=useState(false);const pathname=usePathname();const dialog=useRef<HTMLDialogElement>(null);const trigger=useRef<HTMLButtonElement>(null);
+ useEffect(()=>setOpen(false),[pathname]);
+ useEffect(()=>{const modal=dialog.current;const focusTarget=trigger.current;if(!modal)return;if(open){modal.showModal();const previous=document.body.style.overflow;document.body.style.overflow='hidden';return()=>{document.body.style.overflow=previous;modal.close();focusTarget?.focus();};}modal.close();},[open]);
+ return <header className="amp-header"><a className="skip-link" href="#main-content">Skip to content</a><div className="amp-wrap amp-nav"><Link href="/" className="amp-wordmark" aria-label="A MackProjekt home"><img src="/brand/amp-logo.jpg" alt="A MackProjekt" width="126" height="70"/><span>INNOVATION STUDIO</span></Link><nav className="amp-navigation amp-desktop-navigation" aria-label="Main navigation">{links.map(([href,label])=><Link href={href} key={href} aria-current={pathname===href?'page':undefined}>{label}</Link>)}<Link href="/interest" className="amp-button nav-start">Start a Projekt <span aria-hidden="true">↗</span></Link></nav><button ref={trigger} className="amp-menu amp-full-menu-trigger" aria-controls="amp-full-menu" aria-expanded={open} aria-haspopup="dialog" aria-label="Open navigation" onClick={()=>setOpen(true)}>Explore <span aria-hidden="true">+</span></button></div>
+ <dialog ref={dialog} id="amp-full-menu" className="amp-full-menu" aria-label="Explore A MackProjekt" onCancel={()=>setOpen(false)} onClose={()=>setOpen(false)}><div className="full-menu-top"><Link href="/" onClick={()=>setOpen(false)} aria-label="A MackProjekt home"><img src="/brand/amp-logo.jpg" width="130" height="90" alt="A MackProjekt"/></Link><button className="full-menu-close" onClick={()=>setOpen(false)} aria-label="Close navigation">Close <span aria-hidden="true">×</span></button></div><div className="full-menu-layout"><div className="full-menu-intro"><p className="amp-label">A world of possibility.</p><p>Make your<br/><em>next move.</em></p><span>Technology. Culture. Purpose.</span></div><nav className="full-menu-links" aria-label="Full-screen navigation">{[["/","Home"],...links,["/interest","Start a Projekt"]].map(([href,label],i)=><Link key={href} href={href} onClick={()=>setOpen(false)} aria-current={pathname===href?'page':undefined} style={{animationDelay:(i*45)+'ms'}}><span>0{i+1}</span>{label}<span aria-hidden="true">↗</span></Link>)}</nav></div><div className="full-menu-bottom"><span>INDEPENDENT IDEAS. CONNECTED BY AMP.</span><a href="mailto:hello@mackprojekt.com">hello@mackprojekt.com ↗</a></div></dialog>
+ </header>;
 }
