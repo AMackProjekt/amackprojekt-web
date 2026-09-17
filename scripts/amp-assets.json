@@ -113,5 +113,30 @@
     "path": "brand/careport-fluid.webp",
     "bytes": 78160,
     "sha256": "4de35fdf369341321445d932179604e7eff9d46fad941a37ff64b830a620c9b8"
+  },
+  {
+    "path": "brand/portal-dashboard.webp",
+    "bytes": 54140,
+    "sha256": "3f3b81e891901e960feae913ddedadd84bf63c86cc9f2d61e11afc475a832a85"
+  },
+  {
+    "path": "brand/portal-caseload.webp",
+    "bytes": 54566,
+    "sha256": "12e36c412c8abc431a06dd4a8f0226fa5192afc8f286190369c19a9590849b9e"
+  },
+  {
+    "path": "brand/portal-learning.webp",
+    "bytes": 62136,
+    "sha256": "c0b13c5454677106d8a865343982002d17be4e224519bba6aba85ae3cd862fd5"
+  },
+  {
+    "path": "brand/portal-coordination.webp",
+    "bytes": 51390,
+    "sha256": "92fc807ceafe7a4036700757b1b8ce0457f703395faea0fb3a57d2df751ffbb8"
+  },
+  {
+    "path": "brand/amp-portal-intro.mp4",
+    "bytes": 2606591,
+    "sha256": "c4a79a08cba26bd3de64db886210189fa5be1f88541258b2da8161179d7aff56"
   }
 ]
