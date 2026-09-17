@@ -10,8 +10,9 @@ export function AmpCTA() {
           <em>that matters.</em>
         </h2>
       </div>
-      <Link className="amp-button" href="/interest">
-        Start a Projekt <span aria-hidden="true">↗</span>
+      <Link className="amp-project-action" href="/interest">
+        <span className="amp-project-action-copy"><strong>Start a Projekt</strong><small>Bring your vision. Build with AMP.</small></span>
+        <span className="amp-project-action-arrow" aria-hidden="true">↗</span>
       </Link>
     </section>
   );

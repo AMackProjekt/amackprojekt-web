@@ -55,3 +55,9 @@ Verified at widths 320, 390, 768, 1024, 1440, and 1920: no horizontal overflow, 
 The lower homepage now shares the enterprise scene's midnight, cyan, and glass visual language. Large pastel backgrounds are removed, chapter heights are reduced, and a continuous decorative light field connects the products. The founder, legacy, and closing CTA follow the same palette. Brand color remains in the venture artwork and sculptures.
 
 The 3D pieces support horizontal pointer drag, left/right arrow keys, and Home/reset controls. Vertical touch scrolling remains available. Ambient motion respects reduced-motion and the existing pause control. The decorative field has no focusable elements and is hidden from assistive technology.
+
+## Brand gallery and closing action
+
+The media kit uses a compact nine-brand carousel in place of the tall artwork grid. It advances every 6.5 seconds while visible and idle, pauses for hover/focus or background tabs, and starts paused for reduced-motion preferences. Previous/next buttons, arrow keys, direct thumbnails, pause/play, and original downloads remain available. The public artwork handling instructions are removed.
+
+The shared Start a Projekt action is a rectangular glass panel with an independent arrow detail. Artwork, thumbnail, control, and CTA hover feedback has corresponding visible keyboard focus; motion effects are reduced when requested by the operating system.

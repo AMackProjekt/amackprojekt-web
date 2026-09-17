@@ -1,3 +1,4 @@
+import { BrandCarousel } from "@/components/BrandCarousel";
 import { Navbar } from "@/components/ui/Navbar";
 import { AmpCTA } from "@/components/AmpCTA";
 export const metadata = {
@@ -81,44 +82,7 @@ export default function Page() {
           </div>
         </div>
       </section>
-      <section id="brand-assets" className="amp-wrap amp-section amp-no-top">
-        <div className="amp-section-heading">
-          <div>
-            <p className="amp-label">Official artwork</p>
-            <h2>
-              Built to be
-              <br />
-              <em>recognizable.</em>
-            </h2>
-          </div>
-          <p>
-            Use the supplied artwork at its original proportions. Keep clear
-            space around the mark and select a background with strong contrast.
-          </p>
-        </div>
-        <div className="amp-assets">
-          {assets.map(([name, label, src]) => (
-            <article key={name}>
-              <div className="amp-asset-art">
-                <img
-                  src={src}
-                  alt={name + " official artwork"}
-                  loading="lazy"
-                  width="500"
-                  height="360"
-                />
-              </div>
-              <div className="amp-asset-info">
-                <p className="amp-label">{label}</p>
-                <h3>{name}</h3>
-                <a href={src} download>
-                  Download artwork <span aria-hidden="true">↓</span>
-                </a>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
+      <BrandCarousel assets={assets} />
       <section className="amp-wrap amp-section amp-no-top">
         <p className="amp-label">AMP visual system</p>
         <h2>
@@ -142,8 +106,7 @@ export default function Page() {
         </div>
         <p className="amp-brand-note">
           AMP leads with deep ink, teal, and silver. Venture logos retain their
-          own identities. Do not stretch, recolor, or add effects to the
-          original artwork.
+          own identities, connected by the studio’s visual language.
         </p>
       </section>
       <AmpCTA />
