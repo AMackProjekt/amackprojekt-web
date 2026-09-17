@@ -1,5 +1,12 @@
 /* Shared geometry: soft panels, compact controls, consistent responsive radii. */
 :root { --amp-radius-panel:24px; --amp-radius-card:18px; --amp-radius-control:12px; }
+.crown-art>.crown-lettering,.crown-queen .crown-art>.crown-lettering { inset:16px 0 auto; display:flex; flex-direction:column; align-items:center; font-size:clamp(68px,9vw,128px); font-weight:800; line-height:.88; letter-spacing:-.08em; transform:rotate(-8deg) skew(-7deg); pointer-events:none; z-index:0; }
+.crown-lettering>span:first-child { color:#d5ad51; opacity:.7; text-shadow:3px 4px 0 #102b35,5px 6px 0 #48626a; }
+.crown-lettering>span:last-child { color:#389bc0; opacity:.62; margin-left:28%; font-size:1.12em; text-shadow:3px 4px 0 #102b35,5px 6px 0 #48626a; }
+.lettering-queen>span:first-child { color:#dda351; }
+.lettering-queen>span:last-child { color:#c575a3; }
+.crown-art>.sculpture-interactive { position:relative; z-index:1; }
+@media(max-width:760px) { .crown-art>.crown-lettering,.crown-queen .crown-art>.crown-lettering { top:46px; font-size:clamp(40px,10vw,70px); }.crown-lettering>span:last-child { margin-left:15%; } }
 /* Soften the artwork surface itself, not only the surrounding container. */
 .amp-wordmark img,.amp-footer-logo,.full-menu-top img { border-radius:22px; overflow:hidden; }
 .brand-gallery-art img,.amp-asset-art img,.amp-legacy-grid img { border-radius:24px; }
