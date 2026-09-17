@@ -108,5 +108,10 @@
     "path": "brand/amp-device-scene.webp",
     "bytes": 62884,
     "sha256": "5ad0a32d56db83784eb1ecbfa3bc224d13f6505c5d15fd2051eaf81c05104473"
+  },
+  {
+    "path": "brand/careport-fluid.webp",
+    "bytes": 78160,
+    "sha256": "4de35fdf369341321445d932179604e7eff9d46fad941a37ff64b830a620c9b8"
   }
 ]

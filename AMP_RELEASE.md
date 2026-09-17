@@ -61,3 +61,7 @@ The 3D pieces support horizontal pointer drag, left/right arrow keys, and Home/r
 The media kit uses a compact nine-brand carousel in place of the tall artwork grid. It advances every 6.5 seconds while visible and idle, pauses for hover/focus or background tabs, and starts paused for reduced-motion preferences. Previous/next buttons, arrow keys, direct thumbnails, pause/play, and original downloads remain available. The public artwork handling instructions are removed.
 
 The shared Start a Projekt action is a rectangular glass panel with an independent arrow detail. Artwork, thumbnail, control, and CTA hover feedback has corresponding visible keyboard focus; motion effects are reduced when requested by the operating system.
+
+Shared responsive geometry uses 24px panel, 18px card, and 12px control radii, reduced slightly on mobile. The carousel, product scenes, form panel, film, controls, and closing action follow the same rounded system. The closing CTA retains its wide rectangular proportions.
+
+CarePort uses an original generated folded-glass ribbon illustration, inspired by the user's material reference and adapted to AMP's midnight/cyan palette. The homepage and CarePort page share Context, Coordinate, and Act overview controls. Artwork is labeled as a concept visualization and contains no customer records or fabricated performance metrics.

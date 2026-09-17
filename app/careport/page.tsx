@@ -1,3 +1,4 @@
+import { CarePortShowcase } from "@/components/CarePortShowcase";
 import { Navbar } from "@/components/ui/Navbar";
 import { AmpCTA } from "@/components/AmpCTA";
 import Link from "next/link";
@@ -32,13 +33,7 @@ export default function Page() {
       </section>
       <section className="amp-wrap amp-section amp-no-top">
         <div className="amp-system-panel careport-panel">
-          <div className="amp-product-wordmark">
-            <span>A MACKPROJEKT / PLATFORMS</span>
-            <strong>
-              CarePort<span>Connect</span>
-            </strong>
-            <p>Continuity through every handoff.</p>
-          </div>
+          <CarePortShowcase />
           <div>
             <p className="amp-label">Designed around continuity</p>
             <h2>

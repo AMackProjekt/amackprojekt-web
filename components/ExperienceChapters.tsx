@@ -1,4 +1,5 @@
 "use client";
+import { CarePortShowcase } from "./CarePortShowcase";
 import { useState } from "react";
 import { ContinuumField } from "./ContinuumField";
 import dynamic from "next/dynamic";
@@ -24,7 +25,7 @@ export function ExperienceChapters() {
     <section id="platforms" className={'chapter-platform platform-'+product.id}>
       <div className="amp-wrap"><div className="chapter-kicker"><span>01 / SYSTEMS THAT CONNECT</span><span>A MACKPROJEKT / TECHNOLOGY</span></div>
       <div className="chapter-platform-layout"><div className="chapter-platform-copy"><div className="chapter-switch" aria-label="Select a platform">{['Enterprise','CarePort'].map((name,i)=><button key={name} aria-pressed={platform===i} onClick={()=>setPlatform(i)}>{name}</button>)}</div><p className="chapter-overline">{product.label}</p><h2>{platform===0?<>Complex work.<br /><em>Connected.</em></>:<>Every handoff.<br /><em>Human.</em></>}</h2><h3>{product.name}</h3><p>{platform===0?'People. Programs. One connected place to work.':'Keep the context. Coordinate care. Move to the next action.'}</p><Link className="chapter-link" href={product.href}>{product.action}<span aria-hidden="true">↗</span></Link></div>
-      <div className="chapter-system-art" key={product.id}><div className="system-reticle reticle-one"/><div className="system-reticle reticle-two"/>{platform===0?<DeviceShowcase/>:<div className="careport-display"><span>CarePort</span><strong>Connect</strong><p>Continuity through every handoff.</p></div>}<div className="system-coordinate" aria-hidden="true">AMP / {platform===0?'ENTERPRISE':'CAREPORT'}<br/>PEOPLE → SYSTEMS → PROGRESS</div></div></div>
+      <div className="chapter-system-art" key={product.id}><div className="system-reticle reticle-one"/><div className="system-reticle reticle-two"/>{platform===0?<DeviceShowcase/>:<CarePortShowcase/>}<div className="system-coordinate" aria-hidden="true">AMP / {platform===0?'ENTERPRISE':'CAREPORT'}<br/>PEOPLE → SYSTEMS → PROGRESS</div></div></div>
       <div className="system-strip">{(platform===0?['Dashboards','Case management','Learning','Coordination']:['Needs','Services','Context','Next actions']).map((label,i)=><span key={label}><small>0{i+1}</small>{label}</span>)}</div></div>
     </section>
     <section id="movements" className={'chapter-crown crown-'+crown}>

@@ -4,6 +4,7 @@ import "./amp.css";
 import "./chapters.css";
 import "./continuum.css";
 import "./gallery.css";
+import "./rounded.css";
 import { AuthProvider } from "@/lib/auth";
 import { ThemeProvider } from "@/lib/theme";
 import { Footer } from "@/components/ui/Footer";
