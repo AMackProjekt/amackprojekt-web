@@ -49,3 +49,9 @@ The homepage preserves the AMP universe and introduces distinct technology, move
 KingMe and QueenMe have custom procedural Three.js chess sculptures with original-art fallbacks. Motion respects reduced-motion preferences and the homepage motion control. Parallax targets are refreshed after product changes to avoid retaining detached DOM elements. The full-screen navigation and introduction use native modal dialogs, restore focus, and support Escape. The introduction combines the existing AMP highlight film with short timed explanatory captions and a readable transcript.
 
 Verified at widths 320, 390, 768, 1024, 1440, and 1920: no horizontal overflow, working product/book/process selectors, 3D rendering, dialog keyboard behavior, video playback, valid image assets, preserved hero controls, and no browser runtime errors. Static export and cache/asset checks remain required by production CI.
+
+## Continuous visual direction
+
+The lower homepage now shares the enterprise scene's midnight, cyan, and glass visual language. Large pastel backgrounds are removed, chapter heights are reduced, and a continuous decorative light field connects the products. The founder, legacy, and closing CTA follow the same palette. Brand color remains in the venture artwork and sculptures.
+
+The 3D pieces support horizontal pointer drag, left/right arrow keys, and Home/reset controls. Vertical touch scrolling remains available. Ambient motion respects reduced-motion and the existing pause control. The decorative field has no focusable elements and is hidden from assistive technology.

@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { ContinuumField } from "./ContinuumField";
 import dynamic from "next/dynamic";
 const Sculpture = dynamic(() => import("./Sculpture").then(m => m.Sculpture), { ssr: false });
 import Link from "next/link";
@@ -17,7 +18,7 @@ export function ExperienceChapters() {
   const [step,setStep]=useState(0);
   const product=ventures[platform];const publication=publications[book];
   const process=[['Find the real problem.','Strategy','Start with the people, their obstacles, and the change that would actually matter. Define the purpose before the product.'],['Make the idea tangible.','Experience','Shape the identity, the interface, and the path through it. Give people something clear enough to understand and compelling enough to use.'],['Connect the moving parts.','Engineering','Bring interfaces, data, and workflows together. Build the systems that let the experience work beyond the presentation.'],['Put it into the world.','Launch','Release, listen, and refine. Keep improving around the people who use the work.']];
-  return <>
+  return <div className="amp-continuum"><ContinuumField/>
     <nav className="chapter-nav" aria-label="Explore AMP chapters"><span>THE WORLD OF AMP</span><a href="#platforms">01 / Systems</a><a href="#movements">02 / Movements</a><a href="#books">03 / Perspectives</a><a href="#culture">04 / Expression</a></nav>
     <section id="work" className="chapter-intro"><div className="amp-wrap"><p className="amp-label">Independent ideas. Shared ambition.</p><h2>Purpose.<br /><span>AMP-lified.</span></h2><p>Explore what we’re building—and what each venture stands for.</p></div></section>
     <section id="platforms" className={'chapter-platform platform-'+product.id}>
@@ -36,5 +37,5 @@ export function ExperienceChapters() {
     <section id="culture" className="chapter-culture"><div className="culture-image"><img src="/brand/miminks.png" alt="Mi Minks beauty campaign" width="1200" height="800" loading="lazy"/></div><div className="culture-overlay"><div className="amp-wrap"><p className="chapter-kicker">04 / EXPRESSION WITHOUT APOLOGY</p><h2>Show up.<br /><em>As yourself.</em></h2><div className="culture-bottom"><span className="culture-brand">Mi Minks</span><div><p>Luxury, lightweight lashes. Individual expression. A look that meets your mood.</p><a className="chapter-link" href={ventures[5].href}>Discover Mi Minks <span aria-hidden="true">↗</span></a></div></div></div></div></section>
     <section className="chapter-motion"><div className="amp-wrap"><div className="chapter-kicker"><span>THE WORK, IN MOTION</span><span>A MACKPROJEKT</span></div><div className="motion-heading"><h2>Ideas don’t<br /><em>stand still.</em></h2><p>Get a glimpse of the ventures behind the vision.</p></div><IntroTrigger large/><div className="podcast-strip"><img src="/brand/thumb-podcast.webp" alt="A MackProjekt Podcast" width="90" height="90" loading="lazy"/><div><p className="chapter-overline">A MackProjekt Podcast / Coming soon</p><h3>The conversation continues.</h3></div><a className="chapter-link" href={ventures[6].href}>Stay connected <span aria-hidden="true">↗</span></a></div></div></section>
     <section id="capabilities" className="chapter-process"><div className="amp-wrap"><div className="chapter-kicker"><span>FROM VISION TO RELEASE</span><span>HOW AMP BUILDS</span></div><div className="process-layout"><div><h2>Ambition.<br /><em>With a method.</em></h2><div className="process-switch" aria-label="Explore our process">{process.map((p,i)=><button key={p[1]} aria-pressed={step===i} onClick={()=>setStep(i)}><span>0{i+1}</span>{p[1]}<span aria-hidden="true">↗</span></button>)}</div></div><div className="process-story" key={step}><span className="process-number" aria-hidden="true">0{step+1}</span><h3>{process[step][0]}</h3><p>{process[step][2]}</p><Link className="chapter-link" href="/interest">Bring us your next challenge <span aria-hidden="true">↗</span></Link></div></div></div></section>
-  </>;
+  </div>;
 }
