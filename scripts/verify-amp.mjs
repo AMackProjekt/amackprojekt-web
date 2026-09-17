@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { createHash } from 'node:crypto';
 import assert from 'node:assert/strict';
 
 const out = path.resolve('out');
@@ -22,3 +23,10 @@ assert.match(config.globalHeaders['Cache-Control'], /no-cache/);
 const sw = fs.readFileSync(path.join(out, 'service-worker.js'), 'utf8');
 assert.ok(sw.includes('/_next/static/'), 'Service worker must limit persistent caching to versioned assets');
 console.log(`AMP release verified: ${routes.length} routes, restored portfolio, local assets, routing and cache policy.`);
+
+for (const asset of JSON.parse(fs.readFileSync('scripts/amp-assets.json', 'utf8'))) {
+  const bytes = fs.readFileSync(path.join(out, asset.path));
+  assert.equal(bytes.length, asset.bytes, 'Truncated brand asset: ' + asset.path);
+  assert.equal(createHash('sha256').update(bytes).digest('hex'), asset.sha256, 'Corrupted brand asset: ' + asset.path);
+}
+console.log('Original brand asset integrity verified.');

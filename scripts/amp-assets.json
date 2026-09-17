@@ -1,0 +1,57 @@
+[
+  {
+    "path": "brand/alphakode.jpg",
+    "bytes": 255730,
+    "sha256": "f217aab49786a89b766f7afaaf5b958c4d84e866814122ee4546711b0ea62ce2"
+  },
+  {
+    "path": "brand/amp-logo.jpg",
+    "bytes": 146982,
+    "sha256": "485b6c4b126d01a3453592cb5eefeda09817805a20c2f6647bb24ace067dce17"
+  },
+  {
+    "path": "brand/kingme.jpg",
+    "bytes": 541203,
+    "sha256": "ba1c62bae31278b10d92d7f68688de3918320b6e63ac2bef76caf93d9e9d8cca"
+  },
+  {
+    "path": "brand/mackenterprises.png",
+    "bytes": 1186944,
+    "sha256": "7287e58b15869d85411574d0d4eea82db9ba233257f0f195dc824d3fa2e92621"
+  },
+  {
+    "path": "brand/mackprojekt-highlight.mp4",
+    "bytes": 6150477,
+    "sha256": "ed6491bb3c0ee3de79017937a183f56d937cf6c37db327b84e7d730cc27239e8"
+  },
+  {
+    "path": "brand/mackprojekt-podcast-logo.webp",
+    "bytes": 236348,
+    "sha256": "15a4f7023c022dc2c53394f8dec48cbd83a75a91fd413220e330d85dc7a75f36"
+  },
+  {
+    "path": "brand/miminks.png",
+    "bytes": 1897576,
+    "sha256": "68c92686b0bfffcb3e54bae8c6140e08bb789e0dbc569e8dc29f00c46d963cdc"
+  },
+  {
+    "path": "brand/projekt-enterprise-logo.webp",
+    "bytes": 225774,
+    "sha256": "cec235651be439514edcaf0e5bb5fe74708191930560f481f09cc0c912f2256d"
+  },
+  {
+    "path": "brand/queenme.png",
+    "bytes": 3470380,
+    "sha256": "c63f852e3ebf758d19e4c1e3ac93adfe7683e6088bee88baa2a474ce66a05648"
+  },
+  {
+    "path": "brand/spiritual-warfare.png",
+    "bytes": 325873,
+    "sha256": "3582806a3762c34c1212daa0a01742058e21d4d2b47f2becdc2482b9ef3c68cf"
+  },
+  {
+    "path": "brand/toolsinc-logo.png",
+    "bytes": 617966,
+    "sha256": "e243d3d4023576dddc3bfe997972667a26252039d8c3fc57831e45145dc64b0c"
+  }
+]
