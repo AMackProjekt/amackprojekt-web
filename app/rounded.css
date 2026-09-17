@@ -25,7 +25,7 @@
 .expression-ribbon { position:absolute; inset:25px -8% 5px 0; border:1px solid #80e5f04d; border-radius:46% 24% 45% 30%; transform:rotate(-16deg); box-shadow:inset 0 0 40px #48c8ed0f,0 0 50px #5993ff0c; background:repeating-linear-gradient(100deg,#65cfe90b 0px,#65cfe90b 1px,transparent 1px,transparent 5px); }
 .expression-card { position:absolute; top:24px; left:10%; width:60%; height:305px; padding:10px; text-align:left; border-radius:32px; border:1px solid #abdbe76b; background:linear-gradient(135deg,#325969dd,#102838e8); box-shadow:inset 0 1px #d0f6ff44,0 25px 50px #0005; color:#e3f5fa; transform-style:preserve-3d; transition:transform 900ms cubic-bezier(.2,.8,.2,1),opacity 700ms,filter 700ms,box-shadow 300ms; cursor:pointer; }
 .expression-art { display:block; overflow:hidden; height:235px; border-radius:24px; background:#07131c; }
-.expression-art img { width:100%; height:100%; object-fit:cover; border-radius:24px; transition:transform .6s; }
+.expression-art img { width:100%; height:100%; object-fit:contain; border-radius:24px; transition:transform .6s; }
 .expression-card-caption { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:15px 8px 4px; font-family:'Space Grotesk',sans-serif; font-size:15px; }
 .expression-position-0 { z-index:3; transform:translateX(0) rotateY(-8deg) rotateZ(-3deg); opacity:1; }
 .expression-position-1 { z-index:2; transform:translateX(38%) translateY(-8px) translateZ(-95px) rotateY(-24deg) rotateZ(7deg); filter:brightness(.6); }
