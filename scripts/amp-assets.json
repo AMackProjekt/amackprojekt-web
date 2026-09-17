@@ -63,5 +63,40 @@
     "path": "fonts/spacegrotesk.ttf",
     "bytes": 136676,
     "sha256": "acad6de1fc93436f5c0f1f4137751ef04f1aea3063e7036535970ffcfbd79f72"
+  },
+  {
+    "path": "brand/thumb-amp.webp",
+    "bytes": 2910,
+    "sha256": "51a3d9d58dfeeded7104d6b07467bee3077102d08627092c5cd94de75a53f914"
+  },
+  {
+    "path": "brand/thumb-enterprise.webp",
+    "bytes": 21876,
+    "sha256": "78cc8150ac2feb90e9d26e05791d4bfe0abcd50dec80c38d722b06d59f111471"
+  },
+  {
+    "path": "brand/thumb-kingme.webp",
+    "bytes": 8724,
+    "sha256": "6f50c2b9c6ac8968ff925e76d05bba80643cf9887f0b6eae90e2accdbbbd8954"
+  },
+  {
+    "path": "brand/thumb-miminks.webp",
+    "bytes": 3022,
+    "sha256": "e8b647010a9a5d453668c1aeb2b14268768d6e39ded64323bf8de6e08efe0cdb"
+  },
+  {
+    "path": "brand/thumb-podcast.webp",
+    "bytes": 23604,
+    "sha256": "5bf5f1cc006a99aa401dbce1497af0905aec7987db32718789cea7631c41ea70"
+  },
+  {
+    "path": "brand/thumb-queenme.webp",
+    "bytes": 9316,
+    "sha256": "bdc79e5835b97f866a600533c7be916e366ec835ee102936bf1aecd4cdac3f6f"
+  },
+  {
+    "path": "brand/thumb-tools.webp",
+    "bytes": 9564,
+    "sha256": "8368bb15997cbf70c3852cd37e69558f8f25ef3b9b4ae5b9e1553096394ad8b1"
   }
 ]

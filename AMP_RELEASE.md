@@ -39,3 +39,5 @@ Keep these checks in place when adding pages or replacing artwork.
 ## Impact design update
 
 Space Grotesk headlines and Manrope body text are self-hosted in public/fonts with their OFL licenses. The homepage includes a keyboard-accessible featured-venture selector and an explicit motion control. Reduced-motion preferences disable ambient animation and scroll reveals. Keep the original portfolio destinations and do not replace the venture artwork with placeholders.
+
+The hero ecosystem supports drag rotation, seven venture selections, previous/next controls and direct product links. Hover or keyboard focus pauses ambient rotation. Thumbnail assets are derived from the original artwork and covered by release integrity checks.
