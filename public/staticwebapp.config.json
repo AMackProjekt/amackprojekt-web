@@ -1,56 +1,28 @@
 {
   "routes": [
     {
-      "route": "/api-test/",
-      "rewrite": "/api-test/index.html"
-    },
-    {
       "route": "/api-test",
       "rewrite": "/api-test/index.html"
-    },
-    {
-      "route": "/referral/",
-      "rewrite": "/referral/index.html"
     },
     {
       "route": "/referral",
       "rewrite": "/referral/index.html"
     },
     {
-      "route": "/joinwaitlist/",
-      "rewrite": "/joinwaitlist/index.html"
-    },
-    {
       "route": "/joinwaitlist",
       "rewrite": "/joinwaitlist/index.html"
-    },
-    {
-      "route": "/launch/",
-      "rewrite": "/launch/index.html"
     },
     {
       "route": "/launch",
       "rewrite": "/launch/index.html"
     },
     {
-      "route": "/solutions/retail/",
-      "rewrite": "/solutions/retail/index.html"
-    },
-    {
       "route": "/solutions/retail",
       "rewrite": "/solutions/retail/index.html"
     },
     {
-      "route": "/solutions/nonprofit/",
-      "rewrite": "/solutions/nonprofit/index.html"
-    },
-    {
       "route": "/solutions/nonprofit",
       "rewrite": "/solutions/nonprofit/index.html"
-    },
-    {
-      "route": "/solutions/healthcare/",
-      "rewrite": "/solutions/healthcare/index.html"
     },
     {
       "route": "/solutions/healthcare",
@@ -61,23 +33,11 @@
       "rewrite": "/careport/index.html"
     },
     {
-      "route": "/careport/",
-      "rewrite": "/careport/index.html"
-    },
-    {
       "route": "/portals",
       "rewrite": "/portals/index.html"
     },
     {
-      "route": "/portals/",
-      "rewrite": "/portals/index.html"
-    },
-    {
       "route": "/books",
-      "rewrite": "/books/index.html"
-    },
-    {
-      "route": "/books/",
       "rewrite": "/books/index.html"
     },
     {
@@ -109,15 +69,7 @@
       "rewrite": "/innovation/index.html"
     },
     {
-      "route": "/innovation/",
-      "rewrite": "/innovation/index.html"
-    },
-    {
       "route": "/partnerships",
-      "rewrite": "/partnerships/index.html"
-    },
-    {
-      "route": "/partnerships/",
       "rewrite": "/partnerships/index.html"
     },
     {
@@ -125,15 +77,7 @@
       "rewrite": "/media-kit/index.html"
     },
     {
-      "route": "/media-kit/",
-      "rewrite": "/media-kit/index.html"
-    },
-    {
       "route": "/interest",
-      "rewrite": "/interest/index.html"
-    },
-    {
-      "route": "/interest/",
       "rewrite": "/interest/index.html"
     },
     {
@@ -141,15 +85,7 @@
       "rewrite": "/waitlist/index.html"
     },
     {
-      "route": "/waitlist/",
-      "rewrite": "/waitlist/index.html"
-    },
-    {
       "route": "/reentry",
-      "rewrite": "/reentry/index.html"
-    },
-    {
-      "route": "/reentry/",
       "rewrite": "/reentry/index.html"
     },
     {
@@ -157,15 +93,7 @@
       "rewrite": "/privacy/index.html"
     },
     {
-      "route": "/privacy/",
-      "rewrite": "/privacy/index.html"
-    },
-    {
       "route": "/terms",
-      "rewrite": "/terms/index.html"
-    },
-    {
-      "route": "/terms/",
       "rewrite": "/terms/index.html"
     },
     {

@@ -30,3 +30,6 @@ for (const asset of JSON.parse(fs.readFileSync('scripts/amp-assets.json', 'utf8'
   assert.equal(createHash('sha256').update(bytes).digest('hex'), asset.sha256, 'Corrupted brand asset: ' + asset.path);
 }
 console.log('Original brand asset integrity verified.');
+
+const normalizedRoutes = config.routes.map(r => r.route.replace(/\/$/, '') || '/');
+assert.equal(new Set(normalizedRoutes).size, normalizedRoutes.length, 'Azure treats trailing-slash routes as duplicates');
