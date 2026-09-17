@@ -8,6 +8,8 @@ img[src="/brand/amp-logo.jpg"],img[src="/brand/thumb-amp.webp"],img[src="/logos/
   box-shadow:none;
 }
 .universe-core img { mix-blend-mode:screen; }
+.brand-gallery-slide:has(img[src="/brand/amp-logo.jpg"]) { mix-blend-mode:screen; }
+.brand-gallery-art:has(img[src="/brand/amp-logo.jpg"]) { isolation:auto; }
 .crown-art>.crown-lettering,.crown-queen .crown-art>.crown-lettering { inset:16px 0 auto; display:flex; flex-direction:column; align-items:center; font-size:clamp(68px,9vw,128px); font-weight:800; line-height:.88; letter-spacing:-.08em; transform:rotate(-8deg) skew(-7deg); pointer-events:none; z-index:0; }
 .crown-lettering>span:first-child { color:#d5ad51; opacity:.7; text-shadow:3px 4px 0 #102b35,5px 6px 0 #48626a; }
 .crown-lettering>span:last-child { color:#389bc0; opacity:.62; margin-left:28%; font-size:1.12em; text-shadow:3px 4px 0 #102b35,5px 6px 0 #48626a; }
