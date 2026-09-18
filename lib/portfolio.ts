@@ -76,6 +76,16 @@ export const ventures = [
     href: "mailto:hello@mackprojekt.com?subject=A%20MackProjekt%20Podcast",
     action: "Ask about the podcast",
   },
+  {
+    id: "iwmlp",
+    category: "Lifestyle",
+    name: "I Want My Lawyer Present",
+    label: "IWMLP / Statement apparel",
+    description: "Bold apparel, accessories, and digital drops. A statement brand with a storefront built around identity and expression.",
+    image: "/brand/iwmlp.webp",
+    href: "/iwmlp",
+    action: "Explore IWMLP",
+  },
 ] as const;
 export const family = [
   "MackVisualStudios",

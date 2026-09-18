@@ -134,3 +134,8 @@ img[src="/brand/amp-logo.jpg"],img[src="/brand/thumb-amp.webp"],img[src="/logos/
 
 .expression-position-2 { z-index:0; opacity:0; visibility:hidden; pointer-events:none; transform:translateY(-20px) translateZ(-220px) scale(.85); }
 @media(max-width:760px) { .expression-dots { display:grid; grid-template-columns:1fr 1fr; }.expression-dots button { justify-content:flex-start; }.expression-art img { border-radius:24px; } }
+
+/* Original IWMLP lettering blends into the shared glass surfaces. */
+img[src="/brand/iwmlp.webp"],img[src="/brand/thumb-iwmlp.webp"]{mix-blend-mode:screen}
+.expression-dots{flex-wrap:wrap}
+.iwmlp-project>img{border-radius:36px;object-fit:contain}

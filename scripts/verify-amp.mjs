@@ -4,9 +4,9 @@ import { createHash } from 'node:crypto';
 import assert from 'node:assert/strict';
 
 const out = path.resolve('out');
-const routes = ['', 'innovation', 'books', 'portals', 'careport', 'partnerships', 'media-kit', 'interest', 'reentry', 'waitlist', 'launch', 'privacy', 'terms'];
+const routes = ['', 'innovation', 'iwmlp', 'books', 'portals', 'careport', 'partnerships', 'media-kit', 'interest', 'reentry', 'waitlist', 'launch', 'privacy', 'terms'];
 const home = fs.readFileSync(path.join(out, 'index.html'), 'utf8');
-for (const name of ['KingMe', 'QueenMe', 'Mi Minks', 'CarePort Connect', 'Projekt Enterprise Portal Suite', 'Navigating Spiritual Warfare', 'AlphaKode', 'MackEnterprises']) {
+for (const name of ['I Want My Lawyer Present', 'KingMe', 'QueenMe', 'Mi Minks', 'CarePort Connect', 'Projekt Enterprise Portal Suite', 'Navigating Spiritual Warfare', 'AlphaKode', 'MackEnterprises']) {
   assert.ok(home.includes(name), `Missing restored portfolio item: ${name}`);
 }
 for (const route of routes) {

@@ -138,5 +138,15 @@
     "path": "brand/amp-portal-intro.mp4",
     "bytes": 2606591,
     "sha256": "c4a79a08cba26bd3de64db886210189fa5be1f88541258b2da8161179d7aff56"
+  },
+  {
+    "path": "brand/iwmlp.webp",
+    "bytes": 53868,
+    "sha256": "e8a1ccad9f6845efb91219727d0de199e1c504aba86271598877f9eeef127692"
+  },
+  {
+    "path": "brand/thumb-iwmlp.webp",
+    "bytes": 7112,
+    "sha256": "b4dd4e8e31424e505b43bc1fdde83d4bc2e524d297e38ce6befd19e4cc0db1f1"
   }
 ]
