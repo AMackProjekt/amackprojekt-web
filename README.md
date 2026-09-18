@@ -1,1 +1,15 @@
-<img width="2209" height="1140" alt="Screenshot 2026-03-21 195351" src="https://github.com/user-attachments/assets/ccafd246-4d20-440a-897e-43607b03056c" />
+# A MackProjekt
+
+**Technology. Culture. Purpose.**
+
+The website for A MackProjekt, an independent innovation studio bringing technology, creative brands, and community ventures together. Explore the portfolio, discover the ideas behind each venture, and connect with the studio.
+
+[Visit the website](https://mackprojekt.com/)
+
+![A MackProjekt homepage](docs/images/site-preview.webp)
+
+*Homepage preview · September 2026*
+
+---
+
+Created by Donyale “DThree” Mack · **A MackProjekt**
