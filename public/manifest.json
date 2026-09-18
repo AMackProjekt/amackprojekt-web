@@ -9,9 +9,9 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/brand/amp-logo.jpg",
-      "sizes": "1024x1024",
-      "type": "image/jpeg",
+      "src": "/brand/amp-premier.webp",
+      "sizes": "1200x800",
+      "type": "image/webp",
       "purpose": "any"
     }
   ],

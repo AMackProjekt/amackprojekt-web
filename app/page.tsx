@@ -1,3 +1,4 @@
+import { FounderPhoto } from "@/components/FounderPhoto";
 import Link from "next/link";
 import { Navbar } from "@/components/ui/Navbar";
 import { ExperienceChapters } from "@/components/ExperienceChapters";
@@ -16,6 +17,7 @@ export default function Home() {
       <ExperienceChapters />
       <section id="studio" className="amp-section amp-wrap amp-founder">
         <div>
+          <FounderPhoto />
           <p className="amp-label">Founder’s perspective</p>
           <h2>
             Purpose isn’t a layer.

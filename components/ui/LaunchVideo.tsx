@@ -135,7 +135,7 @@ export function LaunchVideo({
           autoPlay={autoplay}
           playsInline
           preload="metadata"
-          poster="/logos/amp-logo.jpeg"
+          poster="/brand/amp-premier.webp"
         >
           <source src={videoUrl} type="video/mp4" />
           Your browser does not support the video tag.

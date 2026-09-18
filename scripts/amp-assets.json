@@ -148,5 +148,40 @@
     "path": "brand/thumb-iwmlp.webp",
     "bytes": 7112,
     "sha256": "b4dd4e8e31424e505b43bc1fdde83d4bc2e524d297e38ce6befd19e4cc0db1f1"
+  },
+  {
+    "path": "brand/kingme-mission.webp",
+    "bytes": 51362,
+    "sha256": "03c9c563b90d9b354efc58d7da88752742b627ce9c73fcb881ae71f17544c7f2"
+  },
+  {
+    "path": "brand/kingme-pillars.webp",
+    "bytes": 135178,
+    "sha256": "52c5fc7b599685622d4212e3e517215ba2b385f9a9ad0d1ed378bfc0cfcbb64c"
+  },
+  {
+    "path": "brand/queenme-mission.webp",
+    "bytes": 72140,
+    "sha256": "53265ba1b2fd61d81877e03db9f776b715bdc65ccde31ea273a0ebea9a91b10f"
+  },
+  {
+    "path": "brand/queenme-pledge.webp",
+    "bytes": 48736,
+    "sha256": "62d765f74ef44255cec6f7a57179ba891b14581fcc2ab9abd18a26741e68fb9e"
+  },
+  {
+    "path": "brand/amp-premier.webp",
+    "bytes": 78180,
+    "sha256": "03674203ae1a247e5c24458894888b40842bfa404aa1dcb675ba994bc294d900"
+  },
+  {
+    "path": "brand/donyale-and-davion.webp",
+    "bytes": 192424,
+    "sha256": "40f4940d9c51355b8f75baf42488a4818ca7cbf4b5982ab7b9000190b8cbaeea"
+  },
+  {
+    "path": "brand/thumb-amp-premier.webp",
+    "bytes": 10838,
+    "sha256": "f6bba733b18f014acd0da3112f00e931ea24d1e8c8eb5623f40e86b258d7add1"
   }
 ]

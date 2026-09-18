@@ -27,18 +27,18 @@ export const metadata: Metadata = {
   manifest: "/manifest.json",
   icons: {
     icon: [
-      { url: "/brand/amp-logo.jpg", type: "image/jpeg" },
-      { url: "/brand/amp-logo.jpg", sizes: "any" },
+      { url: "/brand/amp-premier.webp", type: "image/webp" },
+      { url: "/brand/amp-premier.webp", sizes: "any" },
     ],
     apple: [
-      { url: "/brand/amp-logo.jpg" },
-      { url: "/brand/amp-logo.jpg", sizes: "180x180", type: "image/jpeg" },
+      { url: "/brand/amp-premier.webp" },
+      { url: "/brand/amp-premier.webp", sizes: "180x180", type: "image/webp" },
     ],
     other: [
       {
         rel: "icon",
-        url: "/brand/amp-logo.jpg",
-        type: "image/jpeg",
+        url: "/brand/amp-premier.webp",
+        type: "image/webp",
       },
     ],
   },
@@ -80,7 +80,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     "@type": "Organization",
     name: "A MackProjekt",
     url: "https://mackprojekt.com",
-    logo: "https://mackprojekt.com/brand/amp-logo.jpg",
+    logo: "https://mackprojekt.com/brand/amp-premier.webp",
     description: "An independent innovation studio building human-centered digital products for access, opportunity, and trust.",
     founder: { "@type": "Person", name: "Donyale Mack" },
     knowsAbout: ["Digital product strategy", "Web development", "Artificial intelligence", "Social impact technology", "Healthcare technology", "Nonprofit technology"],

@@ -18,7 +18,7 @@ export function QRCodeWithTracking({
   url,
   size = 300,
   className,
-  logoUrl = "/logos/amp-logo.jpeg",
+  logoUrl = "/brand/amp-premier.webp",
   title = "Scan to Visit AMP",
   downloadable = true,
 }: QRCodeWithTrackingProps) {

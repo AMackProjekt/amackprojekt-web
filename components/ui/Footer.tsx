@@ -8,7 +8,7 @@ export function Footer() {
           <div>
             <img
               className="amp-footer-logo"
-              src="/brand/amp-logo.jpg"
+              src="/brand/amp-premier.webp"
               alt="A MackProjekt"
               width="180"
               height="120"

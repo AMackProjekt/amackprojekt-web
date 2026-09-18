@@ -1,15 +1,15 @@
 /* Shared geometry: soft panels, compact controls, consistent responsive radii. */
 :root { --amp-radius-panel:24px; --amp-radius-card:18px; --amp-radius-control:12px; }
 /* Blend the original AMP artwork into each dark surface without altering the asset. */
-img[src="/brand/amp-logo.jpg"],img[src="/brand/thumb-amp.webp"],img[src="/logos/amp-logo.jpeg"],img[src="/partnerships/amp-logo.jpeg"] {
+img[src="/brand/amp-premier.webp"],img[src="/brand/thumb-amp-premier.webp"] {
   mix-blend-mode:screen;
   filter:contrast(1.25);
   background:transparent;
   box-shadow:none;
 }
 .universe-core img { mix-blend-mode:screen; }
-.brand-gallery-slide:has(img[src="/brand/amp-logo.jpg"]) { mix-blend-mode:screen; }
-.brand-gallery-art:has(img[src="/brand/amp-logo.jpg"]) { isolation:auto; }
+.brand-gallery-slide:has(img[src="/brand/amp-premier.webp"]) { mix-blend-mode:screen; }
+.brand-gallery-art:has(img[src="/brand/amp-premier.webp"]) { isolation:auto; }
 .crown-art>.crown-lettering,.crown-queen .crown-art>.crown-lettering { inset:16px 0 auto; display:flex; flex-direction:column; align-items:center; font-size:clamp(68px,9vw,128px); font-weight:800; line-height:.88; letter-spacing:-.08em; transform:rotate(-8deg) skew(-7deg); pointer-events:none; z-index:0; }
 .crown-lettering>span:first-child { color:#d5ad51; opacity:.7; text-shadow:3px 4px 0 #102b35,5px 6px 0 #48626a; }
 .crown-lettering>span:last-child { color:#389bc0; opacity:.62; margin-left:28%; font-size:1.12em; text-shadow:3px 4px 0 #102b35,5px 6px 0 #48626a; }
@@ -139,3 +139,21 @@ img[src="/brand/amp-logo.jpg"],img[src="/brand/thumb-amp.webp"],img[src="/logos/
 img[src="/brand/iwmlp.webp"],img[src="/brand/thumb-iwmlp.webp"]{mix-blend-mode:screen}
 .expression-dots{flex-wrap:wrap}
 .iwmlp-project>img{border-radius:36px;object-fit:contain}
+/* Supplied campaign art: preserve the composition, give details room to breathe. */
+.movement-artwork { margin:32px 0 40px; }
+.movement-artwork-toolbar { display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:18px;flex-wrap:wrap; }
+.movement-artwork-toolbar p { margin:0; }
+.movement-artwork-frame { display:block;border-radius:28px;overflow:hidden;background:#f1ede3;border:1px solid #ffffff26;transition:transform .35s ease,box-shadow .35s ease; }
+.movement-artwork-frame img { width:100%;height:auto;display:block;animation:campaign-reveal .4s ease; }
+.movement-artwork-frame:hover { transform:translateY(-4px);box-shadow:0 22px 60px #0005; }
+.movement-artwork-frame:focus-visible { outline:3px solid #52dce8;outline-offset:6px; }
+.movement-artwork-hint { display:flex;justify-content:space-between;gap:12px;color:#b9c9d1;font-size:12px;margin-top:12px; }
+.founder-photo { margin:0 0 28px;max-width:500px; }
+.founder-photo img { display:block;width:100%;height:auto;border-radius:32px; }
+.founder-photo figcaption { display:grid;gap:6px;padding:16px 4px;color:#b9c9d1;font-size:13px;line-height:1.5; }
+.founder-photo figcaption strong { color:#fff;font-size:16px; }
+.universe-core img { object-fit:contain;border-radius:0;width:90%;height:80%; }
+.amp-wordmark img { object-fit:contain;width:126px;height:84px; }
+@keyframes campaign-reveal { from {opacity:.3;transform:translateY(8px)} to {opacity:1;transform:translateY(0)} }
+@media(max-width:600px) { .movement-artwork-frame{border-radius:18px}.movement-artwork-hint{flex-wrap:wrap}.founder-photo{max-width:100%}.amp-wordmark img{width:100px;height:66px} }
+@media(prefers-reduced-motion:reduce) { .movement-artwork-frame,.movement-artwork-frame img{animation:none;transition:none}.movement-artwork-frame:hover{transform:none} }

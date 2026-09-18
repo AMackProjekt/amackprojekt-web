@@ -1,3 +1,4 @@
+import { FounderPhoto } from "@/components/FounderPhoto";
 import { BrandCarousel } from "@/components/BrandCarousel";
 import { Navbar } from "@/components/ui/Navbar";
 import { AmpCTA } from "@/components/AmpCTA";
@@ -8,7 +9,7 @@ export const metadata = {
   alternates: { canonical: "/media-kit/" },
 };
 const assets = [
-  ["A MackProjekt", "Primary studio identity", "/brand/amp-logo.jpg"],
+  ["A MackProjekt", "Primary studio identity", "/brand/amp-premier.webp"],
   ["MackEnterprises", "Enterprise identity", "/brand/mackenterprises.png"],
   [
     "Projekt Enterprise Portal Suite",
@@ -48,6 +49,7 @@ export default function Page() {
       <section className="amp-wrap amp-section amp-no-top">
         <div className="amp-media-profile">
           <div>
+            <FounderPhoto />
             <p className="amp-label">The studio</p>
             <h2>
               Technology.

@@ -1,3 +1,4 @@
+import { FounderPhoto } from "@/components/FounderPhoto";
 import { Navbar } from "@/components/ui/Navbar";
 import { AmpCTA } from "@/components/AmpCTA";
 import Link from "next/link";
@@ -23,13 +24,7 @@ export default function Page() {
       </section>
       <section className="amp-wrap amp-section amp-no-top amp-founder">
         <div>
-          <img
-            className="amp-studio-logo"
-            src="/brand/amp-logo.jpg"
-            alt="A MackProjekt"
-            width="500"
-            height="500"
-          />
+          <FounderPhoto />
         </div>
         <div>
           <p className="amp-label">Founder</p>
