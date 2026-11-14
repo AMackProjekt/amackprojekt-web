@@ -65,7 +65,7 @@ const knowledgeBase = {
     category: "About Us"
   },
   "timeline": {
-    text: "Project timelines: **Landing pages** (2-3 weeks) | **Websites** (6-8 weeks) | **Custom platforms** (3-6 months) | **Enterprise** (6-12 months). We use agile methodology with weekly check-ins and continuous deployment.",
+    text: "Projekt timelines: **Landing pages** (2-3 weeks) | **Websites** (6-8 weeks) | **Custom platforms** (3-6 months) | **Enterprise** (6-12 months). We use agile methodology with weekly check-ins and continuous deployment.",
     keywords: ["timeline", "how long", "duration", "schedule", "delivery", "when"],
     category: "Process"
   },

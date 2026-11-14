@@ -8,7 +8,7 @@ export function Portfolio() {
   );
   return (
     <>
-      <div className="amp-filters" aria-label="Filter portfolio">
+      <div className="amp-filters" aria-label="Filter the brand ecosystem">
         {["All work", "Platforms", "Community", "Lifestyle", "Media"].map(
           (f) => (
             <button
@@ -23,7 +23,7 @@ export function Portfolio() {
         )}
       </div>
       <p className="sr-only" aria-live="polite">
-        {visible.length} projects shown
+        {visible.length} projekts shown
       </p>
       <div className="amp-project-grid">
         {visible.map((v) => (

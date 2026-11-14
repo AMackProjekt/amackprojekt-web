@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
-const links = [["/innovation","Work"],["/portals","Platforms"],["/books","Books"],["/partnerships","Studio"],["/media-kit","Brand & media"]];
+const links = [["/about","About"],["/portals","Platforms"],["/interest","Studio"],["/media-kit","Brand & media"]];
 export function Navbar(){
  const [open,setOpen]=useState(false);const pathname=usePathname();const dialog=useRef<HTMLDialogElement>(null);const trigger=useRef<HTMLButtonElement>(null);
  useEffect(()=>setOpen(false),[pathname]);

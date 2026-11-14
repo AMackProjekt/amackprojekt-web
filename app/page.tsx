@@ -47,6 +47,9 @@ export default function Home() {
               <br />
               <em>generations.</em>
             </h2>
+            <Link className="amp-text-link" href="/about">
+              Discover our legacy ↗
+            </Link>
           </div>
           <p>
             Every Projekt is inspired and motivated through my father Donald
