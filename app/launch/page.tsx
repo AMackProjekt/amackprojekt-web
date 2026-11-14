@@ -2,7 +2,7 @@ import { Navbar } from "@/components/ui/Navbar";
 import { HighlightFilm } from "@/components/AmpMotion";
 import { Portfolio } from "@/components/Portfolio";
 export const metadata = {
-  title: "Inside the AMP Portfolio",
+  title: "MackProjekt In Motion",
   alternates: { canonical: "/launch/" },
 };
 export default function Page() {
@@ -17,7 +17,8 @@ export default function Page() {
           <em>real work.</em>
         </h1>
         <p>
-          Explore the movements, platforms, and creative ventures within AMP.
+          Explore the movements, platforms, and creative ventures bringing the
+          MackProjekt brand to life.
         </p>
       </section>
       <section className="amp-wrap amp-section amp-no-top">

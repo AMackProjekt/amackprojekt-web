@@ -56,7 +56,7 @@ const highlights = [
   },
   {
     eyebrow: "A MACKPROJEKT",
-    title: "A portfolio of technology with a reason to exist.",
+    title: "Technology with a reason to exist.",
     description:
       "Selected work across reentry, community infrastructure, legal access, and human-centered operations—built to widen access and reduce friction.",
     accent: "from-brand via-accent to-brand-2",
@@ -129,7 +129,7 @@ export function LaunchHighlights() {
             >
               <Image
                 src={slide.image}
-                alt={`${slide.eyebrow} project snapshot`}
+                alt={`${slide.eyebrow} Projekt snapshot`}
                 fill
                 priority={active === 0}
                 sizes="(max-width: 1200px) 100vw, 1140px"
@@ -227,7 +227,7 @@ export function LaunchHighlights() {
             <div className="relative h-full w-full max-w-[1600px]" onClick={(event) => event.stopPropagation()}>
               <Image
                 src={slide.image}
-                alt={slide.eyebrow + " full-screen project snapshot"}
+                alt={slide.eyebrow + " full-screen Projekt snapshot"}
                 fill
                 sizes="100vw"
                 className="object-contain"

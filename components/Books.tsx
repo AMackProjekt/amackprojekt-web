@@ -42,8 +42,8 @@ export function Books() {
           <h3>AlphaKode</h3>
           <h4>Navigating Workplace Environments</h4>
           <p>
-            Strategy. Adaptation. Respect. Execution. The workplace is a
-            board—and every move communicates.
+            Strategy. Adaptation. Respect. Execution. Read the workplace,
+            understand the dynamics, and make your next move with intention.
           </p>
           <a
             className="amp-text-link"

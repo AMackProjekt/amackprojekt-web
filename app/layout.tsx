@@ -18,7 +18,7 @@ import { InteractionAnalytics } from "@/components/InteractionAnalytics";
 
 export const metadata: Metadata = {
   title: {
-    default: "A MackProjekt — Technology built to move people forward",
+    default: "A MackProjekt — Technology Built to Move People Forward",
     template: "%s — A MackProjekt",
   },
   description: "An independent innovation studio turning human-centered ideas into useful digital products for access, opportunity, and trust.",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     title: "A MackProjekt",
   },
   openGraph: {
-    title: "A MackProjekt — Technology built to move people forward",
+    title: "A MackProjekt — Technology Built to Move People Forward",
     description: "An independent innovation studio building useful digital products for access, opportunity, and trust.",
     url: "https://mackprojekt.com",
     siteName: "A MackProjekt",
@@ -62,13 +62,13 @@ export const metadata: Metadata = {
         url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "A MackProjekt — Technology built to move people forward",
+        alt: "A MackProjekt — Technology Built to Move People Forward",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "A MackProjekt — Technology built to move people forward",
+    title: "A MackProjekt — Technology Built to Move People Forward",
     description: "An independent innovation studio building useful digital products for access, opportunity, and trust.",
     images: ["/og.png"],
   },

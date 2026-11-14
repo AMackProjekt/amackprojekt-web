@@ -72,7 +72,7 @@ export default function Page() {
             </p>
             <p>
               Donyale’s work connects technology with access, opportunity, and
-              lived experience. The portfolio spans enterprise workflows,
+              lived experience. The MackProjekt brand spans enterprise workflows,
               reentry support, community development, and original writing.
             </p>
             <a

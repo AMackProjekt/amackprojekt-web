@@ -25,7 +25,7 @@ export function ImpactHero() {
             <p className="impact-eyebrow">Technology. Culture. Purpose.</p>
             <h1 id="impact-title">Built to<br /><span className="impact-outline">move</span><br /><em>what’s next.</em></h1>
             <p className="impact-intro">One independent studio connecting technology, creative identity, and community ventures.</p>
-            <div className="amp-actions"><a href="#work" className="amp-button">Enter the AMP portfolio <span aria-hidden="true">↗</span></a><Link href="/interest" className="amp-text-link">Bring your vision <span aria-hidden="true">↗</span></Link></div>
+            <div className="amp-actions"><a href="#work" className="amp-button">Explore the MackProjekt ecosystem <span aria-hidden="true">↗</span></a><Link href="/interest" className="amp-text-link">Bring your vision <span aria-hidden="true">↗</span></Link></div>
             <IntroTrigger />
           </div>
           <ImpactUniverse paused={paused} />
