@@ -8,7 +8,7 @@ import "./rounded.css";
 import "./portal-preview.css";
 import { AuthProvider } from "@/lib/auth";
 import { ThemeProvider } from "@/lib/theme";
-import { Footer } from "@/components/ui/Footer";
+import { RouteFooter } from "@/components/ui/RouteFooter";
 import { CookieConsent } from "@/components/ui/CookieConsent";
 import { SessionTimeoutBanner } from "@/components/ui/SessionTimeoutBanner";
 import { VisitTracker } from "@/components/ui/VisitTracker";
@@ -128,7 +128,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ThemeProvider>
           <AuthProvider>
             {children}
-            <Footer />
+            <RouteFooter />
             <CookieConsent />
             <SessionTimeoutBanner />
           </AuthProvider>

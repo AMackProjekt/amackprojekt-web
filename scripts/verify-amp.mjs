@@ -4,10 +4,20 @@ import { createHash } from 'node:crypto';
 import assert from 'node:assert/strict';
 
 const out = path.resolve('out');
-const routes = ['', 'innovation', 'iwmlp', 'books', 'portals', 'careport', 'partnerships', 'media-kit', 'interest', 'reentry', 'waitlist', 'launch', 'privacy', 'terms'];
+const routes = ['', 'about', 'innovation', 'iwmlp', 'books', 'portals', 'careport', 'partnerships', 'media-kit', 'interest', 'reentry', 'waitlist', 'launch', 'privacy', 'terms'];
 const home = fs.readFileSync(path.join(out, 'index.html'), 'utf8');
-for (const name of ['I Want My Lawyer Present', 'KingMe', 'QueenMe', 'Mi Minks', 'CarePort Connect', 'Projekt Enterprise Portal Suite', 'Navigating Spiritual Warfare', 'AlphaKode', 'MackEnterprises']) {
+for (const name of ['I Want My Lawyer Present', 'KingMe', 'QueenMe', 'Mi Minks', 'CarePort Connect', 'Projekt Enterprise Portal Suite', 'Navigating Spiritual Warfare', 'MackEnterprises']) {
   assert.ok(home.includes(name), `Missing restored portfolio item: ${name}`);
+}
+assert.ok(home.includes('One Vision.'), 'The updated Projekt preview must be the homepage');
+assert.ok(home.includes('Many Projekts.'), 'The updated Projekt preview must be the homepage');
+assert.ok(home.includes('Eight KingMe Pillars'), 'Updated homepage must include the KingMe pillars');
+assert.ok(home.includes('Eight QueenMe Pillars'), 'Updated homepage must include the QueenMe pillars');
+const books = fs.readFileSync(path.join(out, 'books', 'index.html'), 'utf8');
+assert.ok(books.includes('AlphaKode'), 'AlphaKode must remain available on the Books page');
+for (const [, url] of home.matchAll(/(?:src|poster)=["']([^"']+)["']/g)) {
+  if (/^(?:[a-z]+:|\/\/|\/|#|data:)/i.test(url)) continue;
+  assert.ok(fs.existsSync(path.join(out, url)), `Missing preview asset ${url}`);
 }
 for (const route of routes) {
   const html = fs.readFileSync(path.join(out, route, 'index.html'), 'utf8');

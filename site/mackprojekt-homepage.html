@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A MackProjekt — Technology Built to Move People Forward</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Cinzel:wght@500;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+
+    :root {
+      --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-serif: 'Cinzel', serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: #060911;
+      color: #f1f5f9;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: -35%;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.1;
+      background: conic-gradient(from 180deg at 50% 50%, #f59e0b, #38bdf8, #a855f7, #ec4899, #14b8a6, #f59e0b);
+      filter: blur(100px);
+      animation: ambient-spectrum 32s linear infinite;
+    }
+
+    .font-cinzel {
+      font-family: var(--font-serif);
+    }
+
+    /* React Bits Spotlight Card */
+    .spotlight-card {
+      position: relative;
+      background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(245, 158, 11, 0.12), transparent 45%),
+                  rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 1.25rem;
+      backdrop-filter: blur(16px);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+      overflow: hidden;
+    }
+
+    .spotlight-card::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      padding: 1px;
+      background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(251, 191, 36, 0.6), transparent 40%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+
+    .spotlight-card:hover::before {
+      opacity: 1;
+      animation: spotlight-spectrum 12s linear infinite;
+    }
+
+    .spotlight-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(251, 191, 36, 0.3);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7), 0 0 30px -10px rgba(245, 158, 11, 0.15);
+    }
+
+    /* MackProjekt Showcase Styles */
+    .card-swap-container {
+      perspective: 1200px;
+      position: relative;
+      isolation: isolate;
+      height: 440px;
+      width: 100%;
+      max-width: 580px;
+      margin: 0 auto;
+    }
+
+    .card-swap-container::before,
+    .card-swap-container::after {
+      content: "";
+      position: absolute;
+      inset: -36px -28px;
+      border-radius: 2rem;
+      pointer-events: none;
+    }
+
+    .card-swap-container::before {
+      z-index: -2;
+      border: 1px solid rgba(34, 211, 238, 0.18);
+      background:
+        radial-gradient(ellipse at 26% 22%, rgba(34, 211, 238, 0.26), transparent 44%),
+        radial-gradient(ellipse at 80% 76%, rgba(245, 158, 11, 0.22), transparent 46%),
+        linear-gradient(145deg, rgba(15, 23, 42, 0.24), rgba(8, 15, 30, 0.78));
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35), 0 0 75px rgba(34, 211, 238, 0.09), 0 0 55px rgba(245, 158, 11, 0.08), inset 0 1px rgba(255, 255, 255, 0.05);
+      animation: deck-aura 15s ease-in-out infinite alternate;
+    }
+
+    .card-swap-container::after {
+      z-index: -1;
+      background-image:
+        linear-gradient(rgba(103, 232, 249, 0.075) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(103, 232, 249, 0.075) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: radial-gradient(ellipse at center, #000 15%, transparent 78%);
+      opacity: 0.8;
+    }
+
+    @keyframes deck-aura {
+      from { opacity: 0.72; transform: scale(0.985); }
+      to { opacity: 1; transform: scale(1.015); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .card-swap-container::before { animation: none; }
+    }
+
+    .swap-card {
+      position: absolute;
+      inset: 0;
+      border-radius: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.95), rgba(11, 17, 32, 0.98));
+      backdrop-filter: blur(20px);
+      padding: 2rem;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.05);
+      cursor: pointer;
+      user-select: none;
+      transform-origin: center bottom;
+      transition: transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  opacity 0.45s ease,
+                  filter 0.45s ease,
+                  box-shadow 0.45s ease;
+    }
+
+    .swap-card:hover {
+      border-color: rgba(251, 191, 36, 0.55);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 28px -8px rgba(56, 189, 248, 0.22);
+    }
+
+    /* Ambient Background Grid (React Bits / Vue Bits) */
+    .bg-grid-pattern {
+      background-size: 40px 40px;
+      background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    }
+
+    /* Animated Gradient Text */
+    .animated-gradient-text {
+      background: linear-gradient(110deg, #fbbf24 0%, #f59e0b 24%, #38bdf8 52%, #c084fc 76%, #f472b6 100%);
+      background-size: 250% auto;
+      color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+      animation: shine 8s ease-in-out infinite alternate, text-spectrum 18s linear infinite;
+    }
+
+    @keyframes shine {
+      to {
+        background-position: 200% center;
+      }
+    }
+
+    @keyframes ambient-spectrum {
+      to {
+        transform: rotate(360deg) scale(1.05);
+        filter: blur(100px) hue-rotate(75deg);
+      }
+    }
+
+    @keyframes spotlight-spectrum {
+      to {
+        filter: hue-rotate(360deg);
+      }
+    }
+
+    @keyframes text-spectrum {
+      to {
+        filter: hue-rotate(30deg);
+      }
+    }
+
+    .glow-orb {
+      position: absolute;
+      filter: blur(120px);
+      border-radius: 9999px;
+      pointer-events: none;
+      z-index: 0;
+      animation: orb-drift 18s ease-in-out infinite alternate;
+    }
+
+    .glow-orb:nth-of-type(3n) {
+      animation-delay: -7s;
+    }
+
+    @keyframes orb-drift {
+      to {
+        transform: translate3d(24px, -18px, 0);
+        filter: blur(120px) hue-rotate(35deg);
+      }
+    }
+
+    .glass-badge {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(12px);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      #ghost-mouse-canvas {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen relative antialiased selection:bg-amber-500 selection:text-slate-950">
+
+  <!-- React Bits Ghost Mouse Canvas -->
+  <canvas id="ghost-mouse-canvas" class="fixed inset-0 pointer-events-none z-50"></canvas>
+
+  <!-- Background Orbs & Grid -->
+  <div class="fixed inset-0 bg-grid-pattern pointer-events-none z-0"></div>
+  <div class="glow-orb w-[600px] h-[600px] bg-amber-500/10 -top-40 -left-40"></div>
+  <div class="glow-orb w-[700px] h-[700px] bg-cyan-500/10 top-1/3 -right-40"></div>
+  <div class="glow-orb w-[500px] h-[500px] bg-purple-500/10 bottom-0 left-1/4"></div>
+
+  <!-- Top Notification & Notice Bar -->
+  <div class="sticky top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b border-slate-800 px-4 py-2 text-xs">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-2">
+        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-semibold tracking-wide uppercase text-[11px]">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> A MackProjekt ecosystem
+        </span>
+        <span class="text-slate-500 hidden sm:inline">|</span>
+        <span class="text-slate-300 font-medium hidden sm:inline">A MackProjekt brand</span>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <a href="#ventures" class="text-amber-400 hover:text-amber-300 font-medium transition flex items-center gap-1">
+          <span>✨ Explore the ventures</span>
+        </a>
+        <span class="text-slate-600">|</span>
+        <button onclick="openJRScreenshotModal()" class="text-slate-400 hover:text-amber-400 transition flex items-center gap-1.5 font-mono text-[11px]">
+          <svg class="w-3.5 h-3.5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+          JR System
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="relative z-10">
+
+    <!-- Header Navigation -->
+    <header class="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-amber-400 via-amber-500 to-amber-700 flex items-center justify-center font-extrabold text-slate-950 text-xl shadow-lg shadow-amber-500/25 ring-1 ring-amber-300/40">
+          MP
+        </div>
+        <div>
+          <div class="font-extrabold tracking-wide text-base text-slate-100 flex items-center gap-2">
+            A MACKPROJEKT
+            <span class="text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-amber-400/10 text-amber-400 border border-amber-400/20">Studio</span>
+          </div>
+          <div class="text-xs text-slate-400 font-medium">Technology Built to Move People Forward</div>
+        </div>
+      </div>
+
+      <nav class="hidden md:flex items-center gap-1.5 p-1 rounded-full glass-badge text-xs">
+        <a href="#mission" class="px-3.5 py-1.5 rounded-full text-slate-300 hover:text-white transition">Our Mission</a>
+        <a href="https://mackprojekt.com/about" class="px-3.5 py-1.5 rounded-full text-slate-300 hover:text-white transition">About</a>
+        <a href="#ventures" class="px-3.5 py-1.5 rounded-full text-slate-300 hover:text-white transition">Ventures & Programs</a>
+        <a href="#client-work" class="px-3.5 py-1.5 rounded-full text-slate-300 hover:text-white transition">Client Ventures</a>
+        <a href="https://mackprojekt.com/interest" class="px-3.5 py-1.5 rounded-full text-slate-300 hover:text-white transition">Studio</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <button onclick="openJRScreenshotModal()" class="px-3.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-amber-300 border border-amber-500/30 text-xs font-semibold transition flex items-center gap-2 shadow-sm">
+          <span class="w-5 h-5 rounded-md bg-amber-500 text-slate-950 font-black text-[10px] flex items-center justify-center">JR</span>
+          <span>JR System ↗</span>
+        </button>
+        <a href="https://sdtoolsinc.com/" target="_blank" rel="noreferrer" class="px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 text-xs font-semibold transition flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          CaseFlow Portal ↗
+        </a>
+        <a href="https://www.sdtoolsinc.org/" target="_blank" rel="noreferrer" class="px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-xs shadow-lg shadow-amber-500/20 transition">
+          T.O.O.L.S. Reentry ↗
+        </a>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="mission" class="max-w-7xl mx-auto px-6 pt-12 pb-16 text-center relative">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-badge mb-6">
+        <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+        <span class="text-xs font-medium text-slate-300">People. Technology. Progress.</span>
+      </div>
+
+      <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight max-w-5xl mx-auto leading-[1.1] mb-6">
+        Technology Built to <br class="hidden sm:inline" />
+        <span class="animated-gradient-text">Move People Forward.</span>
+      </h1>
+
+      <p class="max-w-3xl mx-auto text-base sm:text-lg text-slate-300 leading-relaxed font-normal mb-8">
+        A MackProjekt brings people, technology, and purpose together—building brands, platforms, and community-rooted initiatives designed to move people forward.
+      </p>
+
+      <!-- Key Action Buttons -->
+      <div class="flex flex-wrap items-center justify-center gap-4 mb-12">
+        <a href="#card-swap-section" class="px-6 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm shadow-xl shadow-amber-500/20 transition flex items-center gap-2 group">
+          <span>Explore the brand ecosystem</span>
+          <svg class="w-4 h-4 transform group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+        <a href="https://sdtoolsinc.com/" target="_blank" rel="noreferrer" class="px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 font-semibold text-sm transition flex items-center gap-2">
+          <span>CaseFlow Operations Portal ↗</span>
+        </a>
+      </div>
+    </section>
+
+    <section id="systems-connect" class="overflow-hidden border-y border-cyan-950 bg-[#07141b] text-slate-100">
+      <div class="max-w-7xl mx-auto px-6 py-10 sm:py-14">
+        <div class="flex items-center justify-between gap-4 border-b border-cyan-900/50 pb-4 text-[10px] font-mono uppercase tracking-[0.18em] text-cyan-200/60">
+          <span>01 / Systems that connect</span>
+          <span>A MackProjekt / Technology</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-[minmax(270px,.72fr)_minmax(0,1.55fr)] gap-10 lg:gap-16 items-center pt-10">
+          <div class="space-y-7">
+            <div class="inline-flex rounded-full border border-cyan-900/70 bg-black/20 p-1" role="group" aria-label="Select a platform">
+              <button type="button" data-system-platform="0" aria-pressed="true" onclick="setSystemPlatform(0)" class="rounded-full bg-cyan-900 px-6 py-3 text-xs font-semibold text-cyan-50 transition">Enterprise</button>
+              <button type="button" data-system-platform="1" aria-pressed="false" onclick="setSystemPlatform(1)" class="rounded-full px-6 py-3 text-xs font-semibold text-slate-300 transition hover:text-white">CarePort</button>
+            </div>
+            <div>
+              <p id="systems-label" class="mb-4 text-[10px] font-mono uppercase tracking-[0.16em] text-cyan-200/70">CaseFlow Operations</p>
+              <h2 class="text-5xl sm:text-6xl xl:text-7xl font-medium leading-[1.02] tracking-[-0.06em]">
+                <span id="systems-title">Complex work.</span><br />
+                <span id="systems-accent" class="text-cyan-400">Connected.</span>
+              </h2>
+              <h3 id="systems-name" class="mt-8 text-xl font-semibold tracking-tight">Projekt Enterprise Portal Suite</h3>
+              <p id="systems-copy" class="mt-2 max-w-sm text-sm leading-relaxed text-slate-300">People. Programs. One connected place to work.</p>
+            </div>
+            <a id="systems-link" href="https://mackprojekt.com/portals" class="inline-flex items-center gap-8 border-b border-cyan-800 pb-3 text-xs font-bold text-cyan-100 transition hover:text-cyan-300">
+              <span>Explore the suite</span><span aria-hidden="true" class="text-2xl">↗</span>
+            </a>
+          </div>
+
+          <div>
+            <div class="relative min-h-[380px] sm:min-h-[470px] overflow-hidden rounded-3xl border border-cyan-900/60 bg-[#06121a]">
+              <img id="systems-image" src="brand/amp-device-scene.webp" alt="Concept visualization of CaseFlow Operations connected portal screens" class="absolute inset-0 h-full w-full object-cover opacity-80" />
+              <div class="absolute inset-0 bg-gradient-to-r from-[#06121a]/90 via-[#06121a]/35 to-transparent"></div>
+              <div id="systems-brand" class="absolute left-5 top-6 z-10 flex items-center gap-3 rounded-2xl border border-cyan-400/30 bg-[#08222b]/85 px-4 py-3 shadow-xl backdrop-blur">
+                <span class="grid h-10 w-10 place-items-center rounded-xl bg-cyan-400 text-sm font-black text-slate-950">CF</span>
+                <span class="text-lg font-semibold">CaseFlow<small class="mt-1 block text-[8px] font-mono tracking-[0.2em] text-cyan-200/70">OPERATIONS</small></span>
+              </div>
+              <div id="systems-role-details" class="absolute bottom-8 left-5 z-10 w-[min(270px,72%)] -rotate-2 rounded-3xl border border-cyan-300/40 bg-[#09232e]/90 p-5 shadow-2xl backdrop-blur">
+                <p id="systems-role-label" class="text-[8px] font-mono uppercase tracking-widest text-cyan-200/70">Projekt Enterprise / Staff</p>
+                <h3 id="systems-role-title" class="mt-3 text-2xl font-semibold leading-tight">The work, connected.</h3>
+                <ul id="systems-role-items" class="mt-4 space-y-2 text-xs text-slate-300">
+                  <li class="border-t border-cyan-900/70 pt-2">Caseload &amp; notes</li>
+                  <li class="border-t border-cyan-900/70 pt-2">Documents</li>
+                  <li class="border-t border-cyan-900/70 pt-2">Scheduling</li>
+                </ul>
+              </div>
+              <div id="systems-device-tag" class="absolute bottom-8 right-5 z-10 hidden rounded-2xl border border-cyan-300/30 bg-[#09232e]/90 px-4 py-3 text-[10px] text-slate-200 shadow-xl backdrop-blur sm:block">
+                Participant. Staff. Admin.<small class="mt-1 block text-[9px] text-cyan-100/60">One connected platform.</small>
+              </div>
+            </div>
+
+            <div id="systems-role-switch" class="mt-3 grid grid-cols-3 gap-1 rounded-2xl border border-cyan-900/60 bg-[#07141b] p-1.5" role="group" aria-label="Explore enterprise roles">
+              <button type="button" data-system-role="0" aria-pressed="false" onclick="setSystemRole(0)" class="rounded-xl px-2 py-3 text-left text-[10px] text-cyan-100/70 transition hover:bg-cyan-900/40">Participant <span class="float-right">↗</span></button>
+              <button type="button" data-system-role="1" aria-pressed="true" onclick="setSystemRole(1)" class="rounded-xl border border-cyan-400/30 bg-cyan-900 px-2 py-3 text-left text-[10px] text-cyan-50 transition">Staff <span class="float-right">↗</span></button>
+              <button type="button" data-system-role="2" aria-pressed="false" onclick="setSystemRole(2)" class="rounded-xl px-2 py-3 text-left text-[10px] text-cyan-100/70 transition hover:bg-cyan-900/40">Admin <span class="float-right">↗</span></button>
+            </div>
+            <div id="systems-careport-strip" class="mt-3 hidden grid-cols-4 gap-2 rounded-2xl border border-cyan-900/60 bg-[#07141b] p-3 text-center text-[9px] text-cyan-100/70">
+              <span>Needs</span><span>Services</span><span>Context</span><span>Next actions</span>
+            </div>
+            <p class="mt-3 text-right text-[9px] text-cyan-100/50">Product overview · Concept visualization</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Projekts -->
+    <section id="card-swap-section" class="max-w-7xl mx-auto px-6 py-16 border-t border-slate-800/80">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+        <!-- Left: Explanatory Context & Tactile Controls -->
+        <div class="lg:col-span-5 space-y-6">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-mono uppercase mb-3">
+              Eight featured Projekts
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-100">
+              One Vision.<br />
+              <span class="animated-gradient-text">Many Projekts.</span>
+            </h2>
+            <p class="text-sm text-slate-300 leading-relaxed mt-4">
+              Meet the brands, platforms, programs, and movements bringing the MackProjekt vision to life.
+            </p>
+          </div>
+
+          <!-- Active Card Details Highlight -->
+          <div class="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2">
+            <div class="flex items-center justify-between text-xs font-mono">
+              <span class="text-slate-400">Now in focus:</span>
+              <span id="active-card-indicator" class="text-amber-400 font-bold">1 of 8</span>
+            </div>
+            <div id="active-card-title-preview" class="text-base font-bold text-slate-100" aria-live="polite">
+              T.O.O.L.S. Inc
+            </div>
+            <div id="active-card-meta-preview" class="text-xs text-slate-400">
+              Nonprofit reentry support & workforce development (sdtoolsinc.org)
+            </div>
+          </div>
+
+          <!-- Controls: Next / Prev and Direct Dots -->
+          <div class="flex items-center gap-4 pt-2">
+            <button onclick="prevCard()" class="p-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 transition active:scale-95 flex items-center justify-center" aria-label="Previous card">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+            </button>
+            <button onclick="swapCard()" class="flex-1 py-3 px-6 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-sm shadow-lg shadow-amber-500/20 transition active:scale-95 flex items-center justify-center gap-2">
+              <span>Next Projekt</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+
+          <!-- Indicator Dots -->
+          <div class="flex items-center gap-2 pt-1" id="card-dots">
+            <!-- Rendered dynamically -->
+          </div>
+        </div>
+
+        <!-- Projekt showcase -->
+        <div class="lg:col-span-7 flex justify-center">
+          <div class="card-swap-container" id="swap-deck" onclick="swapCard()" role="region" aria-label="Featured Projekt selector">
+
+            <!-- Card 0: T.O.O.L.S. Inc -->
+            <div class="swap-card flex flex-col justify-between" data-index="0" data-name="T.O.O.L.S. Inc" data-meta="Lived-experience reentry & workforce development (sdtoolsinc.org)">
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-xs font-mono font-bold uppercase tracking-wider px-3 py-1 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">Reentry Program</span>
+                  <span class="text-xs text-slate-400 font-mono">sdtoolsinc.org ↗</span>
+                </div>
+                <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-100 mb-1">T.O.O.L.S. Inc</h3>
+                <div class="text-xs font-mono text-amber-400 mb-4">Together Overcoming Obstacles & Limitations</div>
+
+                <div class="p-3.5 rounded-xl bg-emerald-950/20 border border-emerald-500/20 text-xs text-slate-200 leading-relaxed italic mb-4">
+                  “Dedicated to providing compassionate reentry support, workforce development, and wraparound resources for individuals transitioning back into society after incarceration.”
+                </div>
+
+                <p class="text-xs text-slate-300 leading-relaxed">
+                  Lived-experience peer support, interview readiness, work boots & transit assistance, career counseling, and community empowerment.
+                </p>
+              </div>
+
+              <div class="pt-4 border-t border-slate-800 flex items-center justify-between text-xs">
+                <span class="text-slate-400">Select to explore</span>
+                <span class="text-emerald-400 font-semibold flex items-center gap-1">Open sdtoolsinc.org →</span>
+              </div>
+            </div>
+
+            <!-- Card 1: CaseFlow Operations -->
+            <div class="swap-card flex flex-col justify-between" data-index="1" data-name="CaseFlow Operations" data-meta="Participant & staff operations portal (sdtoolsinc.com)">
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-xs font-mono font-bold uppercase tracking-wider px-3 py-1 rounded-md bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">Operations Portal</span>
+                  <span class="text-xs text-slate-400 font-mono">sdtoolsinc.com ↗</span>
+                </div>
+                <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-100 mb-1">CaseFlow Operations</h3>
+                <div class="text-xs font-mono text-cyan-400 mb-4">Centralized Coordination & Participant Progress</div>
+
+                <div class="p-3.5 rounded-xl bg-cyan-950/20 border border-cyan-500/20 text-xs text-slate-200 leading-relaxed mb-4">
+                  The primary operations portal landing page connecting participants and staff. Simplifies milestone progress, daily check-ins, case coordination, and program accountability.
+                </div>
+
+                <p class="text-xs text-slate-300 leading-relaxed">
+                  Engineered for seamless workflows between participants, caseworkers, and directors without operational bottlenecks.
+                </p>
+              </div>
+
+              <div class="pt-4 border-t border-slate-800 flex items-center justify-between text-xs">
+                <span class="text-slate-400">Select to explore</span>
+                <span class="text-cyan-400 font-semibold flex items-center gap-1">Launch Portal →</span>
+              </div>
+            </div>
+
+            <!-- Card 2: Navigating Spiritual Warfare (Book) -->
+            <div class="swap-card flex flex-col justify-between" data-index="2" data-name="Navigating Spiritual Warfare" data-meta="Published Book by Donyale Mack (Amazon)">
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-xs font-mono font-bold uppercase tracking-wider px-3 py-1 rounded-md bg-amber-500/10 text-amber-400 border border-amber-500/30">Published Literature</span>
+                  <span class="text-xs text-amber-400 font-mono">Amazon.ca / Amazon.com ↗</span>
+                </div>
+                <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-100 mb-1 font-cinzel">Navigating Spiritual Warfare</h3>
+                <div class="text-xs font-mono text-slate-300 mb-4">Understanding, Overcoming, and Protecting Oneself</div>
+
+                <div class="p-3.5 rounded-xl bg-amber-950/20 border border-amber-500/20 text-xs text-slate-200 leading-relaxed mb-4">
+                  Authored by <strong>Donyale Mack</strong>. A grounded, powerful guide to building spiritual discernment, emotional fortitude, and protection against unseen life challenges.
+                </div>
+
+                <p class="text-xs text-slate-300 leading-relaxed">
+                  ASIN: B0CX3YGSF4. Available globally in paperback and digital editions on Amazon.
+                </p>
+              </div>
+
+              <div class="pt-4 border-t border-slate-800 flex items-center justify-between text-xs">
+                <span class="text-slate-400">Select to explore</span>
+                <span class="text-amber-400 font-semibold flex items-center gap-1">View Book on Amazon →</span>
+              </div>
+            </div>
+
+            <!-- Card 3: KingMe -->
+            <div class="swap-card flex flex-col justify-between" data-index="3" data-name="KingMe" data-meta="Adjust The Krown Movement · Sovereign Masculine Mindset (kingme.mackprojekt.com)">
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-xs font-mono font-bold uppercase tracking-wider px-3 py-1 rounded-md bg-purple-500/10 text-purple-300 border border-purple-500/30">Adjust The Krown</span>
+                  <a href="https://kingme.mackprojekt.com/" target="_blank" rel="noreferrer" onclick="event.stopPropagation();" class="text-xs text-purple-400 hover:text-purple-300 font-mono">kingme.mackprojekt.com ↗</a>
+                </div>
+                <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-100 mb-1 font-cinzel">KingMe</h3>
+                <div class="text-xs text-amber-400 italic mb-4 font-serif">“When the crown slips, we don’t shrink. We steady it.”</div>
+
+                <div class="p-3 rounded-xl bg-purple-950/30 border border-purple-500/30 text-xs text-slate-200 mb-4">
+                  <div class="font-mono font-semibold text-purple-300 mb-1">The Eight KingMe Pillars:</div>
+                  <div class="text-[10px] font-mono text-slate-300 grid grid-cols-2 gap-1.5 text-center mt-1">
+                    <span class="bg-slate-900/80 p-1 rounded border border-purple-500/20">01 ♔ Identity & Mindset</span>
+                    <span class="bg-slate-900/80 p-1 rounded border border-purple-500/20">02 ♙ Brotherhood & Respect</span>
+                    <span class="bg-slate-900/80 p-1 rounded border border-purple-500/20">03 ♗ Healing & Mental Wellness</span>
+                    <span class="bg-slate-900/80 p-1 rounded border border-purple-500/20">04 ♖ Self-Love & Self-Care</span>
+                    <span class="bg-slate-900/80 p-1 rounded border border-purple-500/20">05 ♘ Confidence & Communication</span>
+                    <span class="bg-slate-900/80 p-1 rounded border border-purple-500/20">06 ♕ Goals & Discipline</span>
+                    <span class="bg-slate-900/80 p-1 rounded border border-purple-500/20">07 ♟ Business & Entrepreneurship</span>
+                    <span class="bg-slate-900/80 p-1 rounded border border-purple-500/20">08 ♚ Leadership & Service</span>
+                  </div>
+                </div>
+
+                <p class="text-xs text-slate-300 leading-relaxed">
+                  Stepping into sovereign authority, self-discipline, mental fortitude, and brotherhood.
+                </p>
+              </div>
+
+              <div class="pt-4 border-t border-slate-800 flex items-center justify-between text-xs">
+                <span class="text-slate-400">Select to explore</span>
+                <a href="https://kingme.mackprojekt.com/" target="_blank" rel="noreferrer" onclick="event.stopPropagation();" class="text-purple-400 hover:text-purple-300 font-semibold flex items-center gap-1">Visit KingMe Site →</a>
+              </div>
+            </div>
+
+            <!-- Card 4: QueenMe (Feminine Yet Bold & Strong) -->
+            <div class="swap-card flex flex-col justify-between" data-index="4" data-name="QueenMe" data-meta="Adjust The Krown Movement · Bold Feminine Sovereignty (queenme.mackprojekt.com)" style="border-color: rgba(244, 114, 182, 0.35); background: linear-gradient(145deg, rgba(30, 15, 28, 0.96), rgba(13, 16, 32, 0.98));">
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-xs font-mono font-bold uppercase tracking-wider px-3 py-1 rounded-md bg-pink-500/15 text-pink-300 border border-pink-500/30">Adjust The Krown</span>
+                  <a href="https://queenme.mackprojekt.com/" target="_blank" rel="noreferrer" onclick="event.stopPropagation();" class="text-xs text-pink-400 hover:text-pink-300 font-mono">queenme.mackprojekt.com ↗</a>
+                </div>
+                <h3 class="text-2xl sm:text-3xl font-extrabold text-pink-100 mb-1 font-cinzel">QueenMe</h3>
+                <div class="text-xs text-rose-300 italic mb-4 font-serif">“Your crown never left. Adjust it.”</div>
+
+                <div class="p-3 rounded-xl bg-pink-950/25 border border-pink-500/25 text-xs text-slate-200 mb-4">
+                  <div class="font-mono font-semibold text-pink-300 mb-1">The Eight QueenMe Pillars:</div>
+                  <div class="text-[11px] font-mono text-slate-300 grid grid-cols-2 gap-1.5 text-center mt-1">
+                    <span class="bg-slate-900/80 p-1 rounded border border-pink-500/20 text-rose-200">Know your worth</span>
+                    <span class="bg-slate-900/80 p-1 rounded border border-pink-500/20 text-rose-200">Adjust with grace</span>
+                    <span class="bg-slate-900/80 p-1 rounded border border-pink-500/20 text-rose-200">Own your voice</span>
+                    <span class="bg-slate-900/80 p-1 rounded border border-pink-500/20 text-rose-200">Protect your peace</span>
+                    <span class="bg-slate-900/80 p-1 rounded border border-pink-500/20 text-rose-200">Move with purpose</span>
+                    <span class="bg-slate-900/80 p-1 rounded border border-pink-500/20 text-rose-200">Build your power</span>
+                    <span class="bg-slate-900/80 p-1 rounded border border-pink-500/20 text-rose-200">Crown another Queen</span>
+                    <span class="bg-slate-900/80 p-1 rounded border border-pink-500/20 text-rose-200">Leave a legacy</span>
+                  </div>
+                </div>
+
+                <p class="text-xs text-slate-300 leading-relaxed">
+                  An empowering sanctuary for women and girls reclaiming their divine power, self-worth, emotional boundaries, and radiant crown.
+                </p>
+              </div>
+
+              <div class="pt-4 border-t border-slate-800 flex items-center justify-between text-xs">
+                <span class="text-slate-400">Select to explore</span>
+                <a href="https://queenme.mackprojekt.com/" target="_blank" rel="noreferrer" onclick="event.stopPropagation();" class="text-pink-400 hover:text-pink-300 font-semibold flex items-center gap-1">Visit QueenMe Site →</a>
+              </div>
+            </div>
+
+            <!-- Card 5: MackEnterprises LTD -->
+            <div class="swap-card flex flex-col justify-between" data-index="5" data-name="MackEnterprises LTD" data-meta="Commercial logistics & family heritage brand">
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-xs font-mono font-bold uppercase tracking-wider px-3 py-1 rounded-md bg-amber-500/10 text-amber-400 border border-amber-500/30">Commercial Logistics</span>
+                  <span class="text-xs text-slate-400 font-mono">Legacy Brand</span>
+                </div>
+
+                <div class="flex items-center gap-3 mb-3">
+                  <img src="brand/mackenterprises.png" alt="Original Father Illustration" class="w-12 h-12 rounded-xl object-contain bg-slate-900 border border-slate-700 p-1" onerror="this.style.display='none'" />
+                  <div>
+                    <h3 class="text-2xl font-bold text-slate-100">MackEnterprises LTD</h3>
+                    <div class="text-xs text-slate-400">Commercial Operations & Logistics</div>
+                  </div>
+                </div>
+
+                <p class="text-xs text-slate-300 leading-relaxed mb-4">
+                  The brand logo was intentionally created from a personal photograph taken of the founder's father, serving as the enduring foundation and heart behind MackEnterprises across commercial logistics, supplier coordination, and procurement contracts.
+                </p>
+              </div>
+
+              <div class="pt-4 border-t border-slate-800 flex items-center justify-between text-xs">
+                <span class="text-slate-400">Select to explore</span>
+                <span class="text-amber-400 font-semibold flex items-center gap-1">Father's Photo Logo →</span>
+              </div>
+            </div>
+
+            <!-- Card 6: Client Builds (Lawyer & Mi Minks) -->
+            <div class="swap-card flex flex-col justify-between" data-index="6" data-name="Client Platforms" data-meta="I Want My Lawyer Present & Mi Minks">
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-xs font-mono font-bold uppercase tracking-wider px-3 py-1 rounded-md bg-pink-500/10 text-pink-400 border border-pink-500/30">Client Engineering</span>
+                  <span class="text-xs text-slate-400 font-mono">Built by MP</span>
+                </div>
+                <h3 class="text-2xl font-bold text-slate-100 mb-2">Client Digital Platforms</h3>
+
+                <div class="space-y-3 mb-4">
+                  <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 text-xs">
+                    <div class="font-bold text-amber-300">I Want My Lawyer Present</div>
+                    <div class="text-slate-400 text-[11px] mt-0.5">Dedicated client venture platform built and engineered by A MackProjekt.</div>
+                  </div>
+                  <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 text-xs">
+                    <div class="font-bold text-pink-300">Mi Minks (miminks.mackprojekt.com)</div>
+                    <div class="text-slate-400 text-[11px] mt-0.5">Luxury beauty & lash eCommerce brand built on MackProjekt cloud infrastructure.</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pt-4 border-t border-slate-800 flex items-center justify-between text-xs">
+                <span class="text-slate-400">Select to explore</span>
+                <span class="text-pink-400 font-semibold flex items-center gap-1">Client Solutions →</span>
+              </div>
+            </div>
+
+            <!-- Card 7: MackProjekt JR Operations Co-Pilot -->
+            <div class="swap-card flex flex-col justify-between" data-index="7" data-name="MackProjekt JR" data-meta="MackProjekt JR operations co-pilot & FundingOps interface preview">
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-xs font-mono font-bold uppercase tracking-wider px-3 py-1 rounded-md bg-amber-500/20 text-amber-300 border border-amber-400/30">Operations Engine</span>
+                  <span class="text-xs text-amber-400 font-mono">System UI Preview</span>
+                </div>
+                <div class="flex items-center gap-3 mb-3">
+                  <div class="w-10 h-10 rounded-xl bg-amber-500 text-slate-950 font-black flex items-center justify-center text-lg shadow-md shadow-amber-500/20">JR</div>
+                  <div>
+                    <h3 class="text-2xl font-extrabold text-slate-100">MackProjekt JR</h3>
+                    <div class="text-xs text-amber-400 font-mono">Operations Command Co-Pilot</div>
+                  </div>
+                </div>
+
+                <div class="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800 text-xs text-slate-200 leading-relaxed mb-4">
+                  Autonomous local-first operations nerve center for MackProjekt and affiliated initiatives. Coordinates FundingOps, live federal grant discovery, evidence-backed proposal drafting, and multi-entity workflows.
+                </div>
+
+                <p class="text-xs text-slate-300 leading-relaxed">
+                  Equipped with real-time Grants.gov search, Task Matrix, and AI planning.
+                </p>
+              </div>
+
+              <div class="pt-4 border-t border-slate-800 flex items-center justify-between text-xs">
+                <span class="text-slate-400">Select to explore</span>
+                <button onclick="event.stopPropagation(); openJRScreenshotModal();" class="text-amber-400 hover:text-amber-300 font-semibold flex items-center gap-1">View JR System →</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Core Ventures Section (React Bits Spotlight Cards Grid) -->
+    <section id="ventures" class="max-w-7xl mx-auto px-6 py-16">
+      <div class="mb-12">
+        <span class="text-amber-400 font-mono text-xs uppercase tracking-widest font-semibold">Ventures & Core Programs</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-100 mt-1">Built to Empower & Transform</h2>
+        <p class="text-sm text-slate-400 mt-2 max-w-2xl">Focused organizations and digital products, each built around a clear need and lived experience.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- Card 1: T.O.O.L.S. Inc (MISSION STATEMENT FOCUSED) -->
+        <div class="spotlight-card p-8 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-mono font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Reentry & Community Support</span>
+              <span class="text-xs text-slate-400 font-mono">sdtoolsinc.org</span>
+            </div>
+            <h3 class="text-2xl font-bold text-slate-100 mb-1">T.O.O.L.S. Inc</h3>
+            <div class="text-xs font-mono text-amber-400 mb-4">Together Overcoming Obstacles and Limitations</div>
+
+            <div class="p-4 rounded-xl bg-emerald-950/20 border border-emerald-500/20 mb-4">
+              <div class="text-xs font-semibold text-emerald-300 uppercase tracking-wide mb-1 font-mono">Mission Statement</div>
+              <p class="text-xs sm:text-sm text-slate-200 leading-relaxed italic">
+                “Dedicated to providing compassionate reentry support, workforce development, and wraparound resources for individuals transitioning back into society after incarceration — meeting people where they are through lived experience, peer mentorship, and real opportunities for lasting change.”
+              </p>
+            </div>
+
+            <p class="text-xs text-slate-400 leading-relaxed mb-4">
+              Guided by lived experience, T.O.O.L.S. Inc offers immediate transition resources, resume architecture, career counseling, work readiness essentials, and community empowerment throughout San Diego.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+            <span class="text-xs text-slate-400 font-mono">San Diego, California</span>
+            <a href="https://www.sdtoolsinc.org/" target="_blank" rel="noreferrer" class="text-xs font-bold text-emerald-400 hover:text-emerald-300 transition flex items-center gap-1">
+              Visit sdtoolsinc.org <span>→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 2: CaseFlow Operations (PORTAL LANDING PAGE: sdtoolsinc.com) -->
+        <div class="spotlight-card p-8 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-mono font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">Operations & Participant Portal</span>
+              <span class="text-xs text-slate-400 font-mono">sdtoolsinc.com</span>
+            </div>
+            <h3 class="text-2xl font-bold text-slate-100 mb-1">CaseFlow Operations</h3>
+            <div class="text-xs font-mono text-cyan-400 mb-4">Centralized Coordination & Participant Progress</div>
+
+            <div class="p-4 rounded-xl bg-cyan-950/20 border border-cyan-500/20 mb-4">
+              <div class="text-xs font-semibold text-cyan-300 uppercase tracking-wide mb-1 font-mono">Portal Architecture</div>
+              <p class="text-xs sm:text-sm text-slate-200 leading-relaxed">
+                The official portal landing page connecting participants and staff. Streamlines milestone tracking, daily check-ins, case coordination, and program accountability in one unified workspace.
+              </p>
+            </div>
+
+            <p class="text-xs text-slate-400 leading-relaxed mb-4">
+              CaseFlow simplifies day-to-day operations for team members and participants, ensuring clear communication, scheduled reviews, and continuous progress documentation without unnecessary friction.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+            <span class="text-xs text-slate-400 font-mono">Portal: sdtoolsinc.com</span>
+            <a href="https://sdtoolsinc.com/" target="_blank" rel="noreferrer" class="text-xs font-bold text-cyan-400 hover:text-cyan-300 transition flex items-center gap-1">
+              Launch CaseFlow Portal <span>→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 3: KingMe (Adjust The Krown) -->
+        <div class="spotlight-card p-8 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-mono font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-purple-500/10 text-purple-300 border border-purple-500/30">Adjust The Krown</span>
+              <a href="https://kingme.mackprojekt.com/" target="_blank" rel="noreferrer" class="text-xs text-purple-400 hover:text-purple-300 font-mono">kingme.mackprojekt.com ↗</a>
+            </div>
+            <h3 class="text-2xl font-bold text-slate-100 mb-1 font-cinzel">KingMe</h3>
+            <div class="text-xs text-amber-400 italic mb-4 font-serif">“When the crown slips, we don’t shrink. We steady it.”</div>
+
+            <p class="text-xs text-slate-300 leading-relaxed mb-4">
+              A sovereign brotherhood and leadership initiative challenging men to master unshakeable accountability, inner discipline, purposeful action, and generational legacy.
+            </p>
+
+            <div class="p-4 rounded-xl bg-purple-950/25 border border-purple-500/30 mb-4">
+              <div class="text-xs font-semibold text-purple-300 uppercase tracking-wide mb-2 font-mono">The Eight KingMe Pillars</div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <div class="p-2.5 rounded-lg bg-slate-900/80 border border-purple-500/20"><div class="text-[11px] font-bold text-purple-200">01 ♔ Identity & Mindset</div><p class="text-[11px] text-slate-300 mt-1">Rewrite limiting narratives, challenge fixed beliefs, and build a self-definition rooted in purpose.</p></div>
+                <div class="p-2.5 rounded-lg bg-slate-900/80 border border-purple-500/20"><div class="text-[11px] font-bold text-purple-200">02 ♙ Brotherhood & Respect</div><p class="text-[11px] text-slate-300 mt-1">Replace degrading language and isolation with dignity, trust, accountability, and mutual elevation.</p></div>
+                <div class="p-2.5 rounded-lg bg-slate-900/80 border border-purple-500/20"><div class="text-[11px] font-bold text-purple-200">03 ♗ Healing & Mental Wellness</div><p class="text-[11px] text-slate-300 mt-1">Build emotional awareness, healthier coping tools, and the courage to address pain without shame.</p></div>
+                <div class="p-2.5 rounded-lg bg-slate-900/80 border border-purple-500/20"><div class="text-[11px] font-bold text-purple-200">04 ♖ Self-Love & Self-Care</div><p class="text-[11px] text-slate-300 mt-1">Practice the habits, boundaries, and care that protect physical, emotional, and spiritual well-being.</p></div>
+                <div class="p-2.5 rounded-lg bg-slate-900/80 border border-purple-500/20"><div class="text-[11px] font-bold text-purple-200">05 ♘ Confidence & Communication</div><p class="text-[11px] text-slate-300 mt-1">Develop a clear voice, regulate emotion, navigate conflict, and communicate with strength and respect.</p></div>
+                <div class="p-2.5 rounded-lg bg-slate-900/80 border border-purple-500/20"><div class="text-[11px] font-bold text-purple-200">06 ♕ Goals & Discipline</div><p class="text-[11px] text-slate-300 mt-1">Turn vision into a plan through consistent habits, deliberate choices, and personal accountability.</p></div>
+                <div class="p-2.5 rounded-lg bg-slate-900/80 border border-purple-500/20"><div class="text-[11px] font-bold text-purple-200">07 ♟ Business & Entrepreneurship</div><p class="text-[11px] text-slate-300 mt-1">Learn financial thinking, business fundamentals, ownership, and how to build lasting value.</p></div>
+                <div class="p-2.5 rounded-lg bg-slate-900/80 border border-purple-500/20"><div class="text-[11px] font-bold text-purple-200">08 ♚ Leadership & Service</div><p class="text-[11px] text-slate-300 mt-1">Lead at home, at work, and in community by modeling integrity, contribution, and responsibility.</p></div>
+              </div>
+            </div>
+          </div>
+          <div class="pt-4 border-t border-slate-800 flex items-center justify-between text-xs">
+            <span class="text-slate-400 font-mono">Masculine Alignment</span>
+            <a href="https://kingme.mackprojekt.com/" target="_blank" rel="noreferrer" class="px-4 py-2 rounded-xl bg-purple-500/10 hover:bg-purple-500/20 text-purple-300 border border-purple-500/30 font-bold transition flex items-center gap-1.5">
+              <span>Enter KingMe</span>
+              <span>→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 4: QueenMe (Adjust The Krown - Feminine Yet Bold & Strong) -->
+        <div class="spotlight-card p-8 flex flex-col justify-between border-pink-500/30 bg-gradient-to-br from-pink-950/20 via-slate-900/90 to-purple-950/25">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-mono font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-pink-500/15 text-pink-300 border border-pink-500/30">Adjust The Krown</span>
+              <a href="https://queenme.mackprojekt.com/" target="_blank" rel="noreferrer" class="text-xs text-pink-400 hover:text-pink-300 font-mono">queenme.mackprojekt.com ↗</a>
+            </div>
+            <h3 class="text-2xl font-bold text-pink-100 mb-1 font-cinzel">QueenMe</h3>
+            <div class="text-xs text-rose-300 italic mb-4 font-serif">“Your crown never left. Adjust it.”</div>
+
+            <p class="text-xs text-slate-300 leading-relaxed mb-4">
+              QueenMe is the feminine reflection of KingMe and part of the Adjust The Krown Movement—a space for women and girls to remember their power, reclaim their voice, and move through the world with intention.
+            </p>
+            <p class="text-xs text-slate-300 leading-relaxed mb-4">
+              “Adjust the Krown” is our call to meet life’s shifts without losing ourselves. When the crown slips, we don’t shrink. We steady it. We help the next Queen steady hers.
+            </p>
+
+            <div class="p-4 rounded-xl bg-pink-950/25 border border-pink-500/30 mb-4">
+              <div class="text-xs font-semibold text-pink-300 uppercase tracking-wide mb-2 font-mono">The Eight QueenMe Pillars</div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <div class="p-2.5 rounded-lg bg-slate-900/80 border border-pink-500/20">
+                  <div class="text-[11px] font-bold text-rose-200">01 · Know your worth</div>
+                  <p class="text-[11px] text-slate-300 mt-1">Stand rooted in who you are—before a title, a role, or anyone else’s expectations.</p>
+                </div>
+                <div class="p-2.5 rounded-lg bg-slate-900/80 border border-pink-500/20">
+                  <div class="text-[11px] font-bold text-rose-200">02 · Adjust with grace</div>
+                  <p class="text-[11px] text-slate-300 mt-1">Realignment is not defeat. Pause, reset, and return to yourself without apology.</p>
+                </div>
+                <div class="p-2.5 rounded-lg bg-slate-900/80 border border-pink-500/20">
+                  <div class="text-[11px] font-bold text-rose-200">03 · Own your voice</div>
+                  <p class="text-[11px] text-slate-300 mt-1">Speak your truth with clarity. Your perspective belongs in every room you enter.</p>
+                </div>
+                <div class="p-2.5 rounded-lg bg-slate-900/80 border border-pink-500/20">
+                  <div class="text-[11px] font-bold text-rose-200">04 · Protect your peace</div>
+                  <p class="text-[11px] text-slate-300 mt-1">Set boundaries that honor your healing, your energy, and the life you are building.</p>
+                </div>
+                <div class="p-2.5 rounded-lg bg-slate-900/80 border border-pink-500/20">
+                  <div class="text-[11px] font-bold text-rose-200">05 · Move with purpose</div>
+                  <p class="text-[11px] text-slate-300 mt-1">Choose with intention and let your values guide the way you show up and lead.</p>
+                </div>
+                <div class="p-2.5 rounded-lg bg-slate-900/80 border border-pink-500/20">
+                  <div class="text-[11px] font-bold text-rose-200">06 · Build your power</div>
+                  <p class="text-[11px] text-slate-300 mt-1">Strengthen your knowledge, resources, and independence so your choices remain your own.</p>
+                </div>
+                <div class="p-2.5 rounded-lg bg-slate-900/80 border border-pink-500/20">
+                  <div class="text-[11px] font-bold text-rose-200">07 · Crown another Queen</div>
+                  <p class="text-[11px] text-slate-300 mt-1">We rise higher when we create room, share wisdom, and celebrate each other out loud.</p>
+                </div>
+                <div class="p-2.5 rounded-lg bg-slate-900/80 border border-pink-500/20">
+                  <div class="text-[11px] font-bold text-rose-200">08 · Leave a legacy</div>
+                  <p class="text-[11px] text-slate-300 mt-1">Turn healing into inheritance and create a path the next generation can walk with confidence.</p>
+                </div>
+              </div>
+              <p class="text-xs text-pink-200 font-semibold mt-3">KingMe + QueenMe Rise Together.</p>
+            </div>
+          </div>
+          <div class="pt-4 border-t border-slate-800 flex items-center justify-between text-xs">
+            <span class="text-pink-400 font-mono">Bold Feminine Sovereignty</span>
+            <a href="https://queenme.mackprojekt.com/" target="_blank" rel="noreferrer" class="px-4 py-2 rounded-xl bg-pink-500/15 hover:bg-pink-500/25 text-pink-300 border border-pink-500/40 font-bold transition flex items-center gap-1.5">
+              <span>Enter QueenMe</span>
+              <span>→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 4: MackEnterprises LTD (HERITAGE & LOGISTICS) -->
+        <div class="spotlight-card p-8 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-mono font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-amber-500/10 text-amber-400 border border-amber-500/20">Heritage & Commercial Logistics</span>
+              <span class="text-xs text-slate-400 font-mono">Legacy Brand</span>
+            </div>
+
+            <div class="flex items-center gap-4 mb-4">
+              <img src="brand/mackenterprises.png" alt="MackEnterprises original father illustration" class="w-14 h-14 rounded-xl object-contain bg-slate-900 border border-slate-700/80 p-1 shadow-md" onerror="this.style.display='none'" />
+              <div>
+                <h3 class="text-2xl font-bold text-slate-100">MackEnterprises LTD</h3>
+                <div class="text-xs text-slate-400">Commercial Operations, Procurement & Logistics</div>
+              </div>
+            </div>
+
+            <p class="text-xs text-slate-300 leading-relaxed mb-4">
+              The brand logo was intentionally created from a personal photograph taken of the founder's father, serving as the enduring foundation and heart behind MackEnterprises across commercial logistics, supplier coordination, and procurement contracts.
+            </p>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Serving as a bridge between commercial supply chains and community enterprise, preserving generational work ethic, pride, and integrity.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+            <span class="text-xs text-slate-400 font-mono">Father's Photo Logo Preserved</span>
+            <span class="text-xs font-semibold text-amber-400">MackEnterprises</span>
+          </div>
+        </div>
+
+        <!-- Card 5: MackProjekt JR Operations Co-Pilot -->
+        <div class="spotlight-card p-8 flex flex-col justify-between md:col-span-2">
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+            <div class="md:col-span-7 space-y-4">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-amber-500/20 text-amber-300 border border-amber-400/30">Operations Command Co-Pilot</span>
+                <span class="text-xs text-amber-400 font-mono">Operations</span>
+              </div>
+
+              <div class="flex items-center gap-4">
+                <div class="w-14 h-14 rounded-2xl bg-amber-500 text-slate-950 font-black text-2xl flex items-center justify-center shadow-lg shadow-amber-500/20">
+                  JR
+                </div>
+                <div>
+                  <h3 class="text-2xl font-bold text-slate-100">MackProjekt JR</h3>
+                  <div class="text-xs text-amber-400 font-mono">Unified Operations & Funding Discovery Engine</div>
+                </div>
+              </div>
+
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Engineered as the internal operations nerve center for MackProjekt and its affiliated legal entities. Powers real-time federal grant discovery (Grants.gov), Task Matrix execution, evidence-backed proposal drafting, and multi-workspace coordination.
+              </p>
+
+              <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs pt-1 font-mono">
+                <div class="p-2.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300">
+                  <div class="text-amber-400 font-bold">Funding Discovery</div>
+                  <div class="text-[11px] text-slate-400">Live federal notice checks</div>
+                </div>
+                <div class="p-2.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300">
+                  <div class="text-cyan-400 font-bold">Task Matrix</div>
+                  <div class="text-[11px] text-slate-400">14-stage lifecycle tracker</div>
+                </div>
+                <div class="p-2.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300">
+                  <div class="text-purple-400 font-bold">JR AI Assistant</div>
+                  <div class="text-[11px] text-slate-400">Plan, research & prepare</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Visual Preview Pill / Button -->
+            <div class="md:col-span-5 p-4 rounded-2xl bg-slate-900/90 border border-slate-800 space-y-3 text-center">
+              <div class="text-xs font-mono text-slate-400 uppercase tracking-wider">System Interface Preview</div>
+              <img src="jr-command-screenshot.png" alt="MackProjekt JR Funding Discovery Command Center" onclick="openJRScreenshotModal()" class="w-full rounded-xl border border-slate-700/80 shadow-md hover:scale-[1.02] cursor-pointer transition duration-300" />
+              <div class="pt-2 flex justify-center">
+                <button onclick="openJRScreenshotModal()" class="px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs shadow-md shadow-amber-500/20 transition flex items-center gap-2">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                  <span>View JR System</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between text-xs">
+            <span class="text-slate-400 font-mono">MackProjekt JR · Funding Discovery</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Author Spotlight: Donyale Mack & Published Book -->
+    <section id="author-book" class="max-w-7xl mx-auto px-6 py-16">
+      <div class="p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-slate-900 via-slate-900/90 to-amber-950/30 border border-amber-500/30 relative overflow-hidden shadow-2xl">
+        <div class="glow-orb w-[400px] h-[400px] bg-amber-500/15 -top-20 -right-20"></div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center relative z-10">
+          <div class="md:col-span-1 text-center md:text-left">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-mono uppercase mb-4">
+              Official Published Book
+            </div>
+            <!-- Book Visual Representation -->
+            <div class="w-48 sm:w-56 mx-auto md:mx-0 p-5 rounded-2xl bg-gradient-to-tr from-slate-950 to-slate-900 border-2 border-amber-500/40 shadow-2xl text-center space-y-3">
+              <div class="text-[10px] font-mono text-amber-400 uppercase tracking-widest">Author: Donyale Mack</div>
+              <div class="text-base sm:text-lg font-extrabold text-slate-100 font-cinzel leading-tight">
+                NAVIGATING SPIRITUAL WARFARE
+              </div>
+              <div class="text-[10px] text-slate-400 font-serif italic">
+                Understanding, Overcoming, and Protecting Oneself
+              </div>
+              <div class="pt-3 border-t border-slate-800 text-[11px] text-amber-400 font-bold">
+                Available on Amazon
+              </div>
+            </div>
+          </div>
+
+          <div class="md:col-span-2 space-y-4">
+            <div class="text-xs font-mono uppercase text-amber-400 tracking-widest font-semibold">Leadership & Literature</div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-100">
+              Navigating Spiritual Warfare
+            </h2>
+            <p class="text-sm text-slate-300 leading-relaxed">
+              Authored by <strong>Donyale Mack</strong>, this powerful work offers profound insight into spiritual resilience, discerning unseen challenges, overcoming adversity, and fortifying the mind and spirit.
+            </p>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Drawing upon deep faith, real-world experience, and actionable guidance, the book serves as a vital blueprint for anyone seeking to protect their peace, establish spiritual boundaries, and rise above persistent life trials.
+            </p>
+
+            <div class="pt-4 flex flex-wrap items-center gap-4">
+              <a href="https://www.amazon.ca/Navigating-Spiritual-Warfare-UNDERSTANDING-OVERCOMING/dp/B0CX3YGSF4" target="_blank" rel="noreferrer" class="px-6 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs shadow-lg shadow-amber-500/20 transition flex items-center gap-2">
+                <span>View on Amazon</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              </a>
+              <span class="text-xs text-slate-400 font-mono">ISBN / ASIN: B0CX3YGSF4</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Client Ventures Powered by A MackProjekt -->
+    <section id="client-work" class="max-w-7xl mx-auto px-6 py-16">
+      <div class="border-t border-slate-800 pt-12">
+        <div class="mb-10">
+          <span class="text-cyan-400 font-mono text-xs uppercase tracking-widest font-semibold">Client Solutions & Incubations</span>
+          <h2 class="text-3xl font-extrabold text-slate-100 mt-1">Client Ventures Built by A MackProjekt</h2>
+          <p class="text-sm text-slate-400 mt-2 max-w-2xl">
+            A MackProjekt architects custom digital software and web platforms for select clients and partner businesses.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+          <!-- Client Card 1: I Want My Lawyer Present -->
+          <div class="spotlight-card p-6 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-mono font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-amber-500/10 text-amber-400 border border-amber-500/20">Client Enterprise</span>
+                <span class="text-xs text-slate-400 font-mono">Powered by MP</span>
+              </div>
+              <h3 class="text-xl font-bold text-slate-100 mb-2">I Want My Lawyer Present</h3>
+              <p class="text-xs text-slate-300 leading-relaxed mb-4">
+                Dedicated client venture platform engineered and built by A MackProjekt to support citizens and community members with rights representation and advocacy resources.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs">
+              <span class="text-slate-400 font-mono">Client Platform</span>
+              <span class="text-amber-400 font-medium">In the MackProjekt Ecosystem</span>
+            </div>
+          </div>
+
+          <!-- Client Card 2: Mi Minks -->
+          <div class="spotlight-card p-6 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-mono font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-pink-500/10 text-pink-400 border border-pink-500/20">Client Brand & Commerce</span>
+                <span class="text-xs text-pink-400 font-mono">miminks.mackprojekt.com</span>
+              </div>
+              <h3 class="text-xl font-bold text-slate-100 mb-2">Mi Minks</h3>
+              <p class="text-xs text-slate-300 leading-relaxed mb-4">
+                Luxury lash and beauty eCommerce experience hosted on the MackProjekt cloud infrastructure, featuring custom shopping, booking, and brand aesthetics.
+              </p>
+              <div class="text-xs text-slate-400 space-y-1 font-mono">
+                <div>• High-end visual commerce</div>
+                <div>• Client product catalog</div>
+                <div>• Seamless mobile checkout</div>
+              </div>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs">
+              <span class="text-slate-400 font-mono">miminks.mackprojekt.com</span>
+              <span class="text-pink-400 font-medium">Hosted Client Brand</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800/80 bg-slate-950 py-12 px-6">
+      <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-xl bg-amber-500 flex items-center justify-center font-black text-slate-950 text-sm">MP</div>
+          <div class="text-xs text-slate-400">
+            © 2026 A MackProjekt. Technology Built to Move People Forward. All rights reserved.
+          </div>
+        </div>
+        <div class="flex flex-wrap items-center gap-5 text-xs text-slate-400">
+          <a href="https://mackprojekt.com/" class="hover:text-amber-400 transition">mackprojekt.com</a>
+          <a href="https://www.sdtoolsinc.org/" class="hover:text-amber-400 transition">sdtoolsinc.org</a>
+          <a href="https://sdtoolsinc.com/" class="hover:text-amber-400 transition">sdtoolsinc.com</a>
+          <a href="https://kingme.mackprojekt.com/" class="hover:text-purple-400 transition">kingme</a>
+          <a href="https://queenme.mackprojekt.com/" class="hover:text-purple-400 transition">queenme</a>
+          <button onclick="openJRScreenshotModal()" class="hover:text-amber-400 transition font-mono text-[11px] text-slate-500 hover:text-amber-400">JR System ↗</button>
+        </div>
+      </div>
+    </footer>
+
+    <!-- High-Res JR Screenshot Lightbox Modal -->
+    <div id="jr-screenshot-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-4 sm:p-6" onclick="closeJRScreenshotModal()">
+      <div class="bg-slate-900 border border-slate-700/80 max-w-5xl w-full rounded-2xl p-4 sm:p-6 relative shadow-2xl space-y-4 max-h-[92vh] flex flex-col" onclick="event.stopPropagation()">
+        <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-lg bg-amber-500 text-slate-950 font-black flex items-center justify-center text-sm">JR</div>
+            <div>
+              <h3 class="text-base sm:text-lg font-bold text-slate-100">MackProjekt JR — Funding Discovery & Operations</h3>
+              <p class="text-xs text-amber-400 font-mono">Operations Command Center</p>
+            </div>
+          </div>
+          <button onclick="closeJRScreenshotModal()" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition" aria-label="Close modal">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+
+        <div class="overflow-auto rounded-xl border border-slate-800 bg-slate-950 flex-1">
+          <img src="jr-command-screenshot.png" alt="MackProjekt JR Operations Command Center" class="w-full h-auto object-contain" />
+        </div>
+
+        <div class="flex flex-wrap items-center justify-between gap-3 pt-2 text-xs text-slate-400">
+          <span class="font-mono text-[11px]">MackProjekt JR operations interface preview.</span>
+          <button onclick="closeJRScreenshotModal()" class="px-4 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 font-medium">Close Preview</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Spotlight Card Cursor Tracking
+    const cards = document.querySelectorAll('.spotlight-card');
+    cards.forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+      });
+    });
+
+    // Projekt showcase controls
+    const swapCards = Array.from(document.querySelectorAll('.swap-card'));
+    const totalCards = swapCards.length;
+    let currentTopIndex = 0;
+    let isAnimating = false;
+
+    // Render Indicator Dots
+    const dotsContainer = document.getElementById('card-dots');
+    dotsContainer.innerHTML = '';
+    for (let i = 0; i < totalCards; i++) {
+      const dot = document.createElement('button');
+      dot.className = `h-2 rounded-full transition-all duration-300 ${i === 0 ? 'w-8 bg-amber-400' : 'w-2 bg-slate-700 hover:bg-slate-500'}`;
+      dot.setAttribute('aria-label', `Go to card ${i + 1}`);
+      dot.onclick = (e) => {
+        e.stopPropagation();
+        jumpToCard(i);
+      };
+      dotsContainer.appendChild(dot);
+    }
+
+    function updateCardStack() {
+      swapCards.forEach((card, idx) => {
+        // Calculate offset position relative to currentTopIndex
+        let offset = (idx - currentTopIndex + totalCards) % totalCards;
+
+        if (offset === 0) {
+          // Front Card
+          card.style.zIndex = 10;
+          card.style.transform = 'translate3d(0, 0, 0) scale(1) rotate(0deg)';
+          card.style.opacity = '1';
+          card.style.filter = 'none';
+          card.style.pointerEvents = 'auto';
+        } else if (offset === 1) {
+          // 2nd Card behind
+          card.style.zIndex = 9;
+          card.style.transform = 'translate3d(0, 18px, -40px) scale(0.96) rotate(-1.5deg)';
+          card.style.opacity = '0.85';
+          card.style.filter = 'blur(0.5px)';
+          card.style.pointerEvents = 'none';
+        } else if (offset === 2) {
+          // 3rd Card behind
+          card.style.zIndex = 8;
+          card.style.transform = 'translate3d(0, 36px, -80px) scale(0.92) rotate(1.5deg)';
+          card.style.opacity = '0.65';
+          card.style.filter = 'blur(1px)';
+          card.style.pointerEvents = 'none';
+        } else if (offset === 3) {
+          // 4th Card behind
+          card.style.zIndex = 7;
+          card.style.transform = 'translate3d(0, 52px, -120px) scale(0.88) rotate(-2deg)';
+          card.style.opacity = '0.4';
+          card.style.filter = 'blur(1.5px)';
+          card.style.pointerEvents = 'none';
+        } else {
+          // Cards deep in stack
+          card.style.zIndex = 1;
+          card.style.transform = 'translate3d(0, 68px, -160px) scale(0.84) rotate(0deg)';
+          card.style.opacity = '0';
+          card.style.filter = 'blur(2px)';
+          card.style.pointerEvents = 'none';
+        }
+      });
+
+      // Update Text indicator & dots
+      const topCard = swapCards[currentTopIndex];
+      document.getElementById('active-card-indicator').textContent = `${currentTopIndex + 1} of ${totalCards}`;
+      document.getElementById('active-card-title-preview').textContent = topCard.dataset.name;
+      document.getElementById('active-card-meta-preview').textContent = topCard.dataset.meta;
+
+      const dots = dotsContainer.children;
+      for (let i = 0; i < dots.length; i++) {
+        if (i === currentTopIndex) {
+          dots[i].className = 'h-2 w-8 rounded-full bg-amber-400 transition-all duration-300';
+        } else {
+          dots[i].className = 'h-2 w-2 rounded-full bg-slate-700 hover:bg-slate-500 transition-all duration-300';
+        }
+      }
+    }
+
+    function swapCard() {
+      if (isAnimating) return;
+      isAnimating = true;
+
+      const topCard = swapCards[currentTopIndex];
+      // Animate top card throwing out to the right with slight tilt
+      topCard.style.transform = 'translate3d(140%, -20px, 60px) rotate(14deg) scale(0.95)';
+      topCard.style.opacity = '0';
+
+      setTimeout(() => {
+        currentTopIndex = (currentTopIndex + 1) % totalCards;
+        updateCardStack();
+        setTimeout(() => {
+          isAnimating = false;
+        }, 150);
+      }, 260);
+    }
+
+    function prevCard() {
+      if (isAnimating) return;
+      isAnimating = true;
+
+      currentTopIndex = (currentTopIndex - 1 + totalCards) % totalCards;
+      const newTop = swapCards[currentTopIndex];
+      newTop.style.zIndex = 12;
+      newTop.style.transform = 'translate3d(-140%, -20px, 60px) rotate(-14deg) scale(0.95)';
+      newTop.style.opacity = '0';
+
+      setTimeout(() => {
+        updateCardStack();
+        setTimeout(() => {
+          isAnimating = false;
+        }, 300);
+      }, 50);
+    }
+
+    function jumpToCard(index) {
+      if (isAnimating || index === currentTopIndex) return;
+      currentTopIndex = index;
+      updateCardStack();
+    }
+
+    // Initialize Card Stack
+    updateCardStack();
+
+    // ==========================================
+    // React Bits — Ghost Mouse / Ghost Cursor Engine
+    // ==========================================
+    (function initGhostMouse() {
+      const canvas = document.getElementById('ghost-mouse-canvas');
+      if (!canvas || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      let width = (canvas.width = window.innerWidth);
+      let height = (canvas.height = window.innerHeight);
+
+      window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
+
+      // Trail Points configuration
+      const TRAIL_LENGTH = 26;
+      const points = [];
+      const mouse = { x: width / 2, y: height / 2, vx: 0, vy: 0, lastX: width / 2, lastY: height / 2, active: false };
+
+      for (let i = 0; i < TRAIL_LENGTH; i++) {
+        points.push({
+          x: width / 2,
+          y: height / 2,
+          dx: 0,
+          dy: 0,
+          radius: (1 - i / TRAIL_LENGTH) * 7 + 1.5,
+          alpha: (1 - i / TRAIL_LENGTH) * 0.75
+        });
+      }
+
+      window.addEventListener('mousemove', (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+        mouse.active = true;
+      });
+
+      window.addEventListener('mouseleave', () => {
+        mouse.active = false;
+      });
+
+      // Emitted spark particles on brisk mouse movement
+      const sparks = [];
+      function addSpark(x, y, vx, vy) {
+        if (sparks.length > 35) return;
+        sparks.push({
+          x,
+          y,
+          vx: (Math.random() - 0.5) * 2.5 + vx * 0.15,
+          vy: (Math.random() - 0.5) * 2.5 + vy * 0.15,
+          radius: Math.random() * 2 + 1,
+          life: 1,
+          decay: Math.random() * 0.04 + 0.02,
+          color: Math.random() > 0.4 ? 'rgba(251, 191, 36,' : 'rgba(56, 189, 248,'
+        });
+      }
+
+      let animId;
+      function render() {
+        ctx.clearRect(0, 0, width, height);
+
+        // Velocity tracking
+        mouse.vx = mouse.x - mouse.lastX;
+        mouse.vy = mouse.y - mouse.lastY;
+        const speed = Math.hypot(mouse.vx, mouse.vy);
+        mouse.lastX = mouse.x;
+        mouse.lastY = mouse.y;
+
+        // Emit sparks if moving fast
+        if (speed > 10 && Math.random() > 0.45) {
+          addSpark(mouse.x, mouse.y, mouse.vx, mouse.vy);
+        }
+
+        // Update trail points with spring/damping interpolation
+        let leadX = mouse.x;
+        let leadY = mouse.y;
+
+        for (let i = 0; i < points.length; i++) {
+          const p = points[i];
+          const spring = 0.38 - (i / TRAIL_LENGTH) * 0.12;
+
+          p.x += (leadX - p.x) * spring;
+          p.y += (leadY - p.y) * spring;
+
+          leadX = p.x;
+          leadY = p.y;
+        }
+
+        // Draw Ghost Trail if mouse is active
+        if (mouse.active && points.length > 2) {
+          // 1. Draw glowing gradient smooth spine
+          ctx.beginPath();
+          ctx.moveTo(points[0].x, points[0].y);
+          for (let i = 1; i < points.length - 1; i++) {
+            const xc = (points[i].x + points[i + 1].x) / 2;
+            const yc = (points[i].y + points[i + 1].y) / 2;
+            ctx.quadraticCurveTo(points[i].x, points[i].y, xc, yc);
+          }
+
+          const grad = ctx.createLinearGradient(points[0].x, points[0].y, points[points.length - 1].x, points[points.length - 1].y);
+          grad.addColorStop(0, 'rgba(251, 191, 36, 0.45)');
+          grad.addColorStop(0.5, 'rgba(245, 158, 11, 0.25)');
+          grad.addColorStop(1, 'rgba(56, 189, 248, 0)');
+
+          ctx.strokeStyle = grad;
+          ctx.lineWidth = Math.min(10, 4 + speed * 0.25);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+          ctx.stroke();
+
+          // 2. Draw ethereal ghost orbs along the trailing points
+          for (let i = 0; i < points.length; i += 2) {
+            const pt = points[i];
+            const ratio = i / TRAIL_LENGTH;
+            const r = pt.radius + (speed * 0.08);
+
+            const orbGrad = ctx.createRadialGradient(pt.x, pt.y, 0, pt.x, pt.y, r * 2.4);
+            const rColor = ratio < 0.5 ? '251, 191, 36' : '56, 189, 248';
+            orbGrad.addColorStop(0, `rgba(${rColor}, ${pt.alpha * 0.7})`);
+            orbGrad.addColorStop(0.6, `rgba(${rColor}, ${pt.alpha * 0.2})`);
+            orbGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+
+            ctx.fillStyle = orbGrad;
+            ctx.beginPath();
+            ctx.arc(pt.x, pt.y, r * 2.4, 0, Math.PI * 2);
+            ctx.fill();
+          }
+
+          // 3. Draw Ghost Mouse Head / Core Halo
+          const headRad = 9 + Math.min(8, speed * 0.3);
+          const headGrad = ctx.createRadialGradient(mouse.x, mouse.y, 1, mouse.x, mouse.y, headRad * 2);
+          headGrad.addColorStop(0, 'rgba(255, 255, 255, 0.95)');
+          headGrad.addColorStop(0.2, 'rgba(251, 191, 36, 0.7)');
+          headGrad.addColorStop(0.6, 'rgba(245, 158, 11, 0.25)');
+          headGrad.addColorStop(1, 'rgba(245, 158, 11, 0)');
+
+          ctx.fillStyle = headGrad;
+          ctx.beginPath();
+          ctx.arc(mouse.x, mouse.y, headRad * 2, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        // Draw and update sparks
+        for (let i = sparks.length - 1; i >= 0; i--) {
+          const s = sparks[i];
+          s.x += s.vx;
+          s.y += s.vy;
+          s.life -= s.decay;
+
+          if (s.life <= 0) {
+            sparks.splice(i, 1);
+            continue;
+          }
+
+          ctx.fillStyle = `${s.color} ${s.life * 0.8})`;
+          ctx.beginPath();
+          ctx.arc(s.x, s.y, s.radius * s.life, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        animId = requestAnimationFrame(render);
+      }
+
+      render();
+    })();
+
+    // JR Screenshot Lightbox Modal Logic
+    function openJRScreenshotModal() {
+      const modal = document.getElementById('jr-screenshot-modal');
+      if (modal) modal.classList.remove('hidden');
+    }
+
+    function closeJRScreenshotModal() {
+      const modal = document.getElementById('jr-screenshot-modal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    const systemRoles = [
+      { name: 'Participant', title: 'Your next step.', items: ['Goals & profile', 'Messages', 'Milestones'] },
+      { name: 'Staff', title: 'The work, connected.', items: ['Caseload & notes', 'Documents', 'Scheduling'] },
+      { name: 'Admin', title: 'See the whole picture.', items: ['Oversight & audit', 'Executive operations', 'HR workflows'] }
+    ];
+
+    function setSystemRole(index) {
+      const role = systemRoles[index];
+      document.getElementById('systems-role-label').textContent = `Projekt Enterprise / ${role.name}`;
+      document.getElementById('systems-role-title').textContent = role.title;
+      document.getElementById('systems-role-items').innerHTML = role.items.map(item => `<li class="border-t border-cyan-900/70 pt-2">${item}</li>`).join('');
+      document.querySelectorAll('[data-system-role]').forEach((button, i) => {
+        button.setAttribute('aria-pressed', i === index ? 'true' : 'false');
+        button.classList.toggle('border', i === index);
+        button.classList.toggle('border-cyan-400/30', i === index);
+        button.classList.toggle('bg-cyan-900', i === index);
+        button.classList.toggle('text-cyan-50', i === index);
+      });
+    }
+
+    function setSystemPlatform(index) {
+      const careport = index === 1;
+      document.getElementById('systems-label').textContent = careport ? 'CarePort Connect' : 'CaseFlow Operations';
+      document.getElementById('systems-title').textContent = careport ? 'Every handoff.' : 'Complex work.';
+      document.getElementById('systems-accent').textContent = careport ? 'Human.' : 'Connected.';
+      document.getElementById('systems-name').textContent = careport ? 'CarePort Connect' : 'Projekt Enterprise Portal Suite';
+      document.getElementById('systems-copy').textContent = careport ? 'Keep the context. Coordinate care. Move to the next action.' : 'People. Programs. One connected place to work.';
+      document.getElementById('systems-link').href = careport ? 'https://mackprojekt.com/careport' : 'https://mackprojekt.com/portals';
+      document.getElementById('systems-link').querySelector('span').textContent = careport ? 'Explore CarePort' : 'Explore the suite';
+      document.getElementById('systems-image').src = careport ? 'brand/careport-fluid.webp' : 'brand/amp-device-scene.webp';
+      document.getElementById('systems-image').alt = careport ? 'CarePort Connect concept visualization' : 'Concept visualization of CaseFlow Operations connected portal screens';
+      document.getElementById('systems-brand').classList.toggle('hidden', careport);
+      document.getElementById('systems-role-details').classList.toggle('hidden', careport);
+      document.getElementById('systems-device-tag').style.display = careport ? 'none' : '';
+      document.getElementById('systems-role-switch').classList.toggle('hidden', careport);
+      document.getElementById('systems-careport-strip').classList.toggle('hidden', !careport);
+      document.getElementById('systems-careport-strip').classList.toggle('grid', careport);
+      document.querySelectorAll('[data-system-platform]').forEach((button, i) => {
+        button.setAttribute('aria-pressed', i === index ? 'true' : 'false');
+        button.classList.toggle('bg-cyan-900', i === index);
+        button.classList.toggle('text-cyan-50', i === index);
+        button.classList.toggle('text-slate-300', i !== index);
+      });
+      if (!careport) setSystemRole(1);
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeJRScreenshotModal();
+    });
+  </script>
+</body>
+</html>
