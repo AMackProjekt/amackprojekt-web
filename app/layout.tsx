@@ -129,6 +129,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <AuthProvider>
             {children}
             <RouteFooter />
+            <div aria-label="Social and profile links" className="border-t border-white/10 bg-[#071324] px-5 py-4 text-center text-sm"><a className="font-semibold text-sky-300 underline underline-offset-4 hover:text-amber-300" href="https://linktr.ee/dthreemack" target="_blank" rel="noopener noreferrer">Explore our Linktree</a></div>
             <CookieConsent />
             <SessionTimeoutBanner />
           </AuthProvider>
