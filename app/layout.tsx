@@ -26,21 +26,9 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://mackprojekt.com"),
   manifest: "/manifest.json",
   icons: {
-    icon: [
-      { url: "/brand/amp-premier.webp", type: "image/webp" },
-      { url: "/brand/amp-premier.webp", sizes: "any" },
-    ],
-    apple: [
-      { url: "/brand/amp-premier.webp" },
-      { url: "/brand/amp-premier.webp", sizes: "180x180", type: "image/webp" },
-    ],
-    other: [
-      {
-        rel: "icon",
-        url: "/brand/amp-premier.webp",
-        type: "image/webp",
-      },
-    ],
+    icon: [{ url: "/brand/amp-logo.jpg?v=original-amp-20261121", type: "image/jpeg" }],
+    shortcut: [{ url: "/brand/amp-logo.jpg?v=original-amp-20261121", type: "image/jpeg" }],
+    apple: [{ url: "/brand/amp-logo.jpg?v=original-amp-20261121", type: "image/jpeg" }],
   },
   keywords: ["A MackProjekt", "MackEnterprises", "product strategy", "digital products", "social impact technology", "web development"],
   authors: [{ name: "Donyale Mack" }],
