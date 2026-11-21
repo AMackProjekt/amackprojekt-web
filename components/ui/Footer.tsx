@@ -50,6 +50,11 @@ export function Footer() {
             <Link href="/terms">Terms</Link>
           </div>
         </div>
+        <div style={{ textAlign: "center", padding: "16px 8px 0", fontSize: "12px", lineHeight: 1.6, opacity: .85 }}>
+          <strong>A MACK — DONALD TERRY MACK&apos;S LEGACY</strong>
+          <p>Established 2023 · Owned and operated by Donyale Mack</p>
+          <p>Proprietary materials — All rights reserved. Original works, software, designs and marks are protected to the extent provided by applicable law and remain with their respective legal owners.</p>
+        </div>
       </div>
     </footer>
   );
